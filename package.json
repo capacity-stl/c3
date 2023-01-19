@@ -1,0 +1,23 @@
+{
+  "name": "@chris.elias/c3",
+  "version": "0.1.0",
+  "description": "Capacity Core Components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.aisoftware.com:frontend/c3.git"
+  },
+  "publishConfig": {
+    "@chris.elias:registry": "https://gitlab.com/api/v4/projects/606/packages/npm/"
+  },
+  "author": "Capacity FE Team",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "react": "^18.2.0",
+    "typescript": "^4.9.4"
+  }
+}
