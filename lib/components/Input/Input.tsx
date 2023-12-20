@@ -1,4 +1,4 @@
-import styles from "./styles.module.scss";
+import styles from "./Input.module.scss";
 
 export function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
   const { className, ...restProps } = props;
