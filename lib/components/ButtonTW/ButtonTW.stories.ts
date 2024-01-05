@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button } from "./Button";
+import { ButtonTW } from "./ButtonTW";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "C3/Button",
-  component: Button,
+  title: "C3/ButtonTW",
+  component: ButtonTW,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
@@ -21,7 +21,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof ButtonTW>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

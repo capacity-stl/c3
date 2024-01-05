@@ -5,7 +5,62 @@ export default {
     "./src/**/*.{html,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      default: ["Inter", "sans-serif"],
+    },
+    colors: {
+      night: "#002B67",
+      "deep-space-black": "#02214D",
+      white: "#FFFFFF",
+      earth: {
+        100: "#E6F2FF",
+        200: "#80BEFF",
+        300: "#007DFF",
+        400: "#004B99",
+      },
+      sun: {
+        100: "#FFF5E6",
+        200: "#FFCF80",
+        300: "#FF9F00",
+        400: "#995F00",
+      },
+      mars: {
+        100: "#FFE7ED",
+        200: "#FF86A3",
+        300: "#FF0E47",
+        400: "#A80028",
+      },
+      meteor: {
+        100: "#F0F2F5",
+        200: "#DDE2EA",
+        300: "#9AA9BF",
+        400: "#567095 ",
+      },
+      neptune: {
+        100: "#E6F7E8",
+        200: "#82D68C",
+        300: "#05AE19",
+        400: "#024A0B",
+      },
+      nova: {
+        100: "#FBECF5",
+        200: "#EC9ECE",
+        300: "#DA3E9E",
+        400: "#961D67",
+      },
+      mercury: {
+        100: "#FFEEE6",
+        200: "#FFAC80",
+        300: "#FF5900",
+        400: "#993500",
+      },
+      aurora: {
+        100: "#EDEFFC",
+        200: "#A6B0F2",
+        300: "#4D61E6",
+        400: "#192DB3",
+      },
+    },
   },
-  plugins: [],
+  extend: {},
 };

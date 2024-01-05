@@ -1,3 +1,76 @@
-.button {
-  background-color: red;
+.base {
+  appearance: none;
+  outline: none;
+  border: none;
+  background: var(--earth);
+  font-family: var(--default-font);
+  font-size: var(--font-md);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  color: white;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+.primary {
+  background: var(--earth-300);
+  color: var(--earth-100);
+
+  &:hover {
+    background: var(--earth-400);
+  }
+
+  &:active {
+    background: var(--night);
+  }
+}
+
+.secondary {
+  background: var(--white);
+  color: var(--earth-300);
+  border: 1px solid var(--earth-300);
+
+  &:hover {
+    background: var(--earth-100);
+  }
+
+  &:active {
+    background: var(--earth-200);
+    color: var(--earth-400)
+  }
+}
+
+.destructive {
+  background: var(--mars-300);
+  color: var(--mars-100);
+
+  &:hover {
+    background: var(--mars-400);
+  }
+}
+
+.success {
+  background: var(--neptune-300);
+  color: var(--neptune-100);
+
+  &:hover {
+    background: var(--neptune-400);
+  }
+}
+
+.link {
+  background: transparent;
+  color: var(--earth-300);
+
+  &:hover {
+    background: var(--earth-100);
+  }
+
+  &:active {
+    background: var(--earth-200);
+    color: var(--earth-400);
+  }
 }
