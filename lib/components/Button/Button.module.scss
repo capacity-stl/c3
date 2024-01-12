@@ -1,3 +1,5 @@
+// these classes will be available as css modules and there is no need to use BEM because they will generate unique class names ONLY for the components that use them
+
 .base {
   appearance: none;
   outline: none;

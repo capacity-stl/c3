@@ -2,7 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 
 const buttonVariants = cva(
-  "text-white text-sm rounded-lg py-2 px-4 shadow-md border-transparent hover:cursor-pointer text-center tracking-wide",
+  "text-white text-sm rounded-lg py-2 px-4 shadow-md border-transparent hover:cursor-pointer text-center tracking-wide font-default",
   {
     variants: {
       variant: {

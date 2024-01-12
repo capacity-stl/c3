@@ -1,17 +1,10 @@
 import styles from "./Button.module.scss";
 import "../../main.scss";
 
-// export function Button(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
-//   const { className, children = "Button", ...restProps } = props;
-//   return (
-//     <button className={`${className} ${styles.button} `} {...restProps}>
-//       {children}
-//     </button>
-//   );
-// }
-
-
 import { cva, type VariantProps } from "class-variance-authority";
+
+
+// CSS modules import a style object that you can use to access the class names
 
 const buttonVariants = cva(styles.base,
   {

@@ -15,21 +15,25 @@
     "preview": "vite preview",
     "prepublishOnly": "npm run build",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_a85dbc774a0cecf --force-rebuild"
   },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^7.6.7",
     "@storybook/addon-essentials": "^7.6.6",
-    "@storybook/addon-interactions": "^7.6.6",
+    "@storybook/addon-interactions": "^7.6.8",
     "@storybook/addon-links": "^7.6.6",
     "@storybook/addon-onboarding": "^1.0.10",
     "@storybook/blocks": "^7.6.6",
+    "@storybook/jest": "^0.2.3",
     "@storybook/react": "^7.6.6",
     "@storybook/react-vite": "^7.6.6",
     "@storybook/test": "^7.6.6",
+    "@storybook/testing-library": "^0.2.2",
     "@types/node": "^20.10.5",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
@@ -37,6 +41,7 @@
     "@typescript-eslint/parser": "^6.14.0",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.16",
+    "chromatic": "^10.2.1",
     "class-variance-authority": "^0.7.0",
     "eslint": "^8.55.0",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -60,5 +65,7 @@
   },
   "sideEffects": [
     "**/*.css"
-  ]
+  ],
+  "readme": "ERROR: No README data found!",
+  "_id": "@capcity/c3@0.0.0"
 }
