@@ -14,11 +14,14 @@ npm install
 ```
 
 ## Running Storybook
+
 ```
 npm run storybook
 ```
+
 ## Running the "Playground"
-```dotnetcli
+
+```
 npm run dev
 ```
 
