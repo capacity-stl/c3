@@ -10,7 +10,7 @@ export default {
     },
     colors: {
       night: "#002B67",
-      "deep-space-black": "#02214D",
+      "deep-space": "#02214D",
       white: "#FFFFFF",
       earth: {
         100: "#E6F2FF",
