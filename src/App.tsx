@@ -1,5 +1,5 @@
-import "./App.css";
-import { Grid, Box } from "../";
+import './App.css'
+import { Grid, Box } from '../'
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         </Box>
       </Grid>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
