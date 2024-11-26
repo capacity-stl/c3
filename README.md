@@ -1,7 +1,7 @@
 # C3 - Capacity Core Components
 
 <div align="center">
-        <img src="https://gitlab.aisoftware.com/uploads/-/system/project/avatar/606/c3_logo_proposal.png?width=64" height="150px" />
+        <img src="https://gitlab.aisoftware.com/uploads/-/system/project/avatar/606/c3_logo_proposal.png" height="150px" />
     
 </div>
 
