@@ -1,11 +1,9 @@
-default:
-  image: node:20-alpine
-
 stages:
   - deploy
 
 publish-npm:
   stage: deploy
+  image: node:20-alpine
   before_script:
     - node --version
     - npm --version
