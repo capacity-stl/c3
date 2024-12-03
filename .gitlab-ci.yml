@@ -1,9 +1,10 @@
+image: node:18.18.0
+
 stages:
   - deploy
 
 publish-npm:
   stage: deploy
-  image: registry.gitlab.aisoftware.com/ops/dockerfiles/aisoftware-base:nodejs-18.18.0
   before_script:
     - node --version
     - npm --version
@@ -12,3 +13,5 @@ publish-npm:
     - npm install
     - npm run build || npm run build --verbose
     - npm publish
+  tags:
+    - docker
