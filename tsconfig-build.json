@@ -1,7 +1,9 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"]
-  }
+  "extends": "./tsconfig.json",
+  "include": ["lib"]
+  // "compilerOptions": {
+  //   "target": "ES2020",
+  //   "module": "ESNext",
+  //   "lib": ["ES2020", "DOM", "DOM.Iterable"]
+  // }
 }
