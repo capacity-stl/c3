@@ -1,6 +1,6 @@
 {
   "name": "@aisoftware/c3",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -62,8 +62,6 @@
     "postcss": "^8.4.32",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.10",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "sass": "^1.69.5",
     "storybook": "^7.6.6",
     "storybook-addon-pseudo-states": "^2.1.2",
