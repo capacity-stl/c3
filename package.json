@@ -1,6 +1,6 @@
 {
   "name": "@aisoftware/c3",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -26,10 +26,6 @@
     "prettier:check:windows": "prettier --check ./**/**.{tsx,ts,md,json}",
     "prettier:fix": "prettier --write '**/@(*.tsx|*.ts|*.md|*.json)'",
     "prettier:fix:windows": "prettier --write ./**/**.{tsx,ts,md,json}"
-  },
-  "peerDependencies": {
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@radix-ui/react-slot": "^1.0.2",
