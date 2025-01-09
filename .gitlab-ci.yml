@@ -1,0 +1,20 @@
+image: node:18.18.0
+
+stages:
+  - deploy
+
+publish-npm:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+  stage: deploy
+  before_script:
+    - node --version
+    - npm --version
+  script:
+    - echo "//gitlab.aisoftware.com/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}" >> .npmrc
+    - npm install --force
+    - npm run build || npm run build --verbose
+    - npm publish
+
+  tags:
+    - docker
