@@ -4,6 +4,8 @@ stages:
   - deploy
 
 publish-npm:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
   stage: deploy
   before_script:
     - node --version
@@ -13,7 +15,6 @@ publish-npm:
     - npm install --force
     - npm run build || npm run build --verbose
     - npm publish
-  rules:
-    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
+
   tags:
     - docker
