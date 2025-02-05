@@ -45,6 +45,7 @@
     "@storybook/react-vite": "^8.5.3",
     "@storybook/test": "^8.5.3",
     "@storybook/testing-library": "^0.2.2",
+    "@tailwindcss/postcss": "^4.0.3",
     "@types/node": "^22.13.1",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
