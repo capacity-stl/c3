@@ -2,8 +2,6 @@ import { Slot } from '../Slot/Slot'
 import { cn } from '../../utils/cn'
 import { IconProps, iconVariants } from './Icon.props'
 import { Glyphs, Icons } from './Glyphs'
-import { Box } from '../Box/Box'
-import { asTypes } from '../Box/Box.props'
 
 const Icon = ({ className, icon, size = 'small', ...iconProps }: IconProps) => {
   return (
@@ -29,13 +27,9 @@ const IconComponent = ({ icon }: { icon: string }) => {
     )
 
     return (
-      <Box
-        as={asTypes.span}
-        className="text-mars-300"
-        title={`Invalid icon name \`${icon}\``}
-      >
+      <div className="text-mars-300" title={`Invalid icon name \`${icon}\``}>
         {`!E`}
-      </Box>
+      </div>
     )
   }
 }
