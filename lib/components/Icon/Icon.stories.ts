@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { within } from '@storybook/testing-library'
+import { within } from '@storybook/test'
 import { expect } from '@storybook/jest'
 import { Icon } from './Icon'
 import { colorNames } from '../../props/color.props'
