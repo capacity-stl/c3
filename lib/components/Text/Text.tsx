@@ -14,6 +14,7 @@ const Text = ({
   return (
     <Comp
       className={cn(textVariants({ ...textProps }), className, asChild, Tag)}
+      data-testid="text-component"
     >
       {children}
     </Comp>

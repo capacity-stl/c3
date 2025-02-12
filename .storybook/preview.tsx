@@ -1,4 +1,6 @@
+import * as React from 'react'
 import type { Preview } from '@storybook/react'
+import * as Docs from '@storybook/blocks'
 import '../lib/c3.css'
 
 const preview: Preview = {
@@ -9,6 +11,17 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+    },
+    docs: {
+      page: () => (
+        <>
+          <Docs.Title />
+          <Docs.Description />
+          <Docs.Primary />
+          <Docs.Controls />
+          <Docs.Stories />
+        </>
+      ),
     },
   },
 }

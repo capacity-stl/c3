@@ -14,6 +14,12 @@ const fontProps = {
     center: 'text-center',
     right: 'text-right',
   },
+  type: {
+    heading: 'text-4xl text-earth-400 font-bold',
+    subheading: 'text-lg',
+    body: 'text-base',
+    small: 'text-sm',
+  },
 }
 
 export { fontProps }

@@ -6,7 +6,7 @@ import { heightProps } from '../../props/height.props'
 import { widthProps } from '../../props/width.props'
 import { borderProps } from '../../props/border.props'
 import { colorProps } from '../../props/color.props'
-import { fontProps } from '../../props/fontsize.props'
+import { fontProps } from '../../props/font.props'
 
 const textPropsVariants = {
   ...marginProps,
@@ -42,7 +42,7 @@ export interface TextProps
     VariantProps<typeof textVariants> {
   className?: string
   children?: React.ReactNode
-  as?: asTypes | keyof JSX.IntrinsicElements
+  as?: asTypes
   asChild?: boolean
   testId?: string
 }
