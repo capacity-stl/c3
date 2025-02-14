@@ -1,0 +1,22 @@
+{
+  "usesTypeScript": true,
+  "usesStyledComponents": false,
+  "usesCssModule": false,
+  "cssPreprocessor": "css",
+  "testLibrary": "Testing Library",
+  "component": {
+    "default": {
+      "path": "lib/components",
+      "withStyle": false,
+      "withTest": false,
+      "withStory": true,
+      "withLazy": false,
+      "withProps": true,
+      "customTemplates": {
+        "component": "lib/templates/TemplateName.tsx",
+        "story": "lib/templates/TemplateName.stories.tsx",
+        "props": "lib/templates/TemplateName.props.ts"
+      }
+    }
+  }
+}

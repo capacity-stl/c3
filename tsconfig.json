@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": "./lib",
     "paths": {
-      "@/*": ["./lib/*"]
+      "@components/*": ["./components/*"],
+      "@utils/*": ["./utils/*"],
+      "@props/*": ["./props/*"]
     },
     "target": "ES2020",
     "useDefineForClassFields": true,
@@ -24,5 +27,13 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src", "lib"],
+  "watchOptions": {
+    "excludeDirectories": [
+      "node_modules",
+      "dist",
+      "templates",
+      "storybook-static"
+    ]
+  },
   "references": [{ "path": "./tsconfig.node.json" }]
 }

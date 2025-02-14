@@ -1,9 +1,9 @@
-import { Slot } from '../Slot/Slot'
-import { cn } from '../../utils/cn'
+import { Slot } from '@components/Slot/Slot'
+import { cn } from '@utils/cn'
 import { IconProps, iconVariants } from './Icon.props'
 import { Glyphs, Icons } from './Glyphs'
-import { Box } from '../Box/Box'
-import { asTypes } from '../Box/Box.props'
+import { Box } from '@components/Box/Box'
+import { asTypes } from '@components/Box/Box.props'
 
 const Icon = ({ className, icon, size = 'small', ...iconProps }: IconProps) => {
   return (
