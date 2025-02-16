@@ -16,7 +16,7 @@ const fontProps = {
   },
   type: {
     'heading-xl': 'text-3xl text-deep-space font-bold leading-10',
-    'heading-large': 'text-2xl text-deep-space font-bold leaging-8',
+    'heading-large': 'text-2xl text-deep-space font-bold leading-8',
     heading: 'text-xl text-deep-space font-bold leading-7',
     subheading: 'text-lg text-deep-space leading-6',
     'body-large': 'text-lg text-deep-space leading-6',
