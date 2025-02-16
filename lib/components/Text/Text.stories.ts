@@ -39,7 +39,14 @@ export const HeadingXL: Story = {
   args: {
     children: 'This is an XL Heading',
     as: asTypes.h1,
-    type: 'headingXL',
+    type: 'heading-xl',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'KB Article Titles',
+      },
+    },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
@@ -57,7 +64,14 @@ export const HeadingLarge: Story = {
   args: {
     children: 'This is a Large Heading',
     as: asTypes.h1,
-    type: 'headingLarge',
+    type: 'heading-large',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Empty State Headings',
+      },
+    },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
@@ -77,6 +91,13 @@ export const Heading: Story = {
     as: asTypes.h1,
     type: 'heading',
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Section Titles (Top Nav Bar),Page Titles, Modal Titles',
+      },
+    },
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     const text = await canvas.getByTestId('text-component')
@@ -95,6 +116,13 @@ export const Subheading: Story = {
     as: asTypes.h2,
     type: 'subheading',
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Subheadings, Notification/Alert headings',
+      },
+    },
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     const text = await canvas.getByTestId('text-component')
@@ -111,6 +139,13 @@ export const Body: Story = {
     as: asTypes.div,
     type: 'body',
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Default font style for components, body copy,form field labels',
+      },
+    },
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     const text = await canvas.getByTestId('text-component')
@@ -125,7 +160,14 @@ export const BodyLarge: Story = {
   args: {
     children: 'This is a Body Large. Lorem ipsum dolor sit amet.',
     as: asTypes.div,
-    type: 'bodyLarge',
+    type: 'body-large',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Empty State paragraph',
+      },
+    },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
@@ -141,7 +183,14 @@ export const BodyStrong: Story = {
   args: {
     children: 'This is a Body Strong. Lorem ipsum dolor sit amet.',
     as: asTypes.div,
-    type: 'bodyStrong',
+    type: 'body-strong',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Bold type in a paragraph or body copy,large buttons',
+      },
+    },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
@@ -159,7 +208,14 @@ export const BodySmall: Story = {
   args: {
     children: 'This is a Body Small. Lorem ipsum dolor sit amet.',
     as: asTypes.div,
-    type: 'bodySmall',
+    type: 'body-small',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Micro-copy, tooltips',
+      },
+    },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
@@ -175,7 +231,14 @@ export const BodySmallStrong: Story = {
   args: {
     children: 'This is a Body Small Strong. Lorem ipsum dolor sit amet.',
     as: asTypes.div,
-    type: 'bodySmallStrong',
+    type: 'body-small-strong',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Bold micro-copy, badges, table headers, tabs, small buttons',
+      },
+    },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
@@ -193,7 +256,7 @@ export const SmallCaps: Story = {
   args: {
     children: 'This is a Small Caps',
     as: asTypes.div,
-    type: 'smallCaps',
+    type: 'small-caps',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
@@ -227,7 +290,7 @@ export const CodeSmall: Story = {
   args: {
     children: '<p>This is a Code Small</p>',
     as: asTypes.code,
-    type: 'codeSmall',
+    type: 'code-small',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
