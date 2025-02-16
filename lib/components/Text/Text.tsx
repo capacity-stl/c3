@@ -13,7 +13,7 @@ const Text = ({
 
   return (
     <Comp
-      className={cn(textVariants({ ...textProps }), className, asChild, Tag)}
+      className={cn(textVariants({ ...textProps }), className)}
       data-testid="text-component"
     >
       {children}
