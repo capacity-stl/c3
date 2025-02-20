@@ -1,5 +1,5 @@
 import { cn } from '@utils/cn'
-import { BoxProps, boxVariants, asTypes } from '@components/Box/Box.props'
+import { BoxProps, boxVariants, asTypes } from './Box.props'
 import { Slot } from '@components/Slot/Slot'
 
 const Box = ({
