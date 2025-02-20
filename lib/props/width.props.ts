@@ -17,6 +17,7 @@ const widthProps = {
     '9': 'w-9', // width: 2.25rem (36px)
     '240': 'w-240', // width: 240px
     '320': 'w-320', // width: 320px
+    '24': 'w-24', // width: 6rem (96px)
     '1/4': 'w-1/4', // width: 25%
     '1/3': 'w-1/3', // width: 33.333333%
     '1/2': 'w-1/2', // width: 50%
