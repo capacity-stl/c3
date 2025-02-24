@@ -1,8 +1,5 @@
-const sizeProps = {
+const pixelSizeProps = {
   size: {
-    full: 'size-full',
-    screen: 'size-screen',
-    auto: 'size-auto',
     '0': 'size-0',
     '1': 'size-1',
     '2': 'size-2',
@@ -33,6 +30,15 @@ const sizeProps = {
     '72': 'size-72',
     '80': 'size-80',
     '96': 'size-96',
+  },
+}
+
+const sizeProps = {
+  size: {
+    ...pixelSizeProps.size,
+    full: 'size-full',
+    screen: 'size-screen',
+    auto: 'size-auto',
     '1/4': 'size-1/4',
     '1/3': 'size-1/3',
     '1/2': 'size-1/2',
@@ -41,4 +47,4 @@ const sizeProps = {
   },
 }
 
-export { sizeProps }
+export { sizeProps, pixelSizeProps }
