@@ -39,7 +39,7 @@ enum asTypes {
 }
 
 export interface TextProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'color' | 'className'>,
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>,
     VariantProps<typeof textVariants> {
   className?: string
   children?: React.ReactNode

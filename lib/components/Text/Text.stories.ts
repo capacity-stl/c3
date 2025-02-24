@@ -303,3 +303,19 @@ export const CodeSmall: Story = {
     )
   },
 }
+
+export const Truncate: Story = {
+  args: {
+    children:
+      'Lorem ipsum dolor sit amet.cillum labore in adipisicing exercitation exercitation deserunt velit ad commodo adipisicing enim sunt adipisicing reprehenderit dolor sit Lorem excepteur anim reprehenderit dolor labore mollit in adipisicing irure in proident deserunt duis esse quis minim aute nostrud officia amet ipsum aute consequat sint veniam ad consectetur minim aute nostrud id ut et exercitation fugiat aliqua id laboris et velit sunt ipsum anim laborum sint ad tempor laboris do est proident cupidatat amet proident ut esse dolore fugiat in eu aute nulla eu occaecat quis dolor officia esse anim duis sunt ullamco do nostrud incididunt adipisicing irure incididunt culpa ea ipsum commodo adipisicing ea nulla tempor mollit id duis proident mollit nostrud excepteur sit quis elit officia fugiat ad dolor voluptate dolor aliqua est id enim cupidatat nisi officia culpa nulla officia proident aliqua officia deserunt est ea exercitation deserunt in excepteur do fugiat dolor et proident do aliquip occaecat ut ipsum commodo aliqua voluptate sunt Lorem et quis duis velit qui Lorem ea aliquip cupidatat eu est Lorem dolor occaecat qui ex nostrud consectetur velit ex culpa irure laborum aliqua voluptate occaecat ad fugiat velit nulla sit qui exercitation reprehenderit occaecat adipisicing adipisicing ad proident culpa veniam proident sint ex exercitation',
+    as: asTypes.div,
+    className: 'w-[500px] truncate',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const text = await canvas.getByTestId('text-component')
+
+    await expect(text).toBeInTheDocument()
+    await expect(text).toHaveClass('truncate')
+  },
+}
