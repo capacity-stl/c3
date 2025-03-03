@@ -8,18 +8,15 @@ import { borderProps } from '../../props/border.props'
 import { colorProps } from '../../props/color.props'
 import { fontProps } from '../../props/font.props'
 
-const textPropsVariants = {
-  ...marginProps,
-  ...paddingProps,
-  ...heightProps,
-  ...widthProps,
-  ...borderProps,
-  ...colorProps,
-  ...fontProps,
-}
-const textVariants = cva('', {
+const textVariants = cva('text-base', {
   variants: {
-    ...textPropsVariants,
+    ...marginProps,
+    ...paddingProps,
+    ...heightProps,
+    ...widthProps,
+    ...borderProps,
+    ...colorProps,
+    ...fontProps,
   },
 })
 
@@ -43,8 +40,7 @@ export interface TextProps
     VariantProps<typeof textVariants> {
   className?: string
   children?: React.ReactNode
-  as?: asTypes
-  asChild?: boolean
+  as?: asTypes | React.ElementType
   testId?: string
 }
 

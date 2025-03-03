@@ -3,7 +3,9 @@ import { within } from '@storybook/testing-library'
 import { expect } from '@storybook/jest'
 
 import { Text } from './Text'
-import { asTypes } from './Text.props'
+import { asTypes, textVariants } from './Text.props'
+import { colorNames } from '../../props/color.props'
+
 const meta = {
   title: 'Typography/Text',
   component: Text,
@@ -13,10 +15,63 @@ const meta = {
         component: 'Fundamental typography component.',
       },
     },
-    layout: 'centered',
+    controls: {
+      exclude: ['testId', 'className', 'mx', 'my', 'px', 'py'],
+    },
   },
 
   tags: ['autodocs'],
+  argTypes: {
+    as: {
+      control: {
+        type: 'select',
+      },
+      options: Object.values(asTypes),
+      table: {
+        type: { summary: 'The HTML tag to render the text as' },
+        defaultValue: { summary: 'div' },
+      },
+    },
+    type: {
+      control: {
+        type: 'select',
+        options: Object.values(textVariants),
+      },
+      table: {
+        type: { summary: 'The type of text to render' },
+        defaultValue: { summary: 'body' },
+      },
+    },
+    children: {
+      control: {
+        type: 'text',
+      },
+      table: {
+        type: { summary: 'The text to render' },
+        defaultValue: { summary: '' },
+      },
+    },
+    align: {
+      control: {
+        type: 'select',
+        options: ['left', 'center', 'right'],
+      },
+      table: {
+        type: { summary: 'The alignment of the text' },
+        defaultValue: { summary: 'left' },
+      },
+    },
+    color: {
+      control: {
+        type: 'select',
+      },
+      options: colorNames,
+      table: {
+        type: { summary: 'The color of the text' },
+        defaultValue: { summary: 'deep-space' },
+      },
+    },
+  },
 } satisfies Meta<typeof Text>
 
 export default meta
@@ -25,7 +80,6 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     children: 'Hello, world',
-    as: asTypes.div,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
@@ -38,7 +92,7 @@ export const Default: Story = {
 export const HeadingXL: Story = {
   args: {
     children: 'This is an XL Heading',
-    as: asTypes.h1,
+    as: 'h1',
     type: 'heading-xl',
   },
   parameters: {
@@ -63,7 +117,7 @@ export const HeadingXL: Story = {
 export const HeadingLarge: Story = {
   args: {
     children: 'This is a Large Heading',
-    as: asTypes.h1,
+    as: 'h1',
     type: 'heading-large',
   },
   parameters: {
@@ -88,7 +142,7 @@ export const HeadingLarge: Story = {
 export const Heading: Story = {
   args: {
     children: 'This is a Heading',
-    as: asTypes.h1,
+    as: 'h1',
     type: 'heading',
   },
   parameters: {
@@ -113,7 +167,7 @@ export const Heading: Story = {
 export const Subheading: Story = {
   args: {
     children: 'This is a Subheading',
-    as: asTypes.h2,
+    as: 'h2',
     type: 'subheading',
   },
   parameters: {
@@ -136,7 +190,7 @@ export const Subheading: Story = {
 export const Body: Story = {
   args: {
     children: 'This is a Body',
-    as: asTypes.div,
+    as: 'div',
     type: 'body',
   },
   parameters: {
@@ -159,7 +213,7 @@ export const Body: Story = {
 export const BodyLarge: Story = {
   args: {
     children: 'This is a Body Large. Lorem ipsum dolor sit amet.',
-    as: asTypes.div,
+    as: 'div',
     type: 'body-large',
   },
   parameters: {
@@ -182,7 +236,7 @@ export const BodyLarge: Story = {
 export const BodyStrong: Story = {
   args: {
     children: 'This is a Body Strong. Lorem ipsum dolor sit amet.',
-    as: asTypes.div,
+    as: 'div',
     type: 'body-strong',
   },
   parameters: {
@@ -207,7 +261,7 @@ export const BodyStrong: Story = {
 export const BodySmall: Story = {
   args: {
     children: 'This is a Body Small. Lorem ipsum dolor sit amet.',
-    as: asTypes.div,
+    as: 'div',
     type: 'body-small',
   },
   parameters: {
@@ -230,7 +284,7 @@ export const BodySmall: Story = {
 export const BodySmallStrong: Story = {
   args: {
     children: 'This is a Body Small Strong. Lorem ipsum dolor sit amet.',
-    as: asTypes.div,
+    as: 'div',
     type: 'body-small-strong',
   },
   parameters: {
@@ -255,7 +309,7 @@ export const BodySmallStrong: Story = {
 export const SmallCaps: Story = {
   args: {
     children: 'This is a Small Caps',
-    as: asTypes.div,
+    as: 'div',
     type: 'small-caps',
   },
   play: async ({ canvasElement }) => {
@@ -273,7 +327,7 @@ export const SmallCaps: Story = {
 export const Code: Story = {
   args: {
     children: '<p>This is a Code</p>',
-    as: asTypes.code,
+    as: 'code',
     type: 'code',
   },
   play: async ({ canvasElement }) => {
@@ -289,7 +343,7 @@ export const Code: Story = {
 export const CodeSmall: Story = {
   args: {
     children: '<p>This is a Code Small</p>',
-    as: asTypes.code,
+    as: 'code',
     type: 'code-small',
   },
   play: async ({ canvasElement }) => {
