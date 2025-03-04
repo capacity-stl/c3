@@ -7,7 +7,7 @@ import { widthProps } from '@props/width.props'
 import { bgColorProps } from '@props/color.props'
 import { borderProps } from '@props/border.props'
 
-const boxPropsVariants = {
+const TemplateNamePropsVariants = {
   ...marginProps,
   ...paddingProps,
   ...heightProps,
@@ -15,9 +15,9 @@ const boxPropsVariants = {
   ...bgColorProps,
   ...borderProps,
 }
-const boxVariants = cva('flex', {
+const TemplateNameVariants = cva('flex', {
   variants: {
-    ...boxPropsVariants,
+    ...TemplateNamePropsVariants,
   },
 })
 
@@ -26,9 +26,9 @@ enum asTypes {
   span = 'span',
 }
 
-export interface BoxProps
+export interface TemplateNameProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof boxVariants> {
+    VariantProps<typeof TemplateNameVariants> {
   className?: string
   children?: React.ReactNode
   as?: asTypes | keyof JSX.IntrinsicElements
@@ -36,4 +36,4 @@ export interface BoxProps
   testId?: string
 }
 
-export { boxVariants, asTypes }
+export { TemplateNameVariants, asTypes }

@@ -1,6 +1,6 @@
 {
   "name": "@aisoftware/c3",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -15,7 +15,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "npx tsc --p ./tsconfig-build.json && vite build",
+    "build": "npx tsc --p ./tsconfig-build.json && vite build && rm -rf dist/templates",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prepublishOnly": "npm run build",

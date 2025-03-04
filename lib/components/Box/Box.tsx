@@ -1,6 +1,6 @@
-import { cn } from '../../utils/cn'
+import { cn } from '@utils/cn'
 import { BoxProps, boxVariants, asTypes } from './Box.props'
-import { Slot } from '../Slot/Slot'
+import { Slot } from '@components/Slot/Slot'
 
 const Box = ({
   className,
