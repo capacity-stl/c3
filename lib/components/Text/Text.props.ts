@@ -40,8 +40,7 @@ export interface TextProps
     VariantProps<typeof textVariants> {
   className?: string
   children?: React.ReactNode
-  as?: asTypes | React.ElementType
-  testId?: string
+  as?: React.ElementType
 }
 
 export { textVariants, asTypes }
