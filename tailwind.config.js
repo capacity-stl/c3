@@ -8,6 +8,16 @@ export default {
     fontFamily: {
       default: ['Inter', 'sans-serif'],
     },
+    fontSize: {
+      xs: '0.714rem',
+      sm: '0.839rem',
+      base: '1rem',
+      lg: '1.196rem',
+      xl: '1.429rem',
+      '2xl': '1.714rem',
+      '3xl': '2.482rem',
+      '4xl': '3rem',
+    },
     colors: {
       night: '#002B67',
       'deep-space': '#02214D',
