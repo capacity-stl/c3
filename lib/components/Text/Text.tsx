@@ -12,12 +12,13 @@ const Text = ({
     color: textProps.color ?? 'deep-space',
     type: textProps.type ?? 'body',
     align: textProps.align ?? 'left',
+    testId: textProps.testId ?? 'text-component',
   }
 
   return (
     <Tag
       className={cn(textVariants({ ...mergedProps }), className)}
-      data-testid="text-component"
+      data-testid={mergedProps.testId}
     >
       {children}
     </Tag>
