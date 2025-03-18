@@ -1,12 +1,12 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 
-import { marginProps } from '../../props/margin.props'
-import { paddingProps } from '../../props/padding.props'
-import { heightProps } from '../../props/height.props'
-import { widthProps } from '../../props/width.props'
-import { bgColorProps } from '../../props/color.props'
-import { borderProps } from '../../props/border.props'
-import { layoutProps } from '../../props/layout.props'
+import { marginProps } from '@props/margin.props'
+import { paddingProps } from '@props/padding.props'
+import { heightProps } from '@props/height.props'
+import { widthProps } from '@props/width.props'
+import { bgColorProps } from '@props/color.props'
+import { borderProps } from '@props/border.props'
+import { layoutProps } from '@props/layout.props'
 
 const flexVariants = cva('flex', {
   variants: {
