@@ -286,32 +286,34 @@ export const FlexItems: Story = {
       align="center"
     >
       <Flex
-        className="text-meteor-500 h-[100px] w-[100px] items-center justify-center border border-earth-200 text-center text-earth-300 "
+        className="text-meteor-500 h-[100px] w-[100px] border border-earth-200 text-earth-300 "
         bgColor="earth-100"
         p="2"
-        order={args.order ?? '1'}
+        order={args.order}
         grow={args.grow}
-        alignSelf={args.alignSelf ?? 'start'}
+        alignSelf={args.alignSelf}
         testId="flex-item-1"
+        justify="center"
+        align="center"
       >
         Control Me
       </Flex>
       <Flex
-        className="text-meteor-500 text-cente h-[100px] w-[100px] items-center justify-center border border-sun-200"
+        className="text-meteor-500 h-[100px] w-[100px]  border border-sun-200"
         bgColor="sun-100"
         p="2"
         order="2"
         testId="flex-item-2"
       ></Flex>
       <Flex
-        className="text-meteor-500 h-[100px] w-[100px] items-center justify-center border border-sun-200 "
+        className="text-meteor-500 h-[100px] w-[100px] border border-sun-200 "
         bgColor="sun-100"
         p="2"
         order={'3'}
         testId="flex-item-3"
       ></Flex>
       <Flex
-        className="text-meteor-500 h-[100px] w-[100px] items-center justify-center border border-sun-200 "
+        className="text-meteor-500 h-[100px] w-[100px] border border-sun-200 "
         bgColor="sun-100"
         p="2"
         order={'4'}
