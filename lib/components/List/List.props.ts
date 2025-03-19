@@ -20,4 +20,12 @@ export type ListProps<T> = VariantProps<typeof listVariants> &
     testId?: string
   }
 
+export type ListItemProps<T> = {
+  item: T
+  renderItem?: (item: T) => React.ReactNode
+  dense?: boolean
+  onItemClick?: (item: T) => void
+  isSelected?: boolean
+}
+
 export { listVariants }

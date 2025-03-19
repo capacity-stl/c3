@@ -4,6 +4,7 @@ import { CardListProps, cardlistVariants, ListItemType } from './CardList.props'
 import { List } from '@components/List/List'
 import { CardListItem } from './CardListItem'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CardList = <T extends Record<string, any>>({
   className,
   items,
@@ -36,7 +37,9 @@ const CardList = <T extends Record<string, any>>({
     }
 
     if (selectionMode === 'multiple') {
-      const isSelected = selectedItems.some((i: T) => i[titleKey] === item[titleKey])
+      const isSelected = selectedItems.some(
+        (i: T) => i[titleKey] === item[titleKey],
+      )
       const newSelectedItems = isSelected
         ? selectedItems.filter((i: T) => i[titleKey] !== item[titleKey])
         : [...selectedItems, item]
@@ -77,7 +80,7 @@ const CardList = <T extends Record<string, any>>({
         className={cn(
           cardlistVariants({ ...listProps }),
           dense ? 'p-2' : 'p-4',
-          `${className} w-full max-w-md bg-white rounded-lg border-b-1`,
+          `${className} border-b-1 w-full max-w-md rounded-lg bg-white`,
         )}
         {...listProps}
       />

@@ -1,6 +1,13 @@
 import { cn } from '@utils/cn'
+import { ListItemProps } from './List.props'
 
-const ListItem = <T,>({ item, renderItem, dense = false, onItemClick = undefined, isSelected }: any) => {
+const ListItem = <T,>({
+  item,
+  renderItem,
+  dense = false,
+  onItemClick = undefined,
+  isSelected,
+}: ListItemProps<T>) => {
   return (
     <li
       role="option"
@@ -12,10 +19,14 @@ const ListItem = <T,>({ item, renderItem, dense = false, onItemClick = undefined
         { 'bg-earth-100': isSelected },
       )}
       onClick={() => onItemClick?.(item)}
-      onKeyUp={e => (e.key === 'Enter' || e.key === ' ' ? onItemClick?.(item) : null)}
+      onKeyUp={(e) =>
+        e.key === 'Enter' || e.key === ' ' ? onItemClick?.(item) : null
+      }
       aria-selected={isSelected}
     >
-      {renderItem ? renderItem({ ...item, isSelected }) : 'No Render Prop was passed'}
+      {renderItem
+        ? renderItem({ ...item, isSelected })
+        : 'No Render Prop was passed'}
     </li>
   )
 }
