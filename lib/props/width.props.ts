@@ -21,7 +21,7 @@ const widthProps = {
     '2/3': 'w-2/3', // width: 66.666667%
     '3/4': 'w-3/4', // width: 75%
   },
-  'min-w': {
+  wMin: {
     full: 'min-w-full', // min-width: 100%
     screen: 'min-w-screen', // min-width: 100vh
     auto: 'min-w-auto', // min-width: auto
@@ -41,7 +41,7 @@ const widthProps = {
     '2/3': 'min-w-2/3', // min-width: 66.666667%
     '3/4': 'min-w-3/4', // min-width: 75%
   },
-  'max-w': {
+  wMax: {
     full: 'max-w-full', // max-width: 100%
     screen: 'max-w-screen', // max-width: 100vh
     auto: 'max-w-auto', // max-width: auto

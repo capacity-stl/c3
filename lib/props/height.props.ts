@@ -15,13 +15,15 @@ const heightProps = {
     '7': 'h-7', // height: 1.75rem (28px)
     '8': 'h-8', // height: 2rem (32px)
     '9': 'h-9', // height: 2.25rem (36px)
+    '10': 'h-10', //height: 2.5rem (40px)
+    '11': 'h-11', //height: 2.75rem (44px)
     '1/4': 'h-1/4', // height: 25%
     '1/3': 'h-1/3', // height: 33.333333%
     '1/2': 'h-1/2', // height: 50%
     '2/3': 'h-2/3', // height: 66.666667%
     '3/4': 'h-3/4', // height: 75%
   },
-  'min-h': {
+  hMin: {
     full: 'min-h-full',
     screen: 'min-h-screen',
     auto: 'min-h-auto', // min-height: auto
@@ -35,13 +37,15 @@ const heightProps = {
     '7': 'min-h-7', // min-height: 1.75rem (28px)
     '8': 'min-h-8', // min-height: 2rem (32px)
     '9': 'min-h-9', // min-height: 2.25rem (36px)
+    '10': 'min-h-10', //height: 2.5rem (40px)
+    '11': 'min-h-11', //height: 2.75rem (44px)
     '1/4': 'min-h-1/4', // min-height: 25%
     '1/3': 'min-h-1/3', // min-height: 33.333333%
     '1/2': 'min-h-1/2', // min-height: 50%
     '2/3': 'min-h-2/3', // min-height: 66.666667%
     '3/4': 'min-h-3/4', // min-height: 75%
   },
-  'max-h': {
+  hMax: {
     full: 'max-h-full',
     screen: 'max-h-screen',
     auto: 'max-h-auto', // max-height: auto
@@ -55,6 +59,8 @@ const heightProps = {
     '7': 'max-h-7', // max-height: 1.75rem (28px)
     '8': 'max-h-8', // max-height: 2rem (32px)
     '9': 'max-h-9', // max-height: 2.25rem (36px)
+    '10': 'max-h-10', //height: 2.5rem (40px)
+    '11': 'max-h-11', //height: 2.75rem (44px)
     '1/4': 'max-h-1/4', // max-height: 25%
     '1/3': 'max-h-1/3', // max-height: 33.333333%
     '1/2': 'max-h-1/2', // max-height: 50%

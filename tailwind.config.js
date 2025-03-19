@@ -70,9 +70,19 @@ export default {
         300: '#4D61E6',
         400: '#192DB3',
       },
+      transparent: 'transparent',
+    },
+    extend: {
+      boxShadow: {
+        outline: '0 0 0 1px #DDE2EA',
+        'outline-focus': '0 0 0 2px #007DFF',
+        'outline-error': '0 0 0 2px #FF0E47',
+        contact: '0px 0px 3px rgba(2, 33, 77, 0.35);',
+        'contact-focus': '0 0 3px #007DFF',
+        'contact-error': '0 0 3px #FF0E47',
+      },
     },
   },
-  extend: {},
   safelist: [
     {
       pattern:
