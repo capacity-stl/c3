@@ -21,12 +21,19 @@ const List = <T,>({
       className={cn(
         listVariants({ ...listProps }),
         dense ? 'p-2' : 'p-4',
-        `${className} w-full max-w-md bg-white rounded-lg border-b-1`,
+        `${className} border-b-1 w-full max-w-md rounded-lg bg-white`,
       )}
     >
       {/* If there is a header, show it */}
       {header && (
-        <div role="heading" aria-level={1} className={cn('p-2 border-b border-meteor-200', dense ? 'py-1' : 'py-2')}>
+        <div
+          role="heading"
+          aria-level={1}
+          className={cn(
+            'border-b border-meteor-200 p-2',
+            dense ? 'py-1' : 'py-2',
+          )}
+        >
           {header}
         </div>
       )}
@@ -41,7 +48,10 @@ const List = <T,>({
 
       {/* If there are items, show the list */}
       {items?.length > 0 && (
-        <ul role="listbox" className={cn({ 'divide-y divide-meteor-200': divider })}>
+        <ul
+          role="listbox"
+          className={cn({ 'divide-y divide-meteor-200': divider })}
+        >
           {items.map((item, index) => {
             const isSelected = selectedItems?.includes(item) ?? false
             return (
@@ -59,14 +69,25 @@ const List = <T,>({
       )}
 
       {loading && (
-        <div role="status" aria-live="polite" className="flex justify-center items-center mt-2">
+        <div
+          role="status"
+          aria-live="polite"
+          className="mt-2 flex items-center justify-center"
+        >
+          {/* TODO: Switch by a loading spinner component */}
           <svg
             className="size-5 animate-spin text-white"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
           >
-            <circle className="opacity-25 stroke-earth-300" cx="12" cy="12" r="10" strokeWidth="4"></circle>
+            <circle
+              className="stroke-earth-300 opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              strokeWidth="4"
+            ></circle>
             <path
               className="opacity-75"
               fill="currentColor"
