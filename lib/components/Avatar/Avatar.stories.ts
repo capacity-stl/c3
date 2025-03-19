@@ -25,7 +25,8 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     color: {
-      options: [...colorNames, undefined],
+      options: ['Not Defined', ...colorNames],
+      mapping: { 'Not Defined': undefined },
       control: { type: 'select' },
       table: {
         type: {
@@ -35,7 +36,8 @@ const meta = {
       },
     },
     bgColor: {
-      options: [...colorNames, undefined],
+      options: ['Not Defined', ...colorNames],
+      mapping: { 'Not Defined': undefined },
       control: { type: 'select' },
       table: {
         type: {
@@ -45,7 +47,8 @@ const meta = {
       },
     },
     borderColor: {
-      options: [...colorNames, undefined],
+      options: ['Not Defined', ...colorNames],
+      mapping: { 'Not Defined': undefined },
       control: { type: 'select' },
       table: {
         type: {
@@ -55,7 +58,8 @@ const meta = {
       },
     },
     size: {
-      options: [...Object.keys(avatarsizeProps.size), undefined],
+      options: ['Not Defined', ...Object.keys(avatarsizeProps.size)],
+      mapping: { 'Not Defined': undefined },
       control: { type: 'select' },
       table: {
         type: {
@@ -68,8 +72,7 @@ const meta = {
     alt: {
       table: {
         type: {
-          summary:
-            ' Alternative text for the image for accessibility purposes ',
+          summary: 'Alternative text for the image for accessibility purposes',
         },
         defaultValue: { summary: 'avatar' },
       },
@@ -122,7 +125,6 @@ type Story = StoryObj<typeof meta>
 export const ImageAvatar: Story = {
   args: {
     src: IMAGE_SOURCES.valid,
-    size: 'huge',
     alt: 'Avatar',
     children: 'MM',
   },

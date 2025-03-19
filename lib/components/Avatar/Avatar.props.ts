@@ -36,13 +36,14 @@ const avatarVariants = cva('inline-block *:h-full *:w-auto', {
   },
 })
 
-export type AvatarProps = VariantProps<typeof avatarVariants> &
-  React.ComponentProps<'span'> & {
-    children?: string
-    alt?: string
-    border?: boolean
-    src?: string
-    testId?: string
-  }
+export interface AvatarProps
+  extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'color'>,
+    VariantProps<typeof avatarVariants> {
+  children?: string
+  alt?: string
+  border?: boolean
+  src?: string
+  testId?: string
+}
 
 export { avatarVariants, avatarsizeProps }
