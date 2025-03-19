@@ -26,7 +26,10 @@ const renderItem = (item: InteractionType) => {
 
 const NoItemsMessage = () => {
   return (
-    <div data-testid="no-items-message" className="flex flex-col items-center justify-center gap-2">
+    <div
+      data-testid="no-items-message"
+      className="flex flex-col items-center justify-center gap-2"
+    >
       <Icon icon="Close" color="mars-300" size="small" />
       <span>
         No <span className="font-bold">items</span> found!
@@ -108,7 +111,7 @@ export const ListDefault: Story = {
       })
 
       await step('Check the item contents are rendered', async () => {
-        items.forEach(item => {
+        items.forEach((item) => {
           expect(canvas.getByText(item.text)).toBeInTheDocument()
         })
       })
@@ -145,16 +148,26 @@ export const ListCustomized: Story = {
     loading: true,
   },
 
-  render: args => {
-    const [selectedItems, setSelectedItems] = React.useState(args.selectedItems ?? [])
+  render: (args) => {
+    const ListCustomizedStory = () => {
+      const [selectedItems, setSelectedItems] = React.useState<
+        InteractionType[]
+      >([])
+      return { selectedItems, setSelectedItems }
+    }
+    const { selectedItems, setSelectedItems } = ListCustomizedStory()
 
     const handleItemClick = (item: InteractionType) => {
       console.log('handleItemClick', item)
-      const isSelected = selectedItems.some(i => i.text === item.text)
-      const newSelectedItems = isSelected ? selectedItems.filter(i => i.text !== item.text) : [...selectedItems, item]
+      const isSelected = selectedItems.some((i) => i.text === item.text)
+      const newSelectedItems = isSelected
+        ? selectedItems.filter((i) => i.text !== item.text)
+        : [...selectedItems, item]
       setSelectedItems(newSelectedItems)
       // Expose the updated state for testing
-      ;(window as any).__selectedItems = newSelectedItems
+      ;(
+        window as typeof window & { __selectedItems: InteractionType[] }
+      ).__selectedItems = newSelectedItems
     }
 
     return React.createElement(List<InteractionType>, {
@@ -164,7 +177,7 @@ export const ListCustomized: Story = {
     })
   },
 
-  play: async ({ canvasElement, args, step }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement)
 
     await step('Verificar la selección de elementos', async () => {
@@ -172,7 +185,9 @@ export const ListCustomized: Story = {
       await userEvent.click(firstItem)
 
       // Verify the updated state
-      const selectedItems = (window as any).__selectedItems
+      const selectedItems = (
+        window as typeof window & { __selectedItems: InteractionType[] }
+      ).__selectedItems
       expect(selectedItems).toHaveLength(1)
       expect(selectedItems[0].text).toBe(items[0].text)
     })
@@ -187,6 +202,7 @@ export const ListEmpty: Story = {
   },
 
   play: async ({ canvasElement, args, step, ...context }) => {
-    if (ListDefault.play) await ListDefault.play({ canvasElement, args, step, ...context })
+    if (ListDefault.play)
+      await ListDefault.play({ canvasElement, args, step, ...context })
   },
 }

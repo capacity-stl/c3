@@ -2,6 +2,7 @@ import { cn } from '@utils/cn'
 import { Icon } from '@components/Icon/Icon'
 import { CardListItemProps } from './CardList.props'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CardListItem = <T extends Record<string, any>>({
   item,
   titleKey,
@@ -15,7 +16,9 @@ export const CardListItem = <T extends Record<string, any>>({
 }: CardListItemProps<T>) => {
   // const [isMenuOpen, setIsMenuOpen] = useState(false)
   const firstOption = firstOptionAsButton ? item.options?.[0] : null
-  const restOptions = firstOptionAsButton ? item.options?.slice(1) : item.options
+  const restOptions = firstOptionAsButton
+    ? item.options?.slice(1)
+    : item.options
 
   /**
    * WE CAN EXTRACT THIS TO A UTILITY FUNCTION
@@ -58,42 +61,71 @@ export const CardListItem = <T extends Record<string, any>>({
             ) : (
               <span
                 className={cn(
-                  `p-1 flex justify-center items-center rounded-full bg-${item.iconColor} leading-none`,
+                  `flex items-center justify-center rounded-full p-1 bg-${item.iconColor} leading-none`,
                   item.iconColor,
                 )}
               >
                 <Icon
                   color="white"
                   size="tiny"
-                  icon={Icon.Glyph[(item.icon as keyof typeof Icon.Glyph) ?? Icon.Glyph.Action]}
+                  icon={
+                    Icon.Glyph[
+                      (item.icon as keyof typeof Icon.Glyph) ??
+                        Icon.Glyph.Action
+                    ]
+                  }
                 />
               </span>
             )}
           </div>
         )}
         <div className="flex flex-col gap-1 truncate">
-          <div className="flex flex-row gap-2 justify-between">
-            {item[titleKey] && <span className="truncate text-sm font-medium">{item[titleKey]}</span>}
+          <div className="flex flex-row justify-between gap-2">
+            {item[titleKey] && (
+              <span className="truncate text-sm font-medium">
+                {item[titleKey]}
+              </span>
+            )}
             {item[datetimeKey] && (
-              <time className="text-sm text-meteor-300 font-light" dateTime={item[datetimeKey]}>
+              <time
+                className="text-sm font-light text-meteor-300"
+                dateTime={item[datetimeKey]}
+              >
                 {getTimeAgo(item[datetimeKey])}
               </time>
             )}
           </div>
-          {item[descriptionKey] && <p className="truncate text-sm font-light">{item[descriptionKey]}</p>}
-          {item[referenceKey] && <p className="text-xs text-meteor-300 font-light">{item[referenceKey]}</p>}
+          {item[descriptionKey] && (
+            <p className="truncate text-sm font-light">
+              {item[descriptionKey]}
+            </p>
+          )}
+          {item[referenceKey] && (
+            <p className="text-xs font-light text-meteor-300">
+              {item[referenceKey]}
+            </p>
+          )}
         </div>
       </div>
 
       {(item?.options || bottomLeftContent || bottomRightContent) && (
-        <div role="toolbar" className="flex flex-row gap-2 justify-between items-center mt-2">
+        <div
+          role="toolbar"
+          className="mt-2 flex flex-row items-center justify-between gap-2"
+        >
           <div className="flex flex-row">
-            {bottomLeftContent && <div className="flex flex-row gap-1">{bottomLeftContent(item)}</div>}
+            {bottomLeftContent && (
+              <div className="flex flex-row gap-1">
+                {bottomLeftContent(item)}
+              </div>
+            )}
           </div>
 
-          <div className="flex flex-row justify-between items-center gap-2">
+          <div className="flex flex-row items-center justify-between gap-2">
             {bottomRightContent && (
-              <div className="flex flex-row justify-end items-center gap-1">{bottomRightContent(item)}</div>
+              <div className="flex flex-row items-center justify-end gap-1">
+                {bottomRightContent(item)}
+              </div>
             )}
             {item?.options && (
               <>
@@ -103,13 +135,17 @@ export const CardListItem = <T extends Record<string, any>>({
                     type="button"
                     aria-label={firstOption.label}
                     value={firstOption.label}
-                    className="bg-earth-300 text-white px-1 py-1 rounded-md text-xs"
+                    className="rounded-md bg-earth-300 px-1 py-1 text-xs text-white"
                   />
                 )}
                 {restOptions && restOptions.length > 0 && (
                   // TODO: Replace with future 3 Dot Menu component
                   <button type="button" role="menu" aria-label="More options">
-                    <Icon size="tiny" icon={Icon.Glyph.More} aria-hidden="true" />
+                    <Icon
+                      size="tiny"
+                      icon={Icon.Glyph.More}
+                      aria-hidden="true"
+                    />
                   </button>
                 )}
               </>

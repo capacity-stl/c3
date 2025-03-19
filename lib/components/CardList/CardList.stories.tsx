@@ -54,7 +54,8 @@ const items: InteractionType[] = [
   {
     id: 2,
     title: '314-434-3333',
-    description: 'Message from SMS. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    description:
+      'Message from SMS. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     datetime: '2025-03-11T12:00:00Z',
     icon: 'Concierge',
     iconColor: 'earth-300',
@@ -68,7 +69,8 @@ const items: InteractionType[] = [
   {
     id: 3,
     title: 'joesmith@business.com',
-    description: 'Message from email. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    description:
+      'Message from email. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     datetime: '2025-01-25T12:00:00Z',
     icon: 'Ticket',
     iconColor: 'aurora-300',
@@ -101,7 +103,10 @@ const items: InteractionType[] = [
 
 const NoItemsMessage = () => {
   return (
-    <div data-testid="no-items-message" className="flex flex-col items-center justify-center gap-2">
+    <div
+      data-testid="no-items-message"
+      className="flex flex-col items-center justify-center gap-2"
+    >
       <Icon icon="Close" color="mars-300" size="small" />
       <span>
         No <span className="font-bold">tickets</span> found!
@@ -112,11 +117,13 @@ const NoItemsMessage = () => {
 
 const bottomLeftContent = (item: InteractionType) =>
   item?.status && (
-    <div className="flex flex-row gap-1 items-center">
-      <span className="px-2 py-1 text-xs capitalize font-medium rounded-full bg-sun-100 text-sun-400">
+    <div className="flex flex-row items-center gap-1">
+      <span className="rounded-full bg-sun-100 px-2 py-1 text-xs font-medium capitalize text-sun-400">
         {item?.status}
       </span>
-      {item?.status === 'in progress' && <Icon icon="Done" color="neptune-300" size="tiny" />}
+      {item?.status === 'in progress' && (
+        <Icon icon="Done" color="neptune-300" size="tiny" />
+      )}
     </div>
   )
 
@@ -131,13 +138,17 @@ const header = (selectedItems: InteractionType[]) => {
     alert(`Bulk Edit on ${selectedItems.length} selected tickets`)
   }
   return (
-    <div className="flex flex-row gap-2 justify-between items-center">
-      <button type="button" aria-label="Sort tickets" onClick={() => alert('Sort tickets')}>
+    <div className="flex flex-row items-center justify-between gap-2">
+      <button
+        type="button"
+        aria-label="Sort tickets"
+        onClick={() => alert('Sort tickets')}
+      >
         <Icon icon="Sort" color="meteor-300" size="tiny" />
       </button>
       {selectedItems.length > 0 ? (
         <button
-          className="text-sm font-medium text-meteor-400 flex flex-row items-center gap-1 cursor-pointer"
+          className="flex cursor-pointer flex-row items-center gap-1 text-sm font-medium text-meteor-400"
           onClick={onClick}
         >
           <Icon icon="Pencil" color="meteor-300" size="tiny" />
@@ -150,9 +161,11 @@ const header = (selectedItems: InteractionType[]) => {
   )
 }
 
-const onSelectionChangeMock = jest.fn((items: InteractionType[], lastSelectedItem?: InteractionType) => {
-  console.info('onSelectionChange', items, lastSelectedItem)
-})
+const onSelectionChangeMock = jest.fn(
+  (items: InteractionType[], lastSelectedItem?: InteractionType) => {
+    console.info('onSelectionChange', items, lastSelectedItem)
+  },
+)
 
 const meta = {
   title: 'CardList',
@@ -166,7 +179,7 @@ const meta = {
     layout: 'centered',
   },
   decorators: [
-    Story => (
+    (Story) => (
       <div style={{ width: '300px' }}>
         <Story />
       </div>
@@ -175,7 +188,8 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     items: {
-      description: 'Array of items to display in the list. They can optionally implement ListItemType attributes.',
+      description:
+        'Array of items to display in the list. They can optionally implement ListItemType attributes.',
       table: {
         type: {
           summary: `ListItemType`,
@@ -190,21 +204,33 @@ const meta = {
     divider: { description: `Displays a divider between items` },
     dense: { description: `Enables Dense mode; occupies less space` },
     titleKey: { description: `Name of the attribute which holds the "title"` },
-    descriptionKey: { description: `Name of the attribute which holds the "description"` },
-    datetimeKey: { description: `Name of the attribute which holds the "datetime" in ISO format` },
-    referenceKey: { description: `Name of the attribute which holds the "reference"` },
+    descriptionKey: {
+      description: `Name of the attribute which holds the "description"`,
+    },
+    datetimeKey: {
+      description: `Name of the attribute which holds the "datetime" in ISO format`,
+    },
+    referenceKey: {
+      description: `Name of the attribute which holds the "reference"`,
+    },
     loading: { description: `Displays the loading state` },
-    firstOptionAsButton: { description: `Displays the first option of the menu as a button` },
+    firstOptionAsButton: {
+      description: `Displays the first option of the menu as a button`,
+    },
     selectionMode: {
       description: 'Mode of selection of the list',
       table: { type: { summary: 'single | multiple | none' } },
       control: { type: 'select' },
       options: ['single', 'multiple', 'none'],
     },
-    noItems: { description: `[Slot] Content to display when the list is empty` },
+    noItems: {
+      description: `[Slot] Content to display when the list is empty`,
+    },
     onSelectionChange: {
       description: `[Slot] Callback function to handle the selection of items`,
-      table: { type: { summary: `(items: T[], lastSelectedItem?: T) => void` } },
+      table: {
+        type: { summary: `(items: T[], lastSelectedItem?: T) => void` },
+      },
     },
     bottomLeftContent: {
       description: `[Slot] Callback function to handle the bottom left content`,
@@ -216,7 +242,11 @@ const meta = {
     },
     header: {
       description: `[Slot] Callback function to handle the header`,
-      table: { type: { summary: `(selectedItems: T[], items: T[]) => React.ReactNode` } },
+      table: {
+        type: {
+          summary: `(selectedItems: T[], items: T[]) => React.ReactNode`,
+        },
+      },
     },
   },
 } satisfies Meta<typeof CardList<InteractionType>>
@@ -279,7 +309,10 @@ export const CardListDefault: Story = {
         await userEvent.click(secondItemElement)
         expect(onSelectionChangeMock.mock.calls[0][0]).toEqual([items[0]])
         expect(onSelectionChangeMock.mock.calls[0][1]).toBe(items[0])
-        expect(onSelectionChangeMock.mock.calls[1][0]).toEqual([items[0], items[1]])
+        expect(onSelectionChangeMock.mock.calls[1][0]).toEqual([
+          items[0],
+          items[1],
+        ])
         expect(onSelectionChangeMock.mock.calls[1][1]).toBe(items[1])
       }
 
@@ -291,14 +324,16 @@ export const CardListDefault: Story = {
     await step('Should render bottom content correctly', async () => {
       const firstItemElement = canvas.getByLabelText(items[0].title)
 
-      const statusBadge = within(firstItemElement).getByText(items[0].status as string)
+      const statusBadge = within(firstItemElement).getByText(
+        items[0].status as string,
+      )
       expect(statusBadge).toBeInTheDocument()
     })
 
     await step('Should handle options correctly', async () => {
       const firstItemElement = canvas.getByLabelText(items[0].title)
 
-      const firstItemWithOptions = items.find(item => item?.options?.length)
+      const firstItemWithOptions = items.find((item) => item?.options?.length)
       if (firstItemWithOptions) {
         const optionsButton = within(firstItemElement).getByRole('menu')
         expect(optionsButton).toBeInTheDocument()

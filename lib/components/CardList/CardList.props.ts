@@ -47,7 +47,7 @@ export interface ListItemType {
 }
 
 // TODO: Let's talk about using this as model for options in all menues
-export type OptionItem<T = () => any> = {
+export type OptionItem<T = () => void> = {
   name: string
   label: string
   action: T
