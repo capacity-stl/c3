@@ -47,6 +47,7 @@ const composeColorsWithPrefix = (prefix: string): { [key: string]: string } =>
 
 const colorPropsComposed = composeColorsWithPrefix('text')
 const bgColorPropsComposed = composeColorsWithPrefix('bg')
+const borderColorPropsComposed = composeColorsWithPrefix('border')
 
 const colorProps = {
   color: {
@@ -60,4 +61,10 @@ const bgColorProps = {
   },
 }
 
-export { colorProps, bgColorProps }
+const borderColorProps = {
+  borderColor: {
+    ...borderColorPropsComposed,
+  },
+}
+
+export { colorProps, bgColorProps, borderColorProps }
