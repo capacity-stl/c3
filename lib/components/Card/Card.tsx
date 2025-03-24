@@ -22,12 +22,16 @@ const Card = ({
         cardVariants({ ...cardProps }),
         className,
         borderRadiusProps.borderRadius[borderRadius ?? 'medium'],
-        `border ${borderProps.border.default} p-${p} flex flex-col`,
+        `border ${borderProps.border.default} p-${p} flex flex-col overflow-hidden`,
         hoverEffect ? `hover:border-meteor-300` : '',
+        onClick ? `cursor-pointer select-none` : '',
         bgColor ? `bg-${bgColor}` : '',
       )}
       onClick={onClick}
       data-testid="card-component"
+      tabIndex={0}
+      onKeyDown={onClick ? (e) => e.key === 'Enter' && onClick() : undefined}
+      role={onClick ? 'button' : 'article'}
     >
       {children}
     </div>

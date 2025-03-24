@@ -4,11 +4,16 @@ import { paddingProps } from '@props/padding.props'
 import { bgColorProps } from '@props/color.props'
 import { boxShadowProps } from '@props/boxshadow.props'
 import { borderRadiusProps } from '@props/borderradius.props'
+import { heightProps } from '@props/height.props'
+import { widthProps } from '@props/width.props'
+
 const cardPropsVariants = {
   ...paddingProps,
   ...bgColorProps,
   ...boxShadowProps,
   ...borderRadiusProps,
+  ...heightProps,
+  ...widthProps,
 }
 const cardVariants = cva('flex', {
   variants: {
@@ -23,6 +28,7 @@ export interface CardProps
   children?: React.ReactNode
   hoverEffect?: boolean
   testId?: string
+  onClick?: () => void
 }
 
 export interface CardHeaderProps
