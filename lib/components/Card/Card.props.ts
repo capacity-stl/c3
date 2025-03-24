@@ -2,10 +2,13 @@ import { cva, type VariantProps } from 'class-variance-authority'
 
 import { paddingProps } from '@props/padding.props'
 import { bgColorProps } from '@props/color.props'
-
+import { boxShadowProps } from '@props/boxshadow.props'
+import { borderRadiusProps } from '@props/borderradius.props'
 const cardPropsVariants = {
   ...paddingProps,
   ...bgColorProps,
+  ...boxShadowProps,
+  ...borderRadiusProps,
 }
 const cardVariants = cva('flex', {
   variants: {
@@ -20,10 +23,6 @@ export interface CardProps
   children?: React.ReactNode
   hoverEffect?: boolean
   testId?: string
-  borderRadius?: string
-  boxShadow?: string
-  padding?: string
-  bgColor?: string
 }
 
 export interface CardHeaderProps
