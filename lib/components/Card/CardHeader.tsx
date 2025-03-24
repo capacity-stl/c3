@@ -15,11 +15,17 @@ const CardHeader = ({
         className,
         `mb-4 flex flex-col gap-1`,
       )}
+      role="heading"
+      aria-level={1}
       data-testid="card-header-component"
     >
-      {title && <Text type="heading">{title}</Text>}
+      {title && (
+        <Text type="heading" aria-label={title}>
+          {title}
+        </Text>
+      )}
       {description && (
-        <Text type="body-small" color="meteor-400">
+        <Text type="body-small" color="meteor-400" aria-label={description}>
           {description}
         </Text>
       )}

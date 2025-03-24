@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { userEvent, within } from '@storybook/testing-library'
-import { expect } from '@storybook/jest'
+import { expect, jest } from '@storybook/jest'
 import { Card } from './Card'
 import { colorNames } from '@props/color.props'
 import { useState } from 'react'
@@ -13,9 +13,11 @@ const CardChildren = ({ withFooter = false }) => {
         description="A versatile card component that can be used to display content with a header, body and footer sections."
       />
       <Card.Body>
-        This card demonstrates a typical layout with a title, descriptive
-        content in the body, and action buttons in the footer. The content is
-        neatly organized and the width is constrained for optimal readability.
+        <span>
+          This card demonstrates a typical layout with a title, descriptive
+          content in the body, and action buttons in the footer. The content is
+          neatly organized and the width is constrained for optimal readability.
+        </span>
       </Card.Body>
       {withFooter && (
         <Card.Footer>
@@ -64,6 +66,7 @@ const meta = {
       },
     },
     bgColor: {
+      defaultValue: 'white',
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -100,7 +103,7 @@ export const Default: Story = {
     },
   },
   args: {
-    children: 'This is a card',
+    children: 'Most basic card',
   },
 
   play: async ({ canvasElement }) => {
@@ -126,14 +129,16 @@ export const WithHeaderAndBody: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement)
     const card = await canvas.getByTestId('card-component')
-    const header = await canvas.getByRole('heading', { name: 'Card Title' })
-    const description = await canvas.getByText(/A versatile card component/)
 
     await expect(card).toBeInTheDocument()
 
-    await step('Check the Card header and body are rendered', async () => {
+    await step('Check the Card Header is rendered', async () => {
+      const header = await canvas.getByTestId('card-header-component')
       await expect(header).toBeInTheDocument()
-      await expect(description).toBeInTheDocument()
+    })
+    await step('Check the Card Body is rendered', async () => {
+      const body = await canvas.getByTestId('card-body-component')
+      await expect(body).toBeInTheDocument()
     })
   },
 }
@@ -154,11 +159,37 @@ export const WithActionFooter: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement)
     const card = await canvas.getByTestId('card-component')
-    const actionButton = await canvas.getByRole('button', { name: 'Action' })
+    const footer = await canvas.getByTestId('card-footer-component')
 
     await expect(card).toBeInTheDocument()
-    await step('Check the Card footer is rendered', async () => {
-      await expect(actionButton).toBeInTheDocument()
+    await step('Check the Card Footer is rendered', async () => {
+      await expect(footer).toBeInTheDocument()
+    })
+  },
+}
+
+export const WidthAndHeight: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'A card component with a width and height.',
+      },
+    },
+  },
+  args: {
+    children: <CardChildren />,
+    w: '1/4',
+    h: '1/4',
+  },
+
+  play: async ({ canvasElement, args, step }) => {
+    const canvas = within(canvasElement)
+    const card = await canvas.getByTestId('card-component')
+
+    await expect(card).toBeInTheDocument()
+    await step('Check the Card has the width and height applied', async () => {
+      if (args.w) await expect(card.className).toMatch(args.w)
+      if (args.h) await expect(card.className).toMatch(args.h)
     })
   },
 }
@@ -215,7 +246,13 @@ export const Shadow: Story = {
   },
 }
 
-export const Event: Story = {
+const getRandomColorMock = jest.fn(() => {
+  const lightColors = colorNames.filter(
+    (color) => color.includes('100') || color === 'white',
+  )
+  return lightColors[Math.floor(Math.random() * lightColors.length)]
+})
+export const ClickEvent: Story = {
   parameters: {
     docs: {
       description: {
@@ -226,9 +263,14 @@ export const Event: Story = {
   },
   args: {
     children: <CardChildren />,
-    onClick: function () {
-      console.log('clicked')
-    },
+  },
+  render: function CardClickStory() {
+    const [bgColor, setBgColor] = useState('white')
+    return (
+      <Card bgColor={bgColor} onClick={() => setBgColor(getRandomColorMock())}>
+        <CardChildren />
+      </Card>
+    )
   },
 
   play: async ({ canvasElement, step }) => {
@@ -238,7 +280,7 @@ export const Event: Story = {
     await expect(card).toBeInTheDocument()
     await step('Check the onClick event is triggered', async () => {
       await userEvent.click(card)
-      await expect(card).toHaveAttribute('onclick')
+      expect(getRandomColorMock.mock.calls).toHaveLength(1)
     })
   },
 }

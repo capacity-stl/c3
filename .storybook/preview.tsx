@@ -12,17 +12,17 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
-    docs: {
-      page: () => (
-        <>
-          <Docs.Title />
-          <Docs.Description />
-          <Docs.Primary />
-          <Docs.Controls />
-          <Docs.Stories />
-        </>
-      ),
-    },
+    // docs: {
+    //   page: () => (
+    //     <>
+    //       <Docs.Title />
+    //       <Docs.Description />
+    //       <Docs.Primary />
+    //       <Docs.Controls />
+    //       <Docs.Stories />
+    //     </>
+    //   ),
+    // },
   },
 }
 
