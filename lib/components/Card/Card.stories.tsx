@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { within } from '@storybook/testing-library'
+import { userEvent, within } from '@storybook/testing-library'
 import { expect } from '@storybook/jest'
 import { Card } from './Card'
 import { colorNames } from '@props/color.props'
+import { useState } from 'react'
 
 const CardChildren = ({ withFooter = false }) => {
   return (
@@ -122,10 +123,18 @@ export const WithHeaderAndBody: Story = {
     children: <CardChildren withFooter={false} />,
   },
 
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement)
-    const box = await canvas.getByTestId('card-component')
-    await expect(box).toBeInTheDocument()
+    const card = await canvas.getByTestId('card-component')
+    const header = await canvas.getByRole('heading', { name: 'Card Title' })
+    const description = await canvas.getByText(/A versatile card component/)
+
+    await expect(card).toBeInTheDocument()
+
+    await step('Check the Card header and body are rendered', async () => {
+      await expect(header).toBeInTheDocument()
+      await expect(description).toBeInTheDocument()
+    })
   },
 }
 
@@ -140,6 +149,17 @@ export const WithActionFooter: Story = {
   },
   args: {
     children: <CardChildren withFooter={true} />,
+  },
+
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+    const card = await canvas.getByTestId('card-component')
+    const actionButton = await canvas.getByRole('button', { name: 'Action' })
+
+    await expect(card).toBeInTheDocument()
+    await step('Check the Card footer is rendered', async () => {
+      await expect(actionButton).toBeInTheDocument()
+    })
   },
 }
 
@@ -156,6 +176,17 @@ export const HoverEffect: Story = {
     children: <CardChildren />,
     hoverEffect: true,
   },
+
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+    const card = await canvas.getByTestId('card-component')
+
+    await expect(card).toBeInTheDocument()
+
+    await step('Check the Card has the hover class applied', async () => {
+      await expect(card.className).toMatch('hover')
+    })
+  },
 }
 
 export const Shadow: Story = {
@@ -171,20 +202,43 @@ export const Shadow: Story = {
     children: <CardChildren />,
     boxshadow: 'medium',
   },
+
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+    const card = await canvas.getByTestId('card-component')
+
+    await expect(card).toBeInTheDocument()
+
+    await step('Check the Card has the shadow class applied', async () => {
+      await expect(card.className).toMatch('shadow')
+    })
+  },
 }
 
 export const Event: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Demonstrates the on click event of the card.',
+        story:
+          'Demonstrates the on click event of the card, cycling through different background colors.',
       },
     },
   },
   args: {
     children: <CardChildren />,
-    onClick: () => {
-      alert('clicked')
+    onClick: function () {
+      console.log('clicked')
     },
+  },
+
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+    const card = await canvas.getByTestId('card-component')
+
+    await expect(card).toBeInTheDocument()
+    await step('Check the onClick event is triggered', async () => {
+      await userEvent.click(card)
+      await expect(card).toHaveAttribute('onclick')
+    })
   },
 }
