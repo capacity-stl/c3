@@ -4,15 +4,29 @@ import { borderProps } from '@props/border.props'
 import { CardHeader } from './CardHeader'
 import { CardBody } from './CardBody'
 import { CardFooter } from './CardFooter'
+import { borderRadiusProps } from '@props/borderradius.props'
 
-const Card = ({ className, children, p = '4', ...cardProps }: CardProps) => {
+const Card = ({
+  className,
+  children,
+  p = '4',
+  borderRadius = 'medium',
+  hoverEffect = false,
+  bgColor = null,
+  onClick,
+  ...cardProps
+}: CardProps) => {
   return (
     <div
       className={cn(
         cardVariants({ ...cardProps }),
         className,
-        `border ${borderProps.border.default} rounded-md p-${p} flex flex-col`,
+        borderRadiusProps.borderRadius[borderRadius ?? 'medium'],
+        `border ${borderProps.border.default} p-${p} flex flex-col`,
+        hoverEffect ? `hover:border-meteor-300` : '',
+        bgColor ? `bg-${bgColor}` : '',
       )}
+      onClick={onClick}
       data-testid="card-component"
     >
       {children}

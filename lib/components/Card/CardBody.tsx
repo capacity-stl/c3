@@ -9,7 +9,7 @@ const CardBody = ({ className, children, ...cardProps }: CardBodyProps) => {
         className,
         `text-meteor-400`,
       )}
-      data-testid="card-component"
+      data-testid="card-body-component"
     >
       {children}
     </div>

@@ -12,9 +12,9 @@ const CardFooter = ({
       className={cn(
         cardVariants({ ...cardProps }),
         className,
-        `flex justify-${justifyContent} mt-4 gap-2`,
+        `flex justify-${justifyContent} mt-4 items-center gap-2`,
       )}
-      data-testid="card-component"
+      data-testid="card-footer-component"
     >
       {children}
     </div>

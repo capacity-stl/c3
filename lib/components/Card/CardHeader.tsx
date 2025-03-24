@@ -15,7 +15,7 @@ const CardHeader = ({
         className,
         `mb-4 flex flex-col gap-1`,
       )}
-      data-testid="card-component"
+      data-testid="card-header-component"
     >
       {title && <Text type="heading">{title}</Text>}
       {description && (
