@@ -1,11 +1,12 @@
 image: node:18.18.0
 
 stages:
+  - build
   - deploy
   - release
 
-pages:
-  stage: deploy
+build:
+  stage: build
   before_script:
     - node --version
     - npm --version
@@ -13,11 +14,34 @@ pages:
     - echo "//gitlab.aisoftware.com/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}" >> .npmrc
     - npm install --force
     - npm run build-storybook
-    - mv storybook-static public
+    - mv storybook-static/* public
   artifacts:
     paths:
       - public
     expire_in: 1 week
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_MERGE_REQUEST_ID
+
+pages:
+  stage: deploy
+  needs:
+    - build
+  script:
+    - echo "Deploying to GitLab Pages..."
+
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 week
+  environment:
+    name: review/c3-$CI_COMMIT_REF_SLUG
+    url: https://c3-$CI_COMMIT_REF_SLUG.staging.capacity.com
+    on_stop: stop_review
+    auto_stop_in: 1 week
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
   tags:
     - docker
 
