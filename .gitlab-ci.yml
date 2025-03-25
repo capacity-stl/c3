@@ -2,11 +2,25 @@ image: node:18.18.0
 
 stages:
   - deploy
+  - release
 
-publish-npm:
+pages:
+  stage: deploy
+  before_script:
+    - node --version
+    - npm --version
+  script:
+    - npm run build-storybook
+    - mv storybook-static public
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 week
+
+release:
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
-  stage: deploy
+  stage: release
   before_script:
     - node --version
     - npm --version
