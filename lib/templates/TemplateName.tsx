@@ -6,10 +6,13 @@ const TemplateName = ({
   children,
   ...TemplateNameProps
 }: TemplateNameProps) => {
+  const mergedProps = {
+    ...TemplateNameProps,
+    testId: TemplateNameProps.testId ?? 'text-component',
+  }
+
   return (
-    <div
-      className={cn(TemplateNameVariants({ ...TemplateNameProps }), className)}
-    >
+    <div className={cn(TemplateNameVariants({ ...mergedProps }), className)}>
       {children}
     </div>
   )

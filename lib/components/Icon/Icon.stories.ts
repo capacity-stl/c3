@@ -6,7 +6,7 @@ import { colorNames } from '../../props/color.props'
 import { iconsizeProps } from '../../props/iconsize.props'
 
 const meta = {
-  title: 'Icons',
+  title: 'Data Display/Icons',
   component: Icon,
   parameters: {
     docs: {

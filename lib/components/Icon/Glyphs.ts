@@ -1,3 +1,5 @@
+import React from 'react'
+
 import Action from './glyphs/Action'
 import Add from './glyphs/Add'
 import Alert from './glyphs/Alert'
@@ -334,7 +336,7 @@ export const Glyphs = {
   VolumeHigh,
   Workflow,
   WorkflowsNav,
-} as { [key: string]: () => JSX.Element }
+} as { [key: string]: () => React.JSX.Element }
 
 export enum Icons {
   Action = 'Action',
