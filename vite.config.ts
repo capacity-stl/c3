@@ -1,4 +1,6 @@
 import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
+
 import react from '@vitejs/plugin-react'
 import { extname, relative, resolve } from 'path'
 import { fileURLToPath } from 'node:url'
@@ -8,7 +10,7 @@ import { libInjectCss } from 'vite-plugin-lib-inject-css'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), libInjectCss(), dts({ include: ['lib'] })],
+  plugins: [react(), tailwindcss(), libInjectCss(), dts({ include: ['lib'] })],
   resolve: {
     alias: {
       '@components': resolve(__dirname, 'lib/components'),
