@@ -14,10 +14,6 @@ build:
     - echo "//gitlab.aisoftware.com/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}" >> .npmrc
     - npm install --force
     - npm run chromatic
-  artifacts:
-    paths:
-      - public
-    expire_in: 1 week
   environment:
     name: $CI_COMMIT_REF_SLUG
     url: 'https://google.com'
