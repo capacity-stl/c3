@@ -13,9 +13,28 @@ const badgeSizeProps = {
   },
 }
 
+const badgeColorVariants: {
+  color: Record<keyof typeof colorPalletes, string>
+} = {
+  color: {
+    night: 'text-meteor-100 bg-night',
+    white: 'text-meteor-300 bg-white border border-meteor-300',
+    'deep-space': 'text-meteor-100 bg-deep-space',
+    earth: 'text-earth-400 bg-earth-100',
+    sun: 'text-sun-400 bg-sun-100',
+    mars: 'text-mars-400 bg-mars-100',
+    meteor: 'text-meteor-400 bg-meteor-100',
+    neptune: 'text-neptune-400 bg-neptune-100',
+    nova: 'text-nova-400 bg-nova-100',
+    mercury: 'text-mercury-400 bg-mercury-100',
+    aurora: 'text-aurora-400 bg-aurora-100',
+  },
+}
+
 const badgePropsVariants = {
   ...badgeSizeProps,
   ...shapeProps,
+  ...badgeColorVariants,
 }
 
 const badgeVariants = cva('inline-flex', {
@@ -23,6 +42,7 @@ const badgeVariants = cva('inline-flex', {
   defaultVariants: {
     size: 'medium',
     shape: 'circle',
+    color: 'meteor',
   },
 })
 
@@ -30,7 +50,6 @@ export interface BadgeProps
   extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'color'>,
     VariantProps<typeof badgeVariants> {
   children?: React.ReactNode
-  color?: keyof typeof colorPalletes
   icon?: keyof typeof Icons
   value?: string | number | boolean | object
   dense?: boolean
