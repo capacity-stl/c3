@@ -6,7 +6,7 @@ import { within, userEvent } from '@storybook/testing-library'
 import { badgeSizeProps } from './Badge.props'
 import { sizeNameProps } from '@props/size.props'
 import { shapeProps } from '@props/shape.props'
-
+import { Text } from '@components/Text/Text'
 const meta = {
   title: 'Badge',
   component: Badge,
@@ -195,8 +195,8 @@ export const RichContent: Story = {
   render: () => (
     <div className="flex items-center gap-4">
       <Badge color="meteor" icon="Person">
-        <span className="font-bold">Role</span>
-        <span className="font-normal italic">Developer</span>
+        <Text type="body-small-strong">Role</Text>
+        <Text type="small-caps">Developer</Text>
       </Badge>
     </div>
   ),
