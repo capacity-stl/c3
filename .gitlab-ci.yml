@@ -13,8 +13,7 @@ build:
   script:
     - echo "//gitlab.aisoftware.com/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}" >> .npmrc
     - npm install --force
-    - npm run build-storybook
-    - mv storybook-static/* public
+    - npm run chromatic
   artifacts:
     paths:
       - public
