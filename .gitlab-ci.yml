@@ -20,7 +20,7 @@ build:
       - public
     expire_in: 1 week
   environment:
-    name: review/c3-$CI_COMMIT_REF_SLUG
+    name: c3-$CI_COMMIT_REF_SLUG
     url: https://google.com
     on_stop: stop_review
     auto_stop_in: 1 week
