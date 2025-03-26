@@ -28,6 +28,21 @@ build:
   tags:
     - docker
 
+pages:
+  image: busybox
+  stage: deploy
+  needs:
+    - build
+  script:
+    - echo "Deploying to GitLab Pages..."
+
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 week
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
 release:
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
