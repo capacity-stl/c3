@@ -7,8 +7,9 @@ import { AvatarProps, avatarVariants } from './Avatar.props'
  */
 const extractChildrenText = (children: ReactNode): string => {
   if (typeof children === 'string') return children
-  if (React.isValidElement(children))
-    return extractChildrenText(children.props.children)
+  if (React.isValidElement<{ children?: ReactNode }>(children)) {
+    return extractChildrenText(children.props.children as ReactNode)
+  }
   return ''
 }
 
