@@ -107,7 +107,7 @@ const meta = {
           summary:
             'Whether to display a border around the avatar | boolean | undefined',
         },
-        defaultValue: { summary: false },
+        defaultValue: { summary: 'false' },
       },
     },
   },

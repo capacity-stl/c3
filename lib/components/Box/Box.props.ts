@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-
+import React from 'react'
 import { marginProps } from '@props/margin.props'
 import { paddingProps } from '@props/padding.props'
 import { heightProps } from '@props/height.props'
@@ -31,7 +31,7 @@ export interface BoxProps
     VariantProps<typeof boxVariants> {
   className?: string
   children?: React.ReactNode
-  as?: asTypes | keyof JSX.IntrinsicElements
+  as?: asTypes | keyof React.JSX.IntrinsicElements
   asChild?: boolean
   testId?: string
 }
