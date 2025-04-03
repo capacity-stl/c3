@@ -7,12 +7,12 @@ import { avatarsizeProps } from './Avatar.props'
 import { shapeProps } from '@props/shape.props'
 
 const IMAGE_SOURCES = {
-  valid: 'public/avatar.png',
+  valid: 'avatar.png',
   invalid: 'invalid-image.png',
 }
 
 const meta = {
-  title: 'Avatar',
+  title: 'Data Display/Avatar',
   component: Avatar,
   parameters: {
     docs: {

@@ -5,3 +5,89 @@
 body {
   font-family: 'Inter', sans-serif;
 }
+
+@theme {
+  --font-family-default: 'Inter', sans-serif;
+  --text-xs: 0.714rem;
+  --text-sm: 0.839rem;
+  --text-base: 1rem;
+  --text-lg: 1.196rem;
+  --text-xl: 1.429rem;
+  --text-2xl: 1.714rem;
+  --text-3xl: 2.482rem;
+  --text-4xl: 3rem;
+
+  --width-240: 240px;
+  --width-320: 320px;
+
+  /* Removes all default tailwind colors so only colors defined in c3.css are available */
+  --color-*: initial;
+
+  --color-night: #002B67;
+  --color-deep-space: #02214D;
+  --color-white: #FFFFFF;
+  /* Earth */
+  --color-earth-100: #E6F2FF;
+  --color-earth-200: #80BEFF;
+  --color-earth-300: #007DFF;
+  --color-earth-400: #004B99;
+  --color-earth-500: #002B67;
+  /* Sun */
+  --color-sun-100: #FFF5E6;
+  --color-sun-200: #FFCF80;
+  --color-sun-300: #FF9F00;
+  --color-sun-400: #995F00;
+  /* Mars */
+  --color-mars-100: #FFE7ED;
+  --color-mars-200: #FF86A3;
+  --color-mars-300: #FF0E47;
+  --color-mars-400: #A80028;
+
+  --color-meteor-100: #F0F2F5;
+  --color-meteor-200: #DDE2EA;
+  --color-meteor-300: #9AA9BF;
+  --color-meteor-400: #567095;
+
+  /* Neptune */
+  --color-neptune-100: #E6F7E8;
+  --color-neptune-200: #82D68C;
+  --color-neptune-300: #05AE19;
+  --color-neptune-400: #024A0B;
+
+  /* Nova */
+  --color-nova-100: #FBECF5;
+  --color-nova-200: #EC9ECE;
+  --color-nova-300: #DA3E9E;
+  --color-nova-400: #961D67;
+
+  /* Mercury */
+  --color-mercury-100: #FFEEE6;
+  --color-mercury-200: #FFAC80;
+  --color-mercury-300: #FF5900;
+  --color-mercury-400: #993500;
+
+  /* Aurora */  
+  --color-aurora-100: #EDEFFC;
+  --color-aurora-200: #A6B0F2;
+  --color-aurora-300: #4D61E6;
+  --color-aurora-400: #192DB3;
+
+  --color-transparent: transparent;
+
+  /* Shadows */
+  --shadow-outline: 0 0 0 1px #DDE2EA;
+  --shadow-outline-focus: 0 0 0 2px #007DFF;
+  --shadow-outline-error: 0 0 0 2px #FF0E47;
+  --shadow-contact: 0px 0px 3px rgba(2, 33, 77, 0.35);
+  --shadow-contact-focus: 0 0 3px #007DFF;
+  --shadow-contact-error: 0 0 3px #FF0E47;
+}
+
+
+@source inline('{hover:,}bg-{night,deep-space,white,earth,sun,mars,meteor,neptune,nova,mercury,aurora}-{100..400..100}');
+@source inline('{hover:,}text-{night,deep-space,white,earth,sun,mars,meteor,neptune,nova,mercury,aurora}-{100..400..100}');
+@source inline('{hover:,}border-{night,deep-space,white,earth,sun,mars,meteor,neptune,nova,mercury,aurora}-{100..400..100}');
+@source inline('{hover:,}ring-{night,deep-space,white,earth,sun,mars,meteor,neptune,nova,mercury,aurora}-{100..400..100}');
+@source inline('{hover:,}ring-offset-{night,deep-space,white,earth,sun,mars,meteor,neptune,nova,mercury,aurora}-{100..400..100}');
+@source inline('{hover:,}ring-color-{night,deep-space,white,earth,sun,mars,meteor,neptune,nova,mercury,aurora}-{100..400..100}');
+
