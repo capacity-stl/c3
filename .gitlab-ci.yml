@@ -2,7 +2,6 @@ image: node:18.18.0
 
 stages:
   - build
-  - deploy
   - release
 
 build:
@@ -22,21 +21,6 @@ build:
     - if: $CI_MERGE_REQUEST_ID
   tags:
     - docker
-
-pages:
-  image: busybox
-  stage: deploy
-  needs:
-    - build
-  script:
-    - echo "Deploying to GitLab Pages..."
-
-  artifacts:
-    paths:
-      - public
-    expire_in: 1 week
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 release:
   rules:
