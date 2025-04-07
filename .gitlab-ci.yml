@@ -1,12 +1,31 @@
 image: node:18.18.0
 
 stages:
-  - deploy
+  - build
+  - release
 
-publish-npm:
+build:
+  stage: build
+  before_script:
+    - node --version
+    - npm --version
+  script:
+    - echo "//gitlab.aisoftware.com/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}" >> .npmrc
+    - npm install --force
+    - npm run chromatic
+  environment:
+    name: $CI_COMMIT_REF_SLUG
+    url: https://${CI_COMMIT_REF_SLUG}--65a026489061e8ec0333dc8f.chromatic.com
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_MERGE_REQUEST_ID
+  tags:
+    - docker
+
+release:
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
-  stage: deploy
+  stage: release
   before_script:
     - node --version
     - npm --version
