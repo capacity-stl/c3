@@ -324,7 +324,7 @@ export const FlexItems: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    const flex = await canvas.getByTestId('flex-component')
+    const flex = await canvas.getByTestId('flex-component-items')
     await expect(flex).toBeInTheDocument()
   },
 }
