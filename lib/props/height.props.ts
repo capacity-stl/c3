@@ -17,6 +17,7 @@ const heightProps = {
     '9': 'h-9', // height: 2.25rem (36px)
     '10': 'h-10', //height: 2.5rem (40px)
     '11': 'h-11', //height: 2.75rem (44px)
+    '24': 'h-24', // height: 6rem (96px)
     '1/4': 'h-1/4', // height: 25%
     '1/3': 'h-1/3', // height: 33.333333%
     '1/2': 'h-1/2', // height: 50%
