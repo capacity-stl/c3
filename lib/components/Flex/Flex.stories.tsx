@@ -235,6 +235,7 @@ export const FlexContainer: Story = {
           className="text-meteor-500 h-[50px] w-[50px] items-center justify-center border border-earth-200 text-center text-earth-300"
           bgColor="earth-100"
           p="2"
+          testId={`flex-item-${i + 1}`}
         >
           {i + 1}
         </Flex>
@@ -283,6 +284,7 @@ export const FlexItems: Story = {
       {...args}
       p="4"
       align="center"
+      testId="flex-component-items"
     >
       <Flex
         className="text-meteor-500 h-[100px] w-[100px] border border-earth-200 text-earth-300 "
