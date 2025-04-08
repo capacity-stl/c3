@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { within } from '@storybook/testing-library'
 import { expect } from '@storybook/jest'
 import { Flex } from './Flex'
-import { Box } from '../Box/Box'
 
 const controlsToExclude = [
   'testId',
@@ -52,7 +51,7 @@ const meta = {
       defaultValue: 5,
       table: {
         type: { summary: 'Number of boxes to display (For testing purposes)' },
-        defaultValue: { summary: 5 },
+        defaultValue: { summary: '5' },
       },
     },
     justify: {
@@ -231,14 +230,14 @@ export const FlexContainer: Story = {
       p="4"
     >
       {Array.from({ length: numberOfBoxes }, (_, i) => (
-        <Box
+        <Flex
           key={i}
           className="text-meteor-500 h-[50px] w-[50px] items-center justify-center border border-earth-200 text-center text-earth-300"
           bgColor="earth-100"
           p="2"
         >
           {i + 1}
-        </Box>
+        </Flex>
       ))}
     </Flex>
   ),
