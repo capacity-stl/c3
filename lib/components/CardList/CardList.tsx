@@ -80,7 +80,7 @@ const CardList = <T extends Record<string, any>>({
         className={cn(
           cardlistVariants({ ...listProps }),
           dense ? 'p-2' : 'p-4',
-          `${className} border-b-1 w-full max-w-md rounded-lg bg-white`,
+          `${className} w-full max-w-md rounded-lg bg-white`,
         )}
         {...listProps}
       />
