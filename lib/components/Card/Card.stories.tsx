@@ -22,10 +22,10 @@ const CardChildren = ({ withFooter = false }) => {
       {withFooter && (
         <Card.Footer>
           {/* TODO: Add real button component */}
-          <button className="rounded-md border border-meteor-200 p-3 text-meteor-400">
+          <button className="border-meteor-200 text-meteor-400 rounded-md border p-3">
             Cancel
           </button>
-          <button className="rounded-md bg-deep-space p-3 text-white">
+          <button className="bg-deep-space rounded-md p-3 text-white">
             Action
           </button>
         </Card.Footer>
@@ -35,7 +35,7 @@ const CardChildren = ({ withFooter = false }) => {
 }
 
 const meta = {
-  title: 'Card',
+  title: 'Data Display/Card',
   component: Card,
   parameters: {
     docs: {
@@ -73,7 +73,7 @@ const meta = {
         type: {
           summary: 'The color of the background of the card',
         },
-        defaultValue: { summary: null },
+        defaultValue: { summary: undefined },
       },
     },
     borderRadius: {
