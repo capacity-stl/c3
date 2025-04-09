@@ -14,6 +14,7 @@ const Card = ({
   hoverEffect = false,
   bgColor = null,
   onClick,
+  testId = 'card-component',
   ...cardProps
 }: CardProps) => {
   return (
@@ -28,7 +29,7 @@ const Card = ({
         bgColor ? `bg-${bgColor}` : '',
       )}
       onClick={onClick}
-      data-testid="card-component"
+      data-testid={testId}
       tabIndex={0}
       onKeyDown={onClick ? (e) => e.key === 'Enter' && onClick() : undefined}
       role={onClick ? 'button' : 'article'}

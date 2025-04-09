@@ -4,9 +4,6 @@ const borderRadiusProps = {
     small: 'rounded-sm',
     medium: 'rounded-md',
     large: 'rounded-lg',
-    huge: 'rounded-xl',
-    full: 'rounded-full',
-    none: 'rounded-none',
   },
 }
 
