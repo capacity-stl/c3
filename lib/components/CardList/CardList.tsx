@@ -22,6 +22,7 @@ const CardList = <T extends Record<string, any>>({
   bottomLeftContent,
   bottomRightContent,
   firstOptionAsButton = false,
+  testId = 'cardlist-component',
   ...listProps
 }: CardListProps<T & Partial<ListItemType>>) => {
   const [selectedItems, setSelectedItems] = useState<T[]>([])
@@ -67,7 +68,7 @@ const CardList = <T extends Record<string, any>>({
   return (
     <>
       <List
-        data-testid="card-component"
+        data-testid={testId}
         items={items}
         renderItem={renderItem}
         dense={dense}
