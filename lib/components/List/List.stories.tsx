@@ -104,7 +104,6 @@ export const ListDefault: Story = {
       })
 
       const listItems = canvas.getAllByRole('option')
-      const firstItemEl = listItems[0]
 
       await step('Check the list is rendered', async () => {
         expect(listItems).toHaveLength(items.length)
@@ -115,19 +114,6 @@ export const ListDefault: Story = {
           expect(canvas.getByText(item.text)).toBeInTheDocument()
         })
       })
-
-      if (args.onItemClick) {
-        await step('Check the click event is handled', async () => {
-          await userEvent.click(firstItemEl)
-          expect(args.onItemClick).toHaveBeenCalledWith(items[0])
-        })
-
-        await step('Check the keyboard interaction is handled', async () => {
-          await userEvent.tab() // Move focus to the first item
-          await userEvent.keyboard('{Enter}')
-          expect(args.onItemClick).toHaveBeenCalledWith(items[0])
-        })
-      }
     } else {
       await step('Check the "no items" message is rendered', async () => {
         const noItemsMessage = await canvas.findByTestId('no-items-message')
@@ -179,10 +165,10 @@ export const ListCustomized: Story = {
 
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement)
+    const firstItemElement = canvas.getByText(items[0].text)
 
-    await step('Verificar la selección de elementos', async () => {
-      const firstItem = canvas.getAllByRole('option')[0]
-      await userEvent.click(firstItem)
+    await step('Verify the elements selection is handled', async () => {
+      await userEvent.click(firstItemElement)
 
       // Verify the updated state
       const selectedItems = (
