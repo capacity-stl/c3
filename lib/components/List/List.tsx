@@ -21,7 +21,7 @@ const List = <T,>({
       className={cn(
         listVariants({ ...listProps }),
         dense ? 'p-2' : 'p-4',
-        `${className} border-b-1 w-full max-w-md rounded-lg bg-white`,
+        `${className} w-full max-w-md rounded-lg bg-white`,
       )}
     >
       {/* If there is a header, show it */}
@@ -30,7 +30,7 @@ const List = <T,>({
           role="heading"
           aria-level={1}
           className={cn(
-            'border-b border-meteor-200 p-2',
+            'border-meteor-200 border-b p-2',
             dense ? 'py-1' : 'py-2',
           )}
         >
@@ -41,7 +41,7 @@ const List = <T,>({
       {/* If there are no items, show the noItems message */}
       {!items ||
         (items.length === 0 && (
-          <div role="status" className="text-center text-meteor-300">
+          <div role="status" className="text-meteor-300 text-center">
             {noItems ?? 'No items found'}
           </div>
         ))}
@@ -50,7 +50,7 @@ const List = <T,>({
       {items?.length > 0 && (
         <ul
           role="listbox"
-          className={cn({ 'divide-y divide-meteor-200': divider })}
+          className={cn({ 'divide-meteor-200 divide-y': divider })}
         >
           {items.map((item, index) => {
             const isSelected = selectedItems?.includes(item) ?? false
