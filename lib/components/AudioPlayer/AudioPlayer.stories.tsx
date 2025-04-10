@@ -2,10 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { AudioPlayer } from './AudioPlayer'
 import { useRef } from 'react'
 
-import audioFile from './audio_pcm_16bit_8khz.wav'
+import audioFile from '../../../public/audio_pcm_16bit_8khz.wav'
 
 const meta = {
-  title: 'AudioPlayer',
+  title: 'Data Display/AudioPlayer',
   component: AudioPlayer,
   parameters: {
     docs: {
@@ -38,7 +38,7 @@ const AudioPlayerConversation = (args: Story['args']) => {
     <div className="flex flex-col justify-center gap-4">
       <button
         onClick={() => audioPlayerRef.current?.seek(0)}
-        className="p-2 text-left hover:bg-meteor-100"
+        className="hover:bg-meteor-100 p-2 text-left"
       >
         <div className="flex w-full items-center justify-between gap-2">
           <div className="font-bold">Speaker 1</div>
@@ -51,7 +51,7 @@ const AudioPlayerConversation = (args: Story['args']) => {
       </button>
       <button
         onClick={() => audioPlayerRef.current?.seek(7)}
-        className="p-2 text-left hover:bg-meteor-100"
+        className="hover:bg-meteor-100 p-2 text-left"
       >
         <div className="flex w-full items-center justify-between gap-2">
           <div className="font-bold">Speaker 2</div>
@@ -64,7 +64,7 @@ const AudioPlayerConversation = (args: Story['args']) => {
       </button>
       <button
         onClick={() => audioPlayerRef.current?.seek(11)}
-        className="p-2 text-left hover:bg-meteor-100"
+        className="hover:bg-meteor-100 p-2 text-left"
       >
         <div className="flex w-full items-center justify-between gap-2">
           <div className="font-bold">Speaker 3</div>
@@ -81,13 +81,13 @@ const AudioPlayerConversation = (args: Story['args']) => {
         <button
           // eslint-disable-next-line storybook/context-in-play-function
           onClick={() => audioPlayerRef.current?.play()}
-          className="rounded-md border border-meteor-300 p-2 text-meteor-300"
+          className="border-meteor-300 text-meteor-300 rounded-md border p-2"
         >
           External Play
         </button>
         <button
           onClick={() => audioPlayerRef.current?.pause()}
-          className="rounded-md border border-meteor-300  p-2 text-meteor-300"
+          className="border-meteor-300 text-meteor-300 rounded-md border p-2"
         >
           External Pause
         </button>
