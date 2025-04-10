@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 body {
   font-family: 'Inter', sans-serif;
@@ -24,69 +24,74 @@ body {
   --color-*: initial;
 
   /* Base Colors */
-  --color-night: #002B67;
-  --color-deep-space: #02214D;
-  --color-white: #FFFFFF;
+  --color-night: #002b67;
+  --color-deep-space: #02214d;
+  --color-white: #ffffff;
   --color-transparent: transparent;
 
   /* Earth */
-  --color-earth-100: #E6F2FF;
-  --color-earth-200: #80BEFF;
-  --color-earth-300: #007DFF;
-  --color-earth-400: #004B99;
-  --color-earth-500: #002B67;
+  --color-earth-100: #e6f2ff;
+  --color-earth-200: #80beff;
+  --color-earth-300: #007dff;
+  --color-earth-400: #004b99;
+  --color-earth-500: #002b67;
 
   /* Sun */
-  --color-sun-100: #FFF5E6;
-  --color-sun-200: #FFCF80;
-  --color-sun-300: #FF9F00;
-  --color-sun-400: #995F00;
+  --color-sun-100: #fff5e6;
+  --color-sun-200: #ffcf80;
+  --color-sun-300: #ff9f00;
+  --color-sun-400: #995f00;
 
   /* Mars */
-  --color-mars-100: #FFE7ED;
-  --color-mars-200: #FF86A3;
-  --color-mars-300: #FF0E47;
-  --color-mars-400: #A80028;
+  --color-mars-100: #ffe7ed;
+  --color-mars-200: #ff86a3;
+  --color-mars-300: #ff0e47;
+  --color-mars-400: #a80028;
 
   /* Meteor */
-  --color-meteor-100: #F0F2F5;
-  --color-meteor-200: #DDE2EA;
-  --color-meteor-300: #9AA9BF;
+  --color-meteor-100: #f0f2f5;
+  --color-meteor-200: #dde2ea;
+  --color-meteor-300: #9aa9bf;
   --color-meteor-400: #567095;
 
   /* Neptune */
-  --color-neptune-100: #E6F7E8;
-  --color-neptune-200: #82D68C;
-  --color-neptune-300: #05AE19;
-  --color-neptune-400: #024A0B;
+  --color-neptune-100: #e6f7e8;
+  --color-neptune-200: #82d68c;
+  --color-neptune-300: #05ae19;
+  --color-neptune-400: #024a0b;
 
   /* Nova */
-  --color-nova-100: #FBECF5;
-  --color-nova-200: #EC9ECE;
-  --color-nova-300: #DA3E9E;
-  --color-nova-400: #961D67;
+  --color-nova-100: #fbecf5;
+  --color-nova-200: #ec9ece;
+  --color-nova-300: #da3e9e;
+  --color-nova-400: #961d67;
 
   /* Mercury */
-  --color-mercury-100: #FFEEE6;
-  --color-mercury-200: #FFAC80;
-  --color-mercury-300: #FF5900;
+  --color-mercury-100: #ffeee6;
+  --color-mercury-200: #ffac80;
+  --color-mercury-300: #ff5900;
   --color-mercury-400: #993500;
 
-  /* Aurora */  
-  --color-aurora-100: #EDEFFC;
-  --color-aurora-200: #A6B0F2;
-  --color-aurora-300: #4D61E6;
-  --color-aurora-400: #192DB3;
+  /* Aurora */
+  --color-aurora-100: #edeffc;
+  --color-aurora-200: #a6b0f2;
+  --color-aurora-300: #4d61e6;
+  --color-aurora-400: #192db3;
 
   /* Shadows */
-  --shadow-outline: 0 0 0 1px #DDE2EA;
-  --shadow-outline-focus: 0 0 0 2px #007DFF;
-  --shadow-outline-error: 0 0 0 2px #FF0E47;
+  --shadow-outline: 0 0 0 1px #dde2ea;
+  --shadow-outline-focus: 0 0 0 2px #007dff;
+  --shadow-outline-error: 0 0 0 2px #ff0e47;
   --shadow-contact: 0px 0px 3px rgba(2, 33, 77, 0.35);
-  --shadow-contact-focus: 0 0 3px #007DFF;
-  --shadow-contact-error: 0 0 3px #FF0E47;
-}
+  --shadow-contact-focus: 0 0 3px #007dff;
+  --shadow-contact-error: 0 0 3px #ff0e47;
 
+  /* Border Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}
 
 @source inline('{hover:,}bg-{night,deep-space,white,earth,sun,mars,meteor,neptune,nova,mercury,aurora}-{100..400..100}');
 @source inline('{hover:,}text-{night,deep-space,white,earth,sun,mars,meteor,neptune,nova,mercury,aurora}-{100..400..100}');
@@ -94,4 +99,4 @@ body {
 @source inline('{hover:,}ring-{night,deep-space,white,earth,sun,mars,meteor,neptune,nova,mercury,aurora}-{100..400..100}');
 @source inline('{hover:,}ring-offset-{night,deep-space,white,earth,sun,mars,meteor,neptune,nova,mercury,aurora}-{100..400..100}');
 @source inline('{hover:,}ring-color-{night,deep-space,white,earth,sun,mars,meteor,neptune,nova,mercury,aurora}-{100..400..100}');
-
+@source inline('rounded-{xs,sm,md,lg}');
