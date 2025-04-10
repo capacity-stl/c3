@@ -118,7 +118,7 @@ const NoItemsMessage = () => {
 const bottomLeftContent = (item: InteractionType) =>
   item?.status && (
     <div className="flex flex-row items-center gap-1">
-      <span className="rounded-full bg-sun-100 px-2 py-1 text-xs font-medium capitalize text-sun-400">
+      <span className="bg-sun-100 text-sun-400 rounded-full px-2 py-1 text-xs font-medium capitalize">
         {item?.status}
       </span>
       {item?.status === 'in progress' && (
@@ -148,7 +148,7 @@ const header = (selectedItems: InteractionType[]) => {
       </button>
       {selectedItems.length > 0 ? (
         <button
-          className="flex cursor-pointer flex-row items-center gap-1 text-sm font-medium text-meteor-400"
+          className="text-meteor-400 flex cursor-pointer flex-row items-center gap-1 text-sm font-medium"
           onClick={onClick}
         >
           <Icon icon="Pencil" color="meteor-300" size="tiny" />
@@ -168,7 +168,7 @@ const onSelectionChangeMock = jest.fn(
 )
 
 const meta = {
-  title: 'CardList',
+  title: 'Data Display/CardList',
   component: CardList<InteractionType>,
   parameters: {
     docs: {
