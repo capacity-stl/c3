@@ -39,7 +39,7 @@ const NoItemsMessage = () => {
 }
 
 const meta = {
-  title: 'List',
+  title: 'Data Display/List',
   component: List<InteractionType>,
   parameters: {
     docs: {
