@@ -4,6 +4,8 @@ import { expect, jest } from '@storybook/jest'
 import { Card } from './Card'
 import { colorNames } from '@props/color.props'
 import { useState } from 'react'
+import { borderRadiusProps } from '@props/borderradius.props'
+import { paddingProps } from '@props/padding.props'
 
 const CardChildren = ({ withFooter = false }) => {
   return (
@@ -77,16 +79,18 @@ const meta = {
       },
     },
     borderRadius: {
-      defaultValue: 'medium',
+      defaultValue: borderRadiusProps.borderRadius.medium,
       control: {
-        type: 'text',
+        type: 'select',
       },
+      options: Object.keys(borderRadiusProps.borderRadius),
     },
     p: {
-      defaultValue: '4',
+      defaultValue: paddingProps.p[4],
       control: {
-        type: 'text',
+        type: 'select',
       },
+      options: Object.keys(paddingProps.p),
     },
   },
 } satisfies Meta<typeof Card>
