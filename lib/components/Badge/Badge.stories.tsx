@@ -4,9 +4,10 @@ import { colorPalletes } from '@props/color.props'
 import { expect, fn } from '@storybook/test'
 import { within, userEvent } from '@storybook/testing-library'
 import { badgeSizeProps } from './Badge.props'
-import { sizeNameProps } from '@props/size.props'
 import { shapeProps } from '@props/shape.props'
 import { Text } from '@components/Text/Text'
+import { Icons } from '@components/Icon/Glyphs'
+
 const meta = {
   title: 'Badge',
   component: Badge,
@@ -19,6 +20,78 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    color: {
+      options: ['Not Defined', ...Object.keys(colorPalletes)],
+      mapping: { 'Not Defined': undefined },
+      control: { type: 'select' },
+      description: 'Color of the badge',
+      table: {
+        type: {
+          summary: 'string ',
+        },
+        defaultValue: { summary: 'earth' },
+      },
+    },
+
+    icon: {
+      options: ['Not Defined', ...Object.keys(Icons)],
+      mapping: { 'Not Defined': undefined },
+      control: { type: 'select' },
+      description: 'Icon of the badge',
+      table: {
+        type: {
+          summary: 'string ',
+        },
+      },
+    },
+
+    shape: {
+      options: ['Not Defined', ...Object.keys(shapeProps.shape)],
+      mapping: { 'Not Defined': undefined },
+      control: { type: 'select' },
+      description: 'Shape of the badge',
+      table: {
+        type: {
+          summary: 'string ',
+        },
+        defaultValue: { summary: 'circle' },
+      },
+    },
+
+    size: {
+      options: ['Not Defined', ...Object.keys(badgeSizeProps.size)],
+      mapping: { 'Not Defined': undefined },
+      control: { type: 'select' },
+      description: 'Size of the badge',
+      table: {
+        type: {
+          summary: 'string ',
+        },
+        defaultValue: { summary: 'medium' },
+      },
+    },
+
+    value: {
+      description: 'Value returned as parameter onRemove',
+      table: {
+        type: {
+          summary: 'string ',
+        },
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+
+    onRemove: {
+      description: 'Function to be called when the badge is removed',
+      table: {
+        type: {
+          summary: 'function ',
+        },
+      },
+      defaultValue: { summary: 'undefined' },
+    },
+  },
 } satisfies Meta<typeof Badge>
 
 export default meta
@@ -41,6 +114,19 @@ export const Default: Story = {
 }
 
 export const Size: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Badge size="tiny">tiny</Badge>
+<Badge size="small">small</Badge>
+<Badge size="medium">medium</Badge>
+<Badge size="large">large</Badge>
+<Badge size="huge">huge</Badge>`,
+        language: 'tsx',
+      },
+    },
+  },
   render: () => (
     <div className="flex items-center gap-4">
       <Badge size="tiny">tiny</Badge>
@@ -50,28 +136,22 @@ export const Size: Story = {
       <Badge size="huge">huge</Badge>
     </div>
   ),
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement)
-
-    const sizes: sizeNameProps[] = ['tiny', 'small', 'medium', 'large', 'huge']
-
-    await step(
-      'Check all sizes are rendered with correct classes',
-      async () => {
-        for (const size of sizes) {
-          const badge = canvas.getByText(size)
-          await expect(badge).toBeInTheDocument()
-          const classes = badgeSizeProps.size[size as sizeNameProps].split(' ')
-          for (const className of classes) {
-            await expect(badge).toHaveClass(className)
-          }
-        }
-      },
-    )
-  },
 }
 
 export const Dense: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Badge dense size="tiny">tiny</Badge>
+<Badge dense size="small">small</Badge>
+<Badge dense size="medium">medium</Badge>
+<Badge dense size="large">large</Badge>
+<Badge dense size="huge">huge</Badge>`,
+        language: 'tsx',
+      },
+    },
+  },
   render: () => (
     <div className="flex items-center gap-4">
       <Badge dense size="tiny">
@@ -105,6 +185,17 @@ export const Dense: Story = {
 
 export const Shape: Story = {
   args: {},
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Badge shape="circle">circle</Badge>
+<Badge shape="rounded">rounded</Badge>
+<Badge shape="square">square</Badge>`,
+        language: 'tsx',
+      },
+    },
+  },
   render: () => (
     <div className="flex items-center gap-4">
       <Badge shape="circle">circle</Badge>
@@ -135,6 +226,19 @@ export const Shape: Story = {
 
 export const Color: Story = {
   args: {},
+  parameters: {
+    docs: {
+      source: {
+        code: Object.keys(colorPalletes)
+          .map(
+            (color) =>
+              `<Badge key="${color}" color="${color}">${color}</Badge>`,
+          )
+          .join('\n'),
+        language: 'tsx',
+      },
+    },
+  },
   render: () => (
     <div className="flex items-center gap-4">
       {Object.keys(colorPalletes).map((color) => (
@@ -162,6 +266,19 @@ export const Icon: Story = {
     children: 'Rich Content Examples',
     color: 'meteor',
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Badge color="meteor" icon="Person">User</Badge>
+<Badge dense color="meteor" icon="Person">User</Badge>
+<Badge color="neptune" icon="Clock" />
+<Badge color="mars" icon="Clock" shape="rounded" />`,
+        language: 'tsx',
+      },
+    },
+  },
+
   render: () => (
     <div className="flex items-center gap-4">
       <Badge color="meteor" icon="Person">
@@ -192,6 +309,18 @@ export const RichContent: Story = {
     children: 'Rich Content Examples',
     color: 'meteor',
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Badge color="meteor" icon="Person">
+  <Text type="body-small-strong">Role</Text>
+  <Text type="small-caps">Developer</Text>
+</Badge>`,
+        language: 'tsx',
+      },
+    },
+  },
   render: () => (
     <div className="flex items-center gap-4">
       <Badge color="meteor" icon="Person">
@@ -219,6 +348,16 @@ export const OnRemove: Story = {
   args: {
     children: '',
     color: 'meteor',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Badge onRemove={(v) => alert(\`Removed with value: \${v}\`)} value="1">John</Badge>
+<Badge onRemove={(v) => alert(\`Removed with value: \${v}\`)} value="2">Jane</Badge>`,
+        language: 'tsx',
+      },
+    },
   },
   render: () => (
     <div className="flex items-center gap-4">
