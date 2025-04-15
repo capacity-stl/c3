@@ -6,7 +6,7 @@ import { shapeProps } from '@props/shape.props'
 import { badgeSizeProps } from '@components/Badge/Badge.props'
 
 const meta = {
-  title: 'BadgeDot',
+  title: 'Data Display/BadgeDot',
   component: BadgeDot,
   parameters: {
     docs: {

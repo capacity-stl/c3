@@ -9,7 +9,7 @@ import { Text } from '@components/Text/Text'
 import { Icons } from '@components/Icon/Glyphs'
 
 const meta = {
-  title: 'Badge',
+  title: 'Data Display/Badge',
   component: Badge,
   parameters: {
     docs: {
