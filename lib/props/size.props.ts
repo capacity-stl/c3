@@ -47,4 +47,6 @@ const sizeProps = {
   },
 }
 
+export type sizeNameProps = 'tiny' | 'small' | 'medium' | 'large' | 'huge'
+
 export { sizeProps, pixelSizeProps }

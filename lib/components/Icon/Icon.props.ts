@@ -2,6 +2,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 
 import { iconsizeProps } from '@props/iconsize.props'
 import { colorProps } from '@props/color.props'
+import { Icons } from '@components/Icon/Glyphs'
 
 const iconPropsVariants = {
   ...iconsizeProps,
@@ -16,7 +17,7 @@ const iconVariants = cva('inline-block *:h-full *:w-auto', {
 
 export type IconProps = VariantProps<typeof iconVariants> &
   React.ComponentProps<typeof iconVariants> & {
-    icon: string
+    icon: keyof typeof Icons
     testId?: string
   }
 
