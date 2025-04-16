@@ -27,10 +27,7 @@ const IconComponent = ({ icon }: { icon: string }) => {
     )
 
     return (
-      <div
-        className="text-mars-300"
-        title={`Invalid icon name \`${icon}\``}
-      >
+      <div className="text-mars-300" title={`Invalid icon name \`${icon}\``}>
         {`!E`}
       </div>
     )

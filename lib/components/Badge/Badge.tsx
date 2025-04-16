@@ -46,7 +46,7 @@ const Badge = ({
       {children}
       {onRemove && (
         <button
-          className={`hover:bg-${color}-200 ml-0.5 flex select-none items-center`}
+          className={`hover:bg-${color}-200 ml-0.5 flex items-center select-none`}
           onClick={() => onRemove?.(value ?? `No 'value' provided`)}
           aria-label={`Remove ${typeof children === 'string' ? children : 'badge'}`}
           type="button"
