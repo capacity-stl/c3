@@ -63,6 +63,4 @@ const Avatar = ({
   )
 }
 
-console.log(Avatar)
-
 export { Avatar }
