@@ -54,12 +54,21 @@ const meta = {
     items: {
       description: 'Array of items to display in the list.',
     },
+
     renderItem: {
       description: 'Function to customize the rendering of each element',
       table: {
         type: { summary: '(item: T) => ReactNode' },
       },
     },
+
+    dense: {
+      description: 'Display the list in a dense compact format',
+      table: {
+        type: { summary: 'boolean' },
+      },
+    },
+
     selectedItems: {
       description: 'Array of items that are currently selected from the list',
       table: {
@@ -70,6 +79,35 @@ const meta = {
       description: 'Function to handle the click event of each element',
       table: {
         type: { summary: '(item) => void' },
+      },
+    },
+
+    noItems: {
+      description: 'Message to display when the list is empty',
+      table: {
+        type: { summary: 'string | ReactNode' },
+      },
+    },
+
+    header: {
+      description: 'Header to display at the top of the list',
+      table: {
+        type: { summary: 'string | ReactNode' },
+      },
+      control: { type: 'text' },
+    },
+
+    divider: {
+      description: 'Whether to display a divider between items',
+      table: {
+        type: { summary: 'boolean' },
+      },
+    },
+
+    loading: {
+      description: 'Whether to display a loading indicator',
+      table: {
+        type: { summary: 'boolean' },
       },
     },
   },
