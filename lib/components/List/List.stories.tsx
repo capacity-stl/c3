@@ -87,6 +87,7 @@ const meta = {
       table: {
         type: { summary: 'string | ReactNode' },
       },
+      control: { type: 'text' },
     },
 
     header: {
