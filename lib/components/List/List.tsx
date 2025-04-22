@@ -42,8 +42,12 @@ const List = <T,>({
       {/* If there are no items, show the noItems message */}
       {!items ||
         (items.length === 0 && (
-          <div role="status" className="text-meteor-300 text-center">
-            {noItems ?? <Text>No items found</Text>}
+          <div role="status">
+            {noItems ?? (
+              <Text className="text-meteor-300 text-center">
+                No items found
+              </Text>
+            )}
           </div>
         ))}
 
