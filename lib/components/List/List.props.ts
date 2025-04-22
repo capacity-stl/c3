@@ -1,9 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 
-const listPropsVariants = {}
-
 const listVariants = cva('inline-block *:h-full *:w-auto', {
-  variants: { ...listPropsVariants },
+  variants: {},
 })
 
 export type ListProps<T> = VariantProps<typeof listVariants> &

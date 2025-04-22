@@ -1,6 +1,7 @@
 import { cn } from '@utils/cn'
 import { ListProps, listVariants } from './List.props'
 import { ListItem } from './ListItem'
+import { Text } from '@components/Text/Text'
 
 const List = <T,>({
   className,
@@ -42,7 +43,7 @@ const List = <T,>({
       {!items ||
         (items.length === 0 && (
           <div role="status" className="text-meteor-300 text-center">
-            {noItems ?? 'No items found'}
+            {noItems ?? <Text>No items found</Text>}
           </div>
         ))}
 

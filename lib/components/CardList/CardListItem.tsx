@@ -1,6 +1,7 @@
 import { cn } from '@utils/cn'
 import { Icon } from '@components/Icon/Icon'
 import { CardListItemProps } from './CardList.props'
+import { Text } from '@components/Text/Text'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CardListItem = <T extends Record<string, any>>({
@@ -19,30 +20,6 @@ export const CardListItem = <T extends Record<string, any>>({
   const restOptions = firstOptionAsButton
     ? item.options?.slice(1)
     : item.options
-
-  /**
-   * WE CAN EXTRACT THIS TO A UTILITY FUNCTION
-   * Get the time ago from a datetime string
-   * @param datetime - The datetime string to get the time ago from
-   * @returns The time ago
-   */
-  const getTimeAgo = (datetime: string): string => {
-    const now = new Date()
-    const date = new Date(datetime)
-    const seconds = Math.floor((now.getTime() - date.getTime()) / 1000)
-    const minutes = Math.floor(seconds / 60)
-    const hours = Math.floor(minutes / 60)
-    const days = Math.floor(hours / 24)
-    const months = Math.floor(days / 30)
-    const years = Math.floor(months / 12)
-
-    if (years > 0) return `${years}y`
-    if (months > 0) return `${months}mo`
-    if (days > 0) return `${days}d`
-    if (hours > 0) return `${hours}h`
-    if (minutes > 0) return `${minutes}min`
-    return 'now'
-  }
 
   return (
     <article className="w-full select-none" aria-label={item[titleKey]}>
@@ -82,28 +59,30 @@ export const CardListItem = <T extends Record<string, any>>({
         <div className="flex flex-col gap-1 truncate">
           <div className="flex flex-row justify-between gap-2">
             {item[titleKey] && (
-              <span className="truncate text-sm font-medium">
+              <Text type="body-small-strong" className="truncate">
                 {item[titleKey]}
-              </span>
+              </Text>
             )}
             {item[datetimeKey] && (
               <time
-                className="text-sm font-light text-meteor-300"
+                className="text-meteor-300 text-sm font-light"
                 dateTime={item[datetimeKey]}
               >
-                {getTimeAgo(item[datetimeKey])}
+                <Text type="body-small" className="text-meteor-300">
+                  {item[datetimeKey]}
+                </Text>
               </time>
             )}
           </div>
           {item[descriptionKey] && (
-            <p className="truncate text-sm font-light">
+            <Text type="body-small" className="truncate">
               {item[descriptionKey]}
-            </p>
+            </Text>
           )}
           {item[referenceKey] && (
-            <p className="text-xs font-light text-meteor-300">
+            <Text type="body-small" className="text-meteor-300">
               {item[referenceKey]}
-            </p>
+            </Text>
           )}
         </div>
       </div>
@@ -135,7 +114,7 @@ export const CardListItem = <T extends Record<string, any>>({
                     type="button"
                     aria-label={firstOption.label}
                     value={firstOption.label}
-                    className="rounded-md bg-earth-300 px-1 py-1 text-xs text-white"
+                    className="bg-earth-300 rounded-md px-1 py-1 text-xs text-white"
                   />
                 )}
                 {restOptions && restOptions.length > 0 && (

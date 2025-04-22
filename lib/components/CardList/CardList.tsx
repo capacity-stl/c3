@@ -66,26 +66,24 @@ const CardList = <T extends Record<string, any>>({
   }
 
   return (
-    <>
-      <List
-        data-testid={testId}
-        items={items}
-        renderItem={renderItem}
-        dense={dense}
-        divider={divider}
-        selectedItems={selectedItems}
-        header={header?.(selectedItems, items)}
-        noItems={noItems}
-        onItemClick={handleItemClick}
-        loading={loading}
-        className={cn(
-          cardlistVariants({ ...listProps }),
-          dense ? 'p-2' : 'p-4',
-          `${className} w-full max-w-md rounded-lg bg-white`,
-        )}
-        {...listProps}
-      />
-    </>
+    <List
+      data-testid={testId}
+      items={items}
+      renderItem={renderItem}
+      dense={dense}
+      divider={divider}
+      selectedItems={selectedItems}
+      header={header?.(selectedItems, items)}
+      noItems={noItems}
+      onItemClick={handleItemClick}
+      loading={loading}
+      className={cn(
+        cardlistVariants({ ...listProps }),
+        dense ? 'p-2' : 'p-4',
+        `${className} w-full max-w-md rounded-lg bg-white`,
+      )}
+      {...listProps}
+    />
   )
 }
 

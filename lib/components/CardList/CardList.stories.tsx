@@ -23,13 +23,31 @@ interface InteractionType extends ListItemType {
   }
 }
 
+const getTimeAgo = (datetime: string): string => {
+  const now = new Date()
+  const date = new Date(datetime)
+  const seconds = Math.floor((now.getTime() - date.getTime()) / 1000)
+  const minutes = Math.floor(seconds / 60)
+  const hours = Math.floor(minutes / 60)
+  const days = Math.floor(hours / 24)
+  const months = Math.floor(days / 30)
+  const years = Math.floor(months / 12)
+
+  if (years > 0) return `${years}y`
+  if (months > 0) return `${months}mo`
+  if (days > 0) return `${days}d`
+  if (hours > 0) return `${hours}h`
+  if (minutes > 0) return `${minutes}min`
+  return 'now'
+}
+
 const items: InteractionType[] = [
   {
     id: 1,
     title: 'Consierge Visitor',
     description:
       'Message from the concierge. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    datetime: new Date().toISOString(),
+    datetime: getTimeAgo(new Date().toISOString()),
     icon: 'Livechat',
     iconColor: 'neptune-300',
     status: 'in progress',
@@ -56,7 +74,7 @@ const items: InteractionType[] = [
     title: '314-434-3333',
     description:
       'Message from SMS. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    datetime: '2025-03-11T12:00:00Z',
+    datetime: getTimeAgo('2025-03-11T12:00:00Z'),
     icon: 'Concierge',
     iconColor: 'earth-300',
     reference: 'CAP-1234',
@@ -71,7 +89,7 @@ const items: InteractionType[] = [
     title: 'joesmith@business.com',
     description:
       'Message from email. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    datetime: '2025-01-25T12:00:00Z',
+    datetime: getTimeAgo('2025-01-25T12:00:00Z'),
     icon: 'Ticket',
     iconColor: 'aurora-300',
     options: [
@@ -91,7 +109,7 @@ const items: InteractionType[] = [
     id: 4,
     title: 'Is Skitch an Approved application?',
     description: 'james@business.com',
-    datetime: '2024-01-26T12:00:00Z',
+    datetime: getTimeAgo('2024-01-26T12:00:00Z'),
     reference: 'CAP-1234',
     user: {
       imageUrl: '',
