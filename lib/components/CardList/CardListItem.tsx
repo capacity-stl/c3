@@ -64,14 +64,9 @@ export const CardListItem = <T extends Record<string, any>>({
               </Text>
             )}
             {item[datetimeKey] && (
-              <time
-                className="text-meteor-300 text-sm font-light"
-                dateTime={item[datetimeKey]}
-              >
-                <Text type="body-small" className="text-meteor-300">
-                  {item[datetimeKey]}
-                </Text>
-              </time>
+              <Text type="body-small" className="text-meteor-300">
+                {item[datetimeKey]}
+              </Text>
             )}
           </div>
           {item[descriptionKey] && (
