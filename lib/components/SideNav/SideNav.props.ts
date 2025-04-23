@@ -10,7 +10,7 @@ import { borderProps } from '../../props/border.props'
 import { layoutProps } from '../../props/layout.props'
 import { fontProps } from '../../props/font.props'
 import { Icons } from '@components/Icon/Glyphs'
-
+import { borderRadiusProps } from '../../props/borderradius.props'
 export enum SideNavItemState {
   DISABLED = 'disabled',
   SELECTED = 'selected',
@@ -26,6 +26,7 @@ const sideNavItemVariants = cva('', {
     ...widthProps,
     ...bgColorProps,
     ...borderProps,
+    ...borderRadiusProps,
     ...layoutProps,
     ...fontProps,
     ...colorProps,
@@ -34,6 +35,7 @@ const sideNavItemVariants = cva('', {
     p: '2',
     type: 'body-small-strong',
     color: 'deep-space',
+    borderRadius: 'small',
   },
 })
 
@@ -64,6 +66,7 @@ const sideNavVariants = cva('', {
     ...widthProps,
     ...bgColorProps,
     ...borderProps,
+    ...borderRadiusProps,
     ...layoutProps,
   },
 })

@@ -102,6 +102,8 @@ const SideNavItem = ({
     handleAction(e)
   }
 
+  const itemAriaLabel = `nav-item-${label?.toLowerCase().replace(/\s+/g, '-')}`
+
   return (
     <>
       <li
@@ -115,7 +117,7 @@ const SideNavItem = ({
       >
         <div
           className={cn(
-            'flex w-full rounded-lg',
+            'flex w-full rounded-md',
             stateToColor[effectiveState].background,
             sideNavItemVariants({ ...navItemProps }),
             className,
@@ -126,7 +128,7 @@ const SideNavItem = ({
           onClick={handleClick}
           onKeyDown={handleKeyDown}
           tabIndex={isDisabled ? -1 : 0}
-          id={`nav-item-${label?.toLowerCase().replace(/\s+/g, '-')}`}
+          id={itemAriaLabel}
         >
           <div className="flex w-full items-center justify-between gap-2">
             <div className="flex items-center gap-2">
@@ -134,7 +136,7 @@ const SideNavItem = ({
               (hasSubItems &&
                 (isHovered || (!leadingIcon && !leadingContent))) ? (
                 <div
-                  className="bg-meteor-200 flex h-5 w-5 items-center justify-center rounded-md"
+                  className="bg-meteor-200 flex h-5 w-5 items-center justify-center rounded-xs"
                   aria-hidden="true"
                 >
                   <Icon
@@ -194,8 +196,8 @@ const SideNavItem = ({
         </div>
         {hasSubItems && isOpen && (
           <ul
-            className="list-none space-y-1 pl-4"
-            aria-labelledby={`nav-item-${label?.toLowerCase().replace(/\s+/g, '-')}`}
+            className="list-none space-y-1 pt-1 pl-4"
+            aria-labelledby={itemAriaLabel}
           >
             {subItems?.map((subItem, index) => (
               <SideNavItem key={index} {...subItem} className={className} />
@@ -228,7 +230,7 @@ const SideNav = ({
       className={cn(
         sideNavVariants({ ...mergedProps }),
         className,
-        'rounded-lg px-2.5 py-5',
+        'px-2.5 py-5',
       )}
       style={style}
       data-testid={testId}

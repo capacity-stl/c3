@@ -39,7 +39,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    className: 'bg-meteor-100 w-80',
+    className: 'bg-meteor-100 w-80 rounded-xs',
     items: [
       {
         label: 'Home',
@@ -103,7 +103,7 @@ export const Default: Story = {
             label: 'About 2',
             link: '/about-2',
             leadingContent: (
-              <Badge shape="rounded" size="small" color="earth">
+              <Badge shape="rounded" size="small" color="night">
                 Leading
               </Badge>
             ),
@@ -112,7 +112,7 @@ export const Default: Story = {
             label: 'About 3',
             link: '/about-3',
             trailingContent: (
-              <Badge shape="rounded" size="small" color="earth">
+              <Badge shape="rounded" size="small" color="night">
                 Trailing
               </Badge>
             ),
