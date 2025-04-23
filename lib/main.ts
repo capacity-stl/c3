@@ -14,6 +14,7 @@ export { List } from './components/List/List'
 export { CardList } from './components/CardList/CardList'
 export { CollapsibleDrawer } from './components/CollapsibleDrawer/CollapsibleDrawer'
 export { CollapsibleSheet } from './components/CollapsibleDrawer/CollapsibleSheet'
+export { SideNav } from './components/SideNav/SideNav'
 
 // props
 export { colorPalletes } from './props/color.props'
