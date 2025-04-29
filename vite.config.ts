@@ -21,9 +21,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'lib/main.ts'),
-      name: '@capacity/c3',
+      name: '@aisoftware/c3',
       fileName: (format) => `c3.${format}.js`,
-      formats: ['es'],
+      formats: ['es', 'cjs'],
     },
     copyPublicDir: false,
     rollupOptions: {
