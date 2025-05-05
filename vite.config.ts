@@ -19,13 +19,13 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'lib/main.ts'),
-      name: '@capacity/c3',
+      name: '@aisoftware/c3',
       fileName: (format) => `c3.${format}.js`,
       formats: ['es'],
     },
     copyPublicDir: false,
     rollupOptions: {
-      external: ['react', 'react/jsx-runtime '],
+      external: ['react', 'react/jsx-runtime'],
       input: Object.fromEntries(
         glob
           .sync('lib/**/*.{ts,tsx}', { ignore: 'lib/**/*.stories.tsx' })
@@ -39,7 +39,10 @@ export default defineConfig({
           ]),
       ),
       output: {
-        assetFileNames: 'assets/[name][extname]',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') return 'c3.css'
+          return 'assets/[name][extname]'
+        },
         entryFileNames: '[name].js',
       },
     },

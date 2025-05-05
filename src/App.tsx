@@ -1,9 +1,9 @@
 import './App.css'
-import { Flex, Text } from '../lib/main'
+import { Text } from '../lib/main'
 
 function App() {
   return (
-    <div>
+    <div className="c3">
       {/* <Button className="night" onClick={() => alert("hi chris")} /> */}
       <Text as="h1" p="8" color="mars-300">
         This is the text
