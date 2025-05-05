@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite'
-
 import react from '@vitejs/plugin-react'
 import { extname, relative, resolve } from 'path'
 import { fileURLToPath } from 'node:url'
@@ -20,9 +19,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'lib/main.ts'),
-      name: '@aisoftware/c3',
+      name: '@capacity/c3',
       fileName: (format) => `c3.${format}.js`,
-      formats: ['es', 'cjs'],
+      formats: ['es'],
     },
     copyPublicDir: false,
     rollupOptions: {
