@@ -8,7 +8,7 @@ import { borderProps } from '../../props/border.props'
 import { colorProps } from '../../props/color.props'
 import { fontProps } from '../../props/font.props'
 
-const textVariants = cva('text-base', {
+const textVariants = cva('text-base font-sans', {
   variants: {
     ...marginProps,
     ...paddingProps,

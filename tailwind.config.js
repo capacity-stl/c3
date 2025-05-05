@@ -1,12 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  corePlugins: {
+    // Disable preflight to avoid conflicts with web interface css resets
+    preflight: false,
+  },
   content: [
     './lib/**/*.{html,js,ts,jsx,tsx}',
     './src/**/*.{html,js,ts,jsx,tsx}',
   ],
   theme: {
     fontFamily: {
-      default: ['Inter', 'sans-serif'],
+      sans: ['Inter', 'sans-serif'],
     },
     fontSize: {
       xs: '0.714rem',
