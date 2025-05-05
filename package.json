@@ -6,8 +6,7 @@
   "types": "dist/main.d.ts",
   "style": "dist/c3.css",
   "files": [
-    "dist",
-    "dist/c3.css"
+    "dist"
   ],
   "engines": {
     "node": ">=14.0.0"
