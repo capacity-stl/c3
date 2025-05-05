@@ -1,6 +1,4 @@
 import { defineConfig } from 'vite'
-import tailwindcss from '@tailwindcss/vite'
-
 import react from '@vitejs/plugin-react'
 import { extname, relative, resolve } from 'path'
 import { fileURLToPath } from 'node:url'
@@ -10,7 +8,7 @@ import { libInjectCss } from 'vite-plugin-lib-inject-css'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), libInjectCss(), dts({ include: ['lib'] })],
+  plugins: [react(), libInjectCss(), dts({ include: ['lib'] })],
   resolve: {
     alias: {
       '@components': resolve(__dirname, 'lib/components'),
@@ -21,9 +19,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'lib/main.ts'),
-      name: '@aisoftware/c3',
+      name: '@capacity/c3',
       fileName: (format) => `c3.${format}.js`,
-      formats: ['es', 'cjs'],
+      formats: ['es'],
     },
     copyPublicDir: false,
     rollupOptions: {
