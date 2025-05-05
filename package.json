@@ -1,13 +1,12 @@
 {
   "name": "@aisoftware/c3",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
   "style": "dist/c3.css",
   "files": [
-    "dist",
-    "dist/c3.css"
+    "dist"
   ],
   "engines": {
     "node": ">=14.0.0"
