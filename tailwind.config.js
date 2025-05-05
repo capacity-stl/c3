@@ -6,7 +6,7 @@ export default {
   ],
   theme: {
     fontFamily: {
-      default: ['Inter', 'sans-serif'],
+      sans: ['Inter', 'sans-serif'],
     },
     fontSize: {
       xs: '0.714rem',
