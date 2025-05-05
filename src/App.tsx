@@ -1,11 +1,11 @@
 import './App.css'
-import { Box, Flex, Text } from '../lib/main'
+import { Flex, Text } from '../lib/main'
 
 function App() {
   return (
-    <div >
+    <div>
       {/* <Button className="night" onClick={() => alert("hi chris")} /> */}
-      <Text as="h1" p="8">
+      <Text as="h1" p="8" color="mars-300">
         This is the text
       </Text>
       <Text as="h2" className="text-center font-bold text-mercury-300">
@@ -17,17 +17,6 @@ function App() {
 
       <Text as="h5">This is the text</Text>
       <Text as="h6">This is the text</Text>
-      {/* <Grid columns="4" gap="10">
-        <Box className="h-[232px]" border="default">
-          <div>This is the icon</div>
-          <Icon icon="Add" />
-        </Box>
-      </Grid> */}
-      <Flex flexDirection="rowReverse" gap="4" w="full">
-        <Box h="9" w="9" bgColor="earth-100" border="default" />
-        <Box h="9" w="9" bgColor="nova-100" border="default" />
-        <Box h="9" w="9" bgColor="sun-100" border="default" />
-      </Flex>
     </div>
   )
 }
