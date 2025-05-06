@@ -1,6 +1,6 @@
 {
   "name": "@aisoftware/c3",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "type": "module",
   "main": "./dist/c3.cjs.js",
   "module": "./dist/c3.es.js",
@@ -14,11 +14,10 @@
       "import": "./dist/c3.es.js",
       "require": "./dist/c3.cjs.js",
       "types": "./dist/main.d.ts"
-    },
-    "./dist/c3.css": "./dist/c3.css"
+    }
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=22.0.0"
   },
   "publishConfig": {
     "@aisoftware:registry": "https://gitlab.aisoftware.com/api/v4/projects/606/packages/npm/"
