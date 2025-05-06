@@ -1,13 +1,14 @@
 {
   "name": "@aisoftware/c3",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "type": "module",
   "main": "./dist/c3.cjs.js",
   "module": "./dist/c3.es.js",
   "types": "dist/main.d.ts",
   "style": "dist/c3.css",
   "files": [
-    "dist"
+    "dist",
+    "dist/c3.css"
   ],
   "exports": {
     ".": {
