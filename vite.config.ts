@@ -8,7 +8,14 @@ import { libInjectCss } from 'vite-plugin-lib-inject-css'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), libInjectCss(), dts({ include: ['lib'] })],
+  plugins: [
+    react({
+      jsxRuntime: 'automatic',
+      jsxImportSource: 'react',
+    }),
+    libInjectCss(),
+    dts({ include: ['lib'] }),
+  ],
   resolve: {
     alias: {
       '@components': resolve(__dirname, 'lib/components'),
@@ -21,11 +28,17 @@ export default defineConfig({
       entry: resolve(__dirname, 'lib/main.ts'),
       name: '@aisoftware/c3',
       fileName: (format) => `c3.${format}.js`,
-      formats: ['es'],
+      formats: ['es', 'cjs'],
     },
     copyPublicDir: false,
     rollupOptions: {
-      external: ['react', 'react/jsx-runtime'],
+      external: [
+        'react',
+        'react/jsx-runtime',
+        'react/jsx-dev-runtime',
+        'react-dom',
+        'react-dom/client',
+      ],
       input: Object.fromEntries(
         glob
           .sync('lib/**/*.{ts,tsx}', { ignore: 'lib/**/*.stories.tsx' })
@@ -39,8 +52,21 @@ export default defineConfig({
           ]),
       ),
       output: {
-        assetFileNames: 'assets/[name][extname]',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') return 'c3.css'
+          return 'assets/[name][extname]'
+        },
         entryFileNames: '[name].js',
+        preserveModules: true,
+        preserveModulesRoot: 'lib',
+        exports: 'named',
+        globals: {
+          react: 'React',
+          'react/jsx-runtime': 'jsxRuntime',
+          'react/jsx-dev-runtime': 'jsxDevRuntime',
+          'react-dom': 'ReactDOM',
+          'react-dom/client': 'ReactDOMClient',
+        },
       },
     },
   },
