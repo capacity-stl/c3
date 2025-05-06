@@ -52,7 +52,10 @@ export default defineConfig({
           ]),
       ),
       output: {
-        assetFileNames: 'assets/[name][extname]',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') return 'c3.css'
+          return 'assets/[name][extname]'
+        },
         entryFileNames: '[name].js',
         preserveModules: true,
         preserveModulesRoot: 'lib',

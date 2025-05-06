@@ -2,6 +2,7 @@ import * as React from 'react'
 import type { Preview } from '@storybook/react'
 import * as Docs from '@storybook/blocks'
 import '../lib/c3.css'
+import './tw-preflight.css'
 
 const preview: Preview = {
   parameters: {
