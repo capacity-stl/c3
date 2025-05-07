@@ -1,22 +1,12 @@
 {
   "name": "@aisoftware/c3",
-  "version": "0.1.9",
+  "version": "0.1.12",
   "type": "module",
-  "main": "./dist/c3.cjs.js",
-  "module": "./dist/c3.es.js",
+  "main": "dist/main.js",
   "types": "dist/main.d.ts",
-  "style": "dist/c3.css",
   "files": [
-    "dist",
-    "dist/c3.css"
+    "dist"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/c3.es.js",
-      "require": "./dist/c3.cjs.js",
-      "types": "./dist/main.d.ts"
-    }
-  },
   "engines": {
     "node": ">=22.0.0"
   },
