@@ -75,6 +75,12 @@ export default {
       },
       transparent: 'transparent',
     },
+    borderRadius: {
+      xs: '4px',
+      sm: '8px',
+      md: '12px',
+      lg: '20px',
+    },
     extend: {
       boxShadow: {
         outline: '0 0 0 1px #DDE2EA',
@@ -83,6 +89,10 @@ export default {
         contact: '0px 0px 3px rgba(2, 33, 77, 0.35);',
         'contact-focus': '0 0 3px #007DFF',
         'contact-error': '0 0 3px #FF0E47',
+      },
+      width: {
+        240: '240px',
+        320: '320px',
       },
     },
   },
