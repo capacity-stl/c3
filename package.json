@@ -80,5 +80,8 @@
     "**/*.css"
   ],
   "readme": "ERROR: No README data found!",
-  "_id": "@capcity/c3@0.0.0"
+  "_id": "@capcity/c3@0.0.0",
+  "dependencies": {
+    "@tanstack/react-table": "^8.21.3"
+  }
 }

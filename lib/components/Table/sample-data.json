@@ -1,0 +1,64 @@
+{
+  "data": [
+    {
+      "slug": "CAP-123",
+      "message": "This is a message for the first row",
+      "createdAt": "2021-01-01",
+      "updatedAt": "2021-01-01",
+      "status": "active",
+      "priority": "high",
+      "project": "Project 1",
+      "assignee": "Assignee 1",
+      "dueDate": "2021-01-01",
+      "tags": ["tag1", "tag2", "tag3"]
+    },
+    {
+      "slug": "CAP-456",
+      "message": "This is a message for the second row",
+      "createdAt": "2021-01-01",
+      "updatedAt": "2021-01-01",
+      "status": "active",
+      "priority": "medium",
+      "project": "Project 2",
+      "assignee": "Assignee 2",
+      "dueDate": "2021-01-01",
+      "tags": ["tag4", "tag5", "tag6"]
+    },
+    {
+      "slug": "CAP-789",
+      "message": "This is a message for the third row",
+      "createdAt": "2021-01-01",
+      "updatedAt": "2021-01-01",
+      "status": "active",
+      "priority": "medium",
+      "project": "Project 3",
+      "assignee": "Assignee 3",
+      "dueDate": "2021-01-01",
+      "tags": ["tag7", "tag8", "tag9"]
+    },
+    {
+      "slug": "CAP-101",
+      "message": "This is a message for the fourth row",
+      "createdAt": "2021-01-01",
+      "updatedAt": "2021-01-01",
+      "status": "active",
+      "priority": "high",
+      "project": "Project 4",
+      "assignee": "Assignee 4",
+      "dueDate": "2021-01-01",
+      "tags": ["tag10", "tag11", "tag12"]
+    },
+    {
+      "slug": "CAP-102",
+      "message": "This is a message for the fifth row",
+      "createdAt": "2021-01-01",
+      "updatedAt": "2021-01-01",
+      "status": "active",
+      "priority": "low",
+      "project": "Project 5",
+      "assignee": "Assignee 5",
+      "dueDate": "2021-01-01",
+      "tags": ["tag13", "tag14", "tag15"]
+    }
+  ]
+}

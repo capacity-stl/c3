@@ -6,7 +6,7 @@ import { heightProps } from '@props/height.props'
 import { widthProps } from '@props/width.props'
 import { bgColorProps } from '@props/color.props'
 import { borderProps } from '@props/border.props'
-import { ColumnDef, Row } from '@tanstack/react-table'
+import { fontProps } from '@props/font.props'
 
 const TablePropsVariants = {
   ...marginProps,
@@ -15,8 +15,9 @@ const TablePropsVariants = {
   ...widthProps,
   ...bgColorProps,
   ...borderProps,
+  ...fontProps,
 }
-const TableVariants = cva('', {
+const TableVariants = cva('table-auto, border-collapse', {
   variants: {
     ...TablePropsVariants,
   },
@@ -25,6 +26,10 @@ const TableVariants = cva('', {
 const TableRowVariants = cva('', {
   variants: {
     ...TablePropsVariants,
+    border: {
+      default: 'border-b border-meteor-200',
+      none: 'border-none',
+    },
   },
 })
 
@@ -34,12 +39,34 @@ const TableBodyVariants = cva('', {
   },
 })
 
+const TableCellVariants = cva('', {
+  variants: {
+    ...TablePropsVariants,
+  },
+})
+
+const TableFooterVariants = cva('', {
+  variants: {
+    ...TablePropsVariants,
+  },
+})
+
+const TableHeadVariants = cva('', {
+  variants: {
+    ...TablePropsVariants,
+  },
+})
+
+const TableCaptionVariants = cva('', {
+  variants: {
+    ...TablePropsVariants,
+  },
+})
+
 export interface TableProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof TableVariants> {
   className?: string
-  data: Record<string, unknown>[]
-  columns: ColumnDef<Record<string, unknown>, unknown>[]
   testId?: string
 }
 
@@ -47,15 +74,48 @@ export interface TableRowProps
   extends React.HTMLAttributes<HTMLTableRowElement>,
     VariantProps<typeof TableRowVariants> {
   className?: string
-  rows: Row<Record<string, unknown>>[]
 }
 
 export interface TableBodyProps
   extends React.HTMLAttributes<HTMLTableSectionElement>,
     VariantProps<typeof TableBodyVariants> {
   className?: string
-  rows?: Row<Record<string, unknown>>[]
   testId?: string
 }
 
-export { TableVariants, TableRowVariants, TableBodyVariants }
+export interface TableCellProps
+  extends React.HTMLAttributes<HTMLTableCellElement>,
+    VariantProps<typeof TableCellVariants> {
+  className?: string
+  testId?: string
+}
+
+export interface TableFooterProps
+  extends React.HTMLAttributes<HTMLTableSectionElement>,
+    VariantProps<typeof TableFooterVariants> {
+  className?: string
+  testId?: string
+}
+
+export interface TableHeadProps
+  extends React.HTMLAttributes<HTMLTableSectionElement>,
+    VariantProps<typeof TableHeadVariants> {
+  className?: string
+  testId?: string
+}
+
+export interface TableCaptionProps
+  extends React.HTMLAttributes<HTMLTableCaptionElement>,
+    VariantProps<typeof TableCaptionVariants> {
+  className?: string
+  testId?: string
+}
+export {
+  TableVariants,
+  TableRowVariants,
+  TableBodyVariants,
+  TableCellVariants,
+  TableFooterVariants,
+  TableHeadVariants,
+  TableCaptionVariants,
+}
