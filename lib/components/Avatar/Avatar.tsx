@@ -29,9 +29,9 @@ const Avatar = ({
     ...(avatarProps.theme
       ? {
           theme: avatarProps.theme ?? 'earth',
-          color: null,
-          bgColor: null,
-          borderColor: null,
+          color: avatarProps.color,
+          bgColor: avatarProps.bgColor,
+          borderColor: avatarProps.borderColor,
         }
       : {
           color: avatarProps.color ?? 'white',

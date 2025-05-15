@@ -29,7 +29,7 @@ const meta = {
       mapping: { 'Not Defined': undefined },
       control: { type: 'select' },
       description:
-        'Theme will replace color, bgColor and borderColor with predefined settings for the provided color palette',
+        'Theme will provide an standard color for text, background and border with the given color pallete name (like "earth"). Theme can be overridden by the color, bgColor and borderColor props.',
       table: {
         type: {
           summary: 'string | undefined',
