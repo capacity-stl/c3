@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 
-const listVariants = cva('inline-block *:h-full *:w-auto', {
+const listVariants = cva('inline-block *:w-auto', {
   variants: {},
 })
 

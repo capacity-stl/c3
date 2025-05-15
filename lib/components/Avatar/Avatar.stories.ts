@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { within } from '@storybook/testing-library'
 import { expect } from '@storybook/jest'
 import { Avatar } from './Avatar'
-import { colorNames } from '@props/color.props'
+import { colorNames, colorPalletes } from '@props/color.props'
 import { avatarsizeProps } from './Avatar.props'
 import { shapeProps } from '@props/shape.props'
 
@@ -24,16 +24,31 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
+    theme: {
+      options: ['Not Defined', ...Object.keys(colorPalletes)],
+      mapping: { 'Not Defined': undefined },
+      control: { type: 'select' },
+      description:
+        'Theme will provide an standard color for text, background and border with the given color pallete name (like "earth"). Theme can be overridden by the color, bgColor and borderColor props.',
+      table: {
+        type: {
+          summary: 'string | undefined',
+        },
+        defaultValue: { summary: null },
+      },
+    },
+
     color: {
       options: ['Not Defined', ...colorNames],
       mapping: { 'Not Defined': undefined },
       control: { type: 'select' },
       table: {
         type: {
-          summary: 'Text color for the initials display  | string ',
+          summary: 'string',
         },
         defaultValue: { summary: 'earth-400' },
       },
+      description: 'Text color for the initials display',
     },
     bgColor: {
       options: ['Not Defined', ...colorNames],
@@ -41,21 +56,24 @@ const meta = {
       control: { type: 'select' },
       table: {
         type: {
-          summary: 'The background color of the avatar | string | undefined',
+          summary: 'string',
         },
         defaultValue: { summary: 'earth-100' },
       },
+      description: 'Background color of the avatar',
     },
+
     borderColor: {
       options: ['Not Defined', ...colorNames],
       mapping: { 'Not Defined': undefined },
       control: { type: 'select' },
       table: {
         type: {
-          summary: 'Border color when border prop is enabled | string ',
+          summary: 'string',
         },
         defaultValue: { summary: 'earth-400' },
       },
+      description: 'Border color when border prop is enabled',
     },
     size: {
       options: ['Not Defined', ...Object.keys(avatarsizeProps.size)],
@@ -63,52 +81,55 @@ const meta = {
       control: { type: 'select' },
       table: {
         type: {
-          summary:
-            'The size of the avatar | tiny, small, medium, large, huge or available px size',
+          summary: 'string',
         },
         defaultValue: { summary: 'medium' },
       },
+      description: 'Size of the avatar',
     },
     alt: {
       table: {
         type: {
-          summary: 'Alternative text for the image for accessibility purposes',
+          summary: 'string',
         },
         defaultValue: { summary: 'avatar' },
       },
+      description: 'Alternative text for the image for accessibility purposes',
     },
     shape: {
       table: {
         type: {
-          summary: 'The shape of the avatar | circle, square',
+          summary: 'string',
         },
         defaultValue: { summary: 'circle' },
       },
+      description: 'Shape of the avatar',
     },
     children: {
       table: {
         type: {
-          summary:
-            'The initials to display when the image is not provided, or when the image fails to load ',
+          summary: 'string | undefined',
         },
       },
+      description:
+        'The initials to display when the image is not provided, or when the image fails to load',
     },
     src: {
       table: {
         type: {
-          summary:
-            'The image source to display in the avatar | string | undefined',
+          summary: 'string',
         },
       },
+      description: 'The image source to display in the avatar',
     },
     border: {
       table: {
         type: {
-          summary:
-            'Whether to display a border around the avatar | boolean | undefined',
+          summary: 'boolean',
         },
         defaultValue: { summary: 'false' },
       },
+      description: 'Whether to display a border around the avatar',
     },
   },
   args: {

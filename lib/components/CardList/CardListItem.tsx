@@ -6,10 +6,10 @@ import { Text } from '@components/Text/Text'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CardListItem = <T extends Record<string, any>>({
   item,
-  titleKey,
-  descriptionKey,
-  datetimeKey,
-  referenceKey,
+  titleKey = 'title',
+  descriptionKey = 'description',
+  datetimeKey = 'datetime',
+  referenceKey = 'reference',
   isSelected,
   bottomLeftContent,
   bottomRightContent,
@@ -109,7 +109,7 @@ export const CardListItem = <T extends Record<string, any>>({
                     type="button"
                     aria-label={firstOption.label}
                     value={firstOption.label}
-                    className="bg-earth-300 rounded-md px-1 py-1 text-xs text-white"
+                    className="rounded-md bg-earth-300 px-1 py-1 text-xs text-white"
                   />
                 )}
                 {restOptions && restOptions.length > 0 && (

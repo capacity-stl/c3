@@ -25,10 +25,19 @@ const Avatar = ({
     ...avatarProps,
     size: avatarProps.size ?? 'medium',
     shape: avatarProps.shape ?? 'circle',
-    color: avatarProps.color ?? 'white',
-    bgColor: avatarProps.bgColor ?? 'earth-300',
-    borderColor: avatarProps.borderColor ?? 'night',
     testId: avatarProps.testId ?? 'avatar-component',
+    ...(avatarProps.theme
+      ? {
+          theme: avatarProps.theme ?? 'earth',
+          color: avatarProps.color,
+          bgColor: avatarProps.bgColor,
+          borderColor: avatarProps.borderColor,
+        }
+      : {
+          color: avatarProps.color ?? 'white',
+          bgColor: avatarProps.bgColor ?? 'earth-300',
+          borderColor: avatarProps.borderColor ?? 'night',
+        }),
   }
 
   const [imageValid, setImageValid] = useState(true)

@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import { Icon } from '../Icon/Icon'
 
-const cardlistVariants = cva('inline-block *:h-full *:w-auto', {
+const cardlistVariants = cva('inline-block *:w-auto', {
   variants: {},
 })
 
