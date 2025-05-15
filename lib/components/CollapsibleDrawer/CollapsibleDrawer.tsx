@@ -91,7 +91,7 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
     hideSidebarWhenOpen: false,
     borderColor: 'meteor-200',
     dropToSide: 'right',
-    w: '320',
+    w: '80',
     ...props,
   }
 
@@ -123,12 +123,12 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
 
       _setActiveIndex(newIndex)
     },
-    [activeIndex],
+    [activeIndex], //eslint-disable-line react-hooks/exhaustive-deps
   )
 
   useEffect(() => {
     setActiveIndex(deriveActiveIndex(elements, openSectionId))
-  }, [elements, openSectionId])
+  }, [elements, openSectionId]) //eslint-disable-line react-hooks/exhaustive-deps
 
   /* CVA class strings */
   const {

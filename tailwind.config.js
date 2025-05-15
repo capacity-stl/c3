@@ -75,6 +75,12 @@ export default {
       },
       transparent: 'transparent',
     },
+    borderRadius: {
+      xs: '4px',
+      sm: '8px',
+      md: '12px',
+      lg: '20px',
+    },
     extend: {
       boxShadow: {
         outline: '0 0 0 1px #DDE2EA',

@@ -185,8 +185,8 @@ export const Default: Story = {
 export const PageExample: Story = {
   args: {},
   render: () => (
-    <div className="border-meteor-200 flex h-[600px] max-w-[1200px] border">
-      <CollapsibleDrawer hideSidebarWhenOpen openSectionId="queue" w="240">
+    <div className="flex h-[600px] max-w-[1200px] border border-meteor-200">
+      <CollapsibleDrawer hideSidebarWhenOpen openSectionId="queue" w="60">
         <CollapsibleSheet
           icon={Icon.Glyph.CaretRight}
           id="queue"
@@ -204,7 +204,7 @@ export const PageExample: Story = {
           section is an example implementation showing how the sidebar interacts
           with its siblings in a flex row.
         </p>
-        <p className="text-meteor-300 my-3">
+        <p className="my-3 text-meteor-300">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie
           bibendum lorem. Ut sit amet lectus pellentesque diam vehicula porta in
           eget lorem. Sed eu magna neque. Aenean orci erat, dignissim vel erat
@@ -215,7 +215,7 @@ export const PageExample: Story = {
           nisi massa. Praesent leo felis, ullamcorper ac ex in, placerat
           consequat ex.
         </p>
-        <p className="text-meteor-300 my-3">
+        <p className="my-3 text-meteor-300">
           Integer at efficitur lacus. Nulla at nulla eu magna laoreet commodo
           non sit amet arcu. Donec in commodo nisi. Aliquam rutrum laoreet
           purus, vitae ultrices tellus tincidunt vitae. Cras luctus lacus sed
@@ -227,7 +227,7 @@ export const PageExample: Story = {
           Maecenas aliquet, enim sit amet ornare mollis, nisi neque efficitur
           neque, ac iaculis erat metus ut nisl.
         </p>
-        <p className="text-meteor-300 my-3">
+        <p className="my-3 text-meteor-300">
           Duis sagittis malesuada scelerisque. Sed tempor neque in mollis
           condimentum. Etiam hendrerit egestas dignissim. Interdum et malesuada
           fames ac ante ipsum primis in faucibus. Proin ut velit sit amet dolor
@@ -239,7 +239,7 @@ export const PageExample: Story = {
           malesuada ac nisi vel viverra. Proin eu sem quam. Cras non magna ac
           lacus interdum maximus at et diam.
         </p>
-        <p className="text-meteor-300 my-3">
+        <p className="my-3 text-meteor-300">
           Cras ultrices dui massa, sed mattis magna malesuada dictum. In
           imperdiet, odio et lacinia dignissim, orci orci tristique metus, vel
           varius ligula velit sed orci. Nulla dignissim orci eu imperdiet
@@ -255,7 +255,7 @@ export const PageExample: Story = {
           malesuada fames ac ante ipsum primis in faucibus. Phasellus nec arcu
           vitae lorem congue imperdiet non fermentum felis.
         </p>
-        <p className="text-meteor-300 my-3">
+        <p className="my-3 text-meteor-300">
           Integer ut elit tortor. Pellentesque vel egestas tortor. Curabitur
           semper mauris quis convallis iaculis. Orci varius natoque penatibus et
           magnis dis parturient montes, nascetur ridiculus mus. Fusce sagittis
