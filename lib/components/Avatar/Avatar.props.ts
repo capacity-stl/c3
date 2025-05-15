@@ -1,5 +1,10 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { bgColorProps, colorProps, borderColorProps } from '@props/color.props'
+import {
+  bgColorProps,
+  colorProps,
+  borderColorProps,
+  colorPalletes,
+} from '@props/color.props'
 import { shapeProps } from '@props/shape.props'
 
 const avatarsizeProps = {
@@ -18,9 +23,29 @@ const avatarborderProps = {
     false: 'border-0',
   },
 }
+
+const avatarThemeVariants: {
+  theme: Record<keyof typeof colorPalletes, string>
+} = {
+  theme: {
+    night: 'text-meteor-100 bg-night border border-night-300',
+    white: 'text-meteor-300 bg-white border border-meteor-300',
+    'deep-space': 'text-meteor-100 bg-deep-space border border-deep-space',
+    earth: 'text-earth-400 bg-earth-100 border border-earth-100',
+    sun: 'text-sun-400 bg-sun-100 border border-sun-100',
+    mars: 'text-mars-400 bg-mars-100 border border-mars-100',
+    meteor: 'text-meteor-400 bg-meteor-100 border border-meteor-100',
+    neptune: 'text-neptune-400 bg-neptune-100 border border-neptune-100',
+    nova: 'text-nova-400 bg-nova-100 border border-nova-100',
+    mercury: 'text-mercury-400 bg-mercury-100 border border-mercury-100',
+    aurora: 'text-aurora-400 bg-aurora-100 border border-aurora-100',
+  },
+}
+
 const avatarPropsVariants = {
   ...avatarsizeProps,
   ...avatarborderProps,
+  ...avatarThemeVariants,
   ...colorProps,
   ...bgColorProps,
   ...borderColorProps,

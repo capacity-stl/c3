@@ -12,3 +12,7 @@ export { BadgeDot } from './components/BadgeDot/BadgeDot'
 export { Card } from './components/Card/Card'
 export { List } from './components/List/List'
 export { CardList } from './components/CardList/CardList'
+
+// props
+export { colorPalletes } from './props/color.props'
+export { colorNames } from './props/color.props'

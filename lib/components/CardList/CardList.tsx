@@ -87,5 +87,5 @@ const CardList = <T extends Record<string, any>>({
   )
 }
 
-// CardList.Item = ListItem
+CardList.Item = CardListItem
 export { CardList }
