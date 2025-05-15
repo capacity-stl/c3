@@ -4,16 +4,6 @@ import { bgColorProps, borderColorProps } from '@props/color.props'
 import { widthProps } from '@props/width.props'
 import { Icons } from '@components/Icon/Glyphs'
 
-/*
-import { marginProps } from '@props/margin.props'
-import { paddingProps } from '@props/padding.props'
-import { heightProps } from '@props/height.props'
-import { borderProps } from '@props/border.props'
-import { sizeProps } from '@props/size.props'
-import { colorProps } from '@props/color.props'
-import { fontSizes } from '@props/font.props'
-*/
-
 export const DropToSideOptions = {
   Left: 'left',
   Right: 'right',
