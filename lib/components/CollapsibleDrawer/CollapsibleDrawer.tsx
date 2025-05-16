@@ -115,11 +115,11 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
 
   const setActiveIndex = useCallback(
     (newIndex: number | null) => {
-      if (activeIndex && typeof meta[activeIndex]?.onDeselect === 'function')
-        meta[activeIndex].onDeselect()
+      if (activeIndex && typeof meta?.[activeIndex]?.onDeselect === 'function')
+        meta[activeIndex].onDeselect?.()
 
-      if (newIndex && typeof meta[newIndex]?.onSelect === 'function')
-        meta[newIndex].onSelect()
+      if (newIndex && typeof meta?.[newIndex]?.onSelect === 'function')
+        meta[newIndex].onSelect?.()
 
       _setActiveIndex(newIndex)
     },
@@ -173,8 +173,10 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
             className={cn(contentColumnContainerClassString)}
             data-testid={`${meta[activeIndex]?.testId ?? `sheet-${activeIndex}`}-content`}
           >
-            {typeof meta[activeIndex]?.component === 'function'
-              ? React.createElement(meta[activeIndex].component)
+            {typeof meta?.[activeIndex]?.component === 'function'
+              ? React.createElement(
+                  meta[activeIndex].component as React.FunctionComponent,
+                )
               : elements[activeIndex]}
           </div>
         </section>
