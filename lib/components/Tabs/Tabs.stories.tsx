@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { jest } from '@storybook/jest'
 import { within, userEvent } from '@storybook/testing-library'
 import { TabList } from './TabList'
+import { TabListProps } from './Tabs.props'
 import { BrowserRouter } from 'react-router-dom'
 
 interface TabItem {
@@ -81,9 +82,6 @@ const meta = {
     className: {
       description: 'Class name to apply to the component',
     },
-    displayFullBorder: {
-      description: 'Whether to display a full border around the tab list and borders between tabs',
-    },
     hasBottomBorder: {
       description: 'Whether to show the bottom border line for the tab list',
       control: 'boolean',
@@ -94,7 +92,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const TabsDemo = (args) => {
+const TabsDemo = (args: TabListProps) => {
   const [activeTabKey, setActiveTabKey] = React.useState(args.activeTabKey);
   
   React.useEffect(() => {
@@ -115,7 +113,7 @@ const TabsDemo = (args) => {
   );
 };
 
-const TabsWithRouterDemo = (args) => (
+const TabsWithRouterDemo = (args: TabListProps) => (
   <BrowserRouter>
     <TabsDemo {...args} />
   </BrowserRouter>
@@ -189,7 +187,7 @@ export const TabsToLinks: Story = {
       onChangingTabMock.mockClear();
       
       const profileTab = canvas.getByRole('tab', { name: /Profile/i });
-      expect(profileTab).toHaveAttribute('disabled', '');
+      expect(profileTab).toHaveAttribute('data-disabled', 'true');
       expect(profileTab).toHaveClass('cursor-not-allowed', 'opacity-50');
       
       await userEvent.click(profileTab);
