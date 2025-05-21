@@ -80,6 +80,7 @@ export interface TabItem {
   title: string;
   count?: number;
   disabled?: boolean;
+  linkTo?: string;
 }
 
 export interface TabListProps

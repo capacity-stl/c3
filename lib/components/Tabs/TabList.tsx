@@ -39,7 +39,7 @@ export const TabList = ({
               )}
               role="tab"
               aria-selected={isActive}
-              disabled={tab.disabled ?? false}
+              data-disabled={tab.disabled ?? false}
               key={tab.key}
               onClick={() => !tab.disabled && onChangingTab?.(tab.key)}
             >
