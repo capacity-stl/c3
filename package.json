@@ -1,6 +1,10 @@
 {
   "name": "@aisoftware/c3",
+<<<<<<< HEAD
   "version": "0.2.1",
+=======
+  "version": "0.3.0",
+>>>>>>> 16cdc06 (CNP-740 Bumped up version to 0.3.0)
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
