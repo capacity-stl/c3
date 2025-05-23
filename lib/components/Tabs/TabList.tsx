@@ -1,7 +1,6 @@
-import { NavLink } from 'react-router-dom'
 import { isNil } from 'lodash'
 import { cn } from '@utils/cn'
-import { tabListVariants, TabListProps } from './Tabs.props'
+import { tabListVariants, tabItemVariants, TabListProps } from './Tabs.props'
 
 export const TabList = ({
   activeTabKey,
@@ -29,13 +28,15 @@ export const TabList = ({
         {tabs.map((tab) => {
           const isActive = tab.key === activeTabKey
 
-          const tabComponent = (
+          return (
             <div
               className={cn(
-                'text-meteor-500 flex cursor-pointer items-center px-3 py-1.5 text-sm font-medium transition-all whitespace-nowrap uppercase tracking-wider',
-                'border-b-2 border-transparent',
-                isActive && 'border-earth-300 text-earth-300',
-                tab.disabled && 'cursor-not-allowed opacity-50',
+                tabItemVariants({
+                  isActive,
+                  isDisabled: tab.disabled ?? false,
+                }),
+                tab.className,
+                'inline-flex'
               )}
               role="tab"
               aria-selected={isActive}
@@ -49,22 +50,6 @@ export const TabList = ({
                   {tab.count}
                 </div>
               )}
-            </div>
-          )
-
-          return tab.linkTo ? (
-            <NavLink 
-              className="inline-flex"
-              to={tab.linkTo}
-              style={{ 
-                textDecoration: 'none',
-              }}
-            >
-              {tabComponent}
-            </NavLink>
-          ) : (
-            <div className="inline-flex">
-              {tabComponent}
             </div>
           )
         })}

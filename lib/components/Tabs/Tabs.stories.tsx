@@ -5,7 +5,6 @@ import { jest } from '@storybook/jest'
 import { within, userEvent } from '@storybook/testing-library'
 import { TabList } from './TabList'
 import { TabListProps } from './Tabs.props'
-import { BrowserRouter } from 'react-router-dom'
 
 interface TabItem {
   key: string;
@@ -26,27 +25,9 @@ const tabItems: TabItem[] = [
     title: 'Settings',
     count: 5
   },
-  { 
-    key: 'profile', 
-    title: 'Profile'
-  },
-];
-
-const tabItemsWithLinks: TabItem[] = [
-  { 
-    key: 'overview', 
-    title: 'Overview',
-    linkTo: '/overview'
-  },
-  { 
-    key: 'settings', 
-    title: 'Settings',
-    linkTo: '/settings'
-  },
-  { 
+  {
     key: 'profile', 
     title: 'Profile',
-    linkTo: '/profile',
     disabled: true
   },
 ];
@@ -113,17 +94,11 @@ const TabsDemo = (args: TabListProps) => {
   );
 };
 
-const TabsWithRouterDemo = (args: TabListProps) => (
-  <BrowserRouter>
-    <TabsDemo {...args} />
-  </BrowserRouter>
-);
-
 export const TabsDefault: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Basic tabs component with default styling.',
+        story: 'Basic tabs component with default styling. Includes an example of a disabled tab.',
       },
     },
   },
@@ -144,46 +119,7 @@ export const TabsDefault: Story = {
       expect(canvas.getByRole('tab', { selected: true })).toHaveTextContent('Settings');
     });
 
-    await step('Should update when activeTabKey prop changes', async () => {
-      // Reset mock to clear previous calls
-      onChangingTabMock.mockClear();
-      
-      const profile = canvas.getByRole('tab', { name: /Profile/i });
-      await userEvent.click(profile);
-      
-      expect(onChangingTabMock).toHaveBeenCalledWith('profile');
-      expect(canvas.getByRole('tab', { selected: true })).toHaveTextContent('Profile');
-    });
-  },
-}
-
-export const TabsToLinks: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: 'Tabs with navigation links. Clicking a tab will navigate to the specified URL.',
-      },
-    },
-  },
-  args: {
-    activeTabKey: 'overview',
-    tabs: tabItemsWithLinks,
-    onChangingTab: onChangingTabMock,
-  },
-  render: (args) => <TabsWithRouterDemo {...args} />,
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
-    
-    await step('Should handle tab with link navigation', async () => {
-      const settingsTab = canvas.getByRole('tab', { name: /Settings/i });
-      await userEvent.click(settingsTab);
-      
-      expect(onChangingTabMock).toHaveBeenCalledWith('settings');
-      expect(canvas.getByRole('tab', { selected: true })).toHaveTextContent('Settings');
-    });
-
     await step('Should not allow clicking disabled tab', async () => {
-      // Clear mock before testing disabled tab
       onChangingTabMock.mockClear();
       
       const profileTab = canvas.getByRole('tab', { name: /Profile/i });
@@ -191,9 +127,7 @@ export const TabsToLinks: Story = {
       expect(profileTab).toHaveClass('cursor-not-allowed', 'opacity-50');
       
       await userEvent.click(profileTab);
-      // Should not change the active tab
       expect(canvas.getByRole('tab', { selected: true })).toHaveTextContent('Settings');
-      // Should not have called onChangingTab for the disabled tab
       expect(onChangingTabMock).not.toHaveBeenCalled();
     });
   },
