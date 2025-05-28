@@ -81,6 +81,10 @@ export interface ColumnSchema {
   // `component` can be passed to override the default cell content renderer
   // It will receive the `dataKeys` as props, so you can provide custom formatting
   component?: React.FunctionComponent<any> //eslint-disable-line @typescript-eslint/no-explicit-any
+
+  // `uniqueKey` is used as the React Component key when mapping over the columns
+  // This is required for the array, so the Component will attempt to infer a key if not provided
+  uniqueKey?: string
 }
 
 export interface SortSchema {
@@ -95,6 +99,7 @@ export interface DataTableProps
     VariantProps<typeof rootVariants> {
   columns: Array<ColumnSchema>
   data: Array<{ [key: string]: any }> //eslint-disable-line @typescript-eslint/no-explicit-any
+  uniqueKey?: string
   sort?: SortSchema
   rowClickAction?: (rowData: object) => void
   selectable?: boolean

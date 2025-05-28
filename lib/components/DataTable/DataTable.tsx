@@ -13,6 +13,21 @@ const SORT_ORDER = {
   DESC: 'desc',
 }
 
+const getKeyFromColumnSchema = (columnSchema: ColumnSchema) =>
+  columnSchema?.uniqueKey ?? `${columnSchema.dataKeys.join('-')}`
+
+const getKeyFromDataObject = (
+  data: { [key: string]: any }, // eslint-disable-line @typescript-eslint/no-explicit-any
+  index: number,
+  uniqueKey?: string,
+): string => {
+  if (typeof uniqueKey === 'string') return JSON.stringify(data?.[uniqueKey])
+
+  if (data?.id) return String(data.id)
+
+  return String(data?.name ? `${data.name}-${index}` : index)
+}
+
 const DataTableHeaderCell = ({
   columnSchema,
   headerCellClassString,
@@ -59,6 +74,8 @@ const DataTableHeaderRow = ({
     <thead className={headerSectionClassString}>
       <tr className={headerRowClassString}>
         {columns?.map((columnSchema) => {
+          const key = `header-cell-${getKeyFromColumnSchema(columnSchema)}`
+
           return (
             <DataTableHeaderCell
               columnSchema={columnSchema}
@@ -66,6 +83,7 @@ const DataTableHeaderRow = ({
               headerCellDefaultContentClassString={
                 headerCellDefaultContentClassString
               }
+              key={key}
               sort={sort}
             />
           )
@@ -124,6 +142,7 @@ const DataTableDataRow = ({
   dataCellClassString,
   dataCellDefaultContentClassString,
   onClick,
+  rowKey,
 }: {
   columns: Array<ColumnSchema>
   rowData: { [key: string]: any } //eslint-disable-line @typescript-eslint/no-explicit-any
@@ -132,6 +151,7 @@ const DataTableDataRow = ({
   dataCellClassString?: string
   dataCellDefaultContentClassString?: string
   onClick?: (data: object) => void
+  rowKey: string
 }) => {
   const clickHandler =
     typeof onClick === 'function' ? () => onClick(rowData) : () => {}
@@ -148,6 +168,8 @@ const DataTableDataRow = ({
           }
         }, {})
 
+        const key = `data-cell-${getKeyFromColumnSchema(columnSchema)}-${rowKey}`
+
         return (
           <DataTableDataCell
             columnSchema={columnSchema}
@@ -155,6 +177,7 @@ const DataTableDataRow = ({
             dataCellDefaultContentClassString={
               dataCellDefaultContentClassString
             }
+            key={key}
             {...props}
           />
         )
@@ -167,6 +190,7 @@ const DataTable = ({
   columns,
   data,
   className,
+  uniqueKey,
   rowClickAction,
   ...styleProps
 }: DataTableProps) => {
@@ -188,23 +212,33 @@ const DataTable = ({
     <table className={cn(className, rootClassString)}>
       <DataTableHeaderRow
         columns={columns}
-        headerSectionClassString={headerSectionClassString}
-        headerRowClassString={headerRowClassString}
         headerCellClassString={headerCellClassString}
         headerCellDefaultContentClassString={
           headerCellDefaultContentClassString
         }
+        headerRowClassString={headerRowClassString}
+        headerSectionClassString={headerSectionClassString}
       />
-      {data?.map((rowData) => (
-        <DataTableDataRow
-          rowData={rowData}
-          columns={columns}
-          dataRowClassString={dataRowClassString}
-          dataCellClassString={dataCellClassString}
-          dataCellDefaultContentClassString={dataCellDefaultContentClassString}
-          onClick={rowClickAction}
-        />
-      ))}
+      <tbody>
+        {data?.map((rowData, index) => {
+          const key = `row-${getKeyFromDataObject(rowData, index, uniqueKey)}`
+
+          return (
+            <DataTableDataRow
+              columns={columns}
+              dataCellClassString={dataCellClassString}
+              dataCellDefaultContentClassString={
+                dataCellDefaultContentClassString
+              }
+              dataRowClassString={dataRowClassString}
+              key={key}
+              onClick={rowClickAction}
+              rowData={rowData}
+              rowKey={key}
+            />
+          )
+        })}
+      </tbody>
     </table>
   )
 }
