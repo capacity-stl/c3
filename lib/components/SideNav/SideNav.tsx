@@ -29,10 +29,10 @@ const SideNavItem = ({
   trailingContent,
   hasSectionDivider = false,
   state = SideNavItemState.DEFAULT,
+  subItemsIcon = 'CaretRight',
   onItemClick,
   className,
   style,
-  testId = 'navigation-item-component',
   ...navItemProps
 }: SideNavItemProps) => {
   const hasSubItems = subItems && subItems.length > 0
@@ -104,6 +104,8 @@ const SideNavItem = ({
   }
 
   const itemAriaLabel = `nav-item-${label?.toLowerCase().replace(/\s+/g, '-')}`
+  const showSubItemsIcon =
+    hasSubItems && (isHovered || (!leadingIcon && !leadingContent))
 
   return (
     <>
@@ -120,6 +122,7 @@ const SideNavItem = ({
           className={cn(
             'flex w-full rounded-md',
             stateToColor[effectiveState].background,
+            stateToColor[effectiveState].text,
             sideNavItemVariants({ ...navItemProps }),
             className,
           )}
@@ -133,15 +136,13 @@ const SideNavItem = ({
         >
           <div className="flex w-full items-center justify-between gap-2">
             <div className="flex items-center gap-2">
-              {isOpen ||
-              (hasSubItems &&
-                (isHovered || (!leadingIcon && !leadingContent))) ? (
+              {showSubItemsIcon ? (
                 <div
-                  className="bg-meteor-200 flex h-5 w-5 items-center justify-center rounded-xs"
+                  className="flex h-5 w-5 items-center justify-center rounded-xs bg-meteor-200"
                   aria-hidden="true"
                 >
                   <Icon
-                    icon="CaretRight"
+                    icon={subItemsIcon}
                     size="tiny"
                     className={cn(
                       'transition-transform duration-200',
@@ -150,24 +151,23 @@ const SideNavItem = ({
                   />
                 </div>
               ) : leadingIcon || leadingContent ? (
-                <>
-                  {leadingIcon && (
-                    <Icon
-                      icon={leadingIcon}
-                      size="small"
-                      className={stateToColor[effectiveState].icon}
-                      aria-hidden="true"
-                    />
-                  )}
-                  {leadingContent}
-                </>
+                leadingIcon ? (
+                  <Icon
+                    icon={leadingIcon}
+                    size="small"
+                    className={cn(stateToColor[effectiveState].icon, className)}
+                    aria-hidden="true"
+                  />
+                ) : (
+                  leadingContent
+                )
               ) : (
                 <div className="w-5" aria-hidden="true" />
               )}
 
               <Text
                 type="body-strong"
-                className={stateToColor[effectiveState].text}
+                className={cn(stateToColor[effectiveState].text, className)}
               >
                 {label}
               </Text>
@@ -197,17 +197,17 @@ const SideNavItem = ({
         </div>
         {hasSubItems && isOpen && (
           <ul
-            className="list-none space-y-1 pt-1 pl-4"
+            className="list-none space-y-1 pl-4 pt-1"
             aria-labelledby={itemAriaLabel}
           >
             {subItems?.map((subItem, index) => (
-              <SideNavItem key={index} {...subItem} className={className} />
+              <SideNavItem key={index} {...subItem} />
             ))}
           </ul>
         )}
       </li>
       {hasSectionDivider && (
-        <div className="bg-meteor-200 h-0.25 w-full" aria-hidden="true" />
+        <div className="h-px w-full bg-meteor-200" aria-hidden="true" />
       )}
     </>
   )
@@ -217,7 +217,6 @@ const SideNav = ({
   items,
   className,
   style,
-  testId = 'navigation-component',
   itemsClassName,
   itemsStyle,
   ...sideNavProps
@@ -234,17 +233,17 @@ const SideNav = ({
         'px-2.5 py-5',
       )}
       style={style}
-      data-testid={testId}
       role="navigation"
       aria-label="Side navigation (contextual)"
+      data-testid="navigation-component"
     >
       <ul className="list-none space-y-1">
         {items.map((item, index) => (
           <SideNavItem
             key={index}
-            className={itemsClassName}
-            style={itemsStyle}
             {...item}
+            className={cn(itemsClassName, item.className)}
+            style={itemsStyle}
           />
         ))}
       </ul>

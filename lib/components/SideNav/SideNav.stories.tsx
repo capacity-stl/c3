@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { within } from '@storybook/testing-library'
 import { expect, jest } from '@storybook/jest'
 import { SideNav } from './SideNav'
-import { SideNavItemState } from './SideNav.props'
+import { SideNavItemProps, SideNavItemState } from './SideNav.props'
 import { Badge } from '@components/Badge/Badge'
 import { userEvent, waitFor } from '@storybook/testing-library'
 
@@ -54,13 +54,15 @@ export const Default: Story = {
         link: '/about',
         leadingIcon: 'Help',
         trailingNumber: 8,
-        startOpen: true,
+        startOpen: false,
         subItems: [
           {
             label: 'About 1',
             link: '/about-1',
             trailingNumber: 15,
             startOpen: false,
+            leadingIcon: 'Folder',
+            subItemsIcon: 'ChevronRight',
             subItems: [
               {
                 label: 'About 1.1',
@@ -68,6 +70,7 @@ export const Default: Story = {
                 leadingIcon: 'Document',
                 trailingNumber: 16,
                 hasSectionDivider: true,
+                state: 'default',
               },
               {
                 label: 'About 1.2',
@@ -119,7 +122,12 @@ export const Default: Story = {
               </Badge>
             ),
           },
-          { label: 'About 4', link: '/about-4', leadingIcon: 'Document' },
+          {
+            label: 'About 4',
+            link: '/about-4',
+            leadingIcon: 'Document',
+            className: 'bg-mars-400 text-mars-100',
+          },
           { label: 'About 5', link: '/about-5', leadingIcon: 'Document' },
           { label: 'About 6', link: '/about-6', leadingIcon: 'Document' },
         ],
@@ -149,12 +157,14 @@ export const Default: Story = {
     await step('Nested menus expand', async () => {
       const aboutItem = canvas.getByText('About')
       await userEvent.click(aboutItem)
+      await userEvent.unhover(aboutItem)
       await waitFor(async () => {
         const about1 = canvas.getByText('About 1')
         await expect(about1).toBeInTheDocument()
 
         // Expand a second level of nesting
         await userEvent.click(about1)
+        await userEvent.unhover(about1)
         await waitFor(async () => {
           const about11 = canvas.getByText('About 1.1')
           await expect(about11).toBeInTheDocument()
@@ -166,6 +176,7 @@ export const Default: Story = {
       const contactItem = canvas.getByText('Contact')
       const historyPushStateSpy = jest.spyOn(history, 'pushState')
       await userEvent.click(contactItem)
+      await userEvent.unhover(contactItem)
       await expect(historyPushStateSpy).toHaveBeenCalledWith({}, '', '/contact')
     })
 
@@ -173,13 +184,94 @@ export const Default: Story = {
     await step('onItemClick function is called', async () => {
       const homeItem = canvas.getByText('Home')
       await userEvent.click(homeItem)
+      await userEvent.unhover(homeItem)
       await expect(console.log).toHaveBeenCalledWith('Home')
     })
 
     await step('Disabled items do not respond to clicks', async () => {
       const settingsItem = canvas.getByText('Settings')
       await userEvent.click(settingsItem)
+      await userEvent.unhover(settingsItem)
       await expect(console.log).not.toHaveBeenCalledWith('Settings')
     })
   },
 }
+
+// Helper function to create individual item state stories
+const createItemStory = (props: SideNavItemProps): Story => {
+  return {
+    args: {
+      items: [props],
+    },
+  }
+}
+
+export const ItemDefault = createItemStory({
+  label: 'Navigation Item',
+  link: '/example',
+  leadingIcon: 'Document',
+  trailingIcon: 'Lock',
+})
+
+export const ItemHovered = createItemStory({
+  label: 'Hovered Item',
+  link: '/hovered',
+  leadingIcon: 'Home',
+  trailingIcon: 'Info',
+  state: SideNavItemState.HOVERED,
+})
+
+export const ItemSelected = createItemStory({
+  label: 'Selected Item',
+  link: '/selected',
+  leadingIcon: 'Analytics',
+  trailingIcon: 'CaretRight',
+  state: SideNavItemState.SELECTED,
+})
+
+export const ItemDisabled = createItemStory({
+  label: 'Disabled Item',
+  link: '/disabled',
+  leadingIcon: 'GearSolid',
+  trailingIcon: 'Lock',
+  state: SideNavItemState.DISABLED,
+})
+
+export const ItemWithTrailingNumber = createItemStory({
+  label: 'Trailing Number',
+  link: '/trailing-number',
+  leadingIcon: 'Envelope',
+  trailingNumber: 42,
+})
+
+export const ItemWithSectionDivider = createItemStory({
+  label: 'Section Divider',
+  link: '/section-divider',
+  leadingIcon: 'Folder',
+  trailingIcon: 'Lock',
+  hasSectionDivider: true,
+})
+
+export const ItemWithSubItems = createItemStory({
+  label: 'Parent Item',
+  leadingIcon: 'Folder',
+  subItems: [
+    {
+      label: 'Child Item 1',
+      link: '/child1',
+      leadingIcon: 'Document',
+    },
+    {
+      label: 'Child Item 2',
+      link: '/child2',
+      leadingIcon: 'Document',
+      state: SideNavItemState.SELECTED,
+    },
+    {
+      label: 'Child Item 3',
+      link: '/child3',
+      leadingIcon: 'Document',
+      trailingNumber: 5,
+    },
+  ],
+})
