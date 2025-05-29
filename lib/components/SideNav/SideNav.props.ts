@@ -11,12 +11,16 @@ import { layoutProps } from '../../props/layout.props'
 import { fontProps } from '../../props/font.props'
 import { Icons } from '@components/Icon/Glyphs'
 import { borderRadiusProps } from '../../props/borderradius.props'
-export enum SideNavItemState {
-  DISABLED = 'disabled',
-  SELECTED = 'selected',
-  DEFAULT = 'default',
-  HOVERED = 'hovered',
-}
+
+export const SIDE_NAV_STATES = {
+  DISABLED: 'disabled',
+  SELECTED: 'selected',
+  DEFAULT: 'default',
+  HOVERED: 'hovered',
+} as const
+
+export type SideNavState =
+  (typeof SIDE_NAV_STATES)[keyof typeof SIDE_NAV_STATES]
 
 const sideNavItemVariants = cva('', {
   variants: {
@@ -46,7 +50,7 @@ export interface SideNavItemProps
   link?: string
   subItems?: SideNavItemProps[]
   startOpen?: boolean
-  state?: SideNavItemState
+  state?: SideNavState
   subItemsIcon?: keyof typeof Icons
   leadingIcon?: keyof typeof Icons
   leadingContent?: ReactNode

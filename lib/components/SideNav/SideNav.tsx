@@ -5,7 +5,7 @@ import {
   SideNavItemProps,
   sideNavVariants,
   sideNavItemVariants,
-  SideNavItemState,
+  SIDE_NAV_STATES,
 } from './SideNav.props'
 import { Text } from '@components/Text/Text'
 import { Icon } from '@components/Icon/Icon'
@@ -28,7 +28,7 @@ const SideNavItem = ({
   trailingNumber,
   trailingContent,
   hasSectionDivider = false,
-  state = SideNavItemState.DEFAULT,
+  state = SIDE_NAV_STATES.DEFAULT,
   subItemsIcon = 'CaretRight',
   onItemClick,
   className,
@@ -38,31 +38,31 @@ const SideNavItem = ({
   const hasSubItems = subItems && subItems.length > 0
   const [isOpen, setIsOpen] = useState(hasSubItems ? startOpen : false)
   const [isHovered, setIsHovered] = useState(false)
-  const isDisabled = state === SideNavItemState.DISABLED
+  const isDisabled = state === SIDE_NAV_STATES.DISABLED
 
   // Hover overrides other states
-  const effectiveState = isHovered ? SideNavItemState.HOVERED : state
+  const effectiveState = isHovered ? SIDE_NAV_STATES.HOVERED : state
 
   const stateToColor = {
-    [SideNavItemState.DEFAULT]: {
+    [SIDE_NAV_STATES.DEFAULT]: {
       background: '',
       icon: 'text-deep-space',
       text: 'text-deep-space',
       numberBadge: '',
     },
-    [SideNavItemState.HOVERED]: {
+    [SIDE_NAV_STATES.HOVERED]: {
       background: 'bg-meteor-200',
       icon: 'text-deep-space',
       text: 'text-deep-space',
       numberBadge: '',
     },
-    [SideNavItemState.SELECTED]: {
+    [SIDE_NAV_STATES.SELECTED]: {
       background: 'bg-earth-300',
       icon: 'text-earth-100',
       text: 'text-white',
       numberBadge: 'bg-earth-400 text-white',
     },
-    [SideNavItemState.DISABLED]: {
+    [SIDE_NAV_STATES.DISABLED]: {
       background: '',
       icon: 'text-meteor-300',
       text: 'text-meteor-300',

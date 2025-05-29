@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { within } from '@storybook/testing-library'
 import { expect, jest } from '@storybook/jest'
 import { SideNav } from './SideNav'
-import { SideNavItemProps, SideNavItemState } from './SideNav.props'
+import { SideNavItemProps } from './SideNav.props'
 import { Badge } from '@components/Badge/Badge'
 import { userEvent, waitFor } from '@storybook/testing-library'
 
@@ -83,7 +83,7 @@ export const Default: Story = {
                 link: '/about-1.3',
                 leadingIcon: 'Document',
                 trailingNumber: 42,
-                state: SideNavItemState.SELECTED,
+                state: 'selected',
               },
               {
                 label: 'About 1.4',
@@ -142,7 +142,7 @@ export const Default: Story = {
         label: 'Settings',
         link: '/settings',
         leadingIcon: 'GearSolid',
-        state: SideNavItemState.DISABLED,
+        state: 'disabled',
       },
     ],
   },
@@ -206,45 +206,45 @@ const createItemStory = (props: SideNavItemProps): Story => {
   }
 }
 
-export const ItemDefault = createItemStory({
+export const ItemDefault: Story = createItemStory({
   label: 'Navigation Item',
   link: '/example',
   leadingIcon: 'Document',
   trailingIcon: 'Lock',
 })
 
-export const ItemHovered = createItemStory({
+export const ItemHovered: Story = createItemStory({
   label: 'Hovered Item',
   link: '/hovered',
   leadingIcon: 'Home',
   trailingIcon: 'Info',
-  state: SideNavItemState.HOVERED,
+  state: 'hovered',
 })
 
-export const ItemSelected = createItemStory({
+export const ItemSelected: Story = createItemStory({
   label: 'Selected Item',
   link: '/selected',
   leadingIcon: 'Analytics',
   trailingIcon: 'CaretRight',
-  state: SideNavItemState.SELECTED,
+  state: 'selected',
 })
 
-export const ItemDisabled = createItemStory({
+export const ItemDisabled: Story = createItemStory({
   label: 'Disabled Item',
   link: '/disabled',
   leadingIcon: 'GearSolid',
   trailingIcon: 'Lock',
-  state: SideNavItemState.DISABLED,
+  state: 'disabled',
 })
 
-export const ItemWithTrailingNumber = createItemStory({
+export const ItemWithTrailingNumber: Story = createItemStory({
   label: 'Trailing Number',
   link: '/trailing-number',
   leadingIcon: 'Envelope',
   trailingNumber: 42,
 })
 
-export const ItemWithSectionDivider = createItemStory({
+export const ItemWithSectionDivider: Story = createItemStory({
   label: 'Section Divider',
   link: '/section-divider',
   leadingIcon: 'Folder',
@@ -252,7 +252,7 @@ export const ItemWithSectionDivider = createItemStory({
   hasSectionDivider: true,
 })
 
-export const ItemWithSubItems = createItemStory({
+export const ItemWithSubItems: Story = createItemStory({
   label: 'Parent Item',
   leadingIcon: 'Folder',
   subItems: [
@@ -265,7 +265,7 @@ export const ItemWithSubItems = createItemStory({
       label: 'Child Item 2',
       link: '/child2',
       leadingIcon: 'Document',
-      state: SideNavItemState.SELECTED,
+      state: 'selected',
     },
     {
       label: 'Child Item 3',
