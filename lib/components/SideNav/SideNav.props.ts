@@ -47,6 +47,7 @@ export interface SideNavItemProps
   subItems?: SideNavItemProps[]
   startOpen?: boolean
   state?: SideNavItemState
+  subItemsIcon?: keyof typeof Icons
   leadingIcon?: keyof typeof Icons
   leadingContent?: ReactNode
   trailingNumber?: number
@@ -56,7 +57,6 @@ export interface SideNavItemProps
   onItemClick?: (event: React.MouseEvent | React.KeyboardEvent) => void
   className?: string
   style?: React.CSSProperties
-  testId?: string
 }
 
 const sideNavVariants = cva('', {
@@ -76,7 +76,6 @@ export interface SideNavProps
   extends Omit<React.HTMLAttributes<HTMLElement>, 'onSelect'>,
     VariantProps<typeof sideNavVariants> {
   items: SideNavItemProps[]
-  testId?: string
   className?: string
   style?: React.CSSProperties
   itemsClassName?: string
