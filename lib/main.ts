@@ -15,6 +15,7 @@ export { CardList } from './components/CardList/CardList'
 export { CollapsibleDrawer } from './components/CollapsibleDrawer/CollapsibleDrawer'
 export { CollapsibleSheet } from './components/CollapsibleDrawer/CollapsibleSheet'
 export { DataTable } from './components/DataTable/DataTable'
+export { TabList } from './components/Tabs/TabList'
 
 // props
 export { colorPalletes } from './props/color.props'
