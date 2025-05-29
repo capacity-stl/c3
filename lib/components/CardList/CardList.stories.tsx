@@ -7,6 +7,7 @@ import { userEvent } from '@storybook/testing-library'
 import { ListItemType } from './CardList.props'
 import { Avatar } from '@components/Avatar/Avatar'
 import { jest } from '@storybook/jest'
+
 interface InteractionType extends ListItemType {
   id: number
   title: string
@@ -136,7 +137,7 @@ const NoItemsMessage = () => {
 const bottomLeftContent = (item: InteractionType) =>
   item?.status && (
     <div className="flex flex-row items-center gap-1">
-      <span className="bg-sun-100 text-sun-400 rounded-full px-2 py-1 text-xs font-medium capitalize">
+      <span className="rounded-full bg-sun-100 px-2 py-1 text-xs font-medium capitalize text-sun-400">
         {item?.status}
       </span>
       {item?.status === 'in progress' && (
@@ -166,7 +167,7 @@ const header = (selectedItems: InteractionType[]) => {
       </button>
       {selectedItems.length > 0 ? (
         <button
-          className="text-meteor-400 flex cursor-pointer flex-row items-center gap-1 text-sm font-medium"
+          className="flex cursor-pointer flex-row items-center gap-1 text-sm font-medium text-meteor-400"
           onClick={onClick}
         >
           <Icon icon="Pencil" color="meteor-300" size="tiny" />
@@ -185,13 +186,13 @@ const onSelectionChangeMock = jest.fn(
   },
 )
 
-const meta = {
-  title: 'Data Display/CardList',
-  component: CardList<InteractionType>,
+const meta: Meta<typeof CardList<InteractionType>> = {
+  title: 'Data Display/Card List',
+  component: CardList,
   parameters: {
     docs: {
       description: {
-        component: 'Component to display a List.',
+        component: 'Display a list of items in a card format',
       },
     },
     layout: 'centered',
@@ -210,11 +211,21 @@ const meta = {
         'Array of items to display in the list. They can optionally implement ListItemType attributes.',
       table: {
         type: {
-          summary: `ListItemType`,
-          detail: `interface ListItemType {
-  options?: OptionItem[]
+          summary: `InteractionType`,
+          detail: `interface InteractionType extends ListItemType {
+  id: number
+  title: string
+  description: string
+  datetime: string
+  reference?: string
   icon?: keyof typeof Icon.Glyph
   iconColor?: string
+  status?: string
+  user?: {
+    imageUrl: string
+    initials: string[2]
+    color?: string
+  }
 }`,
         },
       },
@@ -267,7 +278,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof CardList<InteractionType>>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -278,10 +289,10 @@ export const CardListDefault: Story = {
     selectionMode: 'multiple',
     dense: false,
     divider: true,
-    bottomLeftContent: bottomLeftContent,
-    bottomRightContent: bottomRightContent,
+    bottomLeftContent,
+    bottomRightContent,
     onSelectionChange: onSelectionChangeMock,
-    header: header,
+    header,
     firstOptionAsButton: true,
   },
 
