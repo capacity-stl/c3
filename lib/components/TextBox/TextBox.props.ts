@@ -24,7 +24,7 @@ export const iconSizeMapping = {
   [TextBoxSizes.Medium]: 'small',
 } as { [key: string]: 'tiny' | 'small' }
 
-const rootVariants = cva(['relative', 'bg-white', 'w-72'], {
+const rootVariants = cva(['relative', 'bg-white', 'w-72', 'border-solid'], {
   variants: {
     type: {
       [TextBoxTypes.Standard]: [borderProps.border.focusWithin],

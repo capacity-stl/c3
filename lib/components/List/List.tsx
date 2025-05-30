@@ -31,7 +31,7 @@ const List = <T,>({
           role="heading"
           aria-level={1}
           className={cn(
-            'border-meteor-200 border-b p-2',
+            'border-b border-solid border-meteor-200 p-2',
             dense ? 'py-1' : 'py-2',
           )}
         >
@@ -44,7 +44,7 @@ const List = <T,>({
         (items.length === 0 && (
           <div role="status">
             {noItems ?? (
-              <Text className="text-meteor-300 text-center">
+              <Text className="text-center text-meteor-300">
                 No items found
               </Text>
             )}
@@ -55,7 +55,7 @@ const List = <T,>({
       {items?.length > 0 && (
         <ul
           role="listbox"
-          className={cn({ 'divide-meteor-200 divide-y': divider })}
+          className={cn({ 'divide-y divide-meteor-200': divider })}
         >
           {items.map((item, index) => {
             const isSelected = selectedItems?.includes(item) ?? false
