@@ -21,7 +21,7 @@ import { CollapsibleSheetProps } from './CollapsibleSheet.props'
 /* Utilities */
 const deriveActiveIndex = (
   children: Array<React.ReactElement<CollapsibleSheetProps>>,
-  openSectionId?: string,
+  openSectionId?: string | null,
 ) => {
   const activeIndex = children.reduce<number | null>(
     (active, element, index) => {
@@ -30,7 +30,22 @@ const deriveActiveIndex = (
     null,
   )
 
+  console.log('deriveActiveIndex', activeIndex)
+
   return activeIndex
+}
+
+const useActiveIndex = (
+  elements: Array<React.ReactElement<CollapsibleSheetProps>>,
+  openSectionId?: string | null,
+) => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+
+  useEffect(() => {
+    setActiveIndex(deriveActiveIndex(elements, openSectionId))
+  }, [openSectionId]) //eslint-disable-line react-hooks/exhaustive-deps
+
+  return { activeIndex, setActiveIndex }
 }
 
 /* Components */
@@ -108,27 +123,33 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
 
     return [elements, meta]
   }, [children])
-  const [activeIndex, _setActiveIndex] = useState<number | null>(
-    deriveActiveIndex(elements, openSectionId),
+
+  const { activeIndex, setActiveIndex } = useActiveIndex(
+    elements,
+    openSectionId,
   )
   const isOpen = typeof activeIndex === 'number'
 
-  const setActiveIndex = useCallback(
+  const handleIndexChange = useCallback(
     (newIndex: number | null) => {
-      if (activeIndex && typeof meta?.[activeIndex]?.onDeselect === 'function')
+      if (newIndex === activeIndex) return
+
+      if (
+        typeof activeIndex === 'number' &&
+        typeof meta?.[activeIndex]?.onDeselect === 'function'
+      )
         meta[activeIndex].onDeselect?.()
 
-      if (newIndex && typeof meta?.[newIndex]?.onSelect === 'function')
+      if (
+        typeof newIndex === 'number' &&
+        typeof meta?.[newIndex]?.onSelect === 'function'
+      )
         meta[newIndex].onSelect?.()
 
-      _setActiveIndex(newIndex)
+      setActiveIndex(newIndex)
     },
     [activeIndex], //eslint-disable-line react-hooks/exhaustive-deps
   )
-
-  useEffect(() => {
-    setActiveIndex(deriveActiveIndex(elements, openSectionId))
-  }, [elements, openSectionId]) //eslint-disable-line react-hooks/exhaustive-deps
 
   /* CVA class strings */
   const {
@@ -147,7 +168,7 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
             <DrawerButton
               icon={metaItem.icon}
               isSelected={activeIndex === index}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => handleIndexChange(index)}
               testId={`${metaItem?.testId ?? `sheet-${index}`}-icon`}
               title={metaItem.title}
             />
@@ -165,7 +186,7 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
             </div>
             <DrawerButton
               icon={meta[activeIndex]?.closeIcon ?? Icon.Glyph.Close}
-              onClick={() => setActiveIndex(null)}
+              onClick={() => handleIndexChange(null)}
               title="Close Drawer"
             />
           </div>
