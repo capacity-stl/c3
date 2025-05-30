@@ -21,10 +21,12 @@ export const TabList = ({
       )}
       data-testid={testId}
     >
-      <div className={cn(
-        'flex flex-row',
-        hasBottomBorder && 'border-b border-meteor-200'
-      )}>
+      <div
+        className={cn(
+          'flex flex-row',
+          hasBottomBorder && 'border-b border-solid border-meteor-200',
+        )}
+      >
         {tabs.map((tab) => {
           const isActive = tab.key === activeTabKey
 
@@ -36,7 +38,7 @@ export const TabList = ({
                   isDisabled: tab.disabled ?? false,
                 }),
                 tab.className,
-                'inline-flex'
+                'inline-flex',
               )}
               role="tab"
               aria-selected={isActive}
@@ -46,7 +48,7 @@ export const TabList = ({
             >
               <div>{tab.title}</div>
               {!isNil(tab.count) && (
-                <div className="rounded-full text-meteor-600 ml-1.5 bg-meteor-100 px-1 py-0.5 text-xs font-semibold">
+                <div className="text-meteor-600 ml-1.5 rounded-full bg-meteor-100 px-1 py-0.5 text-xs font-semibold">
                   {tab.count}
                 </div>
               )}

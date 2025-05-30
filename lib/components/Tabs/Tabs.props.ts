@@ -19,7 +19,7 @@ export const tabListVariants = cva('', {
 })
 
 export const tabItemVariants = cva(
-  'text-meteor-500 flex cursor-pointer items-center px-3 py-1.5 text-sm font-medium transition-all whitespace-nowrap uppercase tracking-wider border-b-2 border-transparent',
+  'text-meteor-500 flex cursor-pointer items-center px-3 py-1.5 text-sm font-medium transition-all whitespace-nowrap uppercase tracking-wider border-b-2 border-solid border-transparent',
   {
     variants: {
       isActive: {
@@ -33,25 +33,25 @@ export const tabItemVariants = cva(
       isActive: false,
       isDisabled: false,
     },
-  }
+  },
 )
 
 export interface TabItem {
-  key: string;
-  title: string;
-  count?: number;
-  disabled?: boolean;
-  linkTo?: string;
-  className?: string;
+  key: string
+  title: string
+  count?: number
+  disabled?: boolean
+  linkTo?: string
+  className?: string
 }
 
 export interface TabListProps
   extends React.HTMLAttributes<HTMLDivElement>,
-  VariantProps<typeof tabListVariants> {
-  activeTabKey?: string;
-  className?: string;
-  tabs?: TabItem[];
-  onChangingTab?: (key: string) => void;
-  testId?: string;
-  hasBottomBorder?: boolean;
-} 
+    VariantProps<typeof tabListVariants> {
+  activeTabKey?: string
+  className?: string
+  tabs?: TabItem[]
+  onChangingTab?: (key: string) => void
+  testId?: string
+  hasBottomBorder?: boolean
+}
