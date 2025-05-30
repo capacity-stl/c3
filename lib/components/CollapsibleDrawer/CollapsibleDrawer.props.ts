@@ -120,7 +120,7 @@ export interface CollapsibleDrawerProps
   className?: string
   dropToSide?: 'left' | 'right'
   hideSidebarWhenOpen?: boolean
-  openSectionId?: string
+  openSectionId?: string | null
   testId?: string
   w?: string | number
 }
