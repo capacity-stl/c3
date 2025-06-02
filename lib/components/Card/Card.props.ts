@@ -15,7 +15,7 @@ const cardPropsVariants = {
   ...heightProps,
   ...widthProps,
 }
-const cardVariants = cva('flex', {
+const cardVariants = cva('flex border-solid', {
   variants: {
     ...cardPropsVariants,
   },

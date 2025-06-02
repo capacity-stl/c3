@@ -21,8 +21,8 @@ const rootVariants = cva(['flex'], {
 const contentColumnVariants = cva(['flex', 'flex-col', 'min-h-0'], {
   variants: {
     dropToSide: {
-      [DropToSideOptions.Left]: 'border-l',
-      [DropToSideOptions.Right]: 'border-r',
+      [DropToSideOptions.Left]: 'border-l border-solid',
+      [DropToSideOptions.Right]: 'border-r border-solid',
     },
     ...borderColorProps,
     ...widthProps,
@@ -36,6 +36,7 @@ const contentColumnHeaderVariants = cva(
     'items-center',
     'justify-between',
     'border-b',
+    'border-solid',
     'p-2',
     'gap-2',
   ],
@@ -55,8 +56,8 @@ const iconColumnVariants = cva(
   {
     variants: {
       dropToSide: {
-        [DropToSideOptions.Left]: 'border-l',
-        [DropToSideOptions.Right]: 'border-r',
+        [DropToSideOptions.Left]: 'border-l border-solid',
+        [DropToSideOptions.Right]: 'border-r border-solid',
       },
       ...bgColorProps,
       ...borderColorProps,
