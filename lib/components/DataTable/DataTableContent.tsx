@@ -70,8 +70,16 @@ const DataTableDataRow = ({
 }) => {
   const clickHandler = isSelectable ? onSelect : onClick
 
+  console.log({ onClick, onSelect, isSelectable, clickHandler })
+
   return (
-    <tr className={dataRowClassString} onClick={clickHandler}>
+    <tr
+      className={dataRowClassString}
+      onClick={() => {
+        console.log('clicked row')
+        clickHandler()
+      }}
+    >
       {isSelectable ? (
         <td className={dataCellClassString}>
           <div className={dataCellDefaultContentClassString}>

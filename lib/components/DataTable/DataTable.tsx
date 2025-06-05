@@ -66,7 +66,16 @@ const DataTable = ({
             selectedIndexes?.indexOf(index) >= 0
           const onClick = hasClickHandler ? () => onClickRow(rowData) : () => {}
           const onSelect = hasSelecthandler
-            ? () => onSelectRow(rowData, !isSelected)
+            ? () => {
+                console.log(
+                  'DataTable map onSelect',
+                  rowData,
+                  !isSelected,
+                  onSelectRow,
+                )
+
+                onSelectRow(rowData, !isSelected)
+              }
             : () => {}
           const isClickable =
             hasClickHandler || (hasSelecthandler && isSelectable)

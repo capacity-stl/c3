@@ -92,6 +92,7 @@ export const Simple: Story = {
     const [selectedIds, setSelectedIds] = useState<Array<number>>([])
 
     const handleSelect = (rowData: object, isSelected: boolean) => {
+      console.log('handleSelect', rowData, isSelected)
       const { dexNumber } = rowData as SimpleExampleDataShape
 
       if (isSelected) {
@@ -102,6 +103,7 @@ export const Simple: Story = {
     }
 
     const handleSelectAll = () => {
+      console.log('handleSelectAll')
       if (selectedIds.length === data.length) {
         setSelectedIds([])
       } else {
@@ -121,6 +123,8 @@ export const Simple: Story = {
         ? [...indexes, index]
         : indexes
     }, [] as Array<number>)
+
+    console.log({ selectedIds, selectedIndexes })
 
     return (
       <>
