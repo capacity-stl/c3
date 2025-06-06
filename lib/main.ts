@@ -23,4 +23,4 @@ export { colorPalletes } from './props/color.props'
 export { colorNames } from './props/color.props'
 
 // hooks
-export { useDefaultSortHandler } from './components/DataTable/useDefaultSortHandler'
+export { useDefaultSortHandler } from './components/DataTable/DataTable.hooks'
