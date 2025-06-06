@@ -1,4 +1,16 @@
-export const simpleExample = [
+export type SimpleExampleDataShape = {
+  dexNumber: number
+  name: string
+  evolutionStage: number
+  previousStage: string
+  type1: string
+  type2: string
+  generation: number
+  region: string
+  originalConsole: string
+}
+
+const simpleExample = [
   {
     dexNumber: 1,
     name: 'Bulbasaur',
@@ -188,9 +200,13 @@ export const simpleExample = [
     region: 'Alola',
     originalConsole: '3DS',
   },
-]
+] as Array<SimpleExampleDataShape>
 
-export const queueExample = {
+export type QueueExampleDataShape = {
+  [key: string]: any //eslint-disable-line
+}
+
+const queueExample = {
   ticketQueue: [
     {
       id: 156434,
@@ -2112,4 +2128,6 @@ export const queueExample = {
     },
   ],
   totalCount: 31,
-}
+} as { ticketQueue: Array<QueueExampleDataShape> }
+
+export { simpleExample, queueExample }
