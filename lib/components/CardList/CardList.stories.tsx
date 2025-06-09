@@ -252,6 +252,11 @@ const meta: Meta<typeof CardList<InteractionType>> = {
       control: { type: 'select' },
       options: ['single', 'multiple', 'none'],
     },
+    textSelectable: {
+      description: `Enables text selection for the list items`,
+      table: { type: { summary: 'boolean' } },
+      control: { type: 'boolean' },
+    },
     noItems: {
       description: `[Slot] Content to display when the list is empty`,
     },

@@ -17,6 +17,7 @@ const CardList = <T extends Record<string, any>>({
   dense = false,
   divider = true,
   selectionMode = 'single',
+  textSelectable = false,
   onSelectionChange,
   loading = false,
   bottomLeftContent,
@@ -58,6 +59,7 @@ const CardList = <T extends Record<string, any>>({
         datetimeKey={datetimeKey}
         referenceKey={referenceKey}
         isSelected={item.isSelected}
+        textSelectable={textSelectable}
         bottomLeftContent={bottomLeftContent}
         bottomRightContent={bottomRightContent}
         firstOptionAsButton={firstOptionAsButton}

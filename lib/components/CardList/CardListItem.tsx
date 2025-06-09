@@ -14,6 +14,7 @@ export const CardListItem = <T extends Record<string, any>>({
   bottomLeftContent,
   bottomRightContent,
   firstOptionAsButton,
+  textSelectable,
 }: CardListItemProps<T>) => {
   // const [isMenuOpen, setIsMenuOpen] = useState(false)
   const firstOption = firstOptionAsButton ? item.options?.[0] : null
@@ -22,7 +23,10 @@ export const CardListItem = <T extends Record<string, any>>({
     : item.options
 
   return (
-    <article className="w-full select-none" aria-label={item[titleKey]}>
+    <article
+      className={`w-full ${textSelectable ? '' : 'select-none'}`}
+      aria-label={item[titleKey]}
+    >
       <div className="flex flex-row gap-2">
         {item.icon && (
           <div role="presentation">

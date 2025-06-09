@@ -19,6 +19,7 @@ export type CardListProps<T> = VariantProps<typeof cardlistVariants> &
     referenceKey?: string
     firstOptionAsButton?: boolean
     selectionMode?: 'single' | 'multiple' | 'none'
+    textSelectable?: boolean
     bottomLeftContent?: (item: T) => React.ReactNode
     bottomRightContent?: (item: T) => React.ReactNode
     onSelectionChange?: (items: T[], lastSelectedItem?: T) => void
@@ -32,6 +33,7 @@ export type CardListItemProps<T> = {
   datetimeKey: string
   referenceKey: string
   isSelected?: boolean
+  textSelectable?: boolean
   bottomLeftContent?: (item: T) => React.ReactNode
   bottomRightContent?: (item: T) => React.ReactNode
   firstOptionAsButton?: boolean
