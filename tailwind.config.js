@@ -79,6 +79,9 @@ export default {
         md: '12px',
         lg: '20px',
       },
+      borderWidth: {
+        6: '6px',
+      },
       boxShadow: {
         outline: '0 0 0 1px #DDE2EA',
         'outline-focus': '0 0 0 2px #007DFF',
