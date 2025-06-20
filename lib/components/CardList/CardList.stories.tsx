@@ -380,13 +380,6 @@ export const CardListDefault: Story = {
   },
 }
 
-export const CardListEmpty: Story = {
-  args: {
-    items: [],
-    noItems: <NoItemsMessage />,
-  },
-}
-
 export const CardListWithDefaultSelection: Story = {
   args: {
     items,
@@ -414,7 +407,7 @@ export const CardListWithDefaultSelection: Story = {
     docs: {
       description: {
         story:
-          'Demonstrates CardList with defaultSelectedItems. The first and third items are pre-selected. Open browser console to see selection changes.',
+          'Demonstrates CardList with defaultSelectedItems. The first and third items are pre-selected.',
       },
     },
   },
@@ -446,8 +439,15 @@ export const CardListSingleDefaultSelection: Story = {
     docs: {
       description: {
         story:
-          'Demonstrates CardList with single selection and default selection. The second item is pre-selected. Open browser console to see selection changes.',
+          'Demonstrates CardList with single selection and default selection. The second item is pre-selected.',
       },
     },
+  },
+}
+
+export const CardListEmpty: Story = {
+  args: {
+    items: [],
+    noItems: <NoItemsMessage />,
   },
 }
