@@ -395,7 +395,7 @@ export const CardListWithDefaultSelection: Story = {
       selectedItems: InteractionType[],
       lastSelected?: InteractionType,
     ) => {
-      console.log('🎯 Selection changed!', {
+      console.log('Selection changed!', {
         selectedCount: selectedItems.length,
         selectedTitles: selectedItems.map((item) => item.title),
         lastSelected: lastSelected?.title,
@@ -428,7 +428,7 @@ export const CardListSingleDefaultSelection: Story = {
       selectedItems: InteractionType[],
       lastSelected?: InteractionType,
     ) => {
-      console.log('🎯 Single selection changed!', {
+      console.log('Single selection changed!', {
         selectedItem: selectedItems[0]?.title,
         lastSelected: lastSelected?.title,
         selectedItems,
