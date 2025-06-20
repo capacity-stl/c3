@@ -23,6 +23,7 @@ export type CardListProps<T> = VariantProps<typeof cardlistVariants> &
     bottomLeftContent?: (item: T) => React.ReactNode
     bottomRightContent?: (item: T) => React.ReactNode
     onSelectionChange?: (items: T[], lastSelectedItem?: T) => void
+    defaultSelectedItems?: T[]
     testId?: string
   }
 

@@ -257,6 +257,10 @@ const meta: Meta<typeof CardList<InteractionType>> = {
       table: { type: { summary: 'boolean' } },
       control: { type: 'boolean' },
     },
+    defaultSelectedItems: {
+      description: `Array of items that should be selected by default when the component mounts`,
+      table: { type: { summary: 'T[]' } },
+    },
     noItems: {
       description: `[Slot] Content to display when the list is empty`,
     },
@@ -380,5 +384,70 @@ export const CardListEmpty: Story = {
   args: {
     items: [],
     noItems: <NoItemsMessage />,
+  },
+}
+
+export const CardListWithDefaultSelection: Story = {
+  args: {
+    items,
+    selectionMode: 'multiple',
+    dense: false,
+    divider: true,
+    bottomLeftContent,
+    bottomRightContent,
+    header,
+    firstOptionAsButton: true,
+    defaultSelectedItems: [items[0], items[2]], // Pre-select first and third items
+    onSelectionChange: (
+      selectedItems: InteractionType[],
+      lastSelected?: InteractionType,
+    ) => {
+      console.log('🎯 Selection changed!', {
+        selectedCount: selectedItems.length,
+        selectedTitles: selectedItems.map((item) => item.title),
+        lastSelected: lastSelected?.title,
+        selectedItems,
+      })
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Demonstrates CardList with defaultSelectedItems. The first and third items are pre-selected. Open browser console to see selection changes.',
+      },
+    },
+  },
+}
+
+export const CardListSingleDefaultSelection: Story = {
+  args: {
+    items,
+    selectionMode: 'single',
+    dense: false,
+    divider: true,
+    bottomLeftContent,
+    bottomRightContent,
+    header,
+    firstOptionAsButton: true,
+    defaultSelectedItems: [items[1]], // Pre-select second item
+    onSelectionChange: (
+      selectedItems: InteractionType[],
+      lastSelected?: InteractionType,
+    ) => {
+      console.log('🎯 Single selection changed!', {
+        selectedItem: selectedItems[0]?.title,
+        lastSelected: lastSelected?.title,
+        selectedItems,
+      })
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Demonstrates CardList with single selection and default selection. The second item is pre-selected. Open browser console to see selection changes.',
+      },
+    },
   },
 }

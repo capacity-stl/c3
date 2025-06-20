@@ -23,10 +23,11 @@ const CardList = <T extends Record<string, any>>({
   bottomLeftContent,
   bottomRightContent,
   firstOptionAsButton = false,
+  defaultSelectedItems = [],
   testId = 'cardlist-component',
   ...listProps
 }: CardListProps<T & Partial<ListItemType>>) => {
-  const [selectedItems, setSelectedItems] = useState<T[]>([])
+  const [selectedItems, setSelectedItems] = useState<T[]>(defaultSelectedItems)
 
   const handleItemClick = (item: T) => {
     if (selectionMode === 'none') {
