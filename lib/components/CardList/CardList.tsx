@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { cn } from '@utils/cn'
 import { CardListProps, cardlistVariants, ListItemType } from './CardList.props'
 import { List } from '@components/List/List'
@@ -27,7 +27,18 @@ const CardList = <T extends Record<string, any>>({
   testId = 'cardlist-component',
   ...listProps
 }: CardListProps<T & Partial<ListItemType>>) => {
-  const [selectedItems, setSelectedItems] = useState<T[]>(defaultSelectedItems)
+  const [selectedItems, setSelectedItems] = useState<T[]>([])
+
+  useEffect(() => {
+    if (defaultSelectedItems.length > 0) {
+      const validDefaults = defaultSelectedItems.filter((defaultItem) =>
+        items.some((item) => item === defaultItem),
+      )
+      setSelectedItems(
+        selectionMode === 'single' ? validDefaults.slice(0, 1) : validDefaults,
+      )
+    }
+  }, [defaultSelectedItems, items, selectionMode])
 
   const handleItemClick = (item: T) => {
     if (selectionMode === 'none') {
