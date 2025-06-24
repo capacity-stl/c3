@@ -67,6 +67,7 @@ const DrawerButton = ({
         className="block"
         color={isSelected ? 'white' : 'meteor-400'}
         icon={icon}
+        size="small"
       />
     </button>
   )
