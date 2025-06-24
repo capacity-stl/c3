@@ -67,6 +67,7 @@ const DrawerButton = ({
         className="block"
         color={isSelected ? 'white' : 'meteor-400'}
         icon={icon}
+        size="small"
       />
     </button>
   )
@@ -166,6 +167,7 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
             <DrawerButton
               icon={metaItem.icon}
               isSelected={activeIndex === index}
+              key={metaItem.id}
               onClick={() => handleIndexChange(index)}
               testId={`${metaItem?.testId ?? `sheet-${index}`}-icon`}
               title={metaItem.title}

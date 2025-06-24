@@ -166,7 +166,7 @@ export const Default: Story = {
           id="third"
           title="Third"
           testId="third-sheet"
-          closeIcon={Icon.Glyph.ArrowLeft}
+          closeIcon={Icon.Glyph.CaretBoxedLeft}
         >
           <div className="p-2">Third sheet content</div>
         </CollapsibleSheet>
