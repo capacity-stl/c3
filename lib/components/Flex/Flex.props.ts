@@ -7,6 +7,7 @@ import { widthProps } from '@props/width.props'
 import { bgColorProps } from '@props/color.props'
 import { borderProps } from '@props/border.props'
 import { layoutProps } from '@props/layout.props'
+import { borderRadiusProps } from '@props/borderradius.props'
 
 const flexVariants = cva('flex', {
   variants: {
@@ -17,6 +18,7 @@ const flexVariants = cva('flex', {
     ...bgColorProps,
     ...borderProps,
     ...layoutProps,
+    ...borderRadiusProps,
 
     direction: {
       row: 'flex-row',
