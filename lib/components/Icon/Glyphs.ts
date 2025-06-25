@@ -31,10 +31,16 @@ import Cancel from './glyphs/Cancel'
 import CapacityDB from './glyphs/CapacityDB'
 import CapacityLogoOutline from './glyphs/CapacityLogoOutline'
 import CardView from './glyphs/CardView'
-import CaretDown from './glyphs/CaretDown'
-import CaretLeft from './glyphs/CaretLeft'
-import CaretRight from './glyphs/CaretRight'
-import CaretUp from './glyphs/CaretUp'
+import {
+  CaretUp,
+  CaretDown,
+  CaretLeft,
+  CaretRight,
+  CaretBoxedUp,
+  CaretBoxedDown,
+  CaretBoxedLeft,
+  CaretBoxedRight,
+} from './glyphs/Caret'
 import Carousel from './glyphs/Carousel'
 import Check from './glyphs/Check'
 import ChevronLeft from './glyphs/ChevronLeft'
@@ -65,7 +71,7 @@ import Edit from './glyphs/Edit'
 import EmojiPicker from './glyphs/EmojiPicker'
 import End from './glyphs/End'
 import EndMessage from './glyphs/EndMessage'
-import Envelope from './glyphs/Envelope'
+import { Envelope, EnvelopeStack } from './glyphs/Envelope'
 import Expired from './glyphs/Expired'
 import FileUpload from './glyphs/FileUpload'
 import Filter from './glyphs/Filter'
@@ -105,13 +111,19 @@ import Location from './glyphs/Location'
 import Lock from './glyphs/Lock'
 import LogOut from './glyphs/LogOut'
 import Loop from './glyphs/Loop'
+import {
+  MagnifyingGlass,
+  MagnifyingGlassSpark,
+  MagnifyingGlassWaveform,
+} from './glyphs/MagnifyingGlass'
 import MapToExchange from './glyphs/MapToExchange'
 import Maximize from './glyphs/Maximize'
+import { MediaPause, MediaPlay } from './glyphs/MediaControls'
 import Mine from './glyphs/Mine'
 import Minimize from './glyphs/Minimize'
 import Minus from './glyphs/Minus'
 import MissedLiveChat from './glyphs/MissedLiveChat'
-import More from './glyphs/More'
+import { More, MoreHorizontal, MoreHorizontalLight } from './glyphs/More'
 import MultiplePaths from './glyphs/MultiplePaths'
 import NewFolder from './glyphs/NewFolder'
 import Notepad from './glyphs/Notepad'
@@ -121,7 +133,7 @@ import Paperclip from './glyphs/Paperclip'
 import Paste from './glyphs/Paste'
 import Pencil from './glyphs/Pencil'
 import Permissions from './glyphs/Permissions'
-import Person from './glyphs/Person'
+import { Person, PersonWithClock } from './glyphs/Person'
 import Phone from './glyphs/Phone'
 import Photo from './glyphs/Photo'
 import Plus from './glyphs/Plus'
@@ -200,6 +212,10 @@ export const Glyphs = {
   CapacityDB,
   CapacityLogoOutline,
   CardView,
+  CaretBoxedDown,
+  CaretBoxedLeft,
+  CaretBoxedRight,
+  CaretBoxedUp,
   CaretDown,
   CaretLeft,
   CaretRight,
@@ -235,6 +251,7 @@ export const Glyphs = {
   End,
   EndMessage,
   Envelope,
+  EnvelopeStack,
   Expired,
   FileUpload,
   Filter,
@@ -274,13 +291,20 @@ export const Glyphs = {
   Lock,
   LogOut,
   Loop,
+  MagnifyingGlass,
+  MagnifyingGlassSpark,
+  MagnifyingGlassWaveform,
   MapToExchange,
   Maximize,
+  MediaPause,
+  MediaPlay,
   Mine,
   Minimize,
   Minus,
   MissedLiveChat,
   More,
+  MoreHorizontal,
+  MoreHorizontalLight,
   MultiplePaths,
   NewFolder,
   Notepad,
@@ -291,6 +315,7 @@ export const Glyphs = {
   Pencil,
   Permissions,
   Person,
+  PersonWithClock,
   Phone,
   Photo,
   Plus,
@@ -370,6 +395,10 @@ export enum Icons {
   CapacityDB = 'CapacityDB',
   CapacityLogoOutline = 'CapacityLogoOutline',
   CardView = 'CardView',
+  CaretBoxedDown = 'CaretBoxedDown',
+  CaretBoxedLeft = 'CaretBoxedLeft',
+  CaretBoxedRight = 'CaretBoxedRight',
+  CaretBoxedUp = 'CaretBoxedUp',
   CaretDown = 'CaretDown',
   CaretLeft = 'CaretLeft',
   CaretRight = 'CaretRight',
@@ -405,6 +434,7 @@ export enum Icons {
   End = 'End',
   EndMessage = 'EndMessage',
   Envelope = 'Envelope',
+  EnvelopeStack = 'EnvelopeStack',
   Expired = 'Expired',
   FileUpload = 'FileUpload',
   Filter = 'Filter',
@@ -444,13 +474,20 @@ export enum Icons {
   Lock = 'Lock',
   LogOut = 'LogOut',
   Loop = 'Loop',
+  MagnifyingGlass = 'MagnifyingGlass',
+  MagnifyingGlassSpark = 'MagnifyingGlassSpark',
+  MagnifyingGlassWaveform = 'MagnifyingGlassWaveform',
   MapToExchange = 'MapToExchange',
   Maximize = 'Maximize',
+  MediaPause = 'MediaPause',
+  MediaPlay = 'MediaPlay',
   Mine = 'Mine',
   Minimize = 'Minimize',
   Minus = 'Minus',
   MissedLiveChat = 'MissedLiveChat',
   More = 'More',
+  MoreHorizontal = 'MoreHorizontal',
+  MoreHorizontalLight = 'MoreHorizontalLight',
   MultiplePaths = 'MultiplePaths',
   NewFolder = 'NewFolder',
   Notepad = 'Notepad',
@@ -461,6 +498,7 @@ export enum Icons {
   Pencil = 'Pencil',
   Permissions = 'Permissions',
   Person = 'Person',
+  PersonWithClock = 'PersonWithClock',
   Phone = 'Phone',
   Photo = 'Photo',
   Plus = 'Plus',

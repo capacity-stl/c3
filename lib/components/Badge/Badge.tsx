@@ -30,7 +30,7 @@ const Badge = ({
         'border border-transparent',
         badgeVariants({ size, shape, color }),
         className,
-        `items-center justify-center gap-[0.3em] font-semibold`,
+        `items-center justify-center gap-[0.3em]`,
         dense && 'px-1 py-0',
         !children && 'p-1.5',
       )}
