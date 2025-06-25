@@ -1,15 +1,17 @@
 import { cn } from '../../utils/cn'
 import { FlexProps, flexVariants } from './Flex.props'
 
-const Flex = ({ className, children, ...flexProps }: FlexProps) => {
-  const mergedProps = {
-    ...flexProps,
-    testId: flexProps.testId ?? 'flex-component',
-  }
+const Flex = ({
+  className,
+  children,
+  testId = 'flex-component',
+  ...flexProps
+}: FlexProps) => {
   return (
     <div
-      className={cn(flexVariants({ ...mergedProps }), className)}
-      data-testid={mergedProps.testId}
+      className={cn(flexVariants({ ...flexProps }), className)}
+      data-testid={testId}
+      {...flexProps}
     >
       {children}
     </div>
