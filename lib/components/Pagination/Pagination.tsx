@@ -1,44 +1,28 @@
 import { cn } from '@utils/cn'
 import { PaginationProps, PaginationVariants } from './Pagination.props'
-import { PaginationNext } from './PaginationNext'
-import { PaginationPrevious } from './PaginationPrevious'
-import { PaginationLink } from './PaginationLink'
+import { PaginationPreviousNext } from './PaginationPreviousNext'
+import { PaginationItem } from './PaginationItem'
 import { PaginationEllipsis } from './PaginationEllipsis'
+import { PAGINATION_DEFAULTS } from './Pagination.defaults'
+import { usePaginationColors } from './usePaginationColors'
 import {
   getMiddlePageRange,
   showStartEllipsis,
   showEndEllipsis,
 } from './Pagination.utils'
 
-const Pagination = ({ className, ...PaginationProps }: PaginationProps) => {
-  const mergedProps = {
-    totalPages: 10,
-    currentPage: 1,
-    setCurrentPage: () => {},
-    totalItemsShown: 7,
-    siblingRange: 3,
-    activeBgColor: 'earth-300',
-    activeTextColor: 'white',
-    itemBgColor: 'white',
-    bgColor: 'white',
-    color: 'earth-300',
-    hoverBgColor: 'earth-100',
-    ...PaginationProps,
-    testId: PaginationProps.testId ?? 'pagination-component',
-  }
-
-  const {
-    totalPages,
-    currentPage,
-    setCurrentPage,
-    totalItemsShown,
-    siblingRange,
-    itemBgColor,
-    color,
-    activeBgColor,
-    activeTextColor,
-    hoverBgColor,
-  } = mergedProps
+const Pagination = ({
+  className,
+  totalPages = PAGINATION_DEFAULTS.totalPages,
+  currentPage = PAGINATION_DEFAULTS.currentPage,
+  setCurrentPage = () => {},
+  totalItemsShown = PAGINATION_DEFAULTS.totalItemsShown,
+  siblingRange = PAGINATION_DEFAULTS.siblingRange,
+  icon = PAGINATION_DEFAULTS.icon,
+  testId = PAGINATION_DEFAULTS.testId,
+  ...props
+}: PaginationProps) => {
+  const colors = usePaginationColors(props)
 
   const selectPage = (page: number) => {
     if (page >= 1 && page <= totalPages && setCurrentPage) {
@@ -46,29 +30,46 @@ const Pagination = ({ className, ...PaginationProps }: PaginationProps) => {
     }
   }
 
+  const itemProps = {
+    currentPage,
+    setCurrentPage,
+    // Item colors
+    bgColor: colors.itemColors.bgColor,
+    textColor: colors.itemColors.textColor,
+    borderColor: colors.itemColors.borderColor,
+    // Active colors
+    activeBgColor: colors.activeColors.bgColor,
+    activeTextColor: colors.activeColors.textColor,
+    activeBorderColor: colors.activeColors.borderColor,
+    // Hover colors
+    hoverBgColor: colors.hoverColors.bgColor,
+    hoverTextColor: colors.hoverColors.textColor,
+    hoverBorderColor: colors.hoverColors.borderColor,
+  }
+
+  const navProps = {
+    icon,
+    bgColor: colors.nextPreviousColors.bgColor,
+    borderColor: colors.nextPreviousColors.borderColor,
+    textColor: colors.nextPreviousColors.textColor,
+    hoverBgColor: colors.nextPreviousColors.hoverBgColor,
+    hoverBorderColor: colors.nextPreviousColors.hoverBorderColor,
+    hoverTextColor: colors.nextPreviousColors.hoverTextColor,
+  }
+
   return (
     <div
-      className={cn(PaginationVariants({ ...mergedProps }), className)}
-      data-testid={mergedProps.testId}
+      className={cn(PaginationVariants({ ...props }), className)}
+      data-testid={testId}
     >
-      <PaginationPrevious
-        bgColor="white"
-        icon="ArrowLeft"
+      <PaginationPreviousNext
+        {...navProps}
         disabled={currentPage <= 1}
         onClick={() => selectPage(currentPage - 1)}
+        nextPreviousType="previous"
       />
 
-      <PaginationLink
-        key={1}
-        value={1}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        color={color}
-        itemBgColor={itemBgColor}
-        activeBgColor={activeBgColor}
-        activeTextColor={activeTextColor}
-        hoverBgColor={hoverBgColor}
-      />
+      <PaginationItem key={1} value={1} {...itemProps} />
 
       {showStartEllipsis(
         currentPage,
@@ -83,17 +84,7 @@ const Pagination = ({ className, ...PaginationProps }: PaginationProps) => {
         totalItemsShown,
         siblingRange,
       }).map((page) => (
-        <PaginationLink
-          key={page}
-          itemBgColor={itemBgColor}
-          value={page}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          color={color}
-          activeBgColor={activeBgColor}
-          activeTextColor={activeTextColor}
-          hoverBgColor={hoverBgColor}
-        />
+        <PaginationItem key={page} value={page} {...itemProps} />
       ))}
 
       {showEndEllipsis(
@@ -104,24 +95,14 @@ const Pagination = ({ className, ...PaginationProps }: PaginationProps) => {
       ) && <PaginationEllipsis />}
 
       {totalPages > 1 && (
-        <PaginationLink
-          key={totalPages}
-          value={totalPages}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          color={color}
-          itemBgColor={itemBgColor}
-          activeBgColor={activeBgColor}
-          activeTextColor={activeTextColor}
-          hoverBgColor={hoverBgColor}
-        />
+        <PaginationItem key={totalPages} value={totalPages} {...itemProps} />
       )}
 
-      <PaginationNext
-        bgColor="white"
-        icon="ArrowRight"
+      <PaginationPreviousNext
+        {...navProps}
         disabled={currentPage >= totalPages}
         onClick={() => selectPage(currentPage + 1)}
+        nextPreviousType="next"
       />
     </div>
   )
