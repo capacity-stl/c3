@@ -133,7 +133,7 @@ export const HeadingXL: Story = {
     await expect(text).toBeInTheDocument()
     await expect(text).toContainHTML('h1')
     await expect(text).toHaveClass(
-      'text-3xl text-deep-space font-bold leading-10',
+      'text-3xl text-deep-space font-semibold leading-10',
     )
   },
 }
@@ -158,7 +158,7 @@ export const HeadingLarge: Story = {
     await expect(text).toBeInTheDocument()
     await expect(text).toContainHTML('h1')
     await expect(text).toHaveClass(
-      'text-2xl text-deep-space font-bold leading-8',
+      'text-2xl text-deep-space font-semibold leading-8',
     )
   },
 }
@@ -183,7 +183,7 @@ export const Heading: Story = {
     await expect(text).toBeInTheDocument()
     await expect(text).toContainHTML('h1')
     await expect(text).toHaveClass(
-      'text-xl text-deep-space font-bold leading-7',
+      'text-xl text-deep-space font-semibold leading-7',
     )
   },
 }
@@ -277,7 +277,7 @@ export const BodyStrong: Story = {
     await expect(text).toBeInTheDocument()
     await expect(text).toContainHTML('div')
     await expect(text).toHaveClass(
-      'text-base text-deep-space font-semibold leading-5',
+      'text-base text-deep-space font-medium leading-5',
     )
   },
 }
@@ -325,7 +325,7 @@ export const BodySmallStrong: Story = {
     await expect(text).toBeInTheDocument()
     await expect(text).toContainHTML('div')
     await expect(text).toHaveClass(
-      'text-sm text-deep-space font-semibold leading-4',
+      'text-sm text-deep-space font-medium leading-4',
     )
   },
 }
@@ -376,9 +376,7 @@ export const CodeSmall: Story = {
 
     await expect(text).toBeInTheDocument()
     await expect(text).toContainHTML('code')
-    await expect(text).toHaveClass(
-      'text-sm text-deep-space font-semibold leading-3',
-    )
+    await expect(text).toHaveClass('text-sm text-deep-space leading-3')
   },
 }
 

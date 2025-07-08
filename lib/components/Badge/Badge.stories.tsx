@@ -338,7 +338,7 @@ export const RichContent: Story = {
       const boldText = within(badge).getByText('Role')
       const italicText = within(badge).getByText('Developer')
 
-      await expect(boldText).toHaveClass('font-semibold')
+      await expect(boldText).toHaveClass('font-medium')
       await expect(italicText).toHaveClass('leading-3', 'uppercase')
     })
   },
