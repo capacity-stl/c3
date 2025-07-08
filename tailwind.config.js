@@ -89,6 +89,13 @@ export default {
         contact: '0px 0px 3px rgba(2, 33, 77, 0.35);',
         'contact-focus': '0 0 3px #007DFF',
         'contact-error': '0 0 3px #FF0E47',
+        small: '0 1px 3px rgba(2, 33, 77, 0.35);',
+        medium: '0 2px 8px rgba(2, 33, 77, 0.35);',
+        large: '0 2px 30px rgba(2, 33, 77, 0.35);',
+      },
+      width: {
+        240: '240px',
+        320: '320px',
       },
     },
   },

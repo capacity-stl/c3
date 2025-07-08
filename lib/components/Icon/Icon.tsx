@@ -1,16 +1,22 @@
 import { Slot } from '@components/Slot/Slot'
 import { cn } from '@utils/cn'
-import { IconProps, iconVariants } from './Icon.props'
+import { IconProps, iconVariants, asTypes } from './Icon.props'
 import { Glyphs, Icons } from './Glyphs'
 
-const Icon = ({ className, icon, size = 'small', ...iconProps }: IconProps) => {
+const Icon = ({
+  className,
+  icon,
+  size = 'small',
+  as: Tag = asTypes.span,
+  testId,
+  ...iconProps
+}: IconProps) => {
+  const rootClassString = iconVariants({ size, as: Tag, ...iconProps })
+
   return (
-    <span
-      className={cn(iconVariants({ size, ...iconProps }), className)}
-      data-testid="icon-component"
-    >
+    <Tag className={cn(rootClassString, className)} data-testid={testId}>
       <IconComponent icon={icon} />
-    </span>
+    </Tag>
   )
 }
 
@@ -27,10 +33,7 @@ const IconComponent = ({ icon }: { icon: string }) => {
     )
 
     return (
-      <div
-        className="text-mars-300"
-        title={`Invalid icon name \`${icon}\``}
-      >
+      <div className="text-mars-300" title={`Invalid icon name \`${icon}\``}>
         {`!E`}
       </div>
     )
@@ -38,5 +41,6 @@ const IconComponent = ({ icon }: { icon: string }) => {
 }
 
 Icon.Glyph = Icons
+Icon.asType = asTypes
 
 export { Icon }
