@@ -125,7 +125,7 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
     elements,
     openSectionId,
   )
-  const isOpen = useMemo(() => typeof activeIndex === 'number', [activeIndex])
+  const isOpen = typeof activeIndex === 'number'
 
   const handleIndexChange = useCallback(
     (newIndex: number | null) => {
