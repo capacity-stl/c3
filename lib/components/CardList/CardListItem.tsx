@@ -68,7 +68,7 @@ export const CardListItem = <T extends Record<string, any>>({
               </Text>
             )}
             {item[datetimeKey] && (
-              <Text type="body-small" className="text-meteor-300">
+              <Text type="body-small" className="text-meteor-400">
                 {item[datetimeKey]}
               </Text>
             )}
@@ -79,7 +79,7 @@ export const CardListItem = <T extends Record<string, any>>({
             </Text>
           )}
           {item[referenceKey] && (
-            <Text type="body-small" className="text-meteor-300">
+            <Text type="body-small" className="text-meteor-400">
               {item[referenceKey]}
             </Text>
           )}

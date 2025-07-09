@@ -23,14 +23,10 @@ const deriveActiveIndex = (
   children: Array<React.ReactElement<CollapsibleSheetProps>>,
   openSectionId?: string | null,
 ) => {
-  const activeIndex = children.reduce<number | null>(
-    (active, element, index) => {
-      return element?.props?.id === openSectionId ? index : active
-    },
-    null,
+  const activeIndex = children.findIndex(
+    (child) => child.props.id === openSectionId,
   )
-
-  return activeIndex
+  return activeIndex === -1 ? null : activeIndex
 }
 
 const useActiveIndex = (
@@ -101,11 +97,13 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
     openSectionId,
     testId,
     w,
+    onSectionChange,
   } = {
     hideSidebarWhenOpen: false,
     borderColor: 'meteor-200',
     dropToSide: 'right',
     w: '80',
+    onSectionChange: (index: string | null) => index,
     ...props,
   }
 
@@ -127,7 +125,7 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
     elements,
     openSectionId,
   )
-  const isOpen = typeof activeIndex === 'number'
+  const isOpen = useMemo(() => typeof activeIndex === 'number', [activeIndex])
 
   const handleIndexChange = useCallback(
     (newIndex: number | null) => {
@@ -145,6 +143,7 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
       )
         meta[newIndex].onSelect?.()
 
+      onSectionChange?.(newIndex === null ? null : meta?.[newIndex]?.id)
       setActiveIndex(newIndex)
     },
     [activeIndex], //eslint-disable-line react-hooks/exhaustive-deps
