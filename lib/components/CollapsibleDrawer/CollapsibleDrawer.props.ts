@@ -123,7 +123,11 @@ export interface CollapsibleDrawerProps
   openSectionId?: string | null
   testId?: string
   w?: string | number
-  onSectionChange?: (index: string | null) => void
+  onSectionChange?: (
+    newItemId: string | null,
+    newItem: CollapsibleSheetProps | null,
+    oldItem: CollapsibleSheetProps | null,
+  ) => void
 }
 
 export {

@@ -103,7 +103,7 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
     borderColor: 'meteor-200',
     dropToSide: 'right',
     w: '80',
-    onSectionChange: (index: string | null) => index,
+    onSectionChange: (itemId: string | null) => itemId,
     ...props,
   }
 
@@ -143,7 +143,9 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
       )
         meta[newIndex].onSelect?.()
 
-      onSectionChange?.(newIndex === null ? null : meta?.[newIndex]?.id)
+      const newItem = newIndex === null ? null : meta?.[newIndex]
+      const oldItem = activeIndex === null ? null : meta?.[activeIndex]
+      onSectionChange?.(newItem?.id ?? null, newItem, oldItem)
       setActiveIndex(newIndex)
     },
     [activeIndex], //eslint-disable-line react-hooks/exhaustive-deps
