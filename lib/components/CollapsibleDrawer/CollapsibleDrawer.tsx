@@ -175,42 +175,33 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
         </div>
       ) : null}
 
-      <section
-        className={cn(
-          contentColumnClassString,
-          'max-w-0 overflow-hidden transition-all duration-500 ease-in-out',
-          isOpen ? '' : 'border-none',
-        )}
-        style={{ maxWidth: isOpen ? '9999px' : undefined }}
-      >
-        {activeIndex !== null && (
-          <>
-            <div className={cn(contentColumnHeaderClassString)}>
-              <div>
-                <DrawerHeader
-                  headerComponent={meta[activeIndex]?.headerComponent}
-                  title={meta[activeIndex].title}
-                />
-              </div>
-              <DrawerButton
-                icon={meta[activeIndex]?.closeIcon ?? Icon.Glyph.Close}
-                onClick={() => handleIndexChange(null)}
-                title="Close Drawer"
+      {isOpen ? (
+        <section className={cn(contentColumnClassString)}>
+          <div className={cn(contentColumnHeaderClassString)}>
+            <div>
+              <DrawerHeader
+                headerComponent={meta[activeIndex]?.headerComponent}
+                title={meta[activeIndex].title}
               />
             </div>
-            <div
-              className={cn(contentColumnContainerClassString)}
-              data-testid={`${meta[activeIndex]?.testId ?? `sheet-${activeIndex}`}-content`}
-            >
-              {typeof meta?.[activeIndex]?.component === 'function'
-                ? React.createElement(
-                    meta[activeIndex].component as React.FunctionComponent,
-                  )
-                : elements[activeIndex]}
-            </div>
-          </>
-        )}
-      </section>
+            <DrawerButton
+              icon={meta[activeIndex]?.closeIcon ?? Icon.Glyph.Close}
+              onClick={() => handleIndexChange(null)}
+              title="Close Drawer"
+            />
+          </div>
+          <div
+            className={cn(contentColumnContainerClassString)}
+            data-testid={`${meta[activeIndex]?.testId ?? `sheet-${activeIndex}`}-content`}
+          >
+            {typeof meta?.[activeIndex]?.component === 'function'
+              ? React.createElement(
+                  meta[activeIndex].component as React.FunctionComponent,
+                )
+              : elements[activeIndex]}
+          </div>
+        </section>
+      ) : null}
     </aside>
   )
 }
