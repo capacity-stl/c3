@@ -23,14 +23,10 @@ const deriveActiveIndex = (
   children: Array<React.ReactElement<CollapsibleSheetProps>>,
   openSectionId?: string | null,
 ) => {
-  const activeIndex = children.reduce<number | null>(
-    (active, element, index) => {
-      return element?.props?.id === openSectionId ? index : active
-    },
-    null,
+  const activeIndex = children.findIndex(
+    (child) => child.props.id === openSectionId,
   )
-
-  return activeIndex
+  return activeIndex === -1 ? null : activeIndex
 }
 
 const useActiveIndex = (
@@ -101,11 +97,13 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
     openSectionId,
     testId,
     w,
+    onSectionChange,
   } = {
     hideSidebarWhenOpen: false,
     borderColor: 'meteor-200',
     dropToSide: 'right',
     w: '80',
+    onSectionChange: (itemId: string | null) => itemId,
     ...props,
   }
 
@@ -145,6 +143,9 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
       )
         meta[newIndex].onSelect?.()
 
+      const newItem = newIndex === null ? null : meta?.[newIndex]
+      const oldItem = activeIndex === null ? null : meta?.[activeIndex]
+      onSectionChange?.(newItem?.id ?? null, newItem, oldItem)
       setActiveIndex(newIndex)
     },
     [activeIndex], //eslint-disable-line react-hooks/exhaustive-deps
@@ -175,6 +176,7 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
           ))}
         </div>
       ) : null}
+
       {isOpen ? (
         <section className={cn(contentColumnClassString)}>
           <div className={cn(contentColumnHeaderClassString)}>
