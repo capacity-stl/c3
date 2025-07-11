@@ -23,11 +23,6 @@ const PaginationVariants = cva('flex', {
   },
 })
 
-enum asTypes {
-  div = 'div',
-  span = 'span',
-}
-
 // Core pagination configuration
 interface PaginationConfig {
   totalPages?: number
@@ -55,6 +50,8 @@ interface PaginationColors extends Partial<PaginationColorTheme> {
   nextPreviousHoverBgColor?: string
   nextPreviousHoverBorderColor?: string
   nextPreviousHoverTextColor?: string
+  textColor?: string
+  borderColor?: string
 }
 
 // Component-specific props for PaginationItem
@@ -85,4 +82,4 @@ export interface PaginationProps
   active?: boolean
 }
 
-export { PaginationVariants, asTypes }
+export { PaginationVariants }

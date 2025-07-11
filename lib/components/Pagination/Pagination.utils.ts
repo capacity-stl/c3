@@ -1,3 +1,5 @@
+import { PAGINATION_DEFAULTS } from './Pagination.defaults'
+
 const getMiddlePageRange = ({
   count,
   currentPage,
@@ -85,15 +87,20 @@ const getColorClasses = (
 ) => {
   if (isCurrentPage) {
     const activeBorderClass =
-      borderColorMap[activeBorderColor] || 'border-earth-300'
+      borderColorMap[activeBorderColor] ||
+      PAGINATION_DEFAULTS.activeColors.borderColor
     return `${activeBorderClass} bg-${activeBgColor} text-${activeTextColor} shadow-md`
   }
 
-  const hoverBgClass = hoverBgColorMap[hoverBgColor] || 'hover:bg-earth-100'
+  const hoverBgClass =
+    hoverBgColorMap[hoverBgColor] || PAGINATION_DEFAULTS.hover.bgColor
   const hoverBorderClass =
-    hoverBorderColorMap[hoverBorderColor] || 'hover:border-earth-300'
-  const hoverTextClass = hoverTextColorMap[hoverTextColor] || 'hover:text-night'
-  const itemBorderClass = borderColorMap[itemBorderColor] || 'border-earth-300'
+    hoverBorderColorMap[hoverBorderColor] ||
+    PAGINATION_DEFAULTS.hover.borderColor
+  const hoverTextClass =
+    hoverTextColorMap[hoverTextColor] || PAGINATION_DEFAULTS.hover.textColor
+  const itemBorderClass =
+    borderColorMap[itemBorderColor] || PAGINATION_DEFAULTS.item.borderColor
 
   return `${itemBorderClass} ${hoverBorderClass} ${hoverBgClass} ${hoverTextClass} hover:shadow-md bg-${itemBgColor} ${color ? `text-${color}` : ''}`
 }
@@ -111,17 +118,23 @@ const getNextPreviousColorClasses = (
     return 'cursor-not-allowed opacity-50'
   }
 
-  const bgClass = bgColorMap[nextPreviousBgColor] || 'bg-white'
-  const textClass = textColorMap[nextPreviousTextColor] || 'text-night'
+  const bgClass =
+    bgColorMap[nextPreviousBgColor] || PAGINATION_DEFAULTS.nextPrevious.bgColor
+  const textClass =
+    textColorMap[nextPreviousTextColor] ||
+    PAGINATION_DEFAULTS.nextPrevious.textColor
   const borderClass =
-    borderColorMap[nextPreviousBorderColor] || 'border-earth-300'
+    borderColorMap[nextPreviousBorderColor] ||
+    PAGINATION_DEFAULTS.nextPrevious.borderColor
   const hoverBgClass =
-    hoverBgColorMap[nextPreviousHoverBgColor] || 'hover:bg-earth-100'
+    hoverBgColorMap[nextPreviousHoverBgColor] ||
+    PAGINATION_DEFAULTS.nextPrevious.hoverBgColor
   const hoverBorderClass =
     hoverBorderColorMap[nextPreviousHoverBorderColor] ||
-    'hover:border-earth-300'
+    PAGINATION_DEFAULTS.nextPrevious.hoverBorderColor
   const hoverTextClass =
-    hoverTextColorMap[nextPreviousHoverTextColor] || 'hover:text-earth-300'
+    hoverTextColorMap[nextPreviousHoverTextColor] ||
+    PAGINATION_DEFAULTS.nextPrevious.hoverTextColor
 
   return `cursor-pointer ${bgClass} ${textClass} ${borderClass} ${hoverBgClass} ${hoverBorderClass} ${hoverTextClass} hover:shadow-md`
 }
