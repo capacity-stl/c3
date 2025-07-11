@@ -9,33 +9,33 @@ export const PAGINATION_DEFAULTS = {
 
   // Item colors
   item: {
-    bgColor: 'white',
-    textColor: 'night',
-    borderColor: 'meteor-200',
+    bgColor: 'bg-white',
+    textColor: 'text-night',
+    borderColor: 'border-meteor-200',
   },
 
   // Active state colors
   activeColors: {
-    bgColor: 'earth-300',
-    textColor: 'white',
-    borderColor: 'earth-300',
+    bgColor: 'bg-earth-300',
+    textColor: 'text-white',
+    borderColor: 'border-earth-300',
   },
 
   // Hover state colors
   hover: {
-    bgColor: 'earth-300',
-    textColor: 'white',
-    borderColor: 'earth-100',
+    bgColor: 'bg-earth-300',
+    textColor: 'text-white',
+    borderColor: 'border-earth-100',
   },
 
   // Next/Previous button colors
   nextPrevious: {
-    bgColor: 'white',
-    borderColor: 'earth-300',
-    textColor: 'earth-300',
-    hoverBgColor: 'earth-300',
-    hoverBorderColor: 'earth-300',
-    hoverTextColor: 'white',
+    bgColor: 'bg-white',
+    borderColor: 'border-earth-300',
+    textColor: 'text-earth-300',
+    hoverBgColor: 'bg-earth-300',
+    hoverBorderColor: 'border-earth-300',
+    hoverTextColor: 'text-white',
   },
 }
 

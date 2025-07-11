@@ -26,13 +26,12 @@ const PaginationPreviousNext = ({
   onClick,
   disabled = false,
   nextPreviousType = 'next',
-  // Color props
-  bgColor = 'white',
-  borderColor = 'earth-300',
-  textColor = 'night',
-  hoverBgColor = 'earth-100',
-  hoverBorderColor = 'earth-300',
-  hoverTextColor = 'night',
+  bgColor,
+  borderColor,
+  textColor,
+  hoverBgColor,
+  hoverBorderColor,
+  hoverTextColor,
   ...props
 }: PaginationPreviousNextComponentProps & PaginationProps) => {
   return (
@@ -41,12 +40,12 @@ const PaginationPreviousNext = ({
         className={cn(
           getNextPreviousColorClasses(
             disabled,
-            bgColor,
-            borderColor,
-            textColor,
-            hoverBgColor,
-            hoverBorderColor,
-            hoverTextColor,
+            bgColor || '',
+            borderColor || '',
+            textColor || '',
+            hoverBgColor || '',
+            hoverBorderColor || '',
+            hoverTextColor || '',
           ),
         )}
         borderRadius="small"

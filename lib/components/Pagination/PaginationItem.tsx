@@ -4,44 +4,23 @@ import { Text } from '@components/Text/Text'
 import { cn } from '@utils/cn'
 import { getColorClasses } from './Pagination.utils'
 
-interface PaginationItemComponentProps {
-  className?: string
-  value?: number
-  currentPage?: number
-  setCurrentPage?: (page: number) => void
-  isCurrent?: boolean
-  // Color props that come from the parent
-  bgColor?: string
-  textColor?: string
-  borderColor?: string
-  activeBgColor?: string
-  activeTextColor?: string
-  activeBorderColor?: string
-  hoverBgColor?: string
-  hoverTextColor?: string
-  hoverBorderColor?: string
-}
-
 const PaginationItem = ({
   className,
   value,
   currentPage,
   setCurrentPage,
   isCurrent,
-  // Item colors
-  bgColor = 'white',
-  textColor = 'night',
-  borderColor = 'earth-300',
-  // Active colors
-  activeBgColor = 'earth-300',
-  activeTextColor = 'white',
-  activeBorderColor = 'earth-300',
-  // Hover colors
-  hoverBgColor = 'earth-100',
-  hoverTextColor = 'night',
-  hoverBorderColor = 'earth-300',
+  bgColor,
+  textColor,
+  borderColor,
+  activeBgColor,
+  activeTextColor,
+  activeBorderColor,
+  hoverBgColor,
+  hoverTextColor,
+  hoverBorderColor,
   ...props
-}: PaginationItemComponentProps & PaginationProps) => {
+}: PaginationProps) => {
   const isCurrentPage = isCurrent ?? value === currentPage
 
   const handleClick = () => {
@@ -57,15 +36,15 @@ const PaginationItem = ({
           'borderRadius-small cursor-pointer',
           getColorClasses(
             isCurrentPage,
-            activeBgColor,
-            activeTextColor,
-            activeBorderColor,
-            hoverBgColor,
-            hoverTextColor,
-            hoverBorderColor,
-            bgColor,
-            borderColor,
-            textColor,
+            String(activeBgColor || ''),
+            String(activeTextColor || ''),
+            String(activeBorderColor || ''),
+            String(hoverBgColor || ''),
+            String(hoverTextColor || ''),
+            String(hoverBorderColor || ''),
+            String(bgColor || ''),
+            String(borderColor || ''),
+            String(textColor || ''),
           ),
         )}
         borderRadius="small"

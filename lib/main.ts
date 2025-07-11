@@ -17,6 +17,7 @@ export { CollapsibleSheet } from './components/CollapsibleDrawer/CollapsibleShee
 export { DataTable } from './components/DataTable/DataTable'
 export { TabList } from './components/Tabs/TabList'
 export { SideNav } from './components/SideNav/SideNav'
+export { Pagination } from './components/Pagination/Pagination'
 
 // props
 export { colorPalletes } from './props/color.props'

@@ -4,6 +4,7 @@ import { expect } from '@storybook/jest'
 import React, { useState } from 'react'
 import { Pagination } from './Pagination'
 import { colorNames } from '@props/color.props'
+import { PAGINATION_DEFAULTS } from './Pagination.defaults'
 
 const meta = {
   title: 'Navigation/Pagination',
@@ -62,7 +63,7 @@ const meta = {
       },
     },
     activeBgColor: {
-      defaultValue: 'white',
+      defaultValue: PAGINATION_DEFAULTS.activeColors.bgColor,
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -73,7 +74,7 @@ const meta = {
       },
     },
     activeTextColor: {
-      defaultValue: 'white',
+      defaultValue: PAGINATION_DEFAULTS.activeColors.textColor,
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -84,7 +85,7 @@ const meta = {
       },
     },
     activeBorderColor: {
-      defaultValue: 'earth-300',
+      defaultValue: PAGINATION_DEFAULTS.activeColors.borderColor,
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -95,7 +96,7 @@ const meta = {
       },
     },
     itemBgColor: {
-      defaultValue: 'white',
+      defaultValue: PAGINATION_DEFAULTS.item.bgColor,
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -106,7 +107,7 @@ const meta = {
       },
     },
     itemTextColor: {
-      defaultValue: 'night',
+      defaultValue: PAGINATION_DEFAULTS.item.textColor,
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -117,7 +118,7 @@ const meta = {
       },
     },
     itemBorderColor: {
-      defaultValue: 'earth-300',
+      defaultValue: PAGINATION_DEFAULTS.item.borderColor,
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -128,7 +129,7 @@ const meta = {
       },
     },
     hoverTextColor: {
-      defaultValue: 'night',
+      defaultValue: PAGINATION_DEFAULTS.hover.textColor,
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -139,7 +140,7 @@ const meta = {
       },
     },
     hoverBgColor: {
-      defaultValue: 'white',
+      defaultValue: PAGINATION_DEFAULTS.hover.bgColor,
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -151,7 +152,7 @@ const meta = {
       },
     },
     hoverBorderColor: {
-      defaultValue: 'earth-100',
+      defaultValue: PAGINATION_DEFAULTS.hover.borderColor,
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -162,7 +163,7 @@ const meta = {
       },
     },
     nextPreviousBgColor: {
-      defaultValue: 'white',
+      defaultValue: PAGINATION_DEFAULTS.nextPrevious.bgColor,
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -174,7 +175,7 @@ const meta = {
       },
     },
     nextPreviousBorderColor: {
-      defaultValue: 'earth-300',
+      defaultValue: PAGINATION_DEFAULTS.nextPrevious.borderColor,
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -185,7 +186,7 @@ const meta = {
       },
     },
     nextPreviousTextColor: {
-      defaultValue: 'night',
+      defaultValue: PAGINATION_DEFAULTS.nextPrevious.textColor,
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -196,7 +197,7 @@ const meta = {
       },
     },
     nextPreviousHoverBgColor: {
-      defaultValue: 'earth-100',
+      defaultValue: PAGINATION_DEFAULTS.nextPrevious.hoverBgColor,
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -208,7 +209,7 @@ const meta = {
       },
     },
     nextPreviousHoverBorderColor: {
-      defaultValue: 'earth-300',
+      defaultValue: PAGINATION_DEFAULTS.nextPrevious.hoverBorderColor,
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -220,7 +221,7 @@ const meta = {
       },
     },
     nextPreviousHoverTextColor: {
-      defaultValue: 'night',
+      defaultValue: PAGINATION_DEFAULTS.nextPrevious.hoverTextColor,
       options: colorNames,
       control: { type: 'select' },
       table: {
@@ -253,10 +254,10 @@ const InteractivePagination = (
 export const Default: Story = {
   args: {
     className: 'w-full',
-    totalPages: 10,
-    currentPage: 1,
-    totalItemsShown: 7,
-    siblingRange: 3,
+    totalPages: PAGINATION_DEFAULTS.totalPages,
+    currentPage: PAGINATION_DEFAULTS.currentPage,
+    totalItemsShown: PAGINATION_DEFAULTS.totalItemsShown,
+    siblingRange: PAGINATION_DEFAULTS.siblingRange,
   },
   render: InteractivePagination,
   play: async ({ canvasElement }) => {
