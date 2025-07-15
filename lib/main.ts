@@ -1,7 +1,7 @@
 import './c3.css'
 
 // all exported components will live here
-export { Grid } from './components/Grid/Grid'
+export { Grid, GridItem } from './components/Grid/index'
 export { Icon } from './components/Icon/Icon'
 export { Avatar } from './components/Avatar/Avatar'
 export { Flex } from './components/Flex/Flex'
