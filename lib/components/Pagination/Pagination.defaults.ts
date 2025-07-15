@@ -23,9 +23,9 @@ export const PAGINATION_DEFAULTS = {
 
   // Hover state colors
   hover: {
-    bgColor: 'bg-earth-300',
-    textColor: 'text-white',
-    borderColor: 'border-earth-100',
+    bgColor: 'hover:bg-earth-300',
+    textColor: 'hover:text-white',
+    borderColor: 'hover:border-earth-300',
   },
 
   // Next/Previous button colors
@@ -33,9 +33,9 @@ export const PAGINATION_DEFAULTS = {
     bgColor: 'bg-white',
     borderColor: 'border-earth-300',
     textColor: 'text-earth-300',
-    hoverBgColor: 'bg-earth-300',
-    hoverBorderColor: 'border-earth-300',
-    hoverTextColor: 'text-white',
+    hoverBgColor: 'hover:bg-earth-300',
+    hoverBorderColor: 'hover:border-earth-300',
+    hoverTextColor: 'hover:text-white',
   },
 }
 
