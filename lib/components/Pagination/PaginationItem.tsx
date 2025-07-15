@@ -29,8 +29,6 @@ const PaginationItem = ({
     }
   }
 
-  console.log('bgColor', bgColor)
-
   return (
     <div className={cn(PaginationVariants({ ...props }), className)}>
       <Flex
