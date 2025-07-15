@@ -29,11 +29,15 @@ const PaginationItem = ({
     }
   }
 
+  console.log('bgColor', bgColor)
+
   return (
     <div className={cn(PaginationVariants({ ...props }), className)}>
       <Flex
         className={cn(
-          'borderRadius-small cursor-pointer',
+          'cursor-pointer',
+          // why do I need this function? why can't I just use the props?
+
           getColorClasses(
             isCurrentPage,
             String(activeBgColor || ''),

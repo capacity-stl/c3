@@ -89,7 +89,7 @@ const getColorClasses = (
     const activeBorderClass =
       borderColorMap[activeBorderColor] ||
       PAGINATION_DEFAULTS.activeColors.borderColor
-    return `${activeBorderClass} bg-${activeBgColor} text-${activeTextColor} shadow-md`
+    return `${activeBorderClass} ${activeBgColor} ${activeTextColor} shadow-md`
   }
 
   const hoverBgClass =
