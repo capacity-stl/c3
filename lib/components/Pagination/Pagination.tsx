@@ -30,6 +30,8 @@ const Pagination = ({
     }
   }
 
+  console.table(colors)
+
   const itemProps = {
     currentPage,
     setCurrentPage,
