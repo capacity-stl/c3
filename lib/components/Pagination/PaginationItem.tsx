@@ -34,8 +34,6 @@ const PaginationItem = ({
       <Flex
         className={cn(
           'cursor-pointer',
-          // why do I need this function? why can't I just use the props?
-
           getColorClasses(
             isCurrentPage,
             String(activeBgColor || ''),
