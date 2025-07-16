@@ -97,7 +97,7 @@ export const sectionHeaderVariants = cva(
 
 // Subitem variant
 export const subItemVariants = cva(
-  'mb-2 px-4 py-2 text-[13px] font-semibold text-deep-space bg-none rounded-md transition-colors',
+  'mb-2 px-4 py-2 text-[13px] font-semibold text-deep-space bg-none rounded-md transition-colors hover:bg-meteor-200',
   {
     variants: {
       selected: {
@@ -110,7 +110,7 @@ export const subItemVariants = cva(
 
 // Badge variant
 export const badgeVariants = cva(
-  'ml-2 px-2 h-5 inline-flex items-center justify-center rounded bg-cloud text-deep-space text-xs font-bold',
+  'ml-2 px-2 h-5 inline-flex items-center justify-center rounded-full bg-cloud text-deep-space text-xs font-bold transition-colors',
   {
     variants: {
       selected: {
@@ -118,7 +118,11 @@ export const badgeVariants = cva(
         false: '',
       },
       zero: {
-        true: 'text-meteor-400 bg-meteor-100 border border-transparent rounded-[12px] text-[0.714rem] px-2 py-0.5',
+        true: 'text-meteor-400 bg-meteor-100 border border-transparent rounded-full text-[0.714rem] px-2 py-0.5',
+        false: '',
+      },
+      hovered: {
+        true: 'bg-meteor-100',
         false: '',
       },
     },

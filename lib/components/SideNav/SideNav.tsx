@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { cn } from '../../utils/cn'
 import {
   SideNavProps,
@@ -12,13 +12,6 @@ import {
 import { Text } from '@components/Text/Text'
 import { Icon } from '@components/Icon/Icon'
 import { Badge } from '@components/Badge/Badge'
-import { cva, type VariantProps } from 'class-variance-authority'
-
-const keyboardKeys = {
-  ENTER: 'Enter',
-  SPACE: ' ',
-  ESCAPE: 'Escape',
-}
 
 // Example SectionHeader component
 const SectionHeader = ({
@@ -53,7 +46,6 @@ const SectionHeader = ({
 
 const SideNavItem = ({
   label,
-  link,
   subItems,
   startOpen = true,
   leadingIcon,
@@ -63,7 +55,6 @@ const SideNavItem = ({
   trailingContent,
   hasSectionDivider = false,
   state = SIDE_NAV_STATES.DEFAULT,
-  subItemsIcon = 'CaretRight',
   onItemClick,
   className,
   style,
@@ -78,25 +69,6 @@ const SideNavItem = ({
   // Hover overrides other states
   const effectiveState = isHovered ? SIDE_NAV_STATES.HOVERED : state
   const isActive = effectiveState === SIDE_NAV_STATES.SELECTED
-
-  // Handle actions for keyboard and mouse
-  const handleAction = (e: React.MouseEvent | React.KeyboardEvent) => {
-    e.preventDefault()
-    if (isDisabled) {
-      return
-    }
-    if (hasSubItems) {
-      setIsOpen(!isOpen)
-    } else {
-      if (onItemClick) {
-        onItemClick(e)
-      } else if (link) {
-        history.pushState({}, '', link)
-      } else {
-        console.log('No link or onItemClick')
-      }
-    }
-  }
 
   const itemAriaLabel = `nav-item-${label?.toLowerCase().replace(/\s+/g, '-')}`
 
@@ -174,6 +146,7 @@ const SideNavItem = ({
                     className={badgeVariants({
                       selected: isActive,
                       zero: trailingNumber === 0,
+                      hovered: isHovered,
                     })}
                     aria-label={`${trailingNumber} items`}
                   >
