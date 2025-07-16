@@ -5,8 +5,7 @@ import { SideNav } from './SideNav'
 import { SideNavItemProps } from './SideNav.props'
 import { Badge } from '@components/Badge/Badge'
 import { userEvent, waitFor } from '@storybook/testing-library'
-import { cva, type VariantProps } from 'class-variance-authority'
-import React, { useState } from 'react'
+import React from 'react'
 import { SIDE_NAV_STATES } from './SideNav.props'
 
 const meta = {
@@ -448,34 +447,3 @@ export const OmnichannelInboxExact: Story = {
     },
   },
 }
-
-// Section header pill variant
-export const sectionHeaderVariants = cva(
-  'bg-moon rounded-lg h-9 mb-2 px-4 flex items-center text-xs font-bold tracking-wider uppercase text-deep-space gap-2 cursor-pointer',
-)
-
-// Subitem variant
-export const subItemVariants = cva(
-  'mb-2 px-4 py-2 text-[13px] font-semibold text-deep-space bg-none rounded-md transition-colors',
-  {
-    variants: {
-      selected: {
-        true: 'bg-earth text-white',
-        false: '',
-      },
-    },
-  },
-)
-
-// Badge variant
-export const badgeVariants = cva(
-  'ml-2 px-2 h-5 inline-flex items-center justify-center rounded bg-cloud text-deep-space text-xs font-bold',
-  {
-    variants: {
-      selected: {
-        true: 'bg-[rgba(2,33,77,0.2)] text-white',
-        false: '',
-      },
-    },
-  },
-)
