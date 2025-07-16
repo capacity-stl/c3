@@ -4,7 +4,6 @@ import {
   SideNavProps,
   SideNavItemProps,
   sideNavVariants,
-  sideNavItemVariants,
   SIDE_NAV_STATES,
   sectionHeaderVariants,
   subItemVariants,
@@ -70,7 +69,6 @@ const SideNavItem = ({
   style,
   isToggle,
   isSectionHeader,
-  ...navItemProps
 }: SideNavItemProps & { isToggle?: boolean }) => {
   const hasSubItems = subItems && subItems.length > 0
   const [isOpen, setIsOpen] = useState(hasSubItems ? startOpen : false)
@@ -98,20 +96,6 @@ const SideNavItem = ({
         console.log('No link or onItemClick')
       }
     }
-  }
-
-  // Keyboard navigation
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === keyboardKeys.ENTER || e.key === keyboardKeys.SPACE) {
-      handleAction(e)
-    } else if (e.key === keyboardKeys.ESCAPE && isOpen) {
-      setIsOpen(false)
-    }
-  }
-
-  // Mouse navigation
-  const handleClick = (e: React.MouseEvent) => {
-    handleAction(e)
   }
 
   const itemAriaLabel = `nav-item-${label?.toLowerCase().replace(/\s+/g, '-')}`
