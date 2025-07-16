@@ -118,6 +118,7 @@ export const HeadingXL: Story = {
     children: 'This is an XL Heading',
     as: asTypes.h1,
     type: 'heading-xl',
+    color: 'deep-space',
   },
   parameters: {
     docs: {
@@ -143,6 +144,7 @@ export const HeadingLarge: Story = {
     children: 'This is a Large Heading',
     as: asTypes.h1,
     type: 'heading-large',
+    color: 'deep-space',
   },
   parameters: {
     docs: {
@@ -168,6 +170,7 @@ export const Heading: Story = {
     children: 'This is a Heading',
     as: asTypes.h1,
     type: 'heading',
+    color: 'deep-space',
   },
   parameters: {
     docs: {
@@ -193,6 +196,7 @@ export const Subheading: Story = {
     children: 'This is a Subheading',
     as: asTypes.h2,
     type: 'subheading',
+    color: 'deep-space',
   },
   parameters: {
     docs: {
@@ -216,6 +220,7 @@ export const Body: Story = {
     children: 'This is a Body',
     as: asTypes.div,
     type: 'body',
+    color: 'deep-space',
   },
   parameters: {
     docs: {
@@ -239,6 +244,7 @@ export const BodyLarge: Story = {
     children: 'This is a Body Large. Lorem ipsum dolor sit amet.',
     as: asTypes.div,
     type: 'body-large',
+    color: 'deep-space',
   },
   parameters: {
     docs: {
@@ -262,6 +268,7 @@ export const BodyStrong: Story = {
     children: 'This is a Body Strong. Lorem ipsum dolor sit amet.',
     as: asTypes.div,
     type: 'body-strong',
+    color: 'deep-space',
   },
   parameters: {
     docs: {
@@ -287,6 +294,7 @@ export const BodySmall: Story = {
     children: 'This is a Body Small. Lorem ipsum dolor sit amet.',
     as: asTypes.div,
     type: 'body-small',
+    color: 'deep-space',
   },
   parameters: {
     docs: {
@@ -310,6 +318,7 @@ export const BodySmallStrong: Story = {
     children: 'This is a Body Small Strong. Lorem ipsum dolor sit amet.',
     as: asTypes.div,
     type: 'body-small-strong',
+    color: 'deep-space',
   },
   parameters: {
     docs: {
@@ -335,6 +344,7 @@ export const SmallCaps: Story = {
     children: 'This is a Small Caps',
     as: asTypes.div,
     type: 'small-caps',
+    color: 'deep-space',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
@@ -353,6 +363,7 @@ export const Code: Story = {
     children: 'console.log("Hello, world")',
     as: asTypes.code,
     type: 'code',
+    color: 'deep-space',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
@@ -369,6 +380,7 @@ export const CodeSmall: Story = {
     children: 'console.log("Hello, world")',
     as: asTypes.code,
     type: 'code-small',
+    color: 'deep-space',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)

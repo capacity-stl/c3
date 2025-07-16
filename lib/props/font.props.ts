@@ -14,6 +14,8 @@ const fontSizes = {
   body: 'text-base leading-5',
   'body-small': 'text-sm leading-4',
   'body-small-strong': 'text-sm font-medium leading-4',
+  'label-small': 'text-xs leading-3',
+  'label-small-strong': 'text-xs font-medium leading-3',
   'small-caps': 'text-xs leading-3 tracking-wide uppercase font-semibold',
   code: 'text-base leading-3',
   'code-small': 'text-sm leading-3',

@@ -19,7 +19,7 @@ export { TabList } from './components/Tabs/TabList'
 export { SideNav } from './components/SideNav/SideNav'
 
 // props
-export { colorPalletes } from './props/color.props'
+export { colorPalettes } from './props/color.props'
 export { colorNames } from './props/color.props'
 
 // hooks

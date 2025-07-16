@@ -6,7 +6,7 @@ import { Icon } from '../Icon/Icon'
 import { colorNames } from '../../props/color.props'
 
 const meta = {
-  title: 'Data Input/Textbox',
+  title: 'Input/Textbox',
   component: TextBox,
   parameters: {
     docs: {

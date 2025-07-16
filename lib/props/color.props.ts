@@ -1,6 +1,7 @@
-export const colorPalletes = {
+export const colorPalettes = {
   night: [],
   white: [],
+  black: [],
   'deep-space': [],
   earth: [100, 200, 300, 400],
   sun: [100, 200, 300, 400],
@@ -15,15 +16,16 @@ export const colorPalletes = {
 export const colorNames = [
   'night',
   'white',
+  'black',
   'deep-space',
-  ...colorPalletes.earth.map((color) => `earth-${color}`),
-  ...colorPalletes.sun.map((color) => `sun-${color}`),
-  ...colorPalletes.mars.map((color) => `mars-${color}`),
-  ...colorPalletes.meteor.map((color) => `meteor-${color}`),
-  ...colorPalletes.neptune.map((color) => `neptune-${color}`),
-  ...colorPalletes.nova.map((color) => `nova-${color}`),
-  ...colorPalletes.mercury.map((color) => `mercury-${color}`),
-  ...colorPalletes.aurora.map((color) => `aurora-${color}`),
+  ...colorPalettes.earth.map((color) => `earth-${color}`),
+  ...colorPalettes.sun.map((color) => `sun-${color}`),
+  ...colorPalettes.mars.map((color) => `mars-${color}`),
+  ...colorPalettes.meteor.map((color) => `meteor-${color}`),
+  ...colorPalettes.neptune.map((color) => `neptune-${color}`),
+  ...colorPalettes.nova.map((color) => `nova-${color}`),
+  ...colorPalettes.mercury.map((color) => `mercury-${color}`),
+  ...colorPalettes.aurora.map((color) => `aurora-${color}`),
 ]
 
 const composeColorsWithPrefix = (prefix: string): { [key: string]: string } =>

@@ -22,6 +22,7 @@ export default {
       night: '#002B67',
       'deep-space': '#02214D',
       white: '#FFFFFF',
+      black: '#000000',
       earth: {
         100: '#E6F2FF',
         200: '#80BEFF',
@@ -89,6 +90,15 @@ export default {
         contact: '0px 0px 3px rgba(2, 33, 77, 0.35);',
         'contact-focus': '0 0 3px #007DFF',
         'contact-error': '0 0 3px #FF0E47',
+        button: '0 1px 3px #02214D40',
+        'inline-earth-300': 'inset 0 0 0 1px #007DFF',
+        'inline-neptune-300': 'inset 0 0 0 1px #05AE19',
+        'inline-mars-300': 'inset 0 0 0 1px #FF0E47',
+        'inline-meteor-200': 'inset 0 0 0 1px #DDE2EA',
+      },
+      transitionTimingFunction: {
+        swoosh: 'cubic-bezier(0.05, 0.9, 0.15, 0.95)',
+        eager: 'cubic-bezier(0.15, 0.9, 0.3, 1)',
       },
     },
   },
