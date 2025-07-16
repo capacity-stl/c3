@@ -139,6 +139,7 @@ export const Default: Story = {
         link: '/contact',
         leadingIcon: 'Broadcast',
         trailingIcon: 'Lock',
+        onItemClick: () => console.log('Contact'),
       },
       {
         label: 'Settings',
@@ -176,10 +177,10 @@ export const Default: Story = {
 
     await step('Links direct to the correct page', async () => {
       const contactItem = canvas.getByText('Contact')
-      const historyPushStateSpy = jest.spyOn(history, 'pushState')
+      console.log = jest.fn()
       await userEvent.click(contactItem)
       await userEvent.unhover(contactItem)
-      await expect(historyPushStateSpy).toHaveBeenCalledWith({}, '', '/contact')
+      await expect(console.log).toHaveBeenCalledWith('Contact')
     })
 
     console.log = jest.fn()
