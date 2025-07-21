@@ -1,22 +1,98 @@
 import React from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
 
-export interface GridItemProps extends React.HTMLAttributes<HTMLDivElement> {
+const gridItemVariants = cva('', {
+  variants: {
+    colSpan: {
+      '1': 'col-span-1',
+      '2': 'col-span-2',
+      '3': 'col-span-3',
+      '4': 'col-span-4',
+      '5': 'col-span-5',
+      '6': 'col-span-6',
+      '7': 'col-span-7',
+      '8': 'col-span-8',
+      '9': 'col-span-9',
+      '10': 'col-span-10',
+      '11': 'col-span-11',
+      '12': 'col-span-12',
+      full: 'col-span-full',
+    },
+
+    rowSpan: {
+      '1': 'row-span-1',
+      '2': 'row-span-2',
+      '3': 'row-span-3',
+      '4': 'row-span-4',
+      '5': 'row-span-5',
+      '6': 'row-span-6',
+      full: 'row-span-full',
+    },
+
+    colStart: {
+      '1': 'col-start-1',
+      '2': 'col-start-2',
+      '3': 'col-start-3',
+      '4': 'col-start-4',
+      '5': 'col-start-5',
+      '6': 'col-start-6',
+      '7': 'col-start-7',
+      '8': 'col-start-8',
+      '9': 'col-start-9',
+      '10': 'col-start-10',
+      '11': 'col-start-11',
+      '12': 'col-start-12',
+      '13': 'col-start-13',
+      auto: 'col-start-auto',
+    },
+
+    colEnd: {
+      '1': 'col-end-1',
+      '2': 'col-end-2',
+      '3': 'col-end-3',
+      '4': 'col-end-4',
+      '5': 'col-end-5',
+      '6': 'col-end-6',
+      '7': 'col-end-7',
+      '8': 'col-end-8',
+      '9': 'col-end-9',
+      '10': 'col-end-10',
+      '11': 'col-end-11',
+      '12': 'col-end-12',
+      '13': 'col-end-13',
+      auto: 'col-end-auto',
+    },
+
+    rowStart: {
+      '1': 'row-start-1',
+      '2': 'row-start-2',
+      '3': 'row-start-3',
+      '4': 'row-start-4',
+      '5': 'row-start-5',
+      '6': 'row-start-6',
+      '7': 'row-start-7',
+      auto: 'row-start-auto',
+    },
+
+    rowEnd: {
+      '1': 'row-end-1',
+      '2': 'row-end-2',
+      '3': 'row-end-3',
+      '4': 'row-end-4',
+      '5': 'row-end-5',
+      '6': 'row-end-6',
+      '7': 'row-end-7',
+      auto: 'row-end-auto',
+    },
+  },
+})
+
+export interface GridItemProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof gridItemVariants> {
   className?: string
   children?: React.ReactNode
-
-  // Column positioning
-  colSpan?: number
-  colStart?: number | string
-  colEnd?: number | string
-
-  // Row positioning
-  rowSpan?: number
-  rowStart?: number | string
-  rowEnd?: number | string
-
-  // Grid area
-  area?: string
-
-  // Testing
   testId?: string
 }
+
+export { gridItemVariants }
