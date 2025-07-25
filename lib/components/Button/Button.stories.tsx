@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { within } from '@storybook/testing-library'
 import { expect } from '@storybook/jest'
 import { Button } from './Button'
-import { ButtonTypes, ButtonSizes, ButtonStates } from './Button.props'
+import { BUTTON_TYPES, BUTTON_SIZES, BUTTON_STATES } from './Button.props'
 import { Text } from '@components/Text/Text'
 import { Icon } from '@components/Icon/Icon'
 import { BadgeDot } from '@components/BadgeDot/BadgeDot'
@@ -21,18 +21,18 @@ const meta = {
   },
   argTypes: {
     type: {
-      mapping: ButtonTypes,
-      options: Object.keys(ButtonTypes),
+      mapping: BUTTON_TYPES,
+      options: Object.keys(BUTTON_TYPES),
       control: { type: 'select' },
     },
     size: {
-      mapping: ButtonSizes,
-      options: Object.keys(ButtonSizes),
+      mapping: BUTTON_SIZES,
+      options: Object.keys(BUTTON_SIZES),
       control: { type: 'select' },
     },
     state: {
-      mapping: ButtonStates,
-      options: Object.keys(ButtonStates),
+      mapping: BUTTON_STATES,
+      options: Object.keys(BUTTON_STATES),
       control: { type: 'select' },
     },
   },
@@ -110,12 +110,12 @@ export const ButtonSizeExamples: Story = {
   },
   render: (props) => (
     <div>
-      <Button {...props} size={ButtonSizes.Small}>
+      <Button {...props} size={BUTTON_SIZES.Small}>
         <Icon icon={Icon.Glyph.Plus} />
         <Text>Small</Text>
       </Button>
 
-      <Button {...props} size={ButtonSizes.Medium}>
+      <Button {...props} size={BUTTON_SIZES.Medium}>
         <Icon icon={Icon.Glyph.Plus} />
         <Text>Medium</Text>
       </Button>
@@ -130,22 +130,22 @@ export const ButtonTypeExamples: Story = {
   },
   render: (props) => (
     <div>
-      <Button {...props} type={ButtonTypes.Primary}>
+      <Button {...props} type={BUTTON_TYPES.Primary}>
         <Icon icon={Icon.Glyph.Plus} />
         <Text>Primary</Text>
       </Button>
 
-      <Button {...props} type={ButtonTypes.Secondary}>
+      <Button {...props} type={BUTTON_TYPES.Secondary}>
         <Icon icon={Icon.Glyph.Plus} />
         <Text>Secondary</Text>
       </Button>
 
-      <Button {...props} type={ButtonTypes.Minimal}>
+      <Button {...props} type={BUTTON_TYPES.Minimal}>
         <Icon icon={Icon.Glyph.Plus} />
         <Text>Minimal</Text>
       </Button>
 
-      <Button {...props} type={ButtonTypes.Destructive}>
+      <Button {...props} type={BUTTON_TYPES.Destructive}>
         <Icon icon={Icon.Glyph.Delete} />
         <Text>Destructive</Text>
       </Button>
@@ -160,27 +160,27 @@ export const ButtonStateExamples: Story = {
   },
   render: (props) => (
     <div>
-      <Button {...props} state={ButtonStates.Initial}>
+      <Button {...props} state={BUTTON_STATES.Initial}>
         <Icon icon={Icon.Glyph.Plus} />
         <Text>Initial</Text>
       </Button>
 
-      <Button {...props} state={ButtonStates.Loading}>
+      <Button {...props} state={BUTTON_STATES.Loading}>
         <Icon icon={Icon.Glyph.Plus} />
         <Text>Loading</Text>
       </Button>
 
-      <Button {...props} state={ButtonStates.Success}>
+      <Button {...props} state={BUTTON_STATES.Success}>
         <Icon icon={Icon.Glyph.Plus} />
         <Text>Success</Text>
       </Button>
 
-      <Button {...props} state={ButtonStates.Error}>
+      <Button {...props} state={BUTTON_STATES.Error}>
         <Icon icon={Icon.Glyph.Plus} />
         <Text>Error</Text>
       </Button>
 
-      <Button {...props} state={ButtonStates.Disabled}>
+      <Button {...props} state={BUTTON_STATES.Disabled}>
         <Icon icon={Icon.Glyph.Plus} />
         <Text>Disabled</Text>
       </Button>
