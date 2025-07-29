@@ -154,6 +154,7 @@ import SessionReplay from './glyphs/SessionReplay'
 import Site from './glyphs/Site'
 import SkipTo from './glyphs/SkipTo'
 import Sort from './glyphs/Sort'
+import Spinner from './glyphs/Spinner'
 import Splitter from './glyphs/Splitter'
 import Star from './glyphs/Star'
 import StarFilled from './glyphs/StarFilled'
@@ -336,6 +337,7 @@ export const Glyphs = {
   Site,
   SkipTo,
   Sort,
+  Spinner,
   Splitter,
   Star,
   StarFilled,
@@ -519,6 +521,7 @@ export enum Icons {
   Site = 'Site',
   SkipTo = 'SkipTo',
   Sort = 'Sort',
+  Spinner = 'Spinner',
   Splitter = 'Splitter',
   Star = 'Star',
   StarFilled = 'StarFilled',

@@ -3,7 +3,7 @@ import {
   bgColorProps,
   colorProps,
   borderColorProps,
-  colorPalletes,
+  colorPalettes,
 } from '@props/color.props'
 import { shapeProps } from '@props/shape.props'
 
@@ -25,11 +25,12 @@ const avatarborderProps = {
 }
 
 const avatarThemeVariants: {
-  theme: Record<keyof typeof colorPalletes, string>
+  theme: Record<keyof typeof colorPalettes, string>
 } = {
   theme: {
     night: 'text-meteor-100 bg-night border border-night-300',
     white: 'text-meteor-300 bg-white border border-meteor-300',
+    black: 'text-meteor-300 bg-black border border-meteor-300',
     'deep-space': 'text-meteor-100 bg-deep-space border border-deep-space',
     earth: 'text-earth-400 bg-earth-100 border border-earth-100',
     sun: 'text-sun-400 bg-sun-100 border border-sun-100',

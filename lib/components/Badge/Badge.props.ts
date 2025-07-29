@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { colorPalletes } from '@props/color.props'
+import { colorPalettes } from '@props/color.props'
 import { Icons } from '@components/Icon/Glyphs'
 import { shapeProps } from '@props/shape.props'
 
@@ -14,11 +14,12 @@ const badgeSizeProps = {
 }
 
 const badgeColorVariants: {
-  color: Record<keyof typeof colorPalletes, string>
+  color: Record<keyof typeof colorPalettes, string>
 } = {
   color: {
     night: 'text-meteor-100 bg-night',
     white: 'text-meteor-300 bg-white border border-meteor-300',
+    black: 'text-meteor-300 bg-black border border-meteor-300',
     'deep-space': 'text-meteor-100 bg-deep-space',
     earth: 'text-earth-300 bg-earth-100',
     sun: 'text-sun-300 bg-sun-100',

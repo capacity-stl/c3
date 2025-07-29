@@ -1,5 +1,11 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { colorPalletes } from '@props/color.props'
+import { colorPalettes } from '@props/color.props'
+
+const badgePalettes = {
+  ...colorPalettes,
+  'transparent-light': [],
+  'transparent-dark': [],
+}
 
 const badgeDotSizeProps = {
   size: {
@@ -15,16 +21,17 @@ const badgeDotShapeProps = {
   shape: {
     circle: 'rounded-full',
     square: 'rounded-none',
-    rounded: 'rounded-sm',
+    rounded: 'rounded-xs',
   },
 }
 
 const badgeDotColorVariants: {
-  color: Record<keyof typeof colorPalletes, string>
+  color: Record<keyof typeof badgePalettes, string>
 } = {
   color: {
     night: 'bg-night text-meteor-100',
     white: 'bg-white border border-meteor-300 text-meteor-300',
+    black: 'bg-black text-white',
     'deep-space': 'bg-deep-space text-meteor-100',
     earth: 'bg-earth-300 text-earth-100',
     sun: 'bg-sun-300 text-sun-100',
@@ -34,6 +41,8 @@ const badgeDotColorVariants: {
     nova: 'bg-nova-300 text-nova-100',
     mercury: 'bg-mercury-300 text-mercury-100',
     aurora: 'bg-aurora-300 text-aurora-100',
+    'transparent-light': 'bg-white bg-opacity-30 text-meteor-400',
+    'transparent-dark': 'bg-black bg-opacity-30 text-white',
   },
 }
 

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { within } from '@storybook/testing-library'
 import { expect } from '@storybook/jest'
 import { Avatar } from './Avatar'
-import { colorNames, colorPalletes } from '@props/color.props'
+import { colorNames, colorPalettes } from '@props/color.props'
 import { avatarsizeProps } from './Avatar.props'
 import { shapeProps } from '@props/shape.props'
 
@@ -25,7 +25,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     theme: {
-      options: ['Not Defined', ...Object.keys(colorPalletes)],
+      options: ['Not Defined', ...Object.keys(colorPalettes)],
       mapping: { 'Not Defined': undefined },
       control: { type: 'select' },
       description:

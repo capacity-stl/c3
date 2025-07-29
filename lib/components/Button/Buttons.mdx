@@ -1,0 +1,2014 @@
+import { Meta, Title, Description, Unstyled } from '@storybook/blocks'
+import ButtonStories from './Button.stories'
+import { Button } from './Button'
+import { Icon } from '@components/Icon/Icon'
+import { Text } from '@components/Text/Text'
+import { BadgeDot } from '@components/BadgeDot/BadgeDot'
+
+<Meta title="General/Button" />
+<Title>Button Gallery</Title>
+<Description of={ButtonStories} />
+
+<h2>Primary</h2>
+<h3>Default</h3>
+<Unstyled>
+  <Button type={Button.Type.Primary} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button type={Button.Type.Primary} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button type={Button.Type.Primary} size={Button.Size.Small} m="2">
+    <Text>Text Only</Text>
+  </Button>
+  <Button type={Button.Type.Primary} size={Button.Size.Small} m="2">
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button type={Button.Type.Primary} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button type={Button.Type.Primary} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button type={Button.Type.Primary} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button type={Button.Type.Primary} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button type={Button.Type.Primary} size={Button.Size.Medium} m="2">
+    <Text>Text Only</Text>
+  </Button>
+  <Button type={Button.Type.Primary} size={Button.Size.Medium} m="2">
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button type={Button.Type.Primary} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button type={Button.Type.Primary} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Disabled</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Loading</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Success</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Error</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Primary}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h2>Secondary</h2>
+<h3>Default</h3>
+<Unstyled>
+  <Button type={Button.Type.Secondary} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button type={Button.Type.Secondary} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button type={Button.Type.Secondary} size={Button.Size.Small} m="2">
+    <Text>Text Only</Text>
+  </Button>
+  <Button type={Button.Type.Secondary} size={Button.Size.Small} m="2">
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button type={Button.Type.Secondary} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button type={Button.Type.Secondary} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button type={Button.Type.Secondary} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button type={Button.Type.Secondary} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button type={Button.Type.Secondary} size={Button.Size.Medium} m="2">
+    <Text>Text Only</Text>
+  </Button>
+  <Button type={Button.Type.Secondary} size={Button.Size.Medium} m="2">
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button type={Button.Type.Secondary} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button type={Button.Type.Secondary} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Disabled</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Loading</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Success</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Error</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Secondary}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h2>Minimal</h2>
+<h3>Default</h3>
+<Unstyled>
+  <Button type={Button.Type.Minimal} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button type={Button.Type.Minimal} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button type={Button.Type.Minimal} size={Button.Size.Small} m="2">
+    <Text>Text Only</Text>
+  </Button>
+  <Button type={Button.Type.Minimal} size={Button.Size.Small} m="2">
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button type={Button.Type.Minimal} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button type={Button.Type.Minimal} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button type={Button.Type.Minimal} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button type={Button.Type.Minimal} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button type={Button.Type.Minimal} size={Button.Size.Medium} m="2">
+    <Text>Text Only</Text>
+  </Button>
+  <Button type={Button.Type.Minimal} size={Button.Size.Medium} m="2">
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button type={Button.Type.Minimal} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button type={Button.Type.Minimal} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Disabled</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Loading</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Success</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Error</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Plus} />
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Plus} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Minimal}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h2>Destructive</h2>
+<h3>Default</h3>
+<Unstyled>
+  <Button type={Button.Type.Destructive} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button type={Button.Type.Destructive} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button type={Button.Type.Destructive} size={Button.Size.Small} m="2">
+    <Text>Text Only</Text>
+  </Button>
+  <Button type={Button.Type.Destructive} size={Button.Size.Small} m="2">
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button type={Button.Type.Destructive} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.Delete} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button type={Button.Type.Destructive} size={Button.Size.Small} m="2">
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button type={Button.Type.Destructive} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button type={Button.Type.Destructive} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button type={Button.Type.Destructive} size={Button.Size.Medium} m="2">
+    <Text>Text Only</Text>
+  </Button>
+  <Button type={Button.Type.Destructive} size={Button.Size.Medium} m="2">
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button type={Button.Type.Destructive} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.Delete} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button type={Button.Type.Destructive} size={Button.Size.Medium} m="2">
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Disabled</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Disabled}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Loading</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Loading}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Success</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Success}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+
+<h3>Error</h3>
+<Unstyled>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Small}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>
+<Unstyled>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Visibility} />
+    <Text>10</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Text Only</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Text>Icon Right</Text>
+    <Icon icon={Icon.Glyph.Delete} />
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.Delete} />
+    <Text>Icon Left</Text>
+  </Button>
+  <Button
+    type={Button.Type.Destructive}
+    size={Button.Size.Medium}
+    state={Button.State.Error}
+    m="2"
+  >
+    <Icon icon={Icon.Glyph.FilterKB} />
+    <Text>Dual Decorators</Text>
+    <BadgeDot>7</BadgeDot>
+  </Button>
+</Unstyled>

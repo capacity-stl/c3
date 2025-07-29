@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Badge } from './Badge'
-import { colorPalletes } from '@props/color.props'
+import { colorPalettes } from '@props/color.props'
 import { expect, fn } from '@storybook/test'
 import { within, userEvent } from '@storybook/testing-library'
 import { badgeSizeProps } from './Badge.props'
@@ -22,7 +22,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     color: {
-      options: ['Not Defined', ...Object.keys(colorPalletes)],
+      options: ['Not Defined', ...Object.keys(colorPalettes)],
       mapping: { 'Not Defined': undefined },
       control: { type: 'select' },
       description: 'Color of the badge',
@@ -229,7 +229,7 @@ export const Color: Story = {
   parameters: {
     docs: {
       source: {
-        code: Object.keys(colorPalletes)
+        code: Object.keys(colorPalettes)
           .map(
             (color) =>
               `<Badge key="${color}" color="${color}">${color}</Badge>`,
@@ -241,8 +241,8 @@ export const Color: Story = {
   },
   render: () => (
     <div className="flex items-center gap-4">
-      {Object.keys(colorPalletes).map((color) => (
-        <Badge key={color} color={color as keyof typeof colorPalletes}>
+      {Object.keys(colorPalettes).map((color) => (
+        <Badge key={color} color={color as keyof typeof colorPalettes}>
           {color}
         </Badge>
       ))}
@@ -252,7 +252,7 @@ export const Color: Story = {
     const canvas = within(canvasElement)
 
     await step('Check all color variants are rendered', async () => {
-      for (const color of Object.keys(colorPalletes)) {
+      for (const color of Object.keys(colorPalettes)) {
         const badge = canvas.getByText(color, { exact: false })
         await expect(badge).toBeInTheDocument()
         await expect(badge.className).toMatch(`bg-${color}`)

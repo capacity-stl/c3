@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { BadgeDot } from './BadgeDot'
-import { colorPalletes } from '@props/color.props'
+import { colorPalettes } from '@props/color.props'
 import { sizeNameProps } from '@props/size.props'
 import { shapeProps } from '@props/shape.props'
 import { badgeSizeProps } from '@components/Badge/Badge.props'
@@ -19,7 +19,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     color: {
-      options: ['Not Defined', ...Object.keys(colorPalletes)],
+      options: ['Not Defined', ...Object.keys(colorPalettes)],
       mapping: { 'Not Defined': undefined },
       control: { type: 'select' },
       description: 'Color of the badge',
@@ -90,7 +90,7 @@ export const Color: Story = {
   parameters: {
     docs: {
       source: {
-        code: Object.keys(colorPalletes)
+        code: Object.keys(colorPalettes)
           .map((color) => `<BadgeDot color="${color}"></BadgeDot>`)
           .join('\n'),
         language: 'tsx',
@@ -99,10 +99,10 @@ export const Color: Story = {
   },
   render: () => (
     <div className={`flex items-center gap-4`}>
-      {Object.keys(colorPalletes).map((color) => (
+      {Object.keys(colorPalettes).map((color) => (
         <BadgeDot
           key={color}
-          color={color as keyof typeof colorPalletes}
+          color={color as keyof typeof colorPalettes}
         ></BadgeDot>
       ))}
     </div>
@@ -133,11 +133,11 @@ export const DotWithContent: Story = {
     docs: {
       source: {
         code:
-          Object.keys(colorPalletes)
+          Object.keys(colorPalettes)
             .map((color) => `<BadgeDot color="${color}">2</BadgeDot>`)
             .join('\n') +
           '\n' +
-          Object.keys(colorPalletes)
+          Object.keys(colorPalettes)
             .map(
               (color) =>
                 `<BadgeDot shape="rounded" color="${color}">2</BadgeDot>`,
@@ -151,18 +151,18 @@ export const DotWithContent: Story = {
   render: () => (
     <div className={`flex flex-col gap-6`}>
       <div className={`flex items-center gap-6`}>
-        {Object.keys(colorPalletes).map((color) => (
-          <BadgeDot key={color} color={color as keyof typeof colorPalletes}>
+        {Object.keys(colorPalettes).map((color) => (
+          <BadgeDot key={color} color={color as keyof typeof colorPalettes}>
             2
           </BadgeDot>
         ))}
       </div>
       <div className={`flex items-center gap-6`}>
-        {Object.keys(colorPalletes).map((color) => (
+        {Object.keys(colorPalettes).map((color) => (
           <BadgeDot
             shape="rounded"
             key={color}
-            color={color as keyof typeof colorPalletes}
+            color={color as keyof typeof colorPalettes}
           >
             2
           </BadgeDot>

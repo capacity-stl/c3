@@ -24,51 +24,46 @@ export const iconSizeMapping = {
   [TextBoxSizes.Medium]: 'small',
 } as { [key: string]: 'tiny' | 'small' }
 
-const rootVariants = cva(['relative', 'bg-white', 'w-72', 'border-solid'], {
-  variants: {
-    type: {
-      [TextBoxTypes.Standard]: [borderProps.border.focusWithin],
-      [TextBoxTypes.Shadow]: [
-        'shadow-contact',
-        'focus-within:shadow-contact-focus',
-        borderProps.border.transparent,
-      ],
+const rootVariants = cva(
+  ['relative', 'rounded-sm', 'bg-white', 'w-72', 'border-solid'],
+  {
+    variants: {
+      type: {
+        [TextBoxTypes.Standard]: [borderProps.border.focusWithin],
+        [TextBoxTypes.Shadow]: [
+          'shadow-contact',
+          'focus-within:shadow-contact-focus',
+          borderProps.border.transparent,
+        ],
+      },
+      size: {
+        [TextBoxSizes.Small]: [heightProps.h['8'], fontSizes['label-small']],
+        [TextBoxSizes.Medium]: [heightProps.h['9'], fontSizes['body-small']],
+      },
+      hasLeadingIcon: { true: '', false: '' },
+      hasTrailingIcon: { true: '', false: '' },
+      isError: { true: '', false: '' },
+      ...marginProps,
+      ...widthProps,
     },
-    size: {
-      [TextBoxSizes.Small]: [
-        heightProps.h['9'],
-        'rounded-lg',
-        fontSizes['body-small'],
-      ],
-      [TextBoxSizes.Medium]: [
-        heightProps.h['11'],
-        'rounded-xl',
-        fontSizes['body'],
-      ],
-    },
-    hasLeadingIcon: { true: '', false: '' },
-    hasTrailingIcon: { true: '', false: '' },
-    isError: { true: '', false: '' },
-    ...marginProps,
-    ...widthProps,
+    compoundVariants: [
+      {
+        type: TextBoxTypes.Standard,
+        isError: true,
+        class: [borderProps.border.error],
+      },
+      {
+        type: TextBoxTypes.Shadow,
+        isError: true,
+        class: [
+          'shadow-contact-error',
+          'focus-within:shadow-contact-focus',
+          borderProps.border.transparent,
+        ],
+      },
+    ],
   },
-  compoundVariants: [
-    {
-      type: TextBoxTypes.Standard,
-      isError: true,
-      class: [borderProps.border.error],
-    },
-    {
-      type: TextBoxTypes.Shadow,
-      isError: true,
-      class: [
-        'shadow-contact-error',
-        'focus-within:shadow-contact-focus',
-        borderProps.border.transparent,
-      ],
-    },
-  ],
-})
+)
 
 const inputVariants = cva(
   ['h-full', 'w-full', 'bg-transparent', 'absolute', 'focus:outline-none'],
