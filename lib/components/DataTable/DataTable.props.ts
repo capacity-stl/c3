@@ -203,7 +203,7 @@ export interface ColumnSchema<T extends object> {
 
   // `component` can be passed to override the default cell content renderer.
   // It will receive the `dataKeys` as props, so you can provide custom formatting.
-  component?: React.FunctionComponent<Pick<T, keyof T>>
+  component?: React.FunctionComponent<T>
 
   // `tooltip` can be used to provide a tooltip for the header cell.
   tooltip?: string
@@ -222,7 +222,7 @@ export interface SortSchema {
 export interface DataTableProps<T extends object>
   extends React.HTMLAttributes<HTMLTableElement>,
     VariantProps<typeof rootVariants> {
-  columns: Array<ColumnSchema<Partial<T>>>
+  columns: Array<ColumnSchema<T>>
   data: Array<T>
   uniqueKey?: string
   sort?: SortSchema

@@ -125,13 +125,8 @@ const DataTableHeaderCell = <T extends object>({
             {columnSchema?.header}
           </Text>
           {columnSchema?.tooltip && (
-            <Tooltip content={columnSchema.tooltip}>
-              <Icon
-                className="ml-1"
-                icon={Icon.Glyph.Info}
-                size="4"
-                color="earth-300"
-              />
+            <Tooltip className="ml-1" content={columnSchema.tooltip}>
+              <Icon icon={Icon.Glyph.Info} size="4" color="earth-300" />
             </Tooltip>
           )}
         </div>
