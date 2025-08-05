@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { cn } from '@utils/cn'
 import { TooltipProps } from './Tooltip.props'
 import { Text } from '@components/Text/Text'
+import { Portal } from '@utils/portal'
 
 const getPositionClasses = (position: string) => ({
   tooltip: {
@@ -27,41 +28,84 @@ const Tooltip = ({
   ...props
 }: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false)
+  const [tooltipStyle, setTooltipStyle] = useState({})
+  const triggerRef = useRef<HTMLDivElement>(null)
   const positionClasses = getPositionClasses(position)
 
+  useEffect(() => {
+    if (isVisible && triggerRef.current) {
+      const rect = triggerRef.current.getBoundingClientRect()
+
+      const style: React.CSSProperties = {
+        position: 'fixed',
+        pointerEvents: 'none',
+        height: 'max-content',
+        width: 'max-content',
+      }
+
+      switch (position) {
+        case 'top':
+          style.top = rect.top - rect.height - 8
+          style.left = rect.left + rect.width / 2
+          break
+        case 'bottom':
+          style.top = rect.bottom
+          style.left = rect.left + rect.width / 2
+          break
+        case 'left':
+          style.top = rect.top + rect.height / 2
+          style.right = rect.left + rect.width
+          break
+        case 'right':
+          style.top = rect.top + rect.height / 2
+          style.left = rect.right + 8
+          break
+      }
+
+      setTooltipStyle(style)
+    }
+  }, [isVisible, position])
+
   return (
-    <div
-      className={cn('relative inline cursor-default', className)}
-      onMouseEnter={() => setIsVisible(true)}
-      onMouseLeave={() => setIsVisible(false)}
-      data-testid={testId}
-      {...props}
-    >
-      {children}
+    <>
+      <div
+        ref={triggerRef}
+        className={cn('relative inline cursor-default', className)}
+        onMouseEnter={() => setIsVisible(true)}
+        onMouseLeave={() => setIsVisible(false)}
+        data-testid={testId}
+        {...props}
+      >
+        {children}
+      </div>
+
       {isVisible && (
-        <div
-          className={cn(
-            'absolute z-50 whitespace-nowrap rounded bg-earth-400 px-2 py-1 text-sm text-white',
-            'animate-in fade-in-0 duration-200',
-            positionClasses.tooltip,
-          )}
-        >
-          {typeof content === 'string' ? (
-            <Text type="body-small" color="white">
-              {content}
-            </Text>
-          ) : (
-            content
-          )}
+        <Portal>
           <div
             className={cn(
-              'absolute h-2 w-2 rotate-45 bg-earth-400',
-              positionClasses.arrow,
+              'absolute rounded bg-earth-400 px-2 py-1 text-sm text-white',
+              'animate-in fade-in-0 duration-200',
+              positionClasses.tooltip,
             )}
-          />
-        </div>
+            style={tooltipStyle}
+          >
+            {typeof content === 'string' ? (
+              <Text type="body-small" color="white">
+                {content}
+              </Text>
+            ) : (
+              content
+            )}
+            <div
+              className={cn(
+                'absolute h-2 w-2 rotate-45 bg-earth-400',
+                positionClasses.arrow,
+              )}
+            />
+          </div>
+        </Portal>
       )}
-    </div>
+    </>
   )
 }
 
