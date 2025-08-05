@@ -7,6 +7,8 @@ import {
 } from './DataTable.props'
 import { getKeyFromColumnSchema } from './DataTable.utils'
 import { Text } from '@components/Text/Text'
+import { Tooltip } from '@components/Tooltip/Tooltip'
+import { Icon } from '@components/Icon/Icon'
 
 const DataTableHeaderSortButtons = ({
   isSortable,
@@ -59,14 +61,14 @@ const DataTableSortContainer = ({
   )
 }
 
-const DataTableHeaderCell = ({
+const DataTableHeaderCell = <T extends object>({
   columnSchema,
   headerCellClassString,
   headerCellDefaultContentClassString,
   headerCellSorterOptionalClassString,
   sort,
 }: {
-  columnSchema: ColumnSchema
+  columnSchema: ColumnSchema<T>
   headerCellClassString?: string
   headerCellDefaultContentClassString?: string
   headerCellSorterOptionalClassString?: string
@@ -81,10 +83,19 @@ const DataTableHeaderCell = ({
     typeof columnSchema?.sortKey === 'string'
       ? () => sort.onSort(String(columnSchema.sortKey))
       : null
+  const textAlign = columnSchema?.align ?? 'left'
+  const textAlignClass =
+    textAlign === 'center'
+      ? 'text-center'
+      : textAlign === 'right'
+        ? 'text-right'
+        : ''
 
   if (typeof columnSchema?.header === 'function') {
     return (
-      <th className={headerCellClassString}>
+      <th
+        className={`${headerCellClassString} ${columnSchema?.headerCellClassName ?? ''} ${textAlignClass}`}
+      >
         <DataTableSortContainer
           className={headerCellSorterOptionalClassString}
           onClick={handleSort}
@@ -102,13 +113,27 @@ const DataTableHeaderCell = ({
   }
 
   return (
-    <th className={headerCellClassString}>
+    <th className={`${headerCellClassString} ${textAlignClass}`}>
       <DataTableSortContainer
         className={headerCellSorterOptionalClassString}
         onClick={handleSort}
       >
-        <div className={headerCellDefaultContentClassString}>
-          <Text type="body-small-strong">{columnSchema?.header}</Text>
+        <div
+          className={`${headerCellDefaultContentClassString} flex items-center`}
+        >
+          <Text as="span" type="body-small-strong">
+            {columnSchema?.header}
+          </Text>
+          {columnSchema?.tooltip && (
+            <Tooltip content={columnSchema.tooltip}>
+              <Icon
+                className="ml-1"
+                icon={Icon.Glyph.Info}
+                size="4"
+                color="earth-300"
+              />
+            </Tooltip>
+          )}
         </div>
         <DataTableHeaderSortButtons
           {...{ isSortable, isActive, isAscending, isDefault: true }}
@@ -118,7 +143,7 @@ const DataTableHeaderCell = ({
   )
 }
 
-const DataTableHeaderRow = ({
+const DataTableHeaderRow = <T extends object>({
   columns,
   selectState,
   sort,
@@ -130,7 +155,7 @@ const DataTableHeaderRow = ({
   isSelectable,
   onSelectAll,
 }: {
-  columns: Array<ColumnSchema>
+  columns: Array<ColumnSchema<T>>
   selectState: number
   sort?: SortSchema
   headerSectionClassString?: string
@@ -174,16 +199,18 @@ const DataTableHeaderRow = ({
           const key = `header-cell-${getKeyFromColumnSchema(columnSchema)}`
 
           return (
-            <DataTableHeaderCell
-              key={key}
-              {...{
-                columnSchema,
-                headerCellClassString,
-                headerCellSorterOptionalClassString,
-                headerCellDefaultContentClassString,
-                sort,
-              }}
-            />
+            <>
+              <DataTableHeaderCell
+                key={key}
+                {...{
+                  columnSchema,
+                  headerCellClassString: `${headerCellClassString} ${columnSchema?.headerCellClassName ?? ''}`,
+                  headerCellSorterOptionalClassString,
+                  headerCellDefaultContentClassString,
+                  sort,
+                }}
+              />
+            </>
           )
         })}
       </tr>

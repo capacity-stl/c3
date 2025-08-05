@@ -12,7 +12,8 @@ const getKeyFromDataObject = (
   return String(data?.name ? `${data.name}-${index}` : index)
 }
 
-const getKeyFromColumnSchema = (columnSchema: ColumnSchema) =>
-  columnSchema?.key ?? `${columnSchema.dataKeys.join('-')}`
+const getKeyFromColumnSchema = <T extends object>(
+  columnSchema: ColumnSchema<T>,
+) => columnSchema?.key ?? `${columnSchema?.dataKeys?.join('-')}`
 
 export { getKeyFromColumnSchema, getKeyFromDataObject }

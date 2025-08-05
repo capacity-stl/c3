@@ -4,12 +4,12 @@ import { fontSizes } from '@props/font.props'
 const rootVariants = cva(['border-separate', 'border-spacing-0'], {
   variants: {},
 })
-const headerSectionVariants = cva(['sticky', 'top-0', 'z-10'], { variants: {} })
+const headerSectionVariants = cva(['sticky', 'top-0'], { variants: {} })
 const headerRowVariants = cva([], {
   variants: {},
 })
 const headerCellVariants = cva(
-  ['text-left', 'bg-white', 'border-b', 'border-meteor-200'],
+  ['text-left', 'bg-white', 'border-b', 'border-meteor-200', 'border-solid'],
   {
     variants: {},
   },
@@ -152,10 +152,7 @@ const componentVariants = (props: object) => {
   }
 }
 
-export interface ColumnSchema {
-  // `dataKeys` is an array of key names to pull from the object.
-  dataKeys: Array<string>
-
+export interface ColumnSchema<T extends object> {
   // `header` will render in the thead section for this column if set.
   // If you provide a function component for a row that is sortable, use `children`
   // to position the sort controls in your custom element structure.
@@ -164,13 +161,25 @@ export interface ColumnSchema {
     | string
     | React.FunctionComponent<{ children?: React.ReactElement }>
 
+  // `dataKeys` is an array of key names to pull from the object.
+  dataKeys?: Array<keyof T>
+
+  // `align` can be used to align the column content.
+  align?: 'left' | 'center' | 'right'
+
+  // `headerCellClassName` can be used to customize the header cell.
+  headerCellClassName?: string
+
+  // `dataCellClassName` can be used to customize the data cell.
+  dataCellClassName?: string
+
   // Sorting the array is the responsibility of the implementation.
   // If `sortKey` is set, the header will render sort arrows (or provide the block to
   // the custom header as `children`). Clicking the header will pass this string back
   // to callback you provid as `DataTableProps.sort.onSort`. You can implement your
   // own method of toggling direction based on this, but the `useDefaultSortHandler`
   // hook provides some basic functionality that may be sufficient.
-  sortKey?: string
+  sortKey?: keyof T
 
   // `placeholder` can be used to customize the default renderer.
   // This string will render instead if the `dataKeys` extration for the row is null.
@@ -190,11 +199,14 @@ export interface ColumnSchema {
 
   // `keyPropMapping` can be used for implementing custom components.
   // The key is the incoming `dataKeys` name, and the value is desired the prop name.
-  keyPropMapping?: { [key: string]: string | null | undefined }
+  keyPropMapping?: { [key in keyof T]: string | null | undefined }
 
   // `component` can be passed to override the default cell content renderer.
   // It will receive the `dataKeys` as props, so you can provide custom formatting.
-  component?: React.FunctionComponent<any> //eslint-disable-line @typescript-eslint/no-explicit-any
+  component?: React.FunctionComponent<Pick<T, keyof T>>
+
+  // `tooltip` can be used to provide a tooltip for the header cell.
+  tooltip?: string
 
   // `key` is used as part of the React key prop when mapping cells in this column.
   // This is required for the array, so we will attempt to infer a key if not provided.
@@ -207,17 +219,18 @@ export interface SortSchema {
   isAscending: boolean
 }
 
-export interface DataTableProps
+export interface DataTableProps<T extends object>
   extends React.HTMLAttributes<HTMLTableElement>,
     VariantProps<typeof rootVariants> {
-  columns: Array<ColumnSchema>
-  data: Array<{ [key: string]: any }> //eslint-disable-line @typescript-eslint/no-explicit-any
+  columns: Array<ColumnSchema<Partial<T>>>
+  data: Array<T>
   uniqueKey?: string
   sort?: SortSchema
-  onClickRow?: (rowData: object) => void
+  align?: 'left' | 'center' | 'right'
+  onClickRow?: (rowData: Partial<T>) => void
   isSelectable?: boolean
   selectedIndexes?: Array<number>
-  onSelectRow?: (rowData: object, selected: boolean) => void
+  onSelectRow?: (rowData: T, selected: boolean) => void
   onSelectAll?: () => void
   borderColor?: string
   testId?: string

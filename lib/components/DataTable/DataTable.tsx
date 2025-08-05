@@ -4,7 +4,7 @@ import { getKeyFromDataObject } from './DataTable.utils'
 import { DataTableHeaderRow } from './DataTableHeader'
 import { DataTableDataRow } from './DataTableContent'
 
-const DataTable = ({
+const DataTable = <T extends object>({
   columns,
   data,
   className,
@@ -16,7 +16,7 @@ const DataTable = ({
   onSelectRow,
   onSelectAll,
   ...styleProps
-}: DataTableProps) => {
+}: DataTableProps<T>) => {
   const hasClickHandler = typeof onClickRow === 'function'
   const hasSelecthandler = typeof onSelectRow === 'function'
   const {
