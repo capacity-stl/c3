@@ -23,7 +23,7 @@ const DataTableDataCell = <T extends object>({
 
   if (columnSchema?.component)
     return (
-      <td className={dataCellClassString}>
+      <td className={`${dataCellClassString} ${textAlignClass}`}>
         {React.createElement(columnSchema.component, props as T)}
       </td>
     )

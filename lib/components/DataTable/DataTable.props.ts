@@ -39,7 +39,7 @@ const dataRowVariants = cva([], {
   },
 })
 const dataCellVariants = cva(
-  ['border-b', 'border-solid', 'border-meteor-200'],
+  ['border-b', 'border-solid', 'border-meteor-200', 'align-middle'],
   {
     variants: {},
   },
