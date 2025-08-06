@@ -1,7 +1,6 @@
 import './c3.css'
 
 // all exported components will live here
-export { Grid } from './components/Grid/Grid'
 export { Icon } from './components/Icon/Icon'
 export { Avatar } from './components/Avatar/Avatar'
 export { Flex } from './components/Flex/Flex'
@@ -19,6 +18,7 @@ export { TabList } from './components/Tabs/TabList'
 export { SideNav } from './components/SideNav/SideNav'
 export { Pagination } from './components/Pagination/Pagination'
 export { Button } from './components/Button/Button'
+export { Grid, GridItem } from './components/Grid/index'
 
 // props
 export { colorPalettes } from './props/color.props'
