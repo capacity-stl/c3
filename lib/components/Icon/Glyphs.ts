@@ -172,6 +172,8 @@ import Text from './glyphs/Text'
 import ThumbDown from './glyphs/ThumbDown'
 import ThumbUp from './glyphs/ThumbUp'
 import Ticket from './glyphs/Ticket'
+import TicketClock from './glyphs/TicketClock'
+import TicketLink from './glyphs/TicketLink'
 import TilesView from './glyphs/TilesView'
 import Transfer from './glyphs/Transfer'
 import Unlinked from './glyphs/Unlinked'
@@ -358,6 +360,8 @@ export const Glyphs = {
   ThumbDown,
   ThumbUp,
   Ticket,
+  TicketClock,
+  TicketLink,
   TilesView,
   Transfer,
   Unlinked,
@@ -545,6 +549,8 @@ export enum Icons {
   ThumbDown = 'ThumbDown',
   ThumbUp = 'ThumbUp',
   Ticket = 'Ticket',
+  TicketClock = 'TicketClock',
+  TicketLink = 'TicketLink',
   TilesView = 'TilesView',
   Transfer = 'Transfer',
   Unlinked = 'Unlinked',
