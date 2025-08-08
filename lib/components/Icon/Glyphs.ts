@@ -73,6 +73,8 @@ import End from './glyphs/End'
 import EndMessage from './glyphs/EndMessage'
 import { Envelope, EnvelopeStack } from './glyphs/Envelope'
 import Expired from './glyphs/Expired'
+import Facebook from './glyphs/Facebook'
+import Instagram from './glyphs/Instagram'
 import FileUpload from './glyphs/FileUpload'
 import Filter from './glyphs/Filter'
 import FilterKB from './glyphs/FilterKB'
@@ -133,6 +135,7 @@ import Paperclip from './glyphs/Paperclip'
 import Paste from './glyphs/Paste'
 import Pencil from './glyphs/Pencil'
 import Permissions from './glyphs/Permissions'
+import PersonAdd from './glyphs/PersonAdd'
 import { Person, PersonWithClock } from './glyphs/Person'
 import Phone from './glyphs/Phone'
 import Photo from './glyphs/Photo'
@@ -169,6 +172,8 @@ import Text from './glyphs/Text'
 import ThumbDown from './glyphs/ThumbDown'
 import ThumbUp from './glyphs/ThumbUp'
 import Ticket from './glyphs/Ticket'
+import TicketClock from './glyphs/TicketClock'
+import TicketLink from './glyphs/TicketLink'
 import TilesView from './glyphs/TilesView'
 import Transfer from './glyphs/Transfer'
 import Unlinked from './glyphs/Unlinked'
@@ -254,6 +259,7 @@ export const Glyphs = {
   Envelope,
   EnvelopeStack,
   Expired,
+  Facebook,
   FileUpload,
   Filter,
   FilterKB,
@@ -277,6 +283,7 @@ export const Glyphs = {
   Inbound,
   Info,
   InfoSolid,
+  Instagram,
   Italics,
   KnowledgeBase,
   LifeSaver,
@@ -316,6 +323,7 @@ export const Glyphs = {
   Pencil,
   Permissions,
   Person,
+  PersonAdd,
   PersonWithClock,
   Phone,
   Photo,
@@ -352,6 +360,8 @@ export const Glyphs = {
   ThumbDown,
   ThumbUp,
   Ticket,
+  TicketClock,
+  TicketLink,
   TilesView,
   Transfer,
   Unlinked,
@@ -438,6 +448,7 @@ export enum Icons {
   Envelope = 'Envelope',
   EnvelopeStack = 'EnvelopeStack',
   Expired = 'Expired',
+  Facebook = 'Facebook',
   FileUpload = 'FileUpload',
   Filter = 'Filter',
   FilterKB = 'FilterKB',
@@ -461,6 +472,7 @@ export enum Icons {
   Inbound = 'Inbound',
   Info = 'Info',
   InfoSolid = 'InfoSolid',
+  Instagram = 'Instagram',
   Italics = 'Italics',
   KnowledgeBase = 'KnowledgeBase',
   LifeSaver = 'LifeSaver',
@@ -500,6 +512,7 @@ export enum Icons {
   Pencil = 'Pencil',
   Permissions = 'Permissions',
   Person = 'Person',
+  PersonAdd = 'PersonAdd',
   PersonWithClock = 'PersonWithClock',
   Phone = 'Phone',
   Photo = 'Photo',
@@ -536,6 +549,8 @@ export enum Icons {
   ThumbDown = 'ThumbDown',
   ThumbUp = 'ThumbUp',
   Ticket = 'Ticket',
+  TicketClock = 'TicketClock',
+  TicketLink = 'TicketLink',
   TilesView = 'TilesView',
   Transfer = 'Transfer',
   Unlinked = 'Unlinked',
