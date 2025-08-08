@@ -56,6 +56,7 @@ const meta = {
       description: 'Gap of the tooltip from the trigger element',
       table: {
         type: { summary: 'number' },
+        defaultValue: { summary: '8' },
       },
     },
   },
