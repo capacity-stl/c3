@@ -3,6 +3,13 @@ import { Icons } from '@components/Icon/Glyphs'
 import { Text } from '@components/Text/Text'
 import { ColumnSchema } from './DataTable.props'
 
+type QueueExampleDataShape = {
+  slug: string
+  uuid: string
+  title: string
+  description: string
+}
+
 const TicketCellSlug = ({ slug, uuid }: { slug: string; uuid: string }) => {
   return (
     <div className="p-3">
@@ -21,7 +28,7 @@ const TicketCellTitle = ({
   description: string
 }) => {
   return (
-    <div className="flex min-w-0 max-w-[400px] gap-2 whitespace-nowrap p-3">
+    <div className="flex-column min-w-0 max-w-[400px] gap-2 whitespace-nowrap p-3">
       <Text type="body" className="flex-none">
         {title}
       </Text>
@@ -76,7 +83,7 @@ const TicketCellPriority = ({ priorityId }: { priorityId: number }) => {
   const { color, glyph } = priorityIdToStyleMapping[String(priorityId)]
 
   return (
-    <div className="p-3">
+    <div className="p-3 text-center">
       <Icon color={color} icon={glyph} />
     </div>
   )
@@ -135,6 +142,7 @@ const queueExampleColumns = [
     header: 'Slug',
     dataKeys: ['slug', 'uuid'],
     component: TicketCellSlug,
+    tooltip: 'This is the main indentifier for the ticket',
   },
   {
     header: 'Title / Message',
@@ -171,6 +179,7 @@ const queueExampleColumns = [
   {
     header: 'Priority',
     dataKeys: ['priorityId'],
+    align: 'center',
     component: TicketCellPriority,
   },
   {
@@ -193,6 +202,6 @@ const queueExampleColumns = [
     header: null,
     dataKeys: [],
   },
-] as Array<ColumnSchema>
+] as Array<ColumnSchema<QueueExampleDataShape>>
 
 export { queueExampleColumns }
