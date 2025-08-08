@@ -25,6 +25,9 @@ const Tooltip = ({
   content,
   testId = 'tooltip-component',
   position = 'top',
+  offsetX = 0,
+  offsetY = 0,
+  gap = 8,
   ...props
 }: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false)
@@ -45,20 +48,20 @@ const Tooltip = ({
 
       switch (position) {
         case 'top':
-          style.top = rect.top - rect.height - 8
-          style.left = rect.left + rect.width / 2
+          style.top = rect.top - rect.height - gap + offsetY
+          style.left = rect.left + rect.width / 2 + offsetX
           break
         case 'bottom':
-          style.top = rect.bottom
-          style.left = rect.left + rect.width / 2
+          style.top = rect.bottom + gap + offsetY
+          style.left = rect.left + rect.width / 2 + offsetX
           break
         case 'left':
-          style.top = rect.top + rect.height / 2
-          style.right = rect.left + rect.width
+          style.top = rect.top + rect.height / 2 + offsetY
+          style.right = rect.left + rect.width + gap + offsetX
           break
         case 'right':
-          style.top = rect.top + rect.height / 2
-          style.left = rect.right + 8
+          style.top = rect.top + rect.height / 2 + offsetY
+          style.left = rect.right + gap + offsetX
           break
       }
 
@@ -70,7 +73,7 @@ const Tooltip = ({
     <>
       <div
         ref={triggerRef}
-        className={cn('relative inline cursor-default', className)}
+        className={cn('relative inline-block cursor-default', className)}
         onMouseEnter={() => setIsVisible(true)}
         onMouseLeave={() => setIsVisible(false)}
         data-testid={testId}

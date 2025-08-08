@@ -37,6 +37,27 @@ const meta = {
         type: { summary: 'React.ReactNode' },
       },
     },
+    offsetX: {
+      control: { type: 'number' },
+      description: 'Offset of the tooltip on the x-axis',
+      table: {
+        type: { summary: 'number' },
+      },
+    },
+    offsetY: {
+      control: { type: 'number' },
+      description: 'Offset of the tooltip on the y-axis',
+      table: {
+        type: { summary: 'number' },
+      },
+    },
+    gap: {
+      control: { type: 'number' },
+      description: 'Gap of the tooltip from the trigger element',
+      table: {
+        type: { summary: 'number' },
+      },
+    },
   },
 } satisfies Meta<typeof Tooltip>
 

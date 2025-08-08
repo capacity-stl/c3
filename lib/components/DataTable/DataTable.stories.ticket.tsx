@@ -142,6 +142,7 @@ const queueExampleColumns = [
     header: 'Slug',
     dataKeys: ['slug', 'uuid'],
     component: TicketCellSlug,
+    tooltip: 'This is the main indentifier for the ticket',
   },
   {
     header: 'Title / Message',

@@ -4,4 +4,7 @@ export interface TooltipProps
   children: React.ReactNode
   position?: 'top' | 'bottom' | 'left' | 'right'
   testId?: string
+  offsetX?: number
+  offsetY?: number
+  gap?: number
 }

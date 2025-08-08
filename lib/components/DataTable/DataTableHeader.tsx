@@ -119,13 +119,17 @@ const DataTableHeaderCell = <T extends object>({
         onClick={handleSort}
       >
         <div
-          className={`${headerCellDefaultContentClassString} flex items-center`}
+          className={`${headerCellDefaultContentClassString} flex flex-row items-center`}
         >
           <Text as="span" type="body-small-strong">
             {columnSchema?.header}
           </Text>
           {columnSchema?.tooltip && (
-            <Tooltip className="ml-1" content={columnSchema.tooltip}>
+            <Tooltip
+              className="ml-1 flex"
+              gap={16}
+              content={columnSchema.tooltip}
+            >
               <Icon icon={Icon.Glyph.Info} size="4" color="earth-300" />
             </Tooltip>
           )}
