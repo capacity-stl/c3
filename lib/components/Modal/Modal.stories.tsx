@@ -1,30 +1,75 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 import { Modal } from './Modal'
+import { Button } from '@components/Button/Button'
+import { Text } from '@components/Text/Text'
+import { Flex } from '@components/Flex/Flex'
+import { Icon } from '@components/Icon/Icon'
+import { colorNames } from '../../props/color.props'
 
 const meta: Meta<typeof Modal> = {
-  title: 'Components/Modal',
+  title: 'Data Display/Modal',
   component: Modal,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
   },
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 }
 
 export default meta
 type Story = StoryObj<typeof meta>
+// Custom story type for WithIcon to accept an `icon` arg separate from Modal props
+type WithIconStory = StoryObj<{
+  icon: keyof typeof Icon.Glyph
+  color: (typeof colorNames)[number]
+}>
+
+type SizesStory = StoryObj<{
+  size: 'sm' | 'md' | 'lg' | 'xl'
+  open: boolean
+}>
+
+// Custom stories with their own arg shapes
+type CustomStylesStory = StoryObj<{
+  showCloseButton: boolean
+  title: string
+  description: string
+  icon: keyof typeof Icon.Glyph
+  iconColor: (typeof colorNames)[number]
+  showIcon: boolean
+  showBorderHeader: boolean
+  showBorderFooter: boolean
+  closeOutside: boolean
+  fullScreen: boolean
+  bodyContent: string
+}>
+
+type ConfirmationModalStory = StoryObj<{
+  showCloseButton: boolean
+  title: string
+  description: string
+  icon: keyof typeof Icon.Glyph
+  iconColor: (typeof colorNames)[number]
+  cancelText: string
+  confirmText: string
+  buttonText: string
+}>
+
+type FullScreenStory = StoryObj<{ fullScreen: boolean }>
+type NoCloseOutsideStory = StoryObj<{ closeOutside: boolean }>
+
+const ModalContainer = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="flex min-h-96 items-center justify-center">{children}</div>
+  )
+}
 
 const BasicExample = () => {
   const [open, setOpen] = useState(false)
 
   return (
-    <>
-      <button
-        onClick={() => setOpen(true)}
-        className="hover:bg-earth-500 rounded bg-earth-400 px-4 py-2 text-white"
-      >
-        Open Modal
-      </button>
+    <ModalContainer>
+      <Button onClick={() => setOpen(true)}>Open Modal</Button>
 
       <Modal open={open} onOpenChange={setOpen}>
         <Modal.Header
@@ -33,203 +78,182 @@ const BasicExample = () => {
         />
 
         <Modal.Body>
-          <p>This is the modal content. You can put any content here.</p>
+          <Text type="body" color="night">
+            This is the modal content. You can put any content here.
+          </Text>
         </Modal.Body>
 
-        <div>
-          <button
-            onClick={() => setOpen(false)}
-            className="text-gray-700 hover:bg-gray-400 rounded bg-mercury-400 px-4 py-2"
-          >
+        <Modal.Footer>
+          <Button onClick={() => setOpen(false)} type="secondary">
             Cancel
-          </button>
-          <button
-            onClick={() => setOpen(false)}
-            className="rounded bg-earth-300 px-4 py-2 text-white hover:bg-earth-400"
-          >
+          </Button>
+          <Button onClick={() => setOpen(false)} type="primary">
             Confirm
-          </button>
-        </div>
+          </Button>
+        </Modal.Footer>
       </Modal>
-    </>
+    </ModalContainer>
   )
 }
 
-const WithTriggerExample = () => {
+const WithIconExample = ({
+  icon,
+  color,
+}: {
+  icon: keyof typeof Icon.Glyph
+  color: (typeof colorNames)[number]
+}) => {
   const [open, setOpen] = useState(false)
 
   return (
-    <>
-      <button onClick={() => setOpen(true)}>
-        Open Modal with Trigger Component
-      </button>
+    <ModalContainer>
+      <Button onClick={() => setOpen(true)}>Open Modal</Button>
 
       <Modal open={open} onOpenChange={setOpen}>
         <Modal.Header
-          title="Modal with Trigger"
-          description="This modal uses the Modal.Trigger component"
+          title="Modal Title"
+          description="This is a basic modal example"
+          icon={icon}
+          iconColor={color}
         />
 
         <Modal.Body>
-          <p>
-            The Modal.Trigger component provides consistent styling and behavior
-            for opening modals.
-          </p>
+          <Text type="body" color="night">
+            This is the modal content. You can put any content here.
+          </Text>
         </Modal.Body>
 
-        <div className="flex justify-between">
-          <button
-            onClick={() => setOpen(false)}
-            className="bg-gray-300 text-gray-700 hover:bg-gray-400 rounded px-4 py-2"
-          >
+        <Modal.Footer>
+          <Button onClick={() => setOpen(false)} type="secondary">
             Cancel
-          </button>
-          <button
-            onClick={() => setOpen(false)}
-            className="bg-green-500 hover:bg-green-600 rounded px-4 py-2 text-white"
-          >
-            Save Changes
-          </button>
-        </div>
+          </Button>
+          <Button onClick={() => setOpen(false)} type="primary">
+            Confirm
+          </Button>
+        </Modal.Footer>
       </Modal>
-    </>
+    </ModalContainer>
   )
 }
 
-const LargeModalExample = () => {
-  const [open, setOpen] = useState(false)
-
+const SizesExample = ({
+  size,
+  open,
+}: {
+  size: 'sm' | 'md' | 'lg' | 'xl'
+  open: boolean
+}) => {
   return (
-    <>
-      <button onClick={() => setOpen(true)}>Open Large Modal</button>
-
-      <Modal open={open} onOpenChange={setOpen} size="xl">
+    <ModalContainer>
+      <Modal open={open} size={size}>
         <Modal.Header
-          title="Large Modal"
-          description="This is a larger modal with more content"
+          title={`${size.toUpperCase()} Modal`}
+          description={`This is a ${size} modal with more content`}
           showCloseButton={true}
         />
 
         <Modal.Body>
-          <div className="space-y-4">
-            <p>This is a large modal with more content space.</p>
-            <p>You can fit forms, tables, or other complex content here.</p>
-            <div className="bg-gray-100 rounded p-4">
-              <h4 className="font-medium">Example Content Block</h4>
-              <p className="text-gray-600 mt-2 text-sm">
-                This could be a form, chart, or any other content you need to
-                display.
-              </p>
-            </div>
-          </div>
+          <Text type="body" color="night">
+            This is a {size} modal with more content space.
+          </Text>
         </Modal.Body>
 
-        <div>
-          <button
-            onClick={() => setOpen(false)}
-            className="bg-gray-300 text-gray-700 hover:bg-gray-400 rounded px-4 py-2"
-          >
-            Close
-          </button>
-        </div>
+        <Modal.Footer>
+          <Button>Close</Button>
+        </Modal.Footer>
       </Modal>
-    </>
+    </ModalContainer>
   )
 }
 
-const CustomStylesExample = () => {
-  const [open, setOpen] = useState(false)
+const CustomStylesExample = ({
+  showCloseButton,
+  title,
+  description,
+  icon,
+  iconColor,
+  showBorderHeader,
+  showBorderFooter,
+  showIcon,
+  closeOutside,
+  fullScreen,
+  bodyContent,
+}: {
+  showCloseButton: boolean
+  title: string
+  description: string
+  icon: keyof typeof Icon.Glyph
+  iconColor: (typeof colorNames)[number]
+  showBorderHeader: boolean
+  showBorderFooter: boolean
+  showIcon: boolean
+  closeOutside: boolean
+  fullScreen: boolean
+  bodyContent: string
+}) => {
+  const [open, setOpen] = useState(true)
 
   return (
-    <>
-      <button
+    <ModalContainer>
+      <Button
         onClick={() => setOpen(true)}
         className="bg-purple-500 hover:bg-purple-600 text-white"
       >
         Custom Styled Modal
-      </button>
+      </Button>
 
       <Modal
         open={open}
         onOpenChange={setOpen}
         className="custom-modal"
         size="lg"
+        closeOutside={closeOutside}
+        fullScreen={fullScreen}
       >
         <Modal.Header
-          title="Custom Modal"
-          description="This modal has custom styling"
+          title={title}
+          description={description}
           className="bg-purple-50"
+          showCloseButton={showCloseButton}
+          icon={showIcon ? icon : undefined}
+          iconColor={showIcon ? iconColor : undefined}
+          showBorder={showBorderHeader}
         />
 
-        <Modal.Body className="bg-purple-25">
-          <p>This modal demonstrates custom styling capabilities.</p>
-          <p>You can override the default styles using className props.</p>
+        <Modal.Body>
+          <Flex direction="col" gap="2">
+            <Text type="body" color="night">
+              {bodyContent}
+            </Text>
+          </Flex>
         </Modal.Body>
 
-        <div className="bg-purple-50 flex justify-center">
-          <button
-            onClick={() => setOpen(false)}
-            className="bg-purple-500 hover:bg-purple-600 rounded px-6 py-2 text-white"
-          >
-            Got it!
-          </button>
-        </div>
+        <Modal.Footer showBorder={showBorderFooter}>
+          <Button onClick={() => setOpen(false)}>Got it!</Button>
+        </Modal.Footer>
       </Modal>
-    </>
+    </ModalContainer>
   )
 }
 
-const MultipleModalsExample = () => {
-  const [modal1Open, setModal1Open] = useState(false)
-  const [modal2Open, setModal2Open] = useState(false)
-
-  return (
-    <>
-      <div className="flex gap-4">
-        <button onClick={() => setModal1Open(true)}>Open First Modal</button>
-        <button onClick={() => setModal2Open(true)}>Open Second Modal</button>
-      </div>
-
-      <Modal open={modal1Open} onOpenChange={setModal1Open} size="md">
-        <Modal.Header title="First Modal" />
-        <Modal.Body>
-          <p>This is the first modal.</p>
-          <button
-            onClick={() => setModal2Open(true)}
-            className="bg-blue-500 hover:bg-blue-600 mt-4 rounded px-4 py-2 text-white"
-          >
-            Open Second Modal
-          </button>
-        </Modal.Body>
-        <div>
-          <button
-            onClick={() => setModal1Open(false)}
-            className="bg-gray-300 text-gray-700 hover:bg-gray-400 rounded px-4 py-2"
-          >
-            Close
-          </button>
-        </div>
-      </Modal>
-
-      <Modal open={modal2Open} onOpenChange={setModal2Open} size="sm">
-        <Modal.Header title="Second Modal" />
-        <Modal.Body>
-          <p>This is the second modal. You can have multiple modals open.</p>
-        </Modal.Body>
-        <div>
-          <button
-            onClick={() => setModal2Open(false)}
-            className="bg-gray-300 text-gray-700 hover:bg-gray-400 rounded px-4 py-2"
-          >
-            Close
-          </button>
-        </div>
-      </Modal>
-    </>
-  )
-}
-
-const ConfirmationModalExample = () => {
+const ConfirmationModalExample = ({
+  title,
+  description,
+  icon,
+  iconColor,
+  cancelText,
+  confirmText,
+  buttonText,
+}: {
+  showCloseButton: boolean
+  title: string
+  description: string
+  icon: keyof typeof Icon.Glyph
+  iconColor: (typeof colorNames)[number]
+  cancelText: string
+  confirmText: string
+  buttonText: string
+}) => {
   const [open, setOpen] = useState(false)
 
   const handleConfirm = () => {
@@ -238,60 +262,37 @@ const ConfirmationModalExample = () => {
   }
 
   return (
-    <>
-      <button
-        onClick={() => setOpen(true)}
-        className="bg-red-500 hover:bg-red-600 text-white"
-      >
-        Delete Item
-      </button>
+    <ModalContainer>
+      <Button onClick={() => setOpen(true)}>{buttonText}</Button>
 
-      <Modal open={open} onOpenChange={setOpen} size="sm">
-        <Modal.Header
-          title="Confirm Deletion"
-          description="This action cannot be undone"
-          showCloseButton={false}
+      <Modal open={open} onOpenChange={setOpen}>
+        <Modal.Confirmation
+          title={title}
+          onCancel={() => {
+            console.log('Cancelled')
+          }}
+          onConfirm={() => {
+            handleConfirm()
+          }}
+          cancelText={cancelText}
+          confirmText={confirmText}
+          description={description}
+          icon={icon}
+          iconColor={iconColor}
         />
-
-        <Modal.Body>
-          <p>
-            Are you sure you want to delete this item? This action is permanent
-            and cannot be reversed.
-          </p>
-        </Modal.Body>
-
-        <div className="flex justify-end">
-          <button
-            onClick={() => setOpen(false)}
-            className="bg-gray-300 text-gray-700 hover:bg-gray-400 mr-2 rounded px-4 py-2"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={handleConfirm}
-            className="bg-red-500 hover:bg-red-600 rounded px-4 py-2 text-white"
-          >
-            Delete
-          </button>
-        </div>
       </Modal>
-    </>
+    </ModalContainer>
   )
 }
 
-const FullScreenModalExample = () => {
+const FullScreenModalExample = ({ fullScreen }: { fullScreen: boolean }) => {
   const [open, setOpen] = useState(false)
 
   return (
-    <>
-      <button
-        onClick={() => setOpen(true)}
-        className="bg-blue-500 hover:bg-blue-600 text-white"
-      >
-        Open Full Screen Modal
-      </button>
+    <ModalContainer>
+      <Button onClick={() => setOpen(true)}>Open Full Screen Modal</Button>
 
-      <Modal open={open} onOpenChange={setOpen} fullScreen>
+      <Modal open={open} onOpenChange={setOpen} fullScreen={fullScreen}>
         <Modal.Header
           title="Full Screen Modal"
           description="This modal takes up the entire screen"
@@ -299,20 +300,9 @@ const FullScreenModalExample = () => {
 
         <Modal.Body>
           <div className="space-y-4">
-            <p>This is a full screen modal that takes up the entire viewport.</p>
-            <p>
-              Perfect for complex forms, detailed content, or immersive
-              experiences.
-            </p>
-            <div className="bg-gray-100 rounded p-4">
-              <h4 className="font-medium">Full Screen Features</h4>
-              <ul className="mt-2 space-y-1 text-sm text-gray-600">
-                <li>• No border radius for edge-to-edge appearance</li>
-                <li>• Full viewport width and height</li>
-                <li>• No padding on container for maximum space</li>
-                <li>• Maintains all other modal functionality</li>
-              </ul>
-            </div>
+            <Text type="body" color="night">
+              This is a full screen modal that takes up the entire viewport.
+            </Text>
           </div>
         </Modal.Body>
 
@@ -325,23 +315,24 @@ const FullScreenModalExample = () => {
           </button>
         </div>
       </Modal>
-    </>
+    </ModalContainer>
   )
 }
 
-const NoCloseOutsideModalExample = () => {
+const NoCloseOutsideModalExample = ({
+  closeOutside,
+}: {
+  closeOutside: boolean
+}) => {
   const [open, setOpen] = useState(false)
 
   return (
-    <>
-      <button
-        onClick={() => setOpen(true)}
-        className="bg-orange-500 hover:bg-orange-600 text-white"
-      >
+    <ModalContainer>
+      <Button onClick={() => setOpen(true)}>
         Open Modal (No Close Outside)
-      </button>
+      </Button>
 
-      <Modal open={open} onOpenChange={setOpen} closeOutside={false}>
+      <Modal open={open} onOpenChange={setOpen} closeOutside={closeOutside}>
         <Modal.Header
           title="Cannot Close by Clicking Outside"
           description="This modal requires explicit action to close"
@@ -349,66 +340,200 @@ const NoCloseOutsideModalExample = () => {
 
         <Modal.Body>
           <div className="space-y-4">
-            <p>
+            <Text type="body" color="night">
               This modal has <code>closeOutside=&#123;false&#125;</code> which
               prevents it from closing when you click outside the modal area.
-            </p>
-            <p>
+            </Text>
+            <Text type="body" color="night">
               This is useful for critical actions, forms with unsaved data, or
               any scenario where you want to ensure the user explicitly chooses
               to close the modal.
-            </p>
-            <div className="bg-yellow-50 border border-yellow-200 rounded p-4">
-              <h4 className="font-medium text-yellow-800">Note</h4>
-              <p className="mt-1 text-sm text-yellow-700">
-                You can still close this modal using the close button (X) or by
-                pressing the Escape key. Only clicking outside is disabled.
-              </p>
-            </div>
+            </Text>
+            <Text type="body" color="night">
+              You can still close this modal using the close button (X) or by
+              pressing the Escape key. Only clicking outside is disabled.
+            </Text>
           </div>
         </Modal.Body>
 
-        <div className="p-6">
-          <button
-            onClick={() => setOpen(false)}
-            className="bg-orange-500 hover:bg-orange-600 rounded px-4 py-2 text-white"
-          >
-            Close Modal
-          </button>
-        </div>
+        <Modal.Footer>
+          <Button onClick={() => setOpen(false)}>Close Modal</Button>
+        </Modal.Footer>
       </Modal>
-    </>
+    </ModalContainer>
   )
 }
 
 export const Basic: Story = {
-  render: () => <BasicExample />,
+  parameters: {
+    controls: { include: [''] },
+    docs: {
+      source: {
+        code: `
+          <Modal open={open} onOpenChange={setOpen}>
+            <Modal.Header
+              title="Modal Title"
+              description="This is a basic modal example"
+            />
+            <Modal.Body>
+              <Text type="body" color="night">
+                This is the modal content. You can put any content here.
+              </Text>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={() => setOpen(false)} type="secondary">
+                Cancel
+              </Button>
+              <Button onClick={() => setOpen(false)} type="primary">
+                Confirm
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        `,
+      },
+    },
+  },
+  render: (args) => <BasicExample {...args} />,
 }
 
-export const WithTriggerComponent: Story = {
-  render: () => <WithTriggerExample />,
+export const WithIcon: WithIconStory = {
+  args: {
+    icon: 'Alert',
+    color: 'earth-300',
+  },
+  argTypes: {
+    icon: { options: Object.keys(Icon.Glyph), control: { type: 'select' } },
+    color: { options: colorNames, control: { type: 'select' } },
+  },
+  parameters: {
+    controls: { include: ['icon', 'color'] },
+  },
+  render: (args) => <WithIconExample {...args} />,
 }
 
-export const LargeModal: Story = {
-  render: () => <LargeModalExample />,
+export const Sizes: SizesStory = {
+  args: {
+    size: 'lg',
+    open: true,
+  },
+  argTypes: {
+    size: {
+      options: ['sm', 'md', 'lg', 'xl'],
+    },
+    open: { control: { type: 'boolean' } },
+  },
+  parameters: {
+    controls: { include: ['size', 'open'] },
+  },
+  render: (args) => <SizesExample {...args} />,
 }
 
-export const CustomStyles: Story = {
-  render: () => <CustomStylesExample />,
+export const AllOptions: CustomStylesStory = {
+  args: {
+    showCloseButton: true,
+    title: 'Custom Modal',
+    description: 'This modal has all the options available',
+    icon: 'Alert',
+    iconColor: 'earth-300',
+    showIcon: true,
+    showBorderHeader: true,
+    showBorderFooter: true,
+    closeOutside: true,
+    fullScreen: false,
+    bodyContent:
+      'This modal has all the options available. You can put any content here.',
+  },
+  argTypes: {
+    showCloseButton: { control: { type: 'boolean' } },
+    title: { control: { type: 'text' } },
+    description: { control: { type: 'text' } },
+    icon: { options: Object.keys(Icon.Glyph), control: { type: 'select' } },
+    iconColor: { options: colorNames, control: { type: 'select' } },
+    showIcon: { control: { type: 'boolean' } },
+    showBorderHeader: { control: { type: 'boolean' } },
+    showBorderFooter: { control: { type: 'boolean' } },
+    closeOutside: { control: { type: 'boolean' } },
+    fullScreen: { control: { type: 'boolean' } },
+    bodyContent: { control: { type: 'text' } },
+  },
+  parameters: {
+    controls: {
+      include: [
+        'showCloseButton',
+        'title',
+        'description',
+        'icon',
+        'iconColor',
+        'showIcon',
+        'showBorderHeader',
+        'showBorderFooter',
+        'closeOutside',
+        'fullScreen',
+        'bodyContent',
+      ],
+    },
+  },
+  render: (args) => <CustomStylesExample {...args} />,
 }
 
-export const MultipleModals: Story = {
-  render: () => <MultipleModalsExample />,
+export const ConfirmationModal: ConfirmationModalStory = {
+  args: {
+    showCloseButton: true,
+    title: 'Confirm Action',
+    description: 'Are you sure you want to delete this item?',
+    icon: 'Alert',
+    iconColor: 'earth-300',
+    cancelText: 'Cancel',
+    confirmText: 'Delete Item',
+    buttonText: 'Delete Item',
+  },
+  argTypes: {
+    title: { control: { type: 'text' } },
+    description: { control: { type: 'text' } },
+    icon: { options: Object.keys(Icon.Glyph), control: { type: 'select' } },
+    iconColor: { options: colorNames, control: { type: 'select' } },
+    cancelText: { control: { type: 'text' } },
+    confirmText: { control: { type: 'text' } },
+    buttonText: { control: { type: 'text' } },
+  },
+  parameters: {
+    controls: {
+      include: [
+        'title',
+        'description',
+        'icon',
+        'iconColor',
+        'cancelText',
+        'confirmText',
+        'buttonText',
+      ],
+    },
+  },
+  render: (args) => <ConfirmationModalExample {...args} />,
 }
 
-export const ConfirmationModal: Story = {
-  render: () => <ConfirmationModalExample />,
+export const FullScreenModal: FullScreenStory = {
+  args: {
+    fullScreen: true,
+  },
+  argTypes: {
+    fullScreen: { control: { type: 'boolean' } },
+  },
+  parameters: {
+    controls: { include: ['fullScreen'] },
+  },
+  render: (args) => <FullScreenModalExample {...args} />,
 }
 
-export const FullScreenModal: Story = {
-  render: () => <FullScreenModalExample />,
-}
-
-export const NoCloseOutside: Story = {
-  render: () => <NoCloseOutsideModalExample />,
+export const NoCloseOutside: NoCloseOutsideStory = {
+  args: {
+    closeOutside: false,
+  },
+  argTypes: {
+    closeOutside: { control: { type: 'boolean' } },
+  },
+  parameters: {
+    controls: { include: ['closeOutside'] },
+  },
+  render: (args) => <NoCloseOutsideModalExample {...args} />,
 }

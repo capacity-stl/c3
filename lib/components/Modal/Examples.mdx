@@ -1,0 +1,69 @@
+import { Meta, Title, Description, Source, Canvas } from '@storybook/blocks'
+import * as ModalStories from './Modal.stories'
+import { Modal } from './Modal'
+
+<Meta title="Data Display/Modal/Code Examples" of={ModalStories} />
+<Title>Modal Examples</Title>
+<Description of={ModalStories} />
+
+The Modal component is a versatile and customizable dialog that can be used to display content in a modal window. It can be used to display a variety of content, such as a form, a message, or a confirmation dialog.
+
+### Basic
+
+<Canvas of={ModalStories.Basic} layout="fullscreen" />
+<Source code={`
+
+// manage the open state boolean
+const [open, setOpen] = useState(false)
+
+// trigger the modal to open
+
+<Button onClick={() => setOpen(true)}>Open Modal</Button>
+
+// the <Modal> component is the container for the modal
+
+<Modal open={open} onOpenChange={setOpen}>
+
+{/* the <Modal.Header> component is the title and description of the modal (optional) */}
+
+  <Modal.Header
+    title="Modal Title"
+    description="This is a basic modal example"
+  />
+  {/* the <Modal.Body> component is the content of the modal can receive any content (optional) */}
+  <Modal.Body>
+    <Text type="body" color="night">
+      This is the modal content. You can put any content here.
+    </Text>
+  </Modal.Body>
+  {/* the <Modal.Footer> component is the footer of the modal can receive any content (optional) */}
+  <Modal.Footer>
+    <Button onClick={() => setOpen(false)} type="secondary">
+      Cancel
+    </Button>
+    <Button onClick={() => setOpen(false)} type="primary">
+      Confirm
+    </Button>
+  </Modal.Footer>
+</Modal>
+`.trim()} />
+
+### Comfirmation Modal
+
+<Canvas of={ModalStories.ConfirmationModal} layout="fullscreen" />
+
+<Source code={`
+
+<Modal open={open} onOpenChange={setOpen}>
+  <Modal.Confirmation
+    title="Confirm Action"
+    onCancel={() => console.log('Cancelled')}
+    onConfirm={() => {
+      handleConfirm()
+    }}
+    cancelText="Cancel"
+    confirmText="Delete Item"
+    description="Are you sure you want to delete this item?"
+  />
+</Modal>
+`.trim()} />

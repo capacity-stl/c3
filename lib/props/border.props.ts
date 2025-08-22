@@ -22,6 +22,16 @@ const borderProps = {
     dashed: 'border-t border-dashed border-meteor-300',
     transparent: 'border-t border-transparent',
   },
+  borderBottom: {
+    default: 'border-b border-meteor-200',
+    error: 'border-b border-mars-300',
+    focus:
+      'border-b border-meteor-200 focus:border-earth-300 focus:shadow-outlined focus:shadow-earth-300',
+    focusWithin:
+      'border-b border-meteor-200 focus-within:border-b focus-within:border-transparent focus-within:shadow-outline-focus',
+    dashed: 'border-b border-dashed border-meteor-300',
+    transparent: 'border-b border-transparent',
+  },
 }
 
 export { borderProps }

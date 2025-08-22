@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useRef } from 'react'
+import { createContext, useContext, useEffect, useRef } from 'react'
 import { cn } from '@utils/cn'
 import {
   ModalRootProps,
@@ -6,10 +6,12 @@ import {
   ModalBodyProps,
   ModalFooterProps,
   modalVariants,
+  ModalAlertProps,
 } from './Modal.props'
 import { Text } from '@components/Text/Text'
 import { Icon } from '@components/Icon/Icon'
 import { Flex } from '@components/Flex/Flex'
+import { Button } from '@components/Button/Button'
 
 // Context for modal state management
 interface ModalContextType {
@@ -33,7 +35,7 @@ const ModalRoot = ({
   children,
   open = false,
   onOpenChange,
-  size = 'md',
+  size = 'sm',
   borderRadius = 'medium',
   p = null,
   fullScreen = false,
@@ -82,7 +84,7 @@ const ModalRoot = ({
       <div
         ref={modalRef}
         className={cn(
-          'bg-black fixed inset-0 z-50 flex items-center justify-center bg-opacity-20',
+          'fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-20',
           fullScreen && 'p-0',
           className,
         )}
@@ -135,11 +137,12 @@ const ModalHeader = ({
       className={cn(
         modalVariants({ ...props }),
         'flex items-start justify-between',
+
         className,
       )}
       data-testid={testId}
+      borderBottom={showBorder ? 'default' : 'transparent'}
       p={p}
-      border={showBorder ? 'default' : 'transparent'}
     >
       <div className="flex flex-col gap-1">
         {title && (
@@ -176,7 +179,6 @@ const ModalHeader = ({
   )
 }
 
-// Modal Body Component
 const ModalBody = ({
   className,
   children,
@@ -222,15 +224,100 @@ const ModalFooter = ({
   )
 }
 
+const ModalConfirmation = ({
+  title,
+  className,
+  description,
+  onConfirm,
+  onCancel,
+  confirmText = 'Confirm',
+  cancelText = 'Cancel',
+  testId = 'modal-alert',
+  icon = 'Alert',
+  iconColor = 'mars-300',
+  ...props
+}: ModalAlertProps) => {
+  const { onOpenChange } = useModal()
+
+  const handleConfirm = () => {
+    onConfirm?.()
+    onOpenChange(false)
+  }
+
+  const handleCancel = () => {
+    onCancel?.()
+    onOpenChange(false)
+  }
+
+  return (
+    <Flex
+      className={cn(modalVariants({ ...props }), className)}
+      direction="col"
+      gap={null}
+      data-testid={testId}
+      p="6"
+    >
+      <Flex direction="row" justify="end">
+        <button
+          type="button"
+          className="ml-auto inline-flex items-center rounded-sm bg-meteor-100 p-1.5 text-sm text-meteor-400"
+          onClick={() => onOpenChange(false)}
+          data-testid="modal-close-button"
+        >
+          <Icon icon="Close" size="small" />
+          <span className="sr-only">Close modal</span>
+        </button>
+      </Flex>
+      <Flex direction="col" gap="2" align="center" mb="8">
+        {icon && <Icon icon={icon} size="large" color={iconColor} />}
+        <Text
+          type="heading"
+          className="text-lg font-semibold"
+          color="night"
+          mt="4"
+        >
+          {title}
+        </Text>
+
+        <Text type="body" color="night">
+          {description}
+        </Text>
+      </Flex>
+      <ModalFooter showBorder={false} justify="center">
+        {onCancel && (
+          <Button
+            onClick={handleCancel}
+            data-testid="modal-alert-cancel"
+            type="secondary"
+          >
+            {cancelText}
+          </Button>
+        )}
+        {onConfirm && (
+          <Button
+            onClick={handleConfirm}
+            data-testid="modal-alert-confirm"
+            type="destructive"
+          >
+            {confirmText}
+          </Button>
+        )}
+      </ModalFooter>
+    </Flex>
+  )
+}
+
 // Attach subcomponents to main Modal
 const Modal = ModalRoot as typeof ModalRoot & {
   Header: typeof ModalHeader
   Body: typeof ModalBody
   Footer: typeof ModalFooter
+  Confirmation: typeof ModalConfirmation
 }
 
 Modal.Header = ModalHeader
 Modal.Body = ModalBody
 Modal.Footer = ModalFooter
+Modal.Confirmation = ModalConfirmation
 
 export { Modal }

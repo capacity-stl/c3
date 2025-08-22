@@ -81,4 +81,19 @@ export interface ModalFooterProps
   justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'
 }
 
+export interface ModalAlertProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof modalVariants> {
+  className?: string
+  title?: string
+  description?: string
+  onConfirm?: () => void
+  onCancel?: () => void
+  confirmText?: string
+  cancelText?: string
+  testId?: string
+  icon?: keyof typeof Icons
+  iconColor?: string
+}
+
 export { modalVariants }
