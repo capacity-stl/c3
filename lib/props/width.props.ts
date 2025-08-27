@@ -85,4 +85,40 @@ const widthProps = {
   },
 }
 
-export { widthProps, widthKeys }
+// Tailwind spacing scale (rem). Converted to px using 16px root.
+const spacingRemMap: Record<string, number> = {
+  '0': 0,
+  '1': 0.25,
+  '2': 0.5,
+  '3': 0.75,
+  '4': 1,
+  '5': 1.25,
+  '6': 1.5,
+  '7': 1.75,
+  '8': 2,
+  '9': 2.25,
+  '10': 2.5,
+  '11': 2.75,
+  '12': 3,
+  '13': 3.25,
+  '14': 3.5,
+  '15': 3.75,
+  '16': 4,
+  '20': 5,
+  '24': 6,
+  '28': 7,
+  '32': 8,
+  '36': 9,
+  '40': 10,
+  '44': 11,
+  '48': 12,
+  '52': 13,
+  '56': 14,
+  '60': 15,
+  '64': 16,
+  '72': 18,
+  '80': 20,
+  '96': 24,
+}
+
+export { widthProps, widthKeys, spacingRemMap }

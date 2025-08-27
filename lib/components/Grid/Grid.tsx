@@ -1,6 +1,26 @@
 import React from 'react'
 import { cn } from '../../utils/cn'
 import { GridProps, gridVariants } from './Grid.props'
+import { spacingRemMap } from '../../props/width.props'
+
+const toPx = (rem: number) => `${rem * 16}px`
+
+const formatTemplateInput = (template?: string) => {
+  if (!template) return undefined
+  // If complex CSS syntax present, trust user input as-is
+  if (/[(),]/.test(template)) return template
+  const parts = template.trim().split(/\s+/)
+  return parts
+    .map((p) => {
+      if (spacingRemMap[p] !== undefined) return toPx(spacingRemMap[p])
+      // pass-through known CSS units
+      if (/^(?:\d+)(?:px|rem|fr|%)$/.test(p)) return p
+      // keywords
+      if (p === 'auto' || p === 'min-content' || p === 'max-content') return p
+      return p
+    })
+    .join(' ')
+}
 
 const Grid = React.forwardRef<HTMLDivElement, GridProps>(
   (
@@ -13,8 +33,12 @@ const Grid = React.forwardRef<HTMLDivElement, GridProps>(
     }
 
     const style: React.CSSProperties = {
-      ...(templateCols ? { gridTemplateColumns: templateCols } : {}),
-      ...(templateRows ? { gridTemplateRows: templateRows } : {}),
+      ...(templateCols
+        ? { gridTemplateColumns: formatTemplateInput(templateCols) }
+        : {}),
+      ...(templateRows
+        ? { gridTemplateRows: formatTemplateInput(templateRows) }
+        : {}),
       ...(gridProps.style || {}),
     }
 
