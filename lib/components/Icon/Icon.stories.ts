@@ -41,6 +41,7 @@ export const Default: Story = {
     size: 'medium',
     color: 'earth-300',
     icon: Icon.Glyph.Action,
+    testId: 'icon-component',
   },
 
   play: async ({ canvasElement }) => {
