@@ -278,3 +278,60 @@ Resize your browser window to see the grid adapt.
     },
   },
 }
+
+export const TemplateCols: Story = {
+  args: {
+    templateCols: '200px 200px',
+    gap: '2',
+    testId: 'grid-template-cols',
+    children: (
+      <>
+        <BasicGridItem>Item 1</BasicGridItem>
+        <BasicGridItem>Item 2</BasicGridItem>
+        <BasicGridItem>Item 3</BasicGridItem>
+        <BasicGridItem>Item 4</BasicGridItem>
+      </>
+    ),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'A grid with a custom template column layout.',
+      },
+    },
+  },
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const grid = await canvas.getByTestId('grid-template-cols')
+    await expect(grid).toBeInTheDocument()
+  },
+}
+
+export const TemplateRows: Story = {
+  args: {
+    templateRows: '100px 200px 1fr 50px',
+    gap: '2',
+    testId: 'grid-template-rows',
+    children: (
+      <>
+        <BasicGridItem>Item 1</BasicGridItem>
+        <BasicGridItem>Item 2</BasicGridItem>
+        <BasicGridItem>Item 3</BasicGridItem>
+        <BasicGridItem>Item 4</BasicGridItem>
+      </>
+    ),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'A grid with a custom template row layout.',
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const grid = await canvas.getByTestId('grid-template-rows')
+    await expect(grid).toBeInTheDocument()
+  },
+}

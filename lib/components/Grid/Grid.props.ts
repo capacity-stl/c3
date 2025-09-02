@@ -133,6 +133,8 @@ export interface GridProps
   className?: string
   children?: React.ReactNode
   testId?: string
+  templateCols?: string
+  templateRows?: string
 }
 
 export { gridVariants }
