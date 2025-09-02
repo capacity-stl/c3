@@ -13,10 +13,7 @@ const formatTemplateInput = (template?: string) => {
   return parts
     .map((p) => {
       if (spacingRemMap[p] !== undefined) return toPx(spacingRemMap[p])
-      // pass-through known CSS units
-      if (/^(?:\d+)(?:px|rem|fr|%)$/.test(p)) return p
-      // keywords
-      if (p === 'auto' || p === 'min-content' || p === 'max-content') return p
+
       return p
     })
     .join(' ')
