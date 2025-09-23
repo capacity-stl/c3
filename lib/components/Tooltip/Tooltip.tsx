@@ -8,7 +8,7 @@ const getPositionClasses = (position: string) => ({
   tooltip: {
     top: 'bottom-full left-1/2 mb-2 -translate-x-1/2',
     bottom: 'left-1/2 top-full mt-2 -translate-x-1/2',
-    left: 'right-full top-1/2 mr-2 -translate-y-1/2',
+    left: 'right-full top-1/2 mr-2 -translate-y-1/2 -translate-x-full',
     right: 'left-full top-1/2 ml-2 -translate-y-1/2',
   }[position],
   arrow: {
@@ -57,7 +57,7 @@ const Tooltip = ({
           break
         case 'left':
           style.top = rect.top + rect.height / 2 + offsetY
-          style.right = rect.left + rect.width + gap + offsetX
+          style.left = rect.left - gap + offsetX
           break
         case 'right':
           style.top = rect.top + rect.height / 2 + offsetY
@@ -67,7 +67,7 @@ const Tooltip = ({
 
       setTooltipStyle(style)
     }
-  }, [isVisible, position])
+  }, [isVisible, position, offsetX, offsetY, gap, content])
 
   return (
     <>
@@ -82,7 +82,7 @@ const Tooltip = ({
         {children}
       </div>
 
-      {isVisible && (
+      {content && isVisible && (
         <Portal>
           <div
             className={cn(

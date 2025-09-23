@@ -17,6 +17,7 @@ import {
   iconButtonVariants,
 } from './CollapsibleDrawer.props'
 import { CollapsibleSheetProps } from './CollapsibleSheet.props'
+import { Tooltip } from '@components/Tooltip/Tooltip'
 
 /* Utilities */
 const deriveActiveIndex = (
@@ -101,7 +102,7 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
   } = {
     hideSidebarWhenOpen: false,
     borderColor: 'meteor-200',
-    dropToSide: 'right',
+    dropToSide: 'right' as const,
     w: '80',
     onSectionChange: (itemId: string | null) => itemId,
     ...props,
@@ -165,14 +166,19 @@ const CollapsibleDrawer = (props: CollapsibleDrawerProps) => {
       {!isOpen || (isOpen && !hideSidebarWhenOpen) ? (
         <div className={iconColumnClassString}>
           {meta?.map((metaItem, index) => (
-            <DrawerButton
-              icon={metaItem.icon}
-              isSelected={activeIndex === index}
+            <Tooltip
+              content={metaItem.tooltip}
               key={metaItem.id}
-              onClick={() => handleIndexChange(index)}
-              testId={`${metaItem?.testId ?? `sheet-${index}`}-icon`}
-              title={metaItem.title}
-            />
+              position={dropToSide}
+            >
+              <DrawerButton
+                icon={metaItem.icon}
+                isSelected={activeIndex === index}
+                onClick={() => handleIndexChange(index)}
+                testId={`${metaItem?.testId ?? `sheet-${index}`}-icon`}
+                title={metaItem.title}
+              />
+            </Tooltip>
           ))}
         </div>
       ) : null}
