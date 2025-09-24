@@ -158,6 +158,7 @@ export const Default: Story = {
           id="second"
           title="Second"
           testId="second-sheet"
+          tooltip="Second option"
           headerComponent={ExampleExternalHeader}
         >
           <div className="p-2">Second sheet content</div>
@@ -189,18 +190,21 @@ const SIDEBAR_SECTION_IDS = {
     label: 'Information',
     icon: Icon.Glyph.Info,
     content: <div className="p-2">Information panel</div>,
+    tooltip: 'Information tooltip',
   },
   TOOLS: {
     id: 'tools',
     label: 'Tools',
     icon: Icon.Glyph.ClassicExchange,
     content: <div className="p-2">Map to Exchange</div>,
+    tooltip: 'Tools tooltip',
   },
   EXTERNAL: {
     id: 'external',
     label: 'External',
     icon: Icon.Glyph.Person,
     content: ExampleExternalComponent,
+    tooltip: 'External tooltip',
   },
 }
 
@@ -319,6 +323,7 @@ export const PageExample: Story = {
                 icon={section.icon}
                 id={section.id}
                 title={section.label}
+                tooltip={section.tooltip}
               >
                 {typeof section.content === 'function'
                   ? section.content()
