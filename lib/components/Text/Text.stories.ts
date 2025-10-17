@@ -3,8 +3,9 @@ import { within } from '@storybook/testing-library'
 import { expect } from '@storybook/jest'
 
 import { Text } from './Text'
-import { asTypes, textVariants } from './Text.props'
+import { asTypes } from './Text.props'
 import { colorNames } from '../../props/color.props'
+import { fontSizes } from '../../props/font.props'
 
 const meta = {
   title: 'Typography/Text',
@@ -59,8 +60,8 @@ const meta = {
     type: {
       control: {
         type: 'select',
-        options: Object.values(textVariants),
       },
+      options: Object.keys(fontSizes),
       table: {
         type: { summary: 'The type of text to render' },
         defaultValue: { summary: 'body' },
@@ -235,7 +236,7 @@ export const Body: Story = {
 
     await expect(text).toBeInTheDocument()
     await expect(text).toContainHTML('div')
-    await expect(text).toHaveClass('text-base text-deep-space leading-5')
+    await expect(text).toHaveClass('text-sm text-deep-space leading-5')
   },
 }
 
@@ -309,7 +310,7 @@ export const BodySmall: Story = {
 
     await expect(text).toBeInTheDocument()
     await expect(text).toContainHTML('div')
-    await expect(text).toHaveClass('text-sm text-deep-space leading-4')
+    await expect(text).toHaveClass('text-xs text-deep-space leading-4')
   },
 }
 
@@ -334,7 +335,7 @@ export const BodySmallStrong: Story = {
     await expect(text).toBeInTheDocument()
     await expect(text).toContainHTML('div')
     await expect(text).toHaveClass(
-      'text-sm text-deep-space font-medium leading-4',
+      'text-xs text-deep-space font-medium leading-4',
     )
   },
 }
@@ -352,9 +353,11 @@ export const SmallCaps: Story = {
 
     await expect(text).toBeInTheDocument()
     await expect(text).toContainHTML('div')
-    await expect(text).toHaveClass(
-      'text-xs text-deep-space leading-3 tracking-wide uppercase',
-    )
+    await expect(text).toHaveClass('text-xxs')
+    await expect(text).toHaveClass('leading-3')
+    await expect(text).toHaveClass('tracking-wide')
+    await expect(text).toHaveClass('uppercase')
+    await expect(text).toHaveClass('font-semibold')
   },
 }
 
@@ -371,7 +374,7 @@ export const Code: Story = {
 
     await expect(text).toBeInTheDocument()
     await expect(text).toContainHTML('code')
-    await expect(text).toHaveClass('text-base text-deep-space leading-3')
+    await expect(text).toHaveClass('text-sm text-deep-space leading-3')
   },
 }
 
@@ -388,7 +391,7 @@ export const CodeSmall: Story = {
 
     await expect(text).toBeInTheDocument()
     await expect(text).toContainHTML('code')
-    await expect(text).toHaveClass('text-sm text-deep-space leading-3')
+    await expect(text).toHaveClass('text-xs text-deep-space leading-3')
   },
 }
 
