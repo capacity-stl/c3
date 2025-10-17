@@ -49,7 +49,7 @@ const items: InteractionType[] = [
     description:
       'Message from the concierge. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     datetime: getTimeAgo(new Date().toISOString()),
-    icon: 'Livechat',
+    icon: Icon.Glyph.Livechat,
     iconColor: 'neptune-300',
     status: 'in progress',
     options: [
@@ -76,7 +76,7 @@ const items: InteractionType[] = [
     description:
       'Message from SMS. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     datetime: getTimeAgo('2025-03-11T12:00:00Z'),
-    icon: 'Concierge',
+    icon: Icon.Glyph.Concierge,
     iconColor: 'earth-300',
     reference: 'CAP-1234',
     user: {
@@ -91,7 +91,7 @@ const items: InteractionType[] = [
     description:
       'Message from email. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     datetime: getTimeAgo('2025-01-25T12:00:00Z'),
-    icon: 'Ticket',
+    icon: Icon.Glyph.Ticket,
     iconColor: 'aurora-300',
     options: [
       {
@@ -126,7 +126,7 @@ const NoItemsMessage = () => {
       data-testid="no-items-message"
       className="flex flex-col items-center justify-center gap-2"
     >
-      <Icon icon="Close" color="mars-300" size="small" />
+      <Icon icon={Icon.Glyph.Close} color="mars-300" size="small" />
       <span>
         No <span className="font-bold">tickets</span> found!
       </span>
@@ -141,7 +141,7 @@ const bottomLeftContent = (item: InteractionType) =>
         {item?.status}
       </span>
       {item?.status === 'in progress' && (
-        <Icon icon="Done" color="neptune-300" size="tiny" />
+        <Icon icon={Icon.Glyph.Done} color="neptune-300" size="tiny" />
       )}
     </div>
   )
@@ -163,14 +163,14 @@ const header = (selectedItems: InteractionType[]) => {
         aria-label="Sort tickets"
         onClick={() => alert('Sort tickets')}
       >
-        <Icon icon="Sort" color="meteor-300" size="tiny" />
+        <Icon icon={Icon.Glyph.Sort} color="meteor-300" size="tiny" />
       </button>
       {selectedItems.length > 0 ? (
         <button
           className="flex cursor-pointer flex-row items-center gap-1 text-sm font-medium text-meteor-400"
           onClick={onClick}
         >
-          <Icon icon="Pencil" color="meteor-300" size="tiny" />
+          <Icon icon={Icon.Glyph.Pencil} color="meteor-300" size="tiny" />
           Bulk Edit
         </button>
       ) : (
