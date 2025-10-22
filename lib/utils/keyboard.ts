@@ -11,7 +11,6 @@ export const keyboardEventMapper = (
     const { key } = e
 
     if (typeof events[key] === 'function') {
-      console.log('key', key, 'has event')
       if (options?.preventDefault) e.preventDefault()
       if (options?.stopPropagation) e.stopPropagation()
 
