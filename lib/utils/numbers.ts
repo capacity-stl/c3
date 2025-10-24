@@ -6,14 +6,6 @@ export const incrementWithinBounds = (
   allowWrapping: boolean = true,
   nullInterstitial: boolean = false,
 ) => {
-  console.log({
-    value,
-    change,
-    lbound,
-    ubound,
-    allowWrapping,
-    nullInterstitial,
-  })
   if (value === null) {
     return change > 0 ? lbound - 1 + change : ubound + 1 + change
   }

@@ -385,6 +385,7 @@ const Select = (props: SelectProps) => {
                 isActive={isActive}
                 isSelected={isSelected}
                 item={item}
+                key={itemToString(item)}
                 onHover={itemFocusHandler}
                 onSelect={itemSelectHandler}
                 renderItem={renderItem}

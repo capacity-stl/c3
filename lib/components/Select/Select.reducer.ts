@@ -106,10 +106,6 @@ const selectReducer = (state: SelectState, action: SelectAction) => {
         ...state,
         lastActiveIndexChangeType: action.payload,
       }
-    case 'SET_FILTER_STRING':
-      return {
-        ...state,
-      }
     default:
       return state
   }
@@ -239,8 +235,18 @@ const useSelectReducer = ({
     [items, value], //eslint-disable-line react-hooks/exhaustive-deps
   )
   const clearFilter = useMemo(
-    () => () => dispatcher({ type: 'SET_FILTER_STRING', payload: '' }),
-    [],
+    () => () => {
+      dispatcher({
+        type: 'SET_STATE',
+        payload: processValueAndFilterItems({
+          items,
+          value,
+          filterValue: '',
+          itemToString,
+        }),
+      })
+    },
+    [items, value], //eslint-disable-line react-hooks/exhaustive-deps
   )
 
   useEffect(
