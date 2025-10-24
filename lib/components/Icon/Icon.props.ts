@@ -4,21 +4,27 @@ import { iconsizeProps } from '@props/iconsize.props'
 import { colorProps } from '@props/color.props'
 import { Icons } from '@components/Icon/Glyphs'
 
-const iconPropsVariants = {
-  ...iconsizeProps,
-  ...colorProps,
+enum asTypes {
+  div = 'div',
+  span = 'span',
 }
 
-const iconVariants = cva('inline-block *:h-full *:w-auto', {
+const iconVariants = cva(['*:h-full', '*:w-auto'], {
   variants: {
-    ...iconPropsVariants,
+    ...iconsizeProps,
+    ...colorProps,
+    as: {
+      div: ['block'],
+      span: ['inline-block'],
+    },
   },
 })
 
 export type IconProps = VariantProps<typeof iconVariants> &
   React.ComponentProps<typeof iconVariants> & {
     icon: keyof typeof Icons
+    as?: React.ElementType
     testId?: string
   }
 
-export { iconVariants }
+export { iconVariants, asTypes }

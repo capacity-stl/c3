@@ -4,6 +4,7 @@
     "paths": {
       "@components/*": ["./components/*"],
       "@utils/*": ["./utils/*"],
+      "@hooks/*": ["./hooks/*"],
       "@props/*": ["./props/*"]
     },
     "target": "ES2020",
