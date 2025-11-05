@@ -6,7 +6,7 @@ import {
   ModalBodyProps,
   ModalFooterProps,
   modalVariants,
-  ModalAlertProps,
+  ModalConfirmationProps,
 } from './Modal.props'
 import { Text } from '@components/Text/Text'
 import { Icon } from '@components/Icon/Icon'
@@ -121,7 +121,7 @@ const ModalHeader = ({
   p = '4',
   testId = 'modal-header',
   icon,
-  iconColor = 'undefined',
+  iconColor,
   showBorder = true,
   ...props
 }: ModalHeaderProps) => {
@@ -166,12 +166,13 @@ const ModalHeader = ({
       </div>
       {showCloseButton && (
         <button
-          type="button"
-          className="ml-auto inline-flex items-center rounded-sm bg-meteor-100 p-1.5 text-sm text-meteor-400"
           onClick={handleClose}
           data-testid="modal-close-button"
+          type="button"
+          className="ml-auto inline-flex items-center rounded-sm bg-meteor-100 p-1.5 text-sm text-meteor-400"
         >
           <Icon icon="Close" size="small" />
+
           <span className="sr-only">Close modal</span>
         </button>
       )}
@@ -203,7 +204,7 @@ const ModalFooter = ({
   testId = 'modal-footer',
   p = '4',
   showBorder = true,
-  justify = 'end',
+  justifyContent = 'end',
   ...props
 }: ModalFooterProps) => {
   return (
@@ -216,7 +217,7 @@ const ModalFooter = ({
       data-testid={testId}
       p={p}
       direction="row"
-      justify={justify}
+      justify={justifyContent}
       gap="2"
     >
       {children}
@@ -232,11 +233,11 @@ const ModalConfirmation = ({
   onCancel,
   confirmText = 'Confirm',
   cancelText = 'Cancel',
-  testId = 'modal-alert',
+  testId = 'modal-confirmation',
   icon = 'Alert',
   iconColor = 'mars-300',
   ...props
-}: ModalAlertProps) => {
+}: ModalConfirmationProps) => {
   const { onOpenChange } = useModal()
 
   const handleConfirm = () => {
@@ -258,15 +259,13 @@ const ModalConfirmation = ({
       p="6"
     >
       <Flex direction="row" justify="end">
-        <button
-          type="button"
-          className="ml-auto inline-flex items-center rounded-sm bg-meteor-100 p-1.5 text-sm text-meteor-400"
+        <Button
           onClick={() => onOpenChange(false)}
           data-testid="modal-close-button"
         >
           <Icon icon="Close" size="small" />
           <span className="sr-only">Close modal</span>
-        </button>
+        </Button>
       </Flex>
       <Flex direction="col" gap="2" align="center" mb="8">
         {icon && <Icon icon={icon} size="large" color={iconColor} />}
@@ -283,11 +282,11 @@ const ModalConfirmation = ({
           {description}
         </Text>
       </Flex>
-      <ModalFooter showBorder={false} justify="center">
+      <ModalFooter showBorder={false} justifyContent="center">
         {onCancel && (
           <Button
             onClick={handleCancel}
-            data-testid="modal-alert-cancel"
+            data-testid="modal-confirmation-cancel"
             type="secondary"
           >
             {cancelText}
@@ -296,7 +295,7 @@ const ModalConfirmation = ({
         {onConfirm && (
           <Button
             onClick={handleConfirm}
-            data-testid="modal-alert-confirm"
+            data-testid="modal-confirmation-confirm"
             type="destructive"
           >
             {confirmText}
