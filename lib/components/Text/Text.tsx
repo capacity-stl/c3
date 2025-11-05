@@ -9,7 +9,7 @@ const Text = ({
 }: TextProps) => {
   const mergedProps = {
     ...textProps,
-    color: textProps.color ?? '',
+    color: textProps.color || undefined,
     type: textProps.type ?? 'body',
     align: textProps.align ?? 'left',
     testId: textProps.testId ?? 'text-component',
