@@ -78,10 +78,10 @@ export interface ModalFooterProps
   children?: React.ReactNode
   testId?: string
   showBorder?: boolean
-  justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'
+  justifyContent?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'
 }
 
-export interface ModalAlertProps
+export interface ModalConfirmationProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof modalVariants> {
   className?: string

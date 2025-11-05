@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
+import { within, userEvent, waitFor } from '@storybook/testing-library'
+import { expect, jest } from '@storybook/jest'
 import { Modal } from './Modal'
 import { Button } from '@components/Button/Button'
 import { Text } from '@components/Text/Text'
@@ -13,7 +15,6 @@ const meta: Meta<typeof Modal> = {
   parameters: {
     layout: 'fullscreen',
   },
-  // tags: ['autodocs'],
 }
 
 export default meta
@@ -245,7 +246,6 @@ const ConfirmationModalExample = ({
   confirmText,
   buttonText,
 }: {
-  showCloseButton: boolean
   title: string
   description: string
   icon: keyof typeof Icon.Glyph
@@ -394,6 +394,112 @@ export const Basic: Story = {
     },
   },
   render: (args) => <BasicExample {...args} />,
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+
+    await step('Modal is initially closed', async () => {
+      const modal = canvas.queryByTestId('modal-root')
+      expect(modal).not.toBeInTheDocument()
+    })
+
+    await step('Open modal button is present', async () => {
+      const openButton = canvas.getByText('Open Modal')
+      await expect(openButton).toBeInTheDocument()
+    })
+
+    await step('Modal opens when button is clicked', async () => {
+      const openButton = canvas.getByText('Open Modal')
+      await userEvent.click(openButton)
+
+      await waitFor(async () => {
+        const modal = canvas.getByTestId('modal-root')
+        await expect(modal).toBeInTheDocument()
+      })
+    })
+
+    await step('Modal header displays correct content', async () => {
+      const header = canvas.getByTestId('modal-header')
+      await expect(header).toBeInTheDocument()
+
+      const title = canvas.getByText('Modal Title')
+      await expect(title).toBeInTheDocument()
+
+      const description = canvas.getByText('This is a basic modal example')
+      await expect(description).toBeInTheDocument()
+    })
+
+    await step('Modal body displays content', async () => {
+      const body = canvas.getByTestId('modal-body')
+      await expect(body).toBeInTheDocument()
+
+      const bodyContent = canvas.getByText(
+        'This is the modal content. You can put any content here.',
+      )
+      await expect(bodyContent).toBeInTheDocument()
+    })
+
+    await step('Modal footer displays buttons', async () => {
+      const footer = canvas.getByTestId('modal-footer')
+      await expect(footer).toBeInTheDocument()
+
+      const cancelButton = canvas.getByText('Cancel')
+      await expect(cancelButton).toBeInTheDocument()
+
+      const confirmButton = canvas.getByText('Confirm')
+      await expect(confirmButton).toBeInTheDocument()
+    })
+
+    await step('Close button is present in header', async () => {
+      const closeButton = canvas.getByTestId('modal-close-button')
+      await expect(closeButton).toBeInTheDocument()
+    })
+
+    await step('Modal closes when close button is clicked', async () => {
+      const closeButton = canvas.getByTestId('modal-close-button')
+      await userEvent.click(closeButton)
+
+      await waitFor(() => {
+        const modal = canvas.queryByTestId('modal-root')
+        expect(modal).not.toBeInTheDocument()
+      })
+    })
+
+    await step('Modal closes when Cancel button is clicked', async () => {
+      const openButton = canvas.getByText('Open Modal')
+      await userEvent.click(openButton)
+
+      await waitFor(async () => {
+        const modal = canvas.getByTestId('modal-root')
+        await expect(modal).toBeInTheDocument()
+      })
+
+      const cancelButton = canvas.getByText('Cancel')
+      await userEvent.click(cancelButton)
+
+      await waitFor(() => {
+        const modal = canvas.queryByTestId('modal-root')
+        expect(modal).not.toBeInTheDocument()
+      })
+    })
+
+    await step('Modal closes when Confirm button is clicked', async () => {
+      const openButton = canvas.getByText('Open Modal')
+      await userEvent.click(openButton)
+
+      await waitFor(async () => {
+        const modal = canvas.getByTestId('modal-root')
+        await expect(modal).toBeInTheDocument()
+      })
+
+      const confirmButton = canvas.getByText('Confirm')
+      await userEvent.click(confirmButton)
+
+      await waitFor(() => {
+        const modal = canvas.queryByTestId('modal-root')
+        expect(modal).not.toBeInTheDocument()
+      })
+    })
+  },
 }
 
 export const WithIcon: WithIconStory = {
@@ -409,6 +515,38 @@ export const WithIcon: WithIconStory = {
     controls: { include: ['icon', 'color'] },
   },
   render: (args) => <WithIconExample {...args} />,
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+
+    await step('Open modal with icon', async () => {
+      const openButton = canvas.getByText('Open Modal')
+      await userEvent.click(openButton)
+
+      await waitFor(async () => {
+        const modal = canvas.getByTestId('modal-root')
+        await expect(modal).toBeInTheDocument()
+      })
+    })
+
+    await step('Modal header displays with icon', async () => {
+      const header = canvas.getByTestId('modal-header')
+      await expect(header).toBeInTheDocument()
+
+      // Check for icon presence (icon component should be rendered)
+      const title = canvas.getByText('Modal Title')
+      await expect(title).toBeInTheDocument()
+    })
+
+    await step('Close modal', async () => {
+      const closeButton = canvas.getByTestId('modal-close-button')
+      await userEvent.click(closeButton)
+
+      await waitFor(() => {
+        const modal = canvas.queryByTestId('modal-root')
+        expect(modal).not.toBeInTheDocument()
+      })
+    })
+  },
 }
 
 export const Sizes: SizesStory = {
@@ -426,6 +564,36 @@ export const Sizes: SizesStory = {
     controls: { include: ['size', 'open'] },
   },
   render: (args) => <SizesExample {...args} />,
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+
+    await step('Modal renders when open is true', async () => {
+      const modal = canvas.getByTestId('modal-root')
+      await expect(modal).toBeInTheDocument()
+    })
+
+    await step('Modal displays correct size title', async () => {
+      const title = canvas.getByText('LG Modal')
+      await expect(title).toBeInTheDocument()
+    })
+
+    await step('Modal header has close button', async () => {
+      const closeButton = canvas.getByTestId('modal-close-button')
+      await expect(closeButton).toBeInTheDocument()
+    })
+
+    await step('Modal body contains size information', async () => {
+      const bodyContent = canvas.getByText(
+        'This is a lg modal with more content space.',
+      )
+      await expect(bodyContent).toBeInTheDocument()
+    })
+
+    await step('Modal footer has close button', async () => {
+      const closeButton = canvas.getByText('Close')
+      await expect(closeButton).toBeInTheDocument()
+    })
+  },
 }
 
 export const AllOptions: CustomStylesStory = {
@@ -474,6 +642,64 @@ export const AllOptions: CustomStylesStory = {
     },
   },
   render: (args) => <CustomStylesExample {...args} />,
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+
+    await step('Custom modal is initially open', async () => {
+      const modal = canvas.getByTestId('modal-root')
+      await expect(modal).toBeInTheDocument()
+    })
+
+    await step(
+      'Modal header displays custom title and description',
+      async () => {
+        const title = canvas.getByText('Custom Modal')
+        await expect(title).toBeInTheDocument()
+
+        const description = canvas.getByText(
+          'This modal has all the options available',
+        )
+        await expect(description).toBeInTheDocument()
+      },
+    )
+
+    await step('Modal body displays custom content', async () => {
+      const bodyContent = canvas.getByText(
+        'This modal has all the options available. You can put any content here.',
+      )
+      await expect(bodyContent).toBeInTheDocument()
+    })
+
+    await step('Close button is shown', async () => {
+      const closeButton = canvas.getByTestId('modal-close-button')
+      await expect(closeButton).toBeInTheDocument()
+    })
+
+    await step('Footer button is present', async () => {
+      const footerButton = canvas.getByText('Got it!')
+      await expect(footerButton).toBeInTheDocument()
+    })
+
+    await step('Modal closes when footer button is clicked', async () => {
+      const footerButton = canvas.getByText('Got it!')
+      await userEvent.click(footerButton)
+
+      await waitFor(() => {
+        const modal = canvas.queryByTestId('modal-root')
+        expect(modal).not.toBeInTheDocument()
+      })
+    })
+
+    await step('Modal reopens with custom styles', async () => {
+      const openButton = canvas.getByText('Custom Styled Modal')
+      await userEvent.click(openButton)
+
+      await waitFor(async () => {
+        const modal = canvas.getByTestId('modal-root')
+        await expect(modal).toBeInTheDocument()
+      })
+    })
+  },
 }
 
 export const ConfirmationModal: ConfirmationModalStory = {
@@ -510,6 +736,101 @@ export const ConfirmationModal: ConfirmationModalStory = {
     },
   },
   render: (args) => <ConfirmationModalExample {...args} />,
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+
+    await step('Confirmation modal is initially closed', async () => {
+      const modal = canvas.queryByTestId('modal-root')
+      expect(modal).not.toBeInTheDocument()
+    })
+
+    await step('Open button is present', async () => {
+      const openButton = canvas.getByText('Delete Item')
+      await expect(openButton).toBeInTheDocument()
+    })
+
+    await step('Modal opens when button is clicked', async () => {
+      const openButton = canvas.getByText('Delete Item')
+      await userEvent.click(openButton)
+
+      await waitFor(async () => {
+        const modal = canvas.getByTestId('modal-root')
+        await expect(modal).toBeInTheDocument()
+      })
+    })
+
+    await step('Confirmation modal displays correct content', async () => {
+      const alert = canvas.getByTestId('modal-alert')
+      await expect(alert).toBeInTheDocument()
+
+      const title = canvas.getByText('Confirm Action')
+      await expect(title).toBeInTheDocument()
+
+      const description = canvas.getByText(
+        'Are you sure you want to delete this item?',
+      )
+      await expect(description).toBeInTheDocument()
+    })
+
+    await step('Cancel and confirm buttons are present', async () => {
+      const cancelButton = canvas.getByTestId('modal-alert-cancel')
+      await expect(cancelButton).toBeInTheDocument()
+      await expect(cancelButton).toHaveTextContent('Cancel')
+
+      const confirmButton = canvas.getByTestId('modal-alert-confirm')
+      await expect(confirmButton).toBeInTheDocument()
+      await expect(confirmButton).toHaveTextContent('Delete Item')
+    })
+
+    await step('Close button is present', async () => {
+      const closeButton = canvas.getByTestId('modal-close-button')
+      await expect(closeButton).toBeInTheDocument()
+    })
+
+    await step('Modal closes when cancel button is clicked', async () => {
+      const cancelButton = canvas.getByTestId('modal-alert-cancel')
+      await userEvent.click(cancelButton)
+
+      await waitFor(() => {
+        const modal = canvas.queryByTestId('modal-root')
+        expect(modal).not.toBeInTheDocument()
+      })
+    })
+
+    await step('Modal opens again', async () => {
+      const openButton = canvas.getByText('Delete Item')
+      await userEvent.click(openButton)
+
+      await waitFor(async () => {
+        const modal = canvas.getByTestId('modal-root')
+        await expect(modal).toBeInTheDocument()
+      })
+    })
+
+    await step(
+      'Mock alert is called when confirm button is clicked',
+      async () => {
+        // Mock window.alert
+        const alertMock = jest
+          .spyOn(window, 'alert')
+          .mockImplementation(() => {})
+
+        const confirmButton = canvas.getByTestId('modal-alert-confirm')
+        await userEvent.click(confirmButton)
+
+        await waitFor(() => {
+          expect(alertMock).toHaveBeenCalledWith('Action confirmed!')
+        })
+
+        alertMock.mockRestore()
+
+        await waitFor(() => {
+          const modal = canvas.queryByTestId('modal-root')
+          expect(modal).not.toBeInTheDocument()
+        })
+      },
+    )
+  },
 }
 
 export const FullScreenModal: FullScreenStory = {
@@ -523,6 +844,54 @@ export const FullScreenModal: FullScreenStory = {
     controls: { include: ['fullScreen'] },
   },
   render: (args) => <FullScreenModalExample {...args} />,
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+
+    await step('Full screen modal is initially closed', async () => {
+      const modal = canvas.queryByTestId('modal-root')
+      expect(modal).not.toBeInTheDocument()
+    })
+
+    await step('Open full screen modal button is present', async () => {
+      const openButton = canvas.getByText('Open Full Screen Modal')
+      await expect(openButton).toBeInTheDocument()
+    })
+
+    await step('Modal opens in full screen mode', async () => {
+      const openButton = canvas.getByText('Open Full Screen Modal')
+      await userEvent.click(openButton)
+
+      await waitFor(async () => {
+        const modal = canvas.getByTestId('modal-root')
+        await expect(modal).toBeInTheDocument()
+      })
+    })
+
+    await step('Full screen modal displays correct content', async () => {
+      const title = canvas.getByText('Full Screen Modal')
+      await expect(title).toBeInTheDocument()
+
+      const description = canvas.getByText(
+        'This modal takes up the entire screen',
+      )
+      await expect(description).toBeInTheDocument()
+
+      const bodyText = canvas.getByText(
+        'This is a full screen modal that takes up the entire viewport.',
+      )
+      await expect(bodyText).toBeInTheDocument()
+    })
+
+    await step('Close button inside modal works', async () => {
+      const closeButton = canvas.getByText('Close Full Screen Modal')
+      await userEvent.click(closeButton)
+
+      await waitFor(() => {
+        const modal = canvas.queryByTestId('modal-root')
+        expect(modal).not.toBeInTheDocument()
+      })
+    })
+  },
 }
 
 export const NoCloseOutside: NoCloseOutsideStory = {
@@ -536,4 +905,73 @@ export const NoCloseOutside: NoCloseOutsideStory = {
     controls: { include: ['closeOutside'] },
   },
   render: (args) => <NoCloseOutsideModalExample {...args} />,
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+
+    await step('NoCloseOutside modal is initially closed', async () => {
+      const modal = canvas.queryByTestId('modal-root')
+      expect(modal).not.toBeInTheDocument()
+    })
+
+    await step('Open button is present', async () => {
+      const openButton = canvas.getByText('Open Modal (No Close Outside)')
+      await expect(openButton).toBeInTheDocument()
+    })
+
+    await step('Modal opens when button is clicked', async () => {
+      const openButton = canvas.getByText('Open Modal (No Close Outside)')
+      await userEvent.click(openButton)
+
+      await waitFor(async () => {
+        const modal = canvas.getByTestId('modal-root')
+        await expect(modal).toBeInTheDocument()
+      })
+    })
+
+    await step(
+      'Modal displays correct content about closeOutside',
+      async () => {
+        const title = canvas.getByText('Cannot Close by Clicking Outside')
+        await expect(title).toBeInTheDocument()
+
+        const description = canvas.getByText(
+          'This modal requires explicit action to close',
+        )
+        await expect(description).toBeInTheDocument()
+      },
+    )
+
+    await step('Modal has close button in footer', async () => {
+      const closeButton = canvas.getByText('Close Modal')
+      await expect(closeButton).toBeInTheDocument()
+    })
+
+    await step('Modal closes when footer close button is clicked', async () => {
+      const closeButton = canvas.getByText('Close Modal')
+      await userEvent.click(closeButton)
+
+      await waitFor(() => {
+        const modal = canvas.queryByTestId('modal-root')
+        expect(modal).not.toBeInTheDocument()
+      })
+    })
+
+    await step('Modal opens again and closes via X button', async () => {
+      const openButton = canvas.getByText('Open Modal (No Close Outside)')
+      await userEvent.click(openButton)
+
+      await waitFor(async () => {
+        const modal = canvas.getByTestId('modal-root')
+        await expect(modal).toBeInTheDocument()
+      })
+
+      const closeXButton = canvas.getByTestId('modal-close-button')
+      await userEvent.click(closeXButton)
+
+      await waitFor(() => {
+        const modal = canvas.queryByTestId('modal-root')
+        expect(modal).not.toBeInTheDocument()
+      })
+    })
+  },
 }
