@@ -246,7 +246,9 @@ export const Indeterminate: Story = {
 
     await step('Checkbox is in indeterminate state', async () => {
       const input = canvas.getByRole('checkbox') as HTMLInputElement
-      await expect(input.indeterminate).toBe(true)
+      await waitFor(() => {
+        expect(input.indeterminate).toBe(true)
+      })
     })
 
     await step('Label text is rendered', async () => {
@@ -273,7 +275,9 @@ export const IndeterminateError: Story = {
 
     await step('Checkbox is indeterminate and in error state', async () => {
       const input = canvas.getByRole('checkbox') as HTMLInputElement
-      await expect(input.indeterminate).toBe(true)
+      await waitFor(() => {
+        expect(input.indeterminate).toBe(true)
+      })
       await expect(input.disabled).toBe(false)
     })
   },
@@ -296,7 +300,9 @@ export const IndeterminateDisabled: Story = {
 
     await step('Checkbox is both indeterminate and disabled', async () => {
       const input = canvas.getByRole('checkbox') as HTMLInputElement
-      await expect(input.indeterminate).toBe(true)
+      await waitFor(() => {
+        expect(input.indeterminate).toBe(true)
+      })
       await expect(input.disabled).toBe(true)
     })
   },
@@ -391,7 +397,9 @@ export const ParentChildExample: Story = {
 
     await step('Parent checkbox is in indeterminate state', async () => {
       const checkboxes = canvas.getAllByRole('checkbox') as HTMLInputElement[]
-      await expect(checkboxes[0].indeterminate).toBe(true)
+      await waitFor(() => {
+        expect(checkboxes[0].indeterminate).toBe(true)
+      })
     })
 
     await step('First child is checked by default', async () => {

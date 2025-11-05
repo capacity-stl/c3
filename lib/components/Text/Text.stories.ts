@@ -3,8 +3,9 @@ import { within } from '@storybook/testing-library'
 import { expect } from '@storybook/jest'
 
 import { Text } from './Text'
-import { asTypes, textVariants } from './Text.props'
+import { asTypes } from './Text.props'
 import { colorNames } from '../../props/color.props'
+import { fontSizes } from '../../props/font.props'
 
 const meta = {
   title: 'Typography/Text',
@@ -59,8 +60,8 @@ const meta = {
     type: {
       control: {
         type: 'select',
-        options: Object.values(textVariants),
       },
+      options: Object.keys(fontSizes),
       table: {
         type: { summary: 'The type of text to render' },
         defaultValue: { summary: 'body' },
