@@ -760,8 +760,8 @@ export const ConfirmationModal: ConfirmationModalStory = {
     })
 
     await step('Confirmation modal displays correct content', async () => {
-      const alert = canvas.getByTestId('modal-alert')
-      await expect(alert).toBeInTheDocument()
+      const confirmation = canvas.getByTestId('modal-confirmation')
+      await expect(confirmation).toBeInTheDocument()
 
       const title = canvas.getByText('Confirm Action')
       await expect(title).toBeInTheDocument()
@@ -773,11 +773,11 @@ export const ConfirmationModal: ConfirmationModalStory = {
     })
 
     await step('Cancel and confirm buttons are present', async () => {
-      const cancelButton = canvas.getByTestId('modal-alert-cancel')
+      const cancelButton = canvas.getByTestId('modal-confirmation-cancel')
       await expect(cancelButton).toBeInTheDocument()
       await expect(cancelButton).toHaveTextContent('Cancel')
 
-      const confirmButton = canvas.getByTestId('modal-alert-confirm')
+      const confirmButton = canvas.getByTestId('modal-confirmation-confirm')
       await expect(confirmButton).toBeInTheDocument()
       await expect(confirmButton).toHaveTextContent('Delete Item')
     })
@@ -788,7 +788,7 @@ export const ConfirmationModal: ConfirmationModalStory = {
     })
 
     await step('Modal closes when cancel button is clicked', async () => {
-      const cancelButton = canvas.getByTestId('modal-alert-cancel')
+      const cancelButton = canvas.getByTestId('modal-confirmation-cancel')
       await userEvent.click(cancelButton)
 
       await waitFor(() => {
@@ -815,7 +815,7 @@ export const ConfirmationModal: ConfirmationModalStory = {
           .spyOn(window, 'alert')
           .mockImplementation(() => {})
 
-        const confirmButton = canvas.getByTestId('modal-alert-confirm')
+        const confirmButton = canvas.getByTestId('modal-confirmation-confirm')
         await userEvent.click(confirmButton)
 
         await waitFor(() => {
