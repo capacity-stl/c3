@@ -206,7 +206,7 @@ export const SmallLabel: Story = {
     const label = await canvas.getByTestId('label-component')
 
     await expect(label).toBeInTheDocument()
-    await expect(label).toHaveClass('text-sm')
+    await expect(label).toHaveClass('text-xs')
   },
 }
 
