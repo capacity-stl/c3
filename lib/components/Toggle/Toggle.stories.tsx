@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { within, userEvent, waitFor } from '@storybook/testing-library'
-import { expect, jest } from '@storybook/jest'
+import { expect } from '@storybook/jest'
 import { Toggle } from './Toggle'
 
 const meta = {
@@ -67,7 +67,7 @@ export const Default: Story = {
     await step('Toggle can be clicked to turn on', async () => {
       const switchElement = canvas.getByRole('switch')
       await userEvent.click(switchElement)
-      
+
       await waitFor(() => {
         expect(switchElement).toHaveAttribute('aria-checked', 'true')
       })
@@ -76,7 +76,7 @@ export const Default: Story = {
     await step('Toggle can be clicked to turn off', async () => {
       const switchElement = canvas.getByRole('switch')
       await userEvent.click(switchElement)
-      
+
       await waitFor(() => {
         expect(switchElement).toHaveAttribute('aria-checked', 'false')
       })
@@ -106,7 +106,7 @@ export const Checked: Story = {
     await step('Toggle can be turned off', async () => {
       const switchElement = canvas.getByRole('switch')
       await userEvent.click(switchElement)
-      
+
       await waitFor(() => {
         expect(switchElement).toHaveAttribute('aria-checked', 'false')
       })
@@ -136,9 +136,9 @@ export const Disabled: Story = {
     await step('Disabled toggle cannot be clicked', async () => {
       const switchElement = canvas.getByRole('switch')
       const initialState = switchElement.getAttribute('aria-checked')
-      
+
       await userEvent.click(switchElement)
-      
+
       // State should not change because it's disabled
       await expect(switchElement).toHaveAttribute('aria-checked', initialState)
     })
@@ -190,7 +190,7 @@ export const Error: Story = {
     await step('Toggle can still be clicked in error state', async () => {
       const switchElement = canvas.getByRole('switch')
       await userEvent.click(switchElement)
-      
+
       await waitFor(() => {
         expect(switchElement).toHaveAttribute('aria-checked', 'true')
       })
@@ -222,7 +222,7 @@ export const ErrorChecked: Story = {
     await step('Toggle can be turned off', async () => {
       const switchElement = canvas.getByRole('switch')
       await userEvent.click(switchElement)
-      
+
       await waitFor(() => {
         expect(switchElement).toHaveAttribute('aria-checked', 'false')
       })
@@ -250,7 +250,7 @@ export const WithoutLabel: Story = {
     await step('Toggle functions without label', async () => {
       const switchElement = canvas.getByRole('switch')
       await userEvent.click(switchElement)
-      
+
       await waitFor(() => {
         expect(switchElement).toHaveAttribute('aria-checked', 'true')
       })
@@ -261,10 +261,18 @@ export const WithoutLabel: Story = {
 export const MultipleToggles: Story = {
   render: () => (
     <div className="flex flex-col gap-3">
-      <Toggle label="Email notifications" defaultChecked testId="toggle-email" />
+      <Toggle
+        label="Email notifications"
+        defaultChecked
+        testId="toggle-email"
+      />
       <Toggle label="Push notifications" testId="toggle-push" />
       <Toggle label="SMS notifications" defaultChecked testId="toggle-sms" />
-      <Toggle label="In-app notifications" state={Toggle.State.Disabled} testId="toggle-inapp" />
+      <Toggle
+        label="In-app notifications"
+        state={Toggle.State.Disabled}
+        testId="toggle-inapp"
+      />
     </div>
   ),
   play: async ({ canvasElement, step }) => {
@@ -296,7 +304,7 @@ export const MultipleToggles: Story = {
 
     await step('Can interact with enabled toggles', async () => {
       const switches = canvas.getAllByRole('switch')
-      
+
       // Click second toggle
       await userEvent.click(switches[1])
       await waitFor(() => {

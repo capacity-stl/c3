@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { within, userEvent, waitFor } from '@storybook/testing-library'
-import { expect, jest } from '@storybook/jest'
+import { expect } from '@storybook/jest'
 import { Checkbox } from './Checkbox'
 
 const meta = {
@@ -71,7 +71,7 @@ export const Default: Story = {
     await step('Checkbox can be clicked to check', async () => {
       const input = canvas.getByRole('checkbox') as HTMLInputElement
       await userEvent.click(input)
-      
+
       await waitFor(() => {
         expect(input.checked).toBe(true)
       })
@@ -80,7 +80,7 @@ export const Default: Story = {
     await step('Checkbox can be clicked to uncheck', async () => {
       const input = canvas.getByRole('checkbox') as HTMLInputElement
       await userEvent.click(input)
-      
+
       await waitFor(() => {
         expect(input.checked).toBe(false)
       })
@@ -110,7 +110,7 @@ export const Checked: Story = {
     await step('Checkbox can be unchecked', async () => {
       const input = canvas.getByRole('checkbox') as HTMLInputElement
       await userEvent.click(input)
-      
+
       await waitFor(() => {
         expect(input.checked).toBe(false)
       })
@@ -140,9 +140,9 @@ export const Disabled: Story = {
     await step('Disabled checkbox cannot be clicked', async () => {
       const input = canvas.getByRole('checkbox') as HTMLInputElement
       const initialState = input.checked
-      
+
       await userEvent.click(input)
-      
+
       // State should not change because it's disabled
       await expect(input.checked).toBe(initialState)
     })
@@ -194,7 +194,7 @@ export const Error: Story = {
     await step('Checkbox can still be clicked in error state', async () => {
       const input = canvas.getByRole('checkbox') as HTMLInputElement
       await userEvent.click(input)
-      
+
       await waitFor(() => {
         expect(input.checked).toBe(true)
       })
@@ -222,7 +222,7 @@ export const WithoutLabel: Story = {
     await step('Checkbox functions without label', async () => {
       const input = canvas.getByRole('checkbox') as HTMLInputElement
       await userEvent.click(input)
-      
+
       await waitFor(() => {
         expect(input.checked).toBe(true)
       })
@@ -308,7 +308,11 @@ export const MultipleCheckboxes: Story = {
       <Checkbox label="Option 1" defaultChecked testId="checkbox-option-1" />
       <Checkbox label="Option 2" testId="checkbox-option-2" />
       <Checkbox label="Option 3" testId="checkbox-option-3" />
-      <Checkbox label="Option 4" state={Checkbox.State.Disabled} testId="checkbox-option-4" />
+      <Checkbox
+        label="Option 4"
+        state={Checkbox.State.Disabled}
+        testId="checkbox-option-4"
+      />
     </div>
   ),
   play: async ({ canvasElement, step }) => {
@@ -338,7 +342,7 @@ export const MultipleCheckboxes: Story = {
 
     await step('Can interact with enabled checkboxes', async () => {
       const checkboxes = canvas.getAllByRole('checkbox') as HTMLInputElement[]
-      
+
       // Click second checkbox
       await userEvent.click(checkboxes[1])
       await waitFor(() => {
@@ -351,9 +355,17 @@ export const MultipleCheckboxes: Story = {
 export const ParentChildExample: Story = {
   render: () => (
     <div className="flex flex-col gap-3">
-      <Checkbox label="Select All" indeterminate={true} testId="checkbox-parent" />
+      <Checkbox
+        label="Select All"
+        indeterminate={true}
+        testId="checkbox-parent"
+      />
       <div className="ml-6 flex flex-col gap-2">
-        <Checkbox label="Child Option 1" defaultChecked testId="checkbox-child-1" />
+        <Checkbox
+          label="Child Option 1"
+          defaultChecked
+          testId="checkbox-child-1"
+        />
         <Checkbox label="Child Option 2" testId="checkbox-child-2" />
         <Checkbox label="Child Option 3" testId="checkbox-child-3" />
       </div>
@@ -389,7 +401,7 @@ export const ParentChildExample: Story = {
 
     await step('Can interact with child checkboxes', async () => {
       const checkboxes = canvas.getAllByRole('checkbox') as HTMLInputElement[]
-      
+
       // Click second child checkbox
       await userEvent.click(checkboxes[2])
       await waitFor(() => {
