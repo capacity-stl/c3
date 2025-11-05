@@ -2,9 +2,9 @@ const Field = () => (
     <svg
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
-        width="910"
+        width="1024"
         height="1024"
-        viewBox="0 0 910 1024"
+        viewBox="0 0 1024 1024"
     >
         <path
             fill="currentcolor"
