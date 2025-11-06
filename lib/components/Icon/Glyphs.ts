@@ -74,6 +74,7 @@ import EndMessage from './glyphs/EndMessage'
 import { Envelope, EnvelopeStack } from './glyphs/Envelope'
 import Expired from './glyphs/Expired'
 import Facebook from './glyphs/Facebook'
+import Field from './glyphs/Field'
 import Instagram from './glyphs/Instagram'
 import FileUpload from './glyphs/FileUpload'
 import Filter from './glyphs/Filter'
@@ -260,6 +261,7 @@ export const Glyphs = {
   EnvelopeStack,
   Expired,
   Facebook,
+  Field,
   FileUpload,
   Filter,
   FilterKB,
@@ -449,6 +451,7 @@ export enum Icons {
   EnvelopeStack = 'EnvelopeStack',
   Expired = 'Expired',
   Facebook = 'Facebook',
+  Field = 'Field',
   FileUpload = 'FileUpload',
   Filter = 'Filter',
   FilterKB = 'FilterKB',
