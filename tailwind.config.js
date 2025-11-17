@@ -9,13 +9,14 @@ export default {
       sans: ['Inter', 'sans-serif'],
     },
     fontSize: {
-      xs: '0.714rem',
-      sm: '0.839rem',
+      xxs: '0.625rem',
+      xs: '0.734rem',
+      sm: '0.875rem',
       base: '1rem',
-      lg: '1.196rem',
-      xl: '1.429rem',
-      '2xl': '1.714rem',
-      '3xl': '2.482rem',
+      lg: '1.047rem',
+      xl: '1.25rem',
+      '2xl': '1.5rem',
+      '3xl': '2.172rem',
       '4xl': '3rem',
     },
     colors: {
@@ -24,6 +25,7 @@ export default {
       white: '#FFFFFF',
       black: '#000000',
       earth: {
+        50: '#F5FAFF',
         100: '#E6F2FF',
         200: '#80BEFF',
         300: '#007DFF',
@@ -107,6 +109,17 @@ export default {
       width: {
         240: '240px',
         320: '320px',
+      },
+      keyframes: {
+        bounceDot: {
+          '0%, 80%, 100%': { transform: 'scale(0)' },
+          '40%': { transform: 'scale(1)' },
+        },
+      },
+      animation: {
+        bounceDot1: 'bounceDot 1.4s infinite ease-in-out',
+        bounceDot2: 'bounceDot 1.4s infinite ease-in-out 0.2s',
+        bounceDot3: 'bounceDot 1.4s infinite ease-in-out 0.4s',
       },
     },
   },
