@@ -1,10 +1,11 @@
 import './App.css'
-import { Text, Icon } from '../lib/main'
+import { Text, Icon, Button } from '../lib/main'
 import { Pagination } from '@components/Pagination/Pagination'
 import { useState } from 'react'
-
+import { Modal } from '@components/Modal/Modal'
 function App() {
   const [currentPage, setCurrentPage] = useState(1)
+  const [open, setOpen] = useState(false)
   return (
     <div className="c3">
       {/* <Button className="night" onClick={() => alert("hi chris")} /> */}
@@ -35,6 +36,19 @@ function App() {
         itemBgColor="aurora-100"
         color="aurora-300"
       />
+
+      <Button onClick={() => setOpen(true)}>Open Modal</Button>
+
+      <Modal open={open} onOpenChange={setOpen}>
+        <Modal.Header showBorder={false} p="4" />
+        <Modal.Body>
+          <Text>Modal stuff</Text>
+        </Modal.Body>
+        <Modal.Footer justify="start">
+          <Button onClick={() => setOpen(false)}>Close</Button>
+          <Button onClick={() => setOpen(false)}>Close</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   )
 }
