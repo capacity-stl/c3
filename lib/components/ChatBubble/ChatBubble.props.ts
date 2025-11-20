@@ -5,11 +5,6 @@ const CHAT_BUBBLE_TYPES = {
   Received: 'received',
 } as const
 
-const CHAT_BUBBLE_STATES = {
-  Default: 'default',
-  Loading: 'loading',
-} as const
-
 // Needed to set the border radius of the chat bubble to arbitrary values because the default tw classes where not working as expected.
 const chatBubbleTypeVariants = {
   type: {
@@ -18,17 +13,14 @@ const chatBubbleTypeVariants = {
   },
 }
 
-const chatBubbleVariants = cva(
-  'inline-block max-w-md px-4 py-2 text-sm leading-5',
-  {
-    variants: {
-      ...chatBubbleTypeVariants,
-    },
-    defaultVariants: {
-      type: 'sent',
-    },
+const chatBubbleVariants = cva('inline-block max-w-md text-sm leading-5', {
+  variants: {
+    ...chatBubbleTypeVariants,
   },
-)
+  defaultVariants: {
+    type: 'sent',
+  },
+})
 
 export interface ChatBubbleProps {
   /** The message text content */
@@ -59,4 +51,4 @@ export interface ChatBubbleProps {
   onThumbDownClick?: () => void
 }
 
-export { chatBubbleVariants, CHAT_BUBBLE_TYPES, CHAT_BUBBLE_STATES }
+export { chatBubbleVariants, CHAT_BUBBLE_TYPES }
