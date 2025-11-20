@@ -5,20 +5,20 @@ const fontAlignments = {
 }
 
 const fontSizes = {
-  'heading-xl': 'text-3xl font-semibold leading-10',
-  'heading-large': 'text-2xl font-semibold leading-8',
-  heading: 'text-xl font-semibold leading-7',
-  subheading: 'text-lg font-semibold leading-6',
-  'body-large': 'font-normal text-lg leading-6',
-  'body-strong': 'font-normal text-base font-medium leading-5',
-  body: 'font-normal text-base leading-5',
-  'body-small': 'font-normal text-sm leading-4',
-  'body-small-strong': 'text-sm font-medium leading-4',
-  'label-small': 'font-normal text-xs leading-3',
-  'label-small-strong': 'text-xs font-medium leading-3',
-  'small-caps': 'text-xs leading-3 tracking-wide uppercase font-semibold',
-  code: 'text-base leading-3',
-  'code-small': 'text-sm leading-3',
+  'heading-xl': 'text-3xl font-semibold leading-10', // 2.172 rem
+  'heading-large': 'text-2xl font-semibold leading-8', // 1.5 rem
+  heading: 'text-xl font-semibold leading-7', // 1.25 rem
+  subheading: 'text-lg font-semibold leading-6', // 1.047 rem
+  'body-large': 'font-normal text-lg leading-6', // 1.047 rem
+  'body-strong': 'font-normal text-base font-medium leading-5', // 0.875 rem
+  body: 'font-normal text-sm leading-5', // 0.875 rem
+  'body-small': 'font-normal text-xs leading-4', // 0.734 rem
+  'body-small-strong': 'text-xs font-semibold leading-4', // 0.734 rem
+  'label-small': 'font-normal text-xs leading-3', // 0.734 rem
+  'label-small-strong': 'text-xs font-semibold leading-3', // 0.734 rem
+  'small-caps': 'text-xxs leading-3 tracking-wide uppercase font-semibold', // 0.625 rem
+  code: 'text-sm leading-3', // 0.875 rem
+  'code-small': 'text-xs leading-3', // 0.734 rem
 }
 
 const fontProps = {
