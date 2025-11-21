@@ -22,6 +22,9 @@ export { Button } from './components/Button/Button'
 export { Grid, GridItem } from './components/Grid/index'
 export { Tooltip } from './components/Tooltip/Tooltip'
 export { Select } from './components/Select/Select'
+export { Checkbox } from './components/Checkbox/Checkbox'
+export { Toggle } from './components/Toggle/Toggle'
+export { Label } from './components/Label/Label'
 export { Modal } from './components/Modal/Modal'
 
 // props
