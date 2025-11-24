@@ -26,6 +26,7 @@ const config: StorybookConfig = {
   viteFinal: async (config) => {
     return {
       ...config,
+      base: '/c3/',
       plugins: await withoutVitePlugins(config.plugins, [
         'vite:lib-inject-css',
       ]),
