@@ -1,0 +1,2 @@
+declare const Minus: () => import("react/jsx-runtime").JSX.Element;
+export default Minus;

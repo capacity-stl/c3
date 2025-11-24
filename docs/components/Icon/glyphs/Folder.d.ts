@@ -1,0 +1,2 @@
+declare const Folder: () => import("react/jsx-runtime").JSX.Element;
+export default Folder;
