@@ -3,7 +3,7 @@ import { withoutVitePlugins } from '@storybook/builder-vite'
 
 const config: StorybookConfig = {
   stories: [
-    '../docs/**/*.mdx',
+    '../storybook-docs/**/*.mdx',
     '../lib/components/**/*.mdx',
     '../lib/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],

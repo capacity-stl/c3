@@ -18,7 +18,7 @@
     "prepublishOnly": "npm run build",
     "storybook": "storybook dev -p 6006",
     "test": "npx playwright install && test-storybook",
-    "build-storybook": "storybook build -o storybook-static",
+    "build-storybook": "storybook build -o docs",
     "chromatic": "npx chromatic --project-token=chpt_a85dbc774a0cecf --force-rebuild --exit-zero-on-changes",
     "prettier:check": "prettier --check '**/@(*.tsx|*.ts|*.md|*.json)'",
     "prettier:check:windows": "prettier --check ./**/**.{tsx,ts,md,json}",

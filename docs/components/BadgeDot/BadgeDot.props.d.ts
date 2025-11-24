@@ -1,0 +1,21 @@
+import { VariantProps } from 'class-variance-authority';
+
+declare const badgeDotSizeProps: {
+    size: {
+        tiny: string;
+        small: string;
+        medium: string;
+        large: string;
+        huge: string;
+    };
+};
+declare const badgeDotVariants: (props?: ({
+    color?: "night" | "white" | "black" | "deep-space" | "earth" | "sun" | "mars" | "meteor" | "neptune" | "nova" | "mercury" | "aurora" | "transparent-light" | "transparent-dark" | null | undefined;
+    size?: "tiny" | "small" | "medium" | "large" | "huge" | null | undefined;
+    shape?: "circle" | "square" | "rounded" | null | undefined;
+} & import('class-variance-authority/types').ClassProp) | undefined) => string;
+export interface BadgeDotProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'color'>, VariantProps<typeof badgeDotVariants> {
+    children?: React.ReactNode;
+    testId?: string;
+}
+export { badgeDotVariants, badgeDotSizeProps };
