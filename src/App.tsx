@@ -4,6 +4,7 @@ import { Pagination } from '@components/Pagination/Pagination'
 import { useState } from 'react'
 import { Modal } from '@components/Modal/Modal'
 function App() {
+  // testing MR in github
   const [currentPage, setCurrentPage] = useState(1)
   const [open, setOpen] = useState(false)
   return (
