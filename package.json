@@ -1,5 +1,5 @@
 {
-  "name": "@aisoftware/c3",
+  "name": "capacity-c3",
   "version": "0.10.0",
   "type": "module",
   "main": "dist/main.js",
@@ -9,9 +9,6 @@
   ],
   "engines": {
     "node": ">=22.0.0"
-  },
-  "publishConfig": {
-    "@aisoftware:registry": "https://gitlab.aisoftware.com/api/v4/projects/606/packages/npm/"
   },
   "scripts": {
     "dev": "vite",
