@@ -10,6 +10,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/capacity-stl/c3.git"
+  },
   "engines": {
     "node": ">=22.0.0"
   },
