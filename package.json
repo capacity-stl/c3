@@ -1,5 +1,5 @@
 {
-  "name": "capacity-c3",
+  "name": "@chris-capacity/capacity-c3",
   "version": "0.10.1",
   "type": "module",
   "main": "dist/main.js",
