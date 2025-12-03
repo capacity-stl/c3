@@ -1,12 +1,15 @@
 {
   "name": "capacity-c3",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=22.0.0"
   },
@@ -19,7 +22,6 @@
     "storybook": "storybook dev -p 6006",
     "test": "npx playwright install && test-storybook",
     "build-storybook": "storybook build -o docs && touch docs/.nojekyll",
-    "chromatic": "npx chromatic --project-token=chpt_a85dbc774a0cecf --force-rebuild --exit-zero-on-changes",
     "prettier:check": "prettier --check '**/@(*.tsx|*.ts|*.md|*.json)'",
     "prettier:check:windows": "prettier --check ./**/**.{tsx,ts,md,json}",
     "prettier:fix": "prettier --write '**/@(*.tsx|*.ts|*.md|*.json)'",
