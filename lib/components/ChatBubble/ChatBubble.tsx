@@ -18,6 +18,7 @@ const LoadingDots = () => (
 
 const ChatBubble = ({
   message,
+  allowHTML = false,
   userName,
   type = CHAT_BUBBLE_TYPES.Sent,
   loading = false,
@@ -91,6 +92,11 @@ const ChatBubble = ({
         >
           {loading ? (
             <LoadingDots />
+          ) : allowHTML ? (
+            <div
+              className="text-sm leading-5 text-deep-space"
+              dangerouslySetInnerHTML={{ __html: message || '' }}
+            />
           ) : (
             <Text type="body" color="deep-space">
               {message}

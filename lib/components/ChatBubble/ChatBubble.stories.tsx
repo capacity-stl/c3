@@ -39,6 +39,10 @@ const meta = {
       control: 'boolean',
       description: 'Show loading state with animated dots',
     },
+    allowHTML: {
+      control: 'boolean',
+      description: 'If true, renders the message as HTML',
+    },
     avatarSrc: {
       control: 'text',
       description: 'Avatar image source URL',
@@ -498,6 +502,53 @@ export const WithFeedbackButtons: Story = {
       description: {
         story:
           'Chat bubble with feedback buttons for thumbs up and thumbs down actions. Useful for AI responses or help desk messages.',
+      },
+    },
+  },
+}
+
+export const WithHTMLContent: Story = {
+  args: {
+    type: ChatBubble.Type.Sent,
+    userName: 'AI Assistant',
+    topLabel: 'Bot',
+    message:
+      'Here is a <strong>formatted</strong> response with <em>italics</em>, <a href="#">links</a>, and a list:<ul><li>Item 1</li><li>Item 2</li></ul>',
+    allowHTML: true,
+    avatarInitials: 'AI',
+    avatarBgColor: 'neptune-300',
+    testId: 'chat-bubble-html',
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+
+    await step('HTML content is rendered', async () => {
+      const content = canvas.getByTestId('chat-bubble-html-content')
+      await expect(content).toBeInTheDocument()
+      // Check that HTML elements are rendered
+      const strong = content.querySelector('strong')
+      await expect(strong).toBeInTheDocument()
+      await expect(strong).toHaveTextContent('formatted')
+    })
+
+    await step('Italic text is rendered', async () => {
+      const content = canvas.getByTestId('chat-bubble-html-content')
+      const em = content.querySelector('em')
+      await expect(em).toBeInTheDocument()
+      await expect(em).toHaveTextContent('italics')
+    })
+
+    await step('List items are rendered', async () => {
+      const content = canvas.getByTestId('chat-bubble-html-content')
+      const listItems = content.querySelectorAll('li')
+      expect(listItems.length).toBe(2)
+    })
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Chat bubble with HTML content enabled. Useful for rendering formatted messages from AI or rich text content.',
       },
     },
   },
