@@ -25,6 +25,8 @@ const chatBubbleVariants = cva('inline-block max-w-md text-sm leading-5', {
 export interface ChatBubbleProps {
   /** The message text content */
   message?: string
+  /** If true, renders the message as HTML */
+  allowHTML?: boolean
   /** The name of the user */
   userName: string
   /** The type of message (sent or received) */
