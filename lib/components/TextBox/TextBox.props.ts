@@ -1,9 +1,9 @@
-import { cva, type VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 
-import { marginProps } from '@props/margin.props'
+import { marginProps, type MarginPropTypes } from '@props/margin.props'
 import { paddingProps } from '@props/padding.props'
 import { heightProps } from '@props/height.props'
-import { widthProps } from '@props/width.props'
+import { widthProps, type WidthPropTypes } from '@props/width.props'
 import { borderProps } from '@props/border.props'
 import { sizeProps } from '@props/size.props'
 import { colorProps } from '@props/color.props'
@@ -25,7 +25,7 @@ export const iconSizeMapping = {
 } as { [key: string]: 'tiny' | 'small' }
 
 const rootVariants = cva(
-  ['relative', 'rounded-sm', 'bg-white', 'w-72', 'border-solid'],
+  ['relative', 'rounded-sm', 'bg-white', 'border-solid'],
   {
     variants: {
       type: {
@@ -45,6 +45,9 @@ const rootVariants = cva(
       isError: { true: '', false: '' },
       ...marginProps,
       ...widthProps,
+    },
+    defaultVariants: {
+      w: '72',
     },
     compoundVariants: [
       {
@@ -151,7 +154,8 @@ const componentVariants = (props: object) => {
 
 export interface TextBoxProps
   extends React.HTMLAttributes<HTMLInputElement>,
-    VariantProps<typeof rootVariants> {
+    WidthPropTypes,
+    MarginPropTypes {
   className?: string
   color?: string
   isError?: boolean
@@ -162,6 +166,7 @@ export interface TextBoxProps
   testId?: string
   trailingIcon?: string
   trailingIconColor?: string
+  type?: 'standard' | 'shadow'
   value?: string
 }
 

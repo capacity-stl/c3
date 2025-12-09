@@ -30,8 +30,6 @@ const meta = {
         'mr',
         'mb',
         'ml',
-        'hasLeadingIcon',
-        'hasTrailingIcon',
       ],
     },
   },
@@ -114,24 +112,6 @@ const meta = {
     },
     isError: {
       options: [true, false],
-    },
-    hasLeadingIcon: {
-      control: false,
-      table: {
-        type: {
-          summary: 'This value is derived and should not be set directly',
-        },
-        disabled: true,
-      },
-    },
-    hasTrailingIcon: {
-      control: false,
-      table: {
-        type: {
-          summary: 'This value is derived and should not be set directly',
-        },
-        disabled: true,
-      },
     },
     testId: {
       control: false,

@@ -121,4 +121,23 @@ const spacingRemMap: Record<string, number> = {
   '96': 24,
 }
 
+/** Type for width prop values */
+export type WidthValue = keyof typeof widthProps.w
+
+/** Type for min-width prop values */
+export type MinWidthValue = keyof typeof widthProps.wMin
+
+/** Type for max-width prop values */
+export type MaxWidthValue = keyof typeof widthProps.wMax
+
+/** Interface for components that support width props */
+export interface WidthPropTypes {
+  /** Width of the component */
+  w?: WidthValue | null
+  /** Minimum width of the component */
+  wMin?: MinWidthValue | null
+  /** Maximum width of the component */
+  wMax?: MaxWidthValue | null
+}
+
 export { widthProps, widthKeys, spacingRemMap }
