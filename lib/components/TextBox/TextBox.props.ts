@@ -1,4 +1,4 @@
-import { cva, type VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 
 import { marginProps, type MarginPropTypes } from '@props/margin.props'
 import { paddingProps } from '@props/padding.props'
