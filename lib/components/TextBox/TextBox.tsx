@@ -31,6 +31,9 @@ const TextBox = (props: TextBoxProps) => {
     w,
     wMax,
     wMin,
+    h,
+    hMax,
+    hMin,
     ...textboxProps
   } = {
     color: 'night',
@@ -61,6 +64,9 @@ const TextBox = (props: TextBoxProps) => {
       w,
       wMin,
       wMax,
+      h,
+      hMin,
+      hMax,
       type,
       size,
       isError,
