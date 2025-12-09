@@ -106,4 +106,25 @@ const paddingProps = {
     '13': 'pl-13',
   },
 }
+/** Type for padding prop values */
+export type PaddingValue = keyof typeof paddingProps.p
+
+/** Interface for components that support padding props */
+export interface PaddingPropTypes {
+  /** Padding on all sides */
+  p?: PaddingValue | null
+  /** Horizontal padding (left and right) */
+  px?: PaddingValue | null
+  /** Vertical padding (top and bottom) */
+  py?: PaddingValue | null
+  /** Top padding */
+  pt?: PaddingValue | null
+  /** Right padding */
+  pr?: PaddingValue | null
+  /** Bottom padding */
+  pb?: PaddingValue | null
+  /** Left padding */
+  pl?: PaddingValue | null
+}
+
 export { paddingProps, paddingKeys }

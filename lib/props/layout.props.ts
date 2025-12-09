@@ -89,4 +89,42 @@ const layoutProps = {
   },
 }
 
+/** Type for gap prop values */
+export type GapValue = keyof typeof layoutProps.gap
+
+/** Type for justify prop values */
+export type JustifyValue = keyof typeof layoutProps.justify
+
+/** Type for align prop values */
+export type AlignValue = keyof typeof layoutProps.align
+
+/** Type for alignContent prop values */
+export type AlignContentValue = keyof typeof layoutProps.alignContent
+
+/** Type for alignSelf prop values */
+export type AlignSelfValue = keyof typeof layoutProps.alignSelf
+
+/** Type for order prop values */
+export type OrderValue = keyof typeof layoutProps.order
+
+/** Interface for components that support layout props */
+export interface LayoutPropTypes {
+  /** Gap between items */
+  gap?: GapValue | null
+  /** Horizontal gap between items */
+  gapX?: GapValue | null
+  /** Vertical gap between items */
+  gapY?: GapValue | null
+  /** Justify content alignment */
+  justify?: JustifyValue | null
+  /** Align items */
+  align?: AlignValue | null
+  /** Align content */
+  alignContent?: AlignContentValue | null
+  /** Align self */
+  alignSelf?: AlignSelfValue | null
+  /** Order of the item */
+  order?: OrderValue | null
+}
+
 export { layoutProps }

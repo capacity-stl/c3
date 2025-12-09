@@ -34,4 +34,23 @@ const borderProps = {
   },
 }
 
+/** Type for border prop values */
+export type BorderValue = keyof typeof borderProps.border
+
+/** Type for borderTop prop values */
+export type BorderTopValue = keyof typeof borderProps.borderTop
+
+/** Type for borderBottom prop values */
+export type BorderBottomValue = keyof typeof borderProps.borderBottom
+
+/** Interface for components that support border props */
+export interface BorderPropTypes {
+  /** Border style */
+  border?: BorderValue | null
+  /** Top border style */
+  borderTop?: BorderTopValue | null
+  /** Bottom border style */
+  borderBottom?: BorderBottomValue | null
+}
+
 export { borderProps }
