@@ -2,7 +2,7 @@ import { cva } from 'class-variance-authority'
 
 import { marginProps, type MarginPropTypes } from '@props/margin.props'
 import { paddingProps } from '@props/padding.props'
-import { heightProps } from '@props/height.props'
+import { heightProps, type HeightPropTypes } from '@props/height.props'
 import { widthProps, type WidthPropTypes } from '@props/width.props'
 import { borderProps } from '@props/border.props'
 import { sizeProps } from '@props/size.props'
@@ -45,6 +45,7 @@ const rootVariants = cva(
       isError: { true: '', false: '' },
       ...marginProps,
       ...widthProps,
+      ...heightProps,
     },
     defaultVariants: {
       w: '72',
@@ -155,6 +156,7 @@ const componentVariants = (props: object) => {
 export interface TextBoxProps
   extends React.HTMLAttributes<HTMLInputElement>,
     WidthPropTypes,
+    HeightPropTypes,
     MarginPropTypes {
   className?: string
   color?: string
