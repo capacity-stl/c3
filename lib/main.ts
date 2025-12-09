@@ -38,7 +38,12 @@ export { widthProps } from './props/width.props'
 export { marginProps } from './props/margin.props'
 
 // prop types for consumers
-export type { WidthPropTypes, WidthValue, MinWidthValue, MaxWidthValue } from './props/width.props'
+export type {
+  WidthPropTypes,
+  WidthValue,
+  MinWidthValue,
+  MaxWidthValue,
+} from './props/width.props'
 export type { MarginPropTypes, MarginValue } from './props/margin.props'
 
 // hooks
