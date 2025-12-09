@@ -31,6 +31,10 @@ export { Modal } from './components/Modal/Modal'
 export type { TextBoxProps } from './components/TextBox/TextBox.props'
 export type { ChatBubbleProps } from './components/ChatBubble/ChatBubble.props'
 
+// component props types
+export type { TextBoxProps } from './components/TextBox/TextBox.props'
+export type { ChatBubbleProps } from './components/ChatBubble/ChatBubble.props'
+
 // props
 export { colorPalettes } from './props/color.props'
 export { colorNames } from './props/color.props'
