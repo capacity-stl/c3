@@ -70,4 +70,23 @@ const heightProps = {
   },
 }
 
+/** Type for height prop values */
+export type HeightValue = keyof typeof heightProps.h
+
+/** Type for min-height prop values */
+export type MinHeightValue = keyof typeof heightProps.hMin
+
+/** Type for max-height prop values */
+export type MaxHeightValue = keyof typeof heightProps.hMax
+
+/** Interface for components that support height props */
+export interface HeightPropTypes {
+  /** Height of the component */
+  h?: HeightValue | null
+  /** Minimum height of the component */
+  hMin?: MinHeightValue | null
+  /** Maximum height of the component */
+  hMax?: MaxHeightValue | null
+}
+
 export { heightProps, heightKeys }

@@ -30,6 +30,21 @@ export { Modal } from './components/Modal/Modal'
 // component props types
 export type { TextBoxProps } from './components/TextBox/TextBox.props'
 export type { ChatBubbleProps } from './components/ChatBubble/ChatBubble.props'
+export type { FlexProps } from './components/Flex/Flex.props'
+export type { TextProps } from './components/Text/Text.props'
+export type { GridProps } from './components/Grid/Grid.props'
+export type {
+  SideNavProps,
+  SideNavItemProps,
+} from './components/SideNav/SideNav.props'
+export type { PaginationProps } from './components/Pagination/Pagination.props'
+export type {
+  ModalRootProps,
+  ModalHeaderProps,
+  ModalBodyProps,
+  ModalFooterProps,
+  ModalConfirmationProps,
+} from './components/Modal/Modal.props'
 
 // component props types
 export type { TextBoxProps } from './components/TextBox/TextBox.props'
@@ -40,6 +55,11 @@ export { colorPalettes } from './props/color.props'
 export { colorNames } from './props/color.props'
 export { widthProps } from './props/width.props'
 export { marginProps } from './props/margin.props'
+export { paddingProps } from './props/padding.props'
+export { heightProps } from './props/height.props'
+export { layoutProps } from './props/layout.props'
+export { borderProps } from './props/border.props'
+export { borderRadiusProps } from './props/borderradius.props'
 
 // prop types for consumers
 export type {
@@ -49,6 +69,38 @@ export type {
   MaxWidthValue,
 } from './props/width.props'
 export type { MarginPropTypes, MarginValue } from './props/margin.props'
+export type { PaddingPropTypes, PaddingValue } from './props/padding.props'
+export type {
+  HeightPropTypes,
+  HeightValue,
+  MinHeightValue,
+  MaxHeightValue,
+} from './props/height.props'
+export type {
+  LayoutPropTypes,
+  GapValue,
+  JustifyValue,
+  AlignValue,
+  AlignContentValue,
+  AlignSelfValue,
+  OrderValue,
+} from './props/layout.props'
+export type {
+  BorderPropTypes,
+  BorderValue,
+  BorderTopValue,
+  BorderBottomValue,
+} from './props/border.props'
+export type {
+  BorderRadiusPropTypes,
+  BorderRadiusValue,
+} from './props/borderradius.props'
+export type { BgColorPropTypes, ColorPropTypes } from './props/color.props'
+export type {
+  FontPropTypes,
+  FontAlignValue,
+  FontTypeValue,
+} from './props/font.props'
 
 // hooks
 export { useDefaultSortHandler } from './components/DataTable/DataTable.hooks'

@@ -1,12 +1,12 @@
-import { cva, type VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 
-import { marginProps } from '@props/margin.props'
-import { paddingProps } from '@props/padding.props'
-import { heightProps } from '@props/height.props'
-import { widthProps } from '@props/width.props'
-import { bgColorProps } from '@props/color.props'
-import { borderProps } from '@props/border.props'
-import { layoutProps } from '@props/layout.props'
+import { marginProps, type MarginPropTypes } from '@props/margin.props'
+import { paddingProps, type PaddingPropTypes } from '@props/padding.props'
+import { heightProps, type HeightPropTypes } from '@props/height.props'
+import { widthProps, type WidthPropTypes } from '@props/width.props'
+import { bgColorProps, type BgColorPropTypes } from '@props/color.props'
+import { borderProps, type BorderPropTypes } from '@props/border.props'
+import { layoutProps, type LayoutPropTypes } from '@props/layout.props'
 
 const gridVariants = cva('grid', {
   variants: {
@@ -129,12 +129,93 @@ const gridVariants = cva('grid', {
 
 export interface GridProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof gridVariants> {
+    MarginPropTypes,
+    PaddingPropTypes,
+    HeightPropTypes,
+    WidthPropTypes,
+    BgColorPropTypes,
+    BorderPropTypes,
+    Omit<LayoutPropTypes, 'alignContent'> {
   className?: string
   children?: React.ReactNode
   testId?: string
   templateCols?: string
   templateRows?: string
+  /** Number of grid columns */
+  cols?:
+    | '1'
+    | '2'
+    | '3'
+    | '4'
+    | '5'
+    | '6'
+    | '7'
+    | '8'
+    | '9'
+    | '10'
+    | '11'
+    | '12'
+    | 'none'
+    | 'subgrid'
+    | null
+  /** Number of grid rows */
+  rows?:
+    | '1'
+    | '2'
+    | '3'
+    | '4'
+    | '5'
+    | '6'
+    | '7'
+    | '8'
+    | '9'
+    | '10'
+    | '11'
+    | '12'
+    | 'none'
+    | null
+  /** Grid flow direction */
+  flow?: 'row' | 'column' | 'dense' | 'col-dense' | null
+  /** Auto columns sizing */
+  autoCols?: 'auto' | 'min' | 'max' | 'fr' | null
+  /** Auto rows sizing */
+  autoRows?: 'auto' | 'min' | 'max' | 'fr' | null
+  /** Justify items alignment */
+  justifyItems?: 'start' | 'center' | 'end' | 'stretch' | null
+  /** Align items */
+  alignItems?: 'start' | 'center' | 'end' | 'stretch' | null
+  /** Place items (shorthand) */
+  placeItems?: 'start' | 'center' | 'end' | 'stretch' | null
+  /** Justify content */
+  justifyContent?:
+    | 'start'
+    | 'center'
+    | 'end'
+    | 'stretch'
+    | 'between'
+    | 'around'
+    | 'evenly'
+    | null
+  /** Align content */
+  alignContent?:
+    | 'start'
+    | 'center'
+    | 'end'
+    | 'stretch'
+    | 'between'
+    | 'around'
+    | 'evenly'
+    | null
+  /** Place content (shorthand) */
+  placeContent?:
+    | 'start'
+    | 'center'
+    | 'end'
+    | 'stretch'
+    | 'between'
+    | 'around'
+    | 'evenly'
+    | null
 }
 
 export { gridVariants }

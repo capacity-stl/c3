@@ -26,4 +26,18 @@ const fontProps = {
   type: fontSizes,
 }
 
+/** Type for font alignment prop values */
+export type FontAlignValue = keyof typeof fontAlignments
+
+/** Type for font type/size prop values */
+export type FontTypeValue = keyof typeof fontSizes
+
+/** Interface for components that support font props */
+export interface FontPropTypes {
+  /** Text alignment */
+  align?: FontAlignValue | null
+  /** Font type/size */
+  type?: FontTypeValue | null
+}
+
 export { fontProps, fontSizes, fontAlignments }

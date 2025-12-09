@@ -1,12 +1,15 @@
-import { cva, type VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 import React from 'react'
-import { marginProps } from '@props/margin.props'
-import { paddingProps } from '@props/padding.props'
-import { heightProps } from '@props/height.props'
-import { widthProps } from '@props/width.props'
-import { bgColorProps } from '@props/color.props'
-import { borderProps } from '@props/border.props'
-import { borderRadiusProps } from '@props/borderradius.props'
+import { marginProps, type MarginPropTypes } from '@props/margin.props'
+import { paddingProps, type PaddingPropTypes } from '@props/padding.props'
+import { heightProps, type HeightPropTypes } from '@props/height.props'
+import { widthProps, type WidthPropTypes } from '@props/width.props'
+import { bgColorProps, type BgColorPropTypes } from '@props/color.props'
+import { borderProps, type BorderPropTypes } from '@props/border.props'
+import {
+  borderRadiusProps,
+  type BorderRadiusPropTypes,
+} from '@props/borderradius.props'
 import { Icons } from '@components/Icon/Glyphs'
 
 const ModalPropsVariants = {
@@ -32,10 +35,20 @@ const modalVariants = cva('', {
   },
 })
 
+/** Shared modal layout prop types */
+interface ModalLayoutProps
+  extends MarginPropTypes,
+    PaddingPropTypes,
+    HeightPropTypes,
+    WidthPropTypes,
+    BgColorPropTypes,
+    BorderPropTypes,
+    BorderRadiusPropTypes {}
+
 // Main Modal Root Props
 export interface ModalRootProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof modalVariants> {
+    ModalLayoutProps {
   className?: string
   children?: React.ReactNode
   open?: boolean
@@ -43,12 +56,14 @@ export interface ModalRootProps
   fullScreen?: boolean
   closeOutside?: boolean
   testId?: string
+  /** Modal size */
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full' | null
 }
 
 // Modal Header Props
 export interface ModalHeaderProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof modalVariants> {
+    ModalLayoutProps {
   className?: string
   children?: React.ReactNode
   title?: string
@@ -64,7 +79,7 @@ export interface ModalHeaderProps
 // Modal Body Props
 export interface ModalBodyProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof modalVariants> {
+    ModalLayoutProps {
   className?: string
   children?: React.ReactNode
   testId?: string
@@ -73,7 +88,7 @@ export interface ModalBodyProps
 // Modal Footer Props
 export interface ModalFooterProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof modalVariants> {
+    ModalLayoutProps {
   className?: string
   children?: React.ReactNode
   testId?: string
@@ -83,7 +98,7 @@ export interface ModalFooterProps
 
 export interface ModalConfirmationProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof modalVariants> {
+    ModalLayoutProps {
   className?: string
   title?: string
   description?: string

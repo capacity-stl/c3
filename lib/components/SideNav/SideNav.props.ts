@@ -1,16 +1,24 @@
-import { cva, type VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 import { ReactNode } from 'react'
 
-import { marginProps } from '../../props/margin.props'
-import { paddingProps } from '../../props/padding.props'
-import { heightProps } from '../../props/height.props'
-import { widthProps } from '../../props/width.props'
-import { bgColorProps, colorProps } from '../../props/color.props'
-import { borderProps } from '../../props/border.props'
-import { layoutProps } from '../../props/layout.props'
-import { fontProps } from '../../props/font.props'
+import { marginProps, type MarginPropTypes } from '../../props/margin.props'
+import { paddingProps, type PaddingPropTypes } from '../../props/padding.props'
+import { heightProps, type HeightPropTypes } from '../../props/height.props'
+import { widthProps, type WidthPropTypes } from '../../props/width.props'
+import {
+  bgColorProps,
+  colorProps,
+  type BgColorPropTypes,
+  type ColorPropTypes,
+} from '../../props/color.props'
+import { borderProps, type BorderPropTypes } from '../../props/border.props'
+import { layoutProps, type LayoutPropTypes } from '../../props/layout.props'
+import { fontProps, type FontPropTypes } from '../../props/font.props'
 import { Icons } from '@components/Icon/Glyphs'
-import { borderRadiusProps } from '../../props/borderradius.props'
+import {
+  borderRadiusProps,
+  type BorderRadiusPropTypes,
+} from '../../props/borderradius.props'
 
 export const SIDE_NAV_STATES = {
   DISABLED: 'disabled',
@@ -44,8 +52,17 @@ const sideNavItemVariants = cva('', {
 })
 
 export interface SideNavItemProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, 'color'>,
-    VariantProps<typeof sideNavItemVariants> {
+  extends Omit<React.HTMLAttributes<HTMLElement>, 'color' | 'align'>,
+    MarginPropTypes,
+    PaddingPropTypes,
+    HeightPropTypes,
+    WidthPropTypes,
+    BgColorPropTypes,
+    BorderPropTypes,
+    BorderRadiusPropTypes,
+    Omit<LayoutPropTypes, 'align'>,
+    FontPropTypes,
+    ColorPropTypes {
   label: string
   link?: string
   subItems?: SideNavItemProps[]
@@ -78,7 +95,14 @@ const sideNavVariants = cva('', {
 
 export interface SideNavProps
   extends Omit<React.HTMLAttributes<HTMLElement>, 'onSelect'>,
-    VariantProps<typeof sideNavVariants> {
+    MarginPropTypes,
+    PaddingPropTypes,
+    HeightPropTypes,
+    WidthPropTypes,
+    BgColorPropTypes,
+    BorderPropTypes,
+    BorderRadiusPropTypes,
+    LayoutPropTypes {
   items: SideNavItemProps[]
   className?: string
   style?: React.CSSProperties

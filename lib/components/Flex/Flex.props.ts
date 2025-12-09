@@ -1,13 +1,16 @@
-import { cva, type VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 
-import { marginProps } from '@props/margin.props'
-import { paddingProps } from '@props/padding.props'
-import { heightProps } from '@props/height.props'
-import { widthProps } from '@props/width.props'
-import { bgColorProps } from '@props/color.props'
-import { borderProps } from '@props/border.props'
-import { layoutProps } from '@props/layout.props'
-import { borderRadiusProps } from '@props/borderradius.props'
+import { marginProps, type MarginPropTypes } from '@props/margin.props'
+import { paddingProps, type PaddingPropTypes } from '@props/padding.props'
+import { heightProps, type HeightPropTypes } from '@props/height.props'
+import { widthProps, type WidthPropTypes } from '@props/width.props'
+import { bgColorProps, type BgColorPropTypes } from '@props/color.props'
+import { borderProps, type BorderPropTypes } from '@props/border.props'
+import { layoutProps, type LayoutPropTypes } from '@props/layout.props'
+import {
+  borderRadiusProps,
+  type BorderRadiusPropTypes,
+} from '@props/borderradius.props'
 
 const flexVariants = cva('flex', {
   variants: {
@@ -58,10 +61,29 @@ const flexVariants = cva('flex', {
 
 export interface FlexProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof flexVariants> {
+    MarginPropTypes,
+    PaddingPropTypes,
+    HeightPropTypes,
+    WidthPropTypes,
+    BgColorPropTypes,
+    BorderPropTypes,
+    LayoutPropTypes,
+    BorderRadiusPropTypes {
   className?: string
   children?: React.ReactNode
   testId?: string
   numberOfBoxes?: number
+  /** Flex direction */
+  direction?: 'row' | 'rowReverse' | 'col' | 'colReverse' | null
+  /** Flex wrap */
+  wrap?: 'wrap' | 'wrapReverse' | 'nowrap' | null
+  /** Flex grow */
+  grow?: boolean | null
+  /** Flex shrink */
+  shrink?: boolean | null
+  /** Flex basis */
+  basis?: 'auto' | 'full' | 'min' | 'max' | null
+  /** Flex value */
+  flex?: '1' | '2' | '3' | '4' | '5' | null
 }
 export { flexVariants }

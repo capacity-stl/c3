@@ -1,12 +1,12 @@
-import { cva, type VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 
-import { marginProps } from '../../props/margin.props'
-import { paddingProps } from '../../props/padding.props'
-import { heightProps } from '../../props/height.props'
-import { widthProps } from '../../props/width.props'
-import { borderProps } from '../../props/border.props'
-import { colorProps } from '../../props/color.props'
-import { fontProps } from '../../props/font.props'
+import { marginProps, type MarginPropTypes } from '../../props/margin.props'
+import { paddingProps, type PaddingPropTypes } from '../../props/padding.props'
+import { heightProps, type HeightPropTypes } from '../../props/height.props'
+import { widthProps, type WidthPropTypes } from '../../props/width.props'
+import { borderProps, type BorderPropTypes } from '../../props/border.props'
+import { colorProps, type ColorPropTypes } from '../../props/color.props'
+import { fontProps, type FontPropTypes } from '../../props/font.props'
 
 const textVariants = cva('', {
   variants: {
@@ -36,8 +36,14 @@ enum asTypes {
 }
 
 export interface TextProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>,
-    VariantProps<typeof textVariants> {
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'color' | 'align'>,
+    MarginPropTypes,
+    PaddingPropTypes,
+    HeightPropTypes,
+    WidthPropTypes,
+    BorderPropTypes,
+    ColorPropTypes,
+    FontPropTypes {
   className?: string
   children?: React.ReactNode
   as?: React.ElementType

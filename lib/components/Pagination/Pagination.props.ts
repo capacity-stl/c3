@@ -1,11 +1,11 @@
-import { cva, type VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 import React from 'react'
-import { marginProps } from '@props/margin.props'
-import { paddingProps } from '@props/padding.props'
-import { heightProps } from '@props/height.props'
-import { widthProps } from '@props/width.props'
-import { bgColorProps } from '@props/color.props'
-import { borderProps } from '@props/border.props'
+import { marginProps, type MarginPropTypes } from '@props/margin.props'
+import { paddingProps, type PaddingPropTypes } from '@props/padding.props'
+import { heightProps, type HeightPropTypes } from '@props/height.props'
+import { widthProps, type WidthPropTypes } from '@props/width.props'
+import { bgColorProps, type BgColorPropTypes } from '@props/color.props'
+import { borderProps, type BorderPropTypes } from '@props/border.props'
 import { Icons } from '@components/Icon/Glyphs'
 import { PaginationColorTheme } from './Pagination.defaults'
 
@@ -70,7 +70,12 @@ interface PaginationNavProps {
 
 export interface PaginationProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof PaginationVariants>,
+    MarginPropTypes,
+    PaddingPropTypes,
+    HeightPropTypes,
+    WidthPropTypes,
+    BgColorPropTypes,
+    BorderPropTypes,
     PaginationConfig,
     PaginationColors,
     PaginationItemProps,

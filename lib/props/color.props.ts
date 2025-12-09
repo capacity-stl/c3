@@ -59,4 +59,19 @@ const borderColorProps = {
   },
 }
 
+/** Type for background color prop values */
+export type BgColorValue = (typeof colorNames)[number]
+
+/** Interface for components that support background color props */
+export interface BgColorPropTypes {
+  /** Background color of the component */
+  bgColor?: BgColorValue | null
+}
+
+/** Interface for components that support text color props */
+export interface ColorPropTypes {
+  /** Text color of the component */
+  color?: BgColorValue | null
+}
+
 export { colorProps, bgColorProps, borderColorProps }
