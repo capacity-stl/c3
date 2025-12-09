@@ -78,4 +78,25 @@ const marginProps = {
     '9': 'ml-9',
   },
 }
+/** Type for margin prop values */
+export type MarginValue = keyof typeof marginProps.m
+
+/** Interface for components that support margin props */
+export interface MarginPropTypes {
+  /** Margin on all sides */
+  m?: MarginValue | null
+  /** Horizontal margin (left and right) */
+  mx?: MarginValue | null
+  /** Vertical margin (top and bottom) */
+  my?: MarginValue | null
+  /** Top margin */
+  mt?: MarginValue | null
+  /** Right margin */
+  mr?: MarginValue | null
+  /** Bottom margin */
+  mb?: MarginValue | null
+  /** Left margin */
+  ml?: MarginValue | null
+}
+
 export { marginProps, marginKeys }

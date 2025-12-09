@@ -27,9 +27,19 @@ export { Toggle } from './components/Toggle/Toggle'
 export { Label } from './components/Label/Label'
 export { Modal } from './components/Modal/Modal'
 
+// component props types
+export type { TextBoxProps } from './components/TextBox/TextBox.props'
+export type { ChatBubbleProps } from './components/ChatBubble/ChatBubble.props'
+
 // props
 export { colorPalettes } from './props/color.props'
 export { colorNames } from './props/color.props'
+export { widthProps } from './props/width.props'
+export { marginProps } from './props/margin.props'
+
+// prop types for consumers
+export type { WidthPropTypes, WidthValue, MinWidthValue, MaxWidthValue } from './props/width.props'
+export type { MarginPropTypes, MarginValue } from './props/margin.props'
 
 // hooks
 export { useDefaultSortHandler } from './components/DataTable/DataTable.hooks'
