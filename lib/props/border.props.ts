@@ -32,6 +32,26 @@ const borderProps = {
     dashed: 'border-b border-dashed border-meteor-300',
     transparent: 'border-b border-transparent',
   },
+  borderLeft: {
+    default: 'border-l border-meteor-200',
+    error: 'border-l border-mars-300',
+    focus:
+      'border-l border-meteor-200 focus:border-earth-300 focus:shadow-outlined focus:shadow-earth-300',
+    focusWithin:
+      'border-l border-meteor-200 focus-within:border-l focus-within:border-transparent focus-within:shadow-outline-focus',
+    dashed: 'border-l border-dashed border-meteor-300',
+    transparent: 'border-l border-transparent',
+  },
+  borderRight: {
+    default: 'border-r border-meteor-200',
+    error: 'border-r border-mars-300',
+    focus:
+      'border-r border-meteor-200 focus:border-earth-300 focus:shadow-outlined focus:shadow-earth-300',
+    focusWithin:
+      'border-r border-meteor-200 focus-within:border-r focus-within:border-transparent focus-within:shadow-outline-focus',
+    dashed: 'border-r border-dashed border-meteor-300',
+    transparent: 'border-r border-transparent',
+  },
 }
 
 /** Type for border prop values */
@@ -43,6 +63,12 @@ export type BorderTopValue = keyof typeof borderProps.borderTop
 /** Type for borderBottom prop values */
 export type BorderBottomValue = keyof typeof borderProps.borderBottom
 
+/** Type for borderLeft prop values */
+export type BorderLeftValue = keyof typeof borderProps.borderLeft
+
+/** Type for borderRight prop values */
+export type BorderRightValue = keyof typeof borderProps.borderRight
+
 /** Interface for components that support border props */
 export interface BorderPropTypes {
   /** Border style */
@@ -51,6 +77,10 @@ export interface BorderPropTypes {
   borderTop?: BorderTopValue | null
   /** Bottom border style */
   borderBottom?: BorderBottomValue | null
+  /** Left border style */
+  borderLeft?: BorderLeftValue | null
+  /** Right border style */
+  borderRight?: BorderRightValue | null
 }
 
 export { borderProps }

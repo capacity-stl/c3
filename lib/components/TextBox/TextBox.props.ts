@@ -153,6 +153,8 @@ const componentVariants = (props: object) => {
   }
 }
 
+export type IconSize = 'xsmall' | 'tiny' | 'small' | 'medium' | 'large' | 'huge'
+
 export interface TextBoxProps
   extends React.HTMLAttributes<HTMLInputElement>,
     WidthPropTypes,
@@ -163,11 +165,13 @@ export interface TextBoxProps
   isError?: boolean
   leadingIcon?: string
   leadingIconColor?: string
+  leadingIconSize?: IconSize
   placeholder?: string
   size?: 'small' | 'medium'
   testId?: string
   trailingIcon?: string
   trailingIconColor?: string
+  trailingIconSize?: IconSize
   type?: 'standard' | 'shadow'
   value?: string
 }
