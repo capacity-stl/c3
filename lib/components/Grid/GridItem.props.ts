@@ -1,8 +1,10 @@
 import React from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { borderProps, type BorderPropTypes } from '@props/border.props'
 
 const gridItemVariants = cva('', {
   variants: {
+    ...borderProps,
     colSpan: {
       '1': 'col-span-1',
       '2': 'col-span-2',
@@ -89,7 +91,8 @@ const gridItemVariants = cva('', {
 
 export interface GridItemProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof gridItemVariants> {
+    VariantProps<typeof gridItemVariants>,
+    BorderPropTypes {
   className?: string
   children?: React.ReactNode
   testId?: string
