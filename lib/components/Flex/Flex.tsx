@@ -2,6 +2,7 @@ import { cn } from '../../utils/cn'
 import { FlexProps, flexVariants } from './Flex.props'
 
 const Flex = ({
+  as: Component = 'div',
   className,
   children,
   testId = 'flex-component',
@@ -31,6 +32,8 @@ const Flex = ({
   borderRadius,
   borderTop,
   borderBottom,
+  borderLeft,
+  borderRight,
   direction,
   wrap,
   grow,
@@ -73,6 +76,8 @@ const Flex = ({
     borderRadius,
     borderTop,
     borderBottom,
+    borderLeft,
+    borderRight,
     direction,
     wrap,
     grow,
@@ -90,13 +95,13 @@ const Flex = ({
   }
 
   return (
-    <div
+    <Component
       className={cn(flexVariants(variantProps), className)}
       data-testid={testId}
       {...htmlProps}
     >
       {children}
-    </div>
+    </Component>
   )
 }
 

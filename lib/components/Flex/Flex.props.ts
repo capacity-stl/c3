@@ -60,7 +60,7 @@ const flexVariants = cva('flex', {
 })
 
 export interface FlexProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends React.HTMLAttributes<HTMLElement>,
     MarginPropTypes,
     PaddingPropTypes,
     HeightPropTypes,
@@ -69,6 +69,8 @@ export interface FlexProps
     BorderPropTypes,
     LayoutPropTypes,
     BorderRadiusPropTypes {
+  /** Render as a different HTML element */
+  as?: React.ElementType
   className?: string
   children?: React.ReactNode
   testId?: string
