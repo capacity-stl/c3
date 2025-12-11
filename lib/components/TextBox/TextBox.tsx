@@ -16,10 +16,12 @@ const TextBox = (props: TextBoxProps) => {
     isError,
     leadingIcon,
     leadingIconColor,
+    leadingIconSize,
     size,
     testId,
     trailingIcon,
     trailingIconColor,
+    trailingIconSize,
     type,
     m,
     mx,
@@ -81,7 +83,7 @@ const TextBox = (props: TextBoxProps) => {
           <Icon
             color={leadingIconColor}
             icon={leadingIconGlyph}
-            size={iconSizeMapping[size]}
+            size={leadingIconSize ?? iconSizeMapping[size]}
           />
         </div>
       ) : null}
@@ -91,7 +93,7 @@ const TextBox = (props: TextBoxProps) => {
           <Icon
             color={trailingIconColor}
             icon={trailingIconGlyph}
-            size={iconSizeMapping[size]}
+            size={trailingIconSize ?? iconSizeMapping[size]}
           />
         </div>
       ) : null}
